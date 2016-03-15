@@ -1,0 +1,91 @@
+/*
+ *
+ * OrangeTrustBadge
+ *
+ * File name:   OrangeTrustBadge.strings
+ * Created:     15/12/2015
+ * Created by:  Romain BIARD
+ *
+ * Copyright 2015 Orange
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* Common Items */
+"status-enabled" = "Oui";
+"status-disabled" = "Non";
+"update-permission" = "Modifier cette autorisation";
+"accessibility-double-tap" = "Touchez l'écran deux foix rapidement pour en savoir plus";
+"accessibility-enabled" = "activé";
+"accessibility-disabled" = "desactivé";
+
+/* Rating Items */
+"rating-title" = "Age recommandé";
+"rating-level-4-name" = "4 ans +";
+"rating-level-4-description" = "L’âge indiqué correspond à l’âge minimum conseillé d’utilisation de votre application en fonction du contenu présenté";
+"rating-level-9-name" = "9 ans +";
+"rating-level-9-description" = "Cette application peut contenir du contenu non adapté au moins de 9 ans.";
+"rating-level-12-name" = "12 ans +";
+"rating-level-12-description" = "Cette application peut contenir du contenu non adapté au moins de 12 ans.";
+"rating-level-17-name" = "17 ans +";
+"rating-level-17-description" = "Cette application peut contenir du contenu non adapté au moins de 17 ans.";
+
+/* Landing Page */
+"landing-title" = "Badge de confiance";
+"landing-header-title" = "Utilisez en toute confiance votre application !";
+"landing-permission-title" = "Vos données";
+"landing-permission-content" = "Quelles sont les données utilisées par votre application et pour quelles raisons ?";
+"landing-usages-title" = "Vos usages";
+"landing-usages-content" = "Quels sont les contenus et les fonctionnalités de votre application ?";
+"landing-terms-title" = "Nos engagements";
+"landing-terms-content" = "Nous vous accompagnons pour protéger votre vie numérique et vos données personnelles.";
+
+/* Permissions Page */
+"permission-title" = "Vos données";
+"permission-header-title" = "Quelles sont les données utilisées par votre application et pour quelles raisons ?";
+"permission-main-section-name" = "Données principales";
+"permission-others-section-name" = "Autres données et permissions";
+"permission-identity-name" = "Mon identité";
+"permission-identity-description" = "Cette application peut accéder aux informations liées à vos comptes/profils. Elle peut ainsi utiliser votre nom, date de naissance, adresse mail dans le cadre de votre identification par exemple.";
+"permission-location-name" = "Localisation";
+"permission-location-description" = "Le service de localisation permet aux applications d’utiliser des informations des réseaux mobiles, Wi-Fi et GPS  pour localiser votre emplacement approximatif. Aucune donnée personnelle n’est collectée à cette occasion.";
+"permission-photo-library-name" = "Photos et vidéos";
+"permission-photo-library-description" = "Cette application peut accéder aux fichiers stockés sur votre terminal. Cette autorisation permet à l’application de lire, modifier ou supprimer ces fichiers.";
+"permission-contacts-name" = "Contacts";
+"permission-contacts-description" = "Cette application peut accéder, ajouter et/ou modifier les contacts de votre téléphone.";
+"permission-data-usage-name" = "Données d'usage";
+"permission-data-usage-description" = "Cette application peut collecter des informations concernant l'utilisation de l'application et nous renvoyer ces informations pour des analyses statistiques afin d'améliorer le service qui vous est proposé et la pertinence des messages de notification qui vous sont envoyés. Ces informations sont collectées et traitées en conformité avec les lois applicables.";
+"permission-camera-name" = "Appareil photo";
+"permission-camera-description" = "Cette application peut utiliser l'appareil photo de votre appareil. L'accès à la caméra peut permettre à l'application d'effectuer les actions suivantes : prendre des photos, enregistrer des vidéos.";
+"permission-calendar-name" = "Agenda";
+"permission-calendar-description" = "Cette application peut exploiter les informations de l'agenda présents sur votre terminal, y compris pour consulter les évènements enregistrés.";
+"permission-microphone-name" = "Micro";
+"permission-microphone-description" = "Cette application peut utiliser le micro de votre appareil. L'accès au micro peut permettre à l'application d'enregistrer des contenus audio.";
+"permission-phone-name" = "Téléphone";
+"permission-phone-description" = "Cette application peut accéder à l'identifiant de votre mobile et à votre numéro de téléphone.";
+"permission-body-sensors-name" = "Objets connectés";
+"permission-body-sensors-description" = "Cette application peut accéder aux données collectées par votre objet connecté qui est synchronisé avec votre mobile.";
+
+/* Usages Page */
+"usages-title" = "Vos usages";
+"usages-header-title" = "Quels sont les contenus et les fonctionnalités de votre application ?";
+"permission-social-sharing-name" = "Réseaux sociaux";
+"permission-social-sharing-description" = "Cette application peut intégrer des fonctionnalités permettant la redirection vers les réseaux sociaux comme Facebook ou Twitter.";
+"permission-inapp-purchase-name" = "Achats intégrés";
+"permission-inapp-purchase-description" = "Dans cette application, vous pouvez acheter des contenus ou des services supplémentaires.";
+"permission-advertising-name" = "Publicité";
+"permission-advertising-description" = "Cette application peut contenir de la publicité grâce à des cookies publicitaires afin de vous proposer des produits et services  adaptés à vos centres d'intérêts réels ou supposés.";
+
+/* Terms Page */
+"terms-title" = "Nos engagements";
+"terms-header-title" = "Nous vous accompagnons pour protéger votre vie numérique et vos données personnelles.";

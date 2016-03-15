@@ -1,0 +1,94 @@
+/*
+ *
+ * OrangeTrustBadgeDemo
+ *
+ * File name:   Localizable.strings (French)
+ * Created:     15/12/2015
+ * Created by:  Romain BIARD
+ *
+ * Copyright 2015 Orange
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+"landing-terms-title" = "Nos engagements";
+"landing-terms-content" = "Nous vous accompagnons pour protéger votre vie numérique et vos données personnelles.";
+"permission-location-description" = "Le service de localisation permet aux applications d’utiliser des informations des réseaux mobiles, Wi-Fi et GPS  pour localiser votre emplacement approximatif. Aucune donnée personnelle n’est collectée à cette occasion.";
+"terms-title" = "Nos engagements";
+"terms-header-title" = "Nous vous accompagnons pour protéger votre vie numérique et vos données personnelles.";
+
+"custom-permission-name-key" = "Données bancaires";
+"custom-permission-description-key" = "Description spécifique à cette permission";
+
+"disable-data-usage-confirmation-title" = "Désactiver l'envoi de ces données";
+"disable-data-usage-confirmation-content" = "Ces données anonymes sont essentielles afin d'améliorer nos services.\n\nSouhaitez-vous vraiment le désactiver ?";
+"disable-data-usage-confirmation-cancel" = "Annuler";
+"disable-data-usage-confirmation-confirm" = "Désactiver";
+
+"terms-video-title" = "Nos engagements en vidéo";
+"terms-video-content" = "x3tzvgs";
+
+"terms-data-usage-title" = "Comment nous  utilisons vos données";
+"terms-data-usage-content" = "<!DOCTYPE html> \
+<html> \
+<head> \
+<meta content='text/html; charset=utf-8' http-equiv='content-type'> \
+<style type='text/css'>$$cssStylesheet$$</style> \
+</meta> \
+</head> \
+<body> \
+<h2>Partage des données</h2> \
+<p> \
+Nous nous engageons à assurer la confidentialité des données personnelles que cette application utilise. Nous nous interdisons également de communiquer à des partenaires commerciaux vos données personnelles sans vous avoir informé et sans vous avoir offert la possibilité d’exercer votre droit d’opposition. \
+</p> \
+<h2>Utilisation des données</h2> \
+<p> \
+Nous utilisons vos données personnelles afin de vous authentifier, de vous fournir le service souscrit et, le cas échéant, vous proposer des offres adaptées à vos besoins. Nous sommes susceptibles d’utiliser vos données, préalablement rendues anonymes de manière irréversible, à des fins statistiques. \
+</p> \
+<h2>Conservation des données</h2> \
+Nous ne conservons pas vos données personnelles plus longtemps qu’il n’est nécessaire au regard des buts pour lesquels elles ont été collectés ou plus longtemps que le prévoit la loi en vigueur. \
+</body> \
+</html>";
+
+"terms-help-title" = "Aide";
+"terms-help-content" = "<!DOCTYPE html> \
+<html> \
+<head> \
+<meta content='text/html; charset=utf-8' http-equiv='content-type'> \
+<style type='text/css'>$$cssStylesheet$$</style> \
+</meta> \
+</head> \
+<body> \
+<p>Si besoin, cette application met à disposition cette adresse mail pour répondre à vos questions :</p> \
+<span class='p'> \
+<!-- span.p is used for last paragraph, otherwise layount is broken--> \
+<a href='mailto:privacy@example.com'>privacy@example.com</a> \
+</span> \
+</body> \
+</html>";
+
+"terms-more-info-title" = "La charte de confidentialité";
+"terms-more-info-content" = "<!DOCTYPE html> \
+<html> \
+<head> \
+<meta content='text/html; charset=utf-8' http-equiv='content-type'> \
+<style type='text/css'>$$cssStylesheet$$</style> \
+</meta> \
+</head> \
+<body> \
+<span class='p'> \
+<!-- span.p is used for last paragraph, otherwise layount is broken--> \
+Retrouvez  aussi toutes ces informations  dans la charte de confidentialité de l’application.(inserer ici le lien vers votre charte de confidentialité en ligne) \
+</span> \
+</body> \
+</html>";

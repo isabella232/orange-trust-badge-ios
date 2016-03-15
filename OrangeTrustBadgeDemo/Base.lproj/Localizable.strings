@@ -1,0 +1,94 @@
+/*
+ *
+ * OrangeTrustBadgeDemo
+ *
+ * File name:   Localizable.strings (English)
+ * Created:     15/12/2015
+ * Created by:  Romain BIARD
+ *
+ * Copyright 2015 Orange
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+"landing-terms-title" = "Our commitments";
+"landing-terms-content" = "We support you to protect your digital life and your personnal informations.";
+"permission-location-description" = "Geolocation service allows application to use mobile network, Wi-Fi and GPS information to locate you approximatively. In this case, we don't collect any personal data";
+"terms-title" = "Our commitments";
+"terms-header-title" = "We support you to protect your digital life and your personnal informations.";
+
+"custom-permission-name-key" = "Bank information";
+"custom-permission-description-key" = "Custom Permission description";
+
+"disable-data-usage-confirmation-title" = "Disable data usage collection";
+"disable-data-usage-confirmation-content" = "This application gathers anonymous usage information to improve your experience with this product, not marketing purposes. We also use this information to help guide our roadmap, prioritizing the features most valued for you and enabling us to be as reactive as you could expect from us.\n\nAre you sure ?";
+"disable-data-usage-confirmation-cancel" = "Cancel";
+"disable-data-usage-confirmation-confirm" = "Disable";
+
+"terms-video-title" = "Our commitments in video";
+"terms-video-content" = "x3tzvgs";
+
+"terms-data-usage-title" = "How we use your personal data";
+"terms-data-usage-content" = "<!DOCTYPE html> \
+<html> \
+<head> \
+<meta content='text/html; charset=utf-8' http-equiv='content-type'> \
+<style type='text/css'>$$cssStylesheet$$</style> \
+</meta> \
+</head> \
+<body> \
+<h2>Personal data sharing</h2> \
+<p> \
+We are committed to ensuring the privacy of personal data used by this application. We also prohibit us to communicate with partners personal data without informing you and without offered you the opportunity to  exercise your opposition right. \
+</p> \
+<h2>Personal data usage</h2> \
+<p> \
+We use your personal data to authenticate you, provide services and, if necessary, propose offers adapted to your needs. We may use your personal data, previously anonymized irreversibly, for statistical analysis. \
+</p> \
+<h2>Personal data retention</h2> \
+We do not retain your personal data longer than necessary or longer than foreseen by the law. \
+</body> \
+</html>";
+
+"terms-help-title" = "Help";
+"terms-help-content" = "<!DOCTYPE html> \
+<html> \
+<head> \
+<meta content='text/html; charset=utf-8' http-equiv='content-type'> \
+<style type='text/css'>$$cssStylesheet$$</style> \
+</meta> \
+</head> \
+<body> \
+<p>If necessary, this application provides this email address to answer your questions :</p> \
+<span class='p'> \
+<!-- span.p is used for last paragraph, otherwise layount is broken--> \
+<a href='mailto:privacy@example.com'>privacy@example.com</a> \
+</span> \
+</body> \
+</html>";
+
+"terms-more-info-title" = "Privacy Policy";
+"terms-more-info-content" = "<!DOCTYPE html> \
+<html> \
+<head> \
+<meta content='text/html; charset=utf-8' http-equiv='content-type'> \
+<style type='text/css'>$$cssStylesheet$$</style> \
+</meta> \
+</head> \
+<body> \
+<span class='p'> \
+<!-- span.p is used for last paragraph, otherwise layount is broken--> \
+Find also all this information in the privacy policy of this application.(insert here a link to your privacy policy on your website) \
+</span> \
+</body> \
+</html>";

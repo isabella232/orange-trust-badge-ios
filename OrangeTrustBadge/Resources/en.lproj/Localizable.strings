@@ -1,0 +1,91 @@
+/*
+ *
+ * OrangeTrustBadge
+ *
+ * File name:   OrangeTrustBadge.strings
+ * Created:     15/12/2015
+ * Created by:  Romain BIARD
+ *
+ * Copyright 2015 Orange
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* Common Items */
+"status-enabled" = "Yes";
+"status-disabled" = "No";
+"update-permission" = "Change this permission";
+"accessibility-double-tap" = "Double tap to know more";
+"accessibility-enabled" = "enabled";
+"accessibility-disabled" = "disabled";
+
+/* Rating Items */
+"rating-title" = "Age Rating";
+"rating-level-4-name" = "4+";
+"rating-level-4-description" = "The indicated age corresponds to the minimum age recommended to use your application according to presented content.";
+"rating-level-9-name" = "9+";
+"rating-level-9-description" = "The indicated age corresponds to the minimum age recommended to use your application according to presented content.";
+"rating-level-12-name" = "12+";
+"rating-level-12-description" = "The indicated age corresponds to the minimum age recommended to use your application according to presented content.";
+"rating-level-17-name" = "17+";
+"rating-level-17-description" = "The indicated age corresponds to the minimum age recommended to use your application according to presented content.";
+
+/* Landing Page */
+"landing-title" = "trust badge";
+"landing-header-title" = "Use your application trustfully";
+"landing-permission-title" = "My data";
+"landing-permission-content" = "Personal data your application in using and why";
+"landing-usages-title" = "My usages";
+"landing-usages-content" = "Contents and features of your application";
+"landing-terms-title" = "Our commitments";
+"landing-terms-content" = "We support you to protect your digital life and your personnal informations";
+
+/* Permissions Page */
+"permission-title" = "My data";
+"permission-header-title" = "Personnal data this application is using and why";
+"permission-main-section-name" = "Main data";
+"permission-others-section-name" = "Autres données et permissions";
+"permission-identity-name" = "My identity";
+"permission-identity-description" = "This application can access information linked to your accounts/profile. This application can use your name, date of birth and email in order to identify you for example.";
+"permission-location-name" = "Location";
+"permission-location-description" = "Geolocation service allows application to use mobile network, Wi-Fi and GPS information to locate you approximatively.";
+"permission-photo-library-name" = "Media & Photo Library";
+"permission-photo-library-description" = "This application can access files stored on your device. This permission allows this application to read, edit or delete them";
+"permission-contacts-name" = "Contacts";
+"permission-contacts-description" = "This application can access, add and / or change your phone contacts.";
+"permission-data-usage-name" = "Usage data";
+"permission-data-usage-description" = "This application collects information on the use of the application and sends us such information for statistical analysis to further improve the service provided to you and the relevance of the notification messages sent by the service. Such information is collected and processed in compliance with applicable laws";
+"permission-camera-name" = "Camera";
+"permission-camera-description" = "This application can use the camera of your device. The camera access allows this application to take pictures and record video.";
+"permission-calendar-name" = "Agenda";
+"permission-calendar-description" = "This application can use the calendar information on your device, including consultation of recorded events.";
+"permission-microphone-name" = "Microphone";
+"permission-microphone-description" = "This application can use the microphone of your device. The access to micro allows the application to record audio content.";
+"permission-phone-name" = "Téléphone";
+"permission-phone-description" = "This application can access the ID of your mobile and your phone number.";
+"permission-body-sensors-name" = "Connected objects";
+"permission-body-sensors-description" = "This application can access data collected by your connected object which is synchronized with your device. ";
+
+/* Usages Page */
+"usages-title" = "My usages";
+"usages-header-title" = "Contents and features of your application";
+"permission-social-sharing-name" = "Social networks";
+"permission-social-sharing-description" = "This application can integrate social features. This application can redirect you to social networks like Facebook or Twitter.";
+"permission-inapp-purchase-name" = "In-app purchase";
+"permission-inapp-purchase-description" = "In this application, you can buy other contents or services.";
+"permission-advertising-name" = "Advertising";
+"permission-advertising-description" = "This application can broadcast advertising thanks to stored cookies in order to propose you products and services adapted to your real or supposed interests.";
+
+/* Terms Page */
+"terms-title" = "Our commitments";
+"terms-header-title" = "We support you to protect your digital life and your personnal informations";

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TrustBadgeConfig Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/TrustBadgeConfig" class="dashAnchor"></a>
+    <a title="TrustBadgeConfig Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">OrangeTrustBadge Docs</a> (96% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">OrangeTrustBadge Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        TrustBadgeConfig Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/CustomElement.html">CustomElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PreDefinedElement.html">PreDefinedElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Rating.html">Rating</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Term.html">Term</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TrustBadgeConfig.html">TrustBadgeConfig</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TrustBadgeElement.html">TrustBadgeElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TrustBadgeManager.html">TrustBadgeManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/ElementType.html">ElementType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/RatingType.html">RatingType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TermType.html">TermType</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>TrustBadgeConfig</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">TrustBadgeConfig</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>TrustBadgeConfig aims to encapsulate all the configuration variables and custom handlers of TrustBadgeManager</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC16OrangeTrustBadge16TrustBadgeConfig7appNameGSqSS_"></a>
+                    <a name="//apple_ref/swift/Property/appName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC16OrangeTrustBadge16TrustBadgeConfig7appNameGSqSS_">appName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Name of the app, (Default : Bundle Display Name of host app)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">appName</span> <span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC16OrangeTrustBadge16TrustBadgeConfig6ratingCS_6Rating"></a>
+                    <a name="//apple_ref/swift/Property/rating" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC16OrangeTrustBadge16TrustBadgeConfig6ratingCS_6Rating">rating</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>(Optional) Rating of your application (Default : 4+)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">rating</span> <span class="o">=</span> <span class="kt">Rating</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt">RatingType</span><span class="o">.</span><span class="kt">Level4</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC16OrangeTrustBadge16TrustBadgeConfig14highlightColorCSo7UIColor"></a>
+                    <a name="//apple_ref/swift/Property/highlightColor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC16OrangeTrustBadge16TrustBadgeConfig14highlightColorCSo7UIColor">highlightColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>(Optional) UIColor used to highlight element with a positive status (default black)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">highlightColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="nf">blackColor</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC16OrangeTrustBadge16TrustBadgeConfig11headerColorCSo7UIColor"></a>
+                    <a name="//apple_ref/swift/Property/headerColor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC16OrangeTrustBadge16TrustBadgeConfig11headerColorCSo7UIColor">headerColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>(Optional) background UIColor of the header (default blue)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">headerColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mi">57</span><span class="o">/</span><span class="mi">256</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mi">176</span><span class="o">/</span><span class="mi">256</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mi">168</span><span class="o">/</span><span class="mi">256</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC16OrangeTrustBadge16TrustBadgeConfig17isTrackingEnabledFT_Sb"></a>
+                    <a name="//apple_ref/swift/Property/isTrackingEnabled" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC16OrangeTrustBadge16TrustBadgeConfig17isTrackingEnabledFT_Sb">isTrackingEnabled</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>(Optional) Closure giving Tracking (Data Usage Permission) status (enabled/disabled) (Default : disabled)</p>
+
+<p>Example :</p>
+
+<pre class="highlight plaintext"><code> let config = TrustBadgeConfig()
+ config.isTrackingEnabled = {() in return NSUserDefaults.standardUserDefaults().boolForKey("TRACKING_KEY")}
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isTrackingEnabled</span> <span class="p">:</span> <span class="p">(</span><span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="p">{()</span> <span class="k">in</span> <span class="k">return</span> <span class="kc">false</span><span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC16OrangeTrustBadge16TrustBadgeConfig14isIdentityUsedFT_Sb"></a>
+                    <a name="//apple_ref/swift/Property/isIdentityUsed" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC16OrangeTrustBadge16TrustBadgeConfig14isIdentityUsedFT_Sb">isIdentityUsed</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>(Optional) Closure giving Identity usage (Identity ElementType) status (enabled/disabled) (Default : disabled)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isIdentityUsed</span> <span class="p">:</span> <span class="p">(</span><span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="p">{()</span> <span class="k">in</span> <span class="k">return</span> <span class="kc">true</span><span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC16OrangeTrustBadge16TrustBadgeConfig19isSocialSharingUsedFT_Sb"></a>
+                    <a name="//apple_ref/swift/Property/isSocialSharingUsed" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC16OrangeTrustBadge16TrustBadgeConfig19isSocialSharingUsedFT_Sb">isSocialSharingUsed</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>(Optional) Closure giving Social Sharing (Social Sharing ElementType) status (enabled/disabled) (Default : disabled)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isSocialSharingUsed</span> <span class="p">:</span> <span class="p">(</span><span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="p">{()</span> <span class="k">in</span> <span class="k">return</span> <span class="kc">false</span><span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC16OrangeTrustBadge16TrustBadgeConfig19isInappPurchaseUsedFT_Sb"></a>
+                    <a name="//apple_ref/swift/Property/isInappPurchaseUsed" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC16OrangeTrustBadge16TrustBadgeConfig19isInappPurchaseUsedFT_Sb">isInappPurchaseUsed</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>(Optional) Closure giving InApp Purchase (InApp Purchase ElementType) status (enabled/disabled) (Default : disabled)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isInappPurchaseUsed</span> <span class="p">:</span> <span class="p">(</span><span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="p">{()</span> <span class="k">in</span> <span class="k">return</span> <span class="kc">false</span><span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC16OrangeTrustBadge16TrustBadgeConfig19isAdvertisementUsedFT_Sb"></a>
+                    <a name="//apple_ref/swift/Property/isAdvertisementUsed" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC16OrangeTrustBadge16TrustBadgeConfig19isAdvertisementUsedFT_Sb">isAdvertisementUsed</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>(Optional) Closure giving Advertisement (Advertisement ElementType) status (enabled/disabled) (Default : disabled)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isAdvertisementUsed</span> <span class="p">:</span> <span class="p">(</span><span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="p">{()</span> <span class="k">in</span> <span class="k">return</span> <span class="kc">false</span><span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC16OrangeTrustBadge16TrustBadgeConfig14updateTrackingFCSo8UISwitchT_"></a>
+                    <a name="//apple_ref/swift/Property/updateTracking" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC16OrangeTrustBadge16TrustBadgeConfig14updateTrackingFCSo8UISwitchT_">updateTracking</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>(Optional) Closure allowing to update the Tracking (Data Usage ElementType) status (enabled/disabled).</p>
+
+<p>Example :</p>
+
+<pre class="highlight plaintext"><code> let config = TrustBadgeConfig()
+ config.updateTracking = {(Bool status) in NSUserDefaults.standardUserDefaults().setBool(status, forKey: "TRACKING_KEY")}
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">updateTracking</span> <span class="p">:</span> <span class="p">(</span><span class="kt">UISwitch</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kt">Void</span> <span class="o">=</span> <span class="p">{(</span><span class="n">toggle</span><span class="p">)</span> <span class="k">in</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC16OrangeTrustBadge16TrustBadgeConfig12mainElementsGSaCS_17TrustBadgeElement_"></a>
+                    <a name="//apple_ref/swift/Property/mainElements" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC16OrangeTrustBadge16TrustBadgeConfig12mainElementsGSaCS_17TrustBadgeElement_">mainElements</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>(Optional) List of TrustBadgeElements that should be displayed in <q>Main Elements</q> section. If you append an TrustBadgeElement to the Array, it will add it at the end of it. If you want to ave full control of what should be displayed, please assign a new array to this property. This section must contains at least 1 element to let TrustBadgeManager initialize properly.</p>
+
+<p>Example :</p>
+
+<pre class="highlight plaintext"><code> let myCustomElement = CustomElement(nameKey: "custom-permission-name-key", descriptionKey: "custom-permission-description-key", statusEnabledIconName: "permission-credit-card-enabled-icon", statusDisabledIconName: "permission-credit-card-disabled-icon")
+ myCustomElement.isConfigurable = false
+ myCustomElement.statusClosure = {() in return true}
+ config.mainElements.append(myCustomElement)
+
+ //or with pre-defined permissions such as Calendar :
+
+ let calendarElement = PreDefinedElement(type: .Calendar)
+ config.mainElements.append(calendarElement)
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">mainElements</span>  <span class="p">:</span> <span class="p">[</span><span class="kt">TrustBadgeElement</span><span class="p">]</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="nf">initializeMainElements</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC16OrangeTrustBadge16TrustBadgeConfig13otherElementsGSaCS_17TrustBadgeElement_"></a>
+                    <a name="//apple_ref/swift/Property/otherElements" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC16OrangeTrustBadge16TrustBadgeConfig13otherElementsGSaCS_17TrustBadgeElement_">otherElements</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>(Optional) List of TrustBadgeElements that should be displayed in <q>Other Elements</q> section. If you append an TrustBadgeElement to the Array, it will add it at the end of it. If you want to ave full control of what should be displayed, please assign a new array to this property. If no elements are in the list, this section will not be displayed. (empty by default)</p>
+
+<p>Example :</p>
+
+<pre class="highlight plaintext"><code> let myCustomElement = CustomElement(nameKey: "custom-permission-name-key", descriptionKey: "custom-permission-description-key", statusEnabledIconName: "permission-credit-card-enabled-icon", statusDisabledIconName: "permission-credit-card-disabled-icon")
+ myCustomElement.isConfigurable = false
+ myCustomElement.statusClosure = {() in return true}
+ config.otherElements.append(myCustomElement)
+
+ //or with pre-defined permissions such as Calendar :
+
+ let calendarElement = PreDefinedElement(type: .Calendar)
+ config.otherElements.append(calendarElement)
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">otherElements</span> <span class="p">:</span> <span class="p">[</span><span class="kt">TrustBadgeElement</span><span class="p">]</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="nf">initializeOtherElements</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC16OrangeTrustBadge16TrustBadgeConfig13usageElementsGSaCS_17TrustBadgeElement_"></a>
+                    <a name="//apple_ref/swift/Property/usageElements" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC16OrangeTrustBadge16TrustBadgeConfig13usageElementsGSaCS_17TrustBadgeElement_">usageElements</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>(Optional) List of TrustBadgeElements that should be displayed in <q>Usage</q> section. If you append an TrustBadgeElement to the Array, it will add it at the end of it. If you want to ave full control of what should be displayed, please assign a new array to this property.</p>
+
+<p>Example :</p>
+
+<pre class="highlight plaintext"><code> let myCustomElement = CustomElement(nameKey: "custom-permission-name-key", descriptionKey: "custom-permission-description-key", statusEnabledIconName: "permission-credit-card-enabled-icon", statusDisabledIconName: "permission-credit-card-disabled-icon")
+ myCustomElement.isConfigurable = false
+ myCustomElement.statusClosure = {() in return true}
+ config.usageElements.append(myCustomElement)
+
+ //or with pre-defined permissions such as Calendar :
+
+ let calendarElement = PreDefinedElement(type: .Calendar)
+ config.usageElements.append(calendarElement)
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">usageElements</span> <span class="p">:</span> <span class="p">[</span><span class="kt">TrustBadgeElement</span><span class="p">]</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="nf">initializeUsageElements</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC16OrangeTrustBadge16TrustBadgeConfig5termsGSaCS_4Term_"></a>
+                    <a name="//apple_ref/swift/Property/terms" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC16OrangeTrustBadge16TrustBadgeConfig5termsGSaCS_4Term_">terms</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>(Optional) List of Terms and Conditions that should be displayed in <q>terms and conditions</q> section. (empty by default)</p>
+
+<p>Example :</p>
+
+<pre class="highlight plaintext"><code> let customTerm = Term(type: .Text, titleKey: "terms-data-usage-title", contentKey: "terms-data-usage-content")
+ config.terms = [customTerm]
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">terms</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Term</span><span class="p">]()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC16OrangeTrustBadge16TrustBadgeConfig22initializeMainElementsFS0_FT_GSaCS_17TrustBadgeElement_"></a>
+                    <a name="//apple_ref/swift/Method/initializeMainElements()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC16OrangeTrustBadge16TrustBadgeConfig22initializeMainElementsFS0_FT_GSaCS_17TrustBadgeElement_">initializeMainElements()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience method to create the array of the default TrustBadgeElement that should be displayed in Main Elements section.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">initializeMainElements</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">TrustBadgeElement</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>an initialized array of TrustBadgeElement</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC16OrangeTrustBadge16TrustBadgeConfig23initializeOtherElementsFS0_FT_GSaCS_17TrustBadgeElement_"></a>
+                    <a name="//apple_ref/swift/Method/initializeOtherElements()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC16OrangeTrustBadge16TrustBadgeConfig23initializeOtherElementsFS0_FT_GSaCS_17TrustBadgeElement_">initializeOtherElements()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience method to create the array of the default TrustBadgeElement that should be displayed in Other Elements section.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">initializeOtherElements</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">TrustBadgeElement</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>an initialized array of TrustBadgeElement</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC16OrangeTrustBadge16TrustBadgeConfig23initializeUsageElementsFS0_FT_GSaCS_17TrustBadgeElement_"></a>
+                    <a name="//apple_ref/swift/Method/initializeUsageElements()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC16OrangeTrustBadge16TrustBadgeConfig23initializeUsageElementsFS0_FT_GSaCS_17TrustBadgeElement_">initializeUsageElements()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience method to create the array of the default TrustBadgeElement that should be displayed in Usage Elements section.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">initializeUsageElements</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">TrustBadgeElement</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>an initialized array of TrustBadgeElement</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC16OrangeTrustBadge16TrustBadgeConfig14elementForTypeFS0_FOS_11ElementTypeGSaCS_17PreDefinedElement_"></a>
+                    <a name="//apple_ref/swift/Method/elementForType(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC16OrangeTrustBadge16TrustBadgeConfig14elementForTypeFS0_FOS_11ElementTypeGSaCS_17PreDefinedElement_">elementForType(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience method to find elements of a given type in order to configure it directly. 
+This method will search over all elements in every collections the Manager is responsible for</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">elementForType</span><span class="p">(</span><span class="nv">type</span> <span class="p">:</span> <span class="kt">ElementType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">PreDefinedElement</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>type of the Element</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>array of PreDefinedElements matching a given type</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://github.com/Orange-OpenSource/orange-trust-badge-ios.git" target="_blank" rel="external">Orange</a>. All rights reserved. (Last updated: 2016-03-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.4.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

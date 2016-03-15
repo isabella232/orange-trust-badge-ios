@@ -1,0 +1,4 @@
+PreDefinedElement.swift
+	public static let defaultMainElementTypes  : [ElementType] = [Identity, Location, PhotoLibrary, Contacts, DataUsage]
+	public static let defaultOtherElementTypes : [ElementType] = []
+	public static let defaultUsageElementTypes : [ElementType] = [SocialSharing, InAppPurchase, Advertising]

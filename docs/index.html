@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>OrangeTrustBadge  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+  </head>
+  <body>
+    <a title="OrangeTrustBadge  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">OrangeTrustBadge Docs</a> (96% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">OrangeTrustBadge Reference</a>
+        <img id="carat" src="img/carat.png" />
+        OrangeTrustBadge  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/CustomElement.html">CustomElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/PreDefinedElement.html">PreDefinedElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Rating.html">Rating</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Term.html">Term</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TrustBadgeConfig.html">TrustBadgeConfig</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TrustBadgeElement.html">TrustBadgeElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TrustBadgeManager.html">TrustBadgeManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/ElementType.html">ElementType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/RatingType.html">RatingType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/TermType.html">TermType</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <a href='#orange_trust_badge_ios_reference' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='orange_trust_badge_ios_reference'>Orange trust badge iOS Reference</h1>
+
+<p><img src="./img/logo.png" alt="Orange trust badge : your privacy first"></p>
+
+<p>With the Orange trust badge, aka <q>Badge de confiance</q>, give transparent informations and user control on personal data and help users to identify if your application has any sensitive features.</p>
+<a href='#features' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='features'>Features</h2>
+
+<p>Orange trust badge displays how are handled the following data :</p>
+
+<ul>
+<li>Identity of the User</li>
+<li>Location</li>
+<li>Photos</li>
+<li>Contacts</li>
+<li>Usage data</li>
+<li>Calendar</li>
+<li>SMS</li>
+<li>Microphone</li>
+<li>Phone</li>
+<li>Body sensors</li>
+<li>Social Sharing</li>
+<li>In-app purchase</li>
+<li>Advertising</li>
+</ul>
+
+<p>It also displays the following informations :</p>
+
+<ul>
+<li>Application&rsquo;s rating</li>
+<li>Data usage general description</li>
+<li>Help</li>
+<li>Privacy policy</li>
+</ul>
+
+<p>It also :</p>
+
+<ul>
+<li>Works on iPhone and iPad using Autolayout (iPad Multitasking supported)</li>
+<li>Localized in 2 languages (English,French)</li>
+<li>Written in Swift 2.0 but works in Objective-C or Swift based Projects</li>
+<li>API hooks</li>
+<li>UI Customization</li>
+</ul>
+<a href='#requirements' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='requirements'>Requirements</h2>
+
+<ul>
+<li>iOS 8.0+</li>
+<li>Xcode 6.4+</li>
+<li>CocoaPods 0.39.0+</li>
+</ul>
+<a href='#bug_tracker' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='bug_tracker'>Bug tracker</h2>
+
+<ul>
+<li>If you find any bugs, please submit a bug report through Github and/or a pull request.</li>
+</ul>
+<a href='#example_project' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='example_project'>Example project</h2>
+
+<p>An example of integration is provided in OrangeTrustBadgeDemo project.</p>
+<a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='installation'>Installation</h2>
+
+<blockquote>
+<p><strong>Embedded frameworks require a minimum deployment target of iOS 8</strong></p>
+</blockquote>
+<a href='#cocoapods' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='cocoapods'>CocoaPods</h3>
+
+<p><a href="http://cocoapods.org">CocoaPods</a> is a dependency manager for Cocoa projects. You can install it with the following command:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>gem install cocoapods
+</code></pre>
+
+<blockquote>
+<p>CocoaPods 0.39.0+ is required to build OrangeTrustBadge.</p>
+</blockquote>
+
+<p>To integrate OrangeTrustBadge into your Xcode project using CocoaPods, specify it in your <code>Podfile</code>:</p>
+<pre class="highlight ruby"><code><span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'8.0'</span>
+<span class="n">use_frameworks!</span>
+
+<span class="n">source</span> <span class="s1">'https://github.com/Orange-OpenSource/orange-trust-badge-ios.git'</span>
+<span class="n">source</span> <span class="s1">'https://github.com/CocoaPods/Specs.git'</span>
+
+<span class="n">pod</span> <span class="s1">'OrangeTrustBadge'</span>
+</code></pre>
+
+<p>Then, run the following command:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>pod install
+</code></pre>
+<a href='#manually' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='manually'>Manually</h3>
+
+<p>If you prefer not to use either of the aforementioned dependency managers, you can integrate OrangeTrustBadge into your project manually.</p>
+<a href='#embedded_framework' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='embedded_framework'>Embedded Framework</h4>
+
+<ul>
+<li>Open up Terminal, <code>cd</code> into your top-level project directory, and run the following command <q>if</q> your project is not initialized as a git repository:</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>git init
+</code></pre>
+
+<ul>
+<li>Add OrangeTrustBadge as a git <a href="http://git-scm.com/docs/git-submodule">submodule</a> by running the following command:</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>git submodule add https://github.com/Orange-OpenSource/orange-trust-badge-ios.git
+</code></pre>
+
+<ul>
+<li><p>Open the new <code>OrangeTrustBadge</code> folder, and drag the <code>OrangeTrustBadge.xcodeproj</code> into the Project Navigator of your application&rsquo;s Xcode project.</p>
+
+<blockquote>
+<p>It should appear nested underneath your application&rsquo;s blue project icon. Whether it is above or below all the other Xcode groups does not matter.</p>
+</blockquote></li>
+<li><p>Select the <code>OrangeTrustBadge.xcodeproj</code> in the Project Navigator and verify the deployment target matches that of your application target.</p></li>
+<li><p>Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the <q>Targets</q> heading in the sidebar.</p></li>
+<li><p>In the tab bar at the top of that window, open the <q>General</q> panel.</p></li>
+<li><p>Click on the <code>+</code> button under the <q>Embedded Binaries</q> section.</p></li>
+<li><p>You will see two different <code>OrangeTrustBadge.xcodeproj</code> folders each with two different versions of the <code>OrangeTrustBadge.framework</code> nested inside a <code>Products</code> folder.</p>
+
+<blockquote>
+<p>It does not matter which <code>Products</code> folder you choose from, but it does matter whether you choose the top or bottom <code>OrangeTrustBadge.framework</code>. </p>
+</blockquote></li>
+<li><p>Select the top <code>OrangeTrustBadge.framework</code> for iOS.</p></li>
+<li><p>And that&rsquo;s it!</p></li>
+</ul>
+
+<blockquote>
+<p>The <code>OrangeTrustBadge.framework</code> is automagically added as a target dependency, linked framework and embedded framework in a copy files build phase which is all you need to build on the simulator and a device.</p>
+</blockquote>
+
+<hr>
+<a href='#usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='usage'>Usage</h2>
+<a href='#initialization_of_the_sdk' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='initialization_of_the_sdk'>Initialization of the SDK</h3>
+
+<p><strong>In swift</strong></p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">OrangeTrustBadge</span>
+
+<span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSObject</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="kt">TrustBadgeManager</span><span class="o">.</span><span class="nf">with</span><span class="p">(</span><span class="kt">TrustBadgeConfig</span><span class="p">())</span>
+        <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre>
+
+<p><strong>or in Objective-C</strong></p>
+<pre class="highlight objective_c"><code><span class="cp">#import "OrangeTrustBadge-Swift.h"
+</span>
+<span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">application</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">TrustBadgeManager</span> <span class="nf">with</span><span class="p">:[[</span><span class="n">TrustBadgeConfig</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">]];</span>
+    <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+<a href='#add_orangetrustbadge_ui_in_your_storyboard' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='add_orangetrustbadge_ui_in_your_storyboard'>Add OrangeTrustBadge UI in your storyboard</h3>
+<a href='#using_code_available_on_ios8_and_later' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='using_code_available_on_ios8_and_later'>Using code (available on iOS8 and later)</h4>
+
+<ul>
+<li>create an IBAction connected to one of your interface element (e.g a button, a cell etc&hellip;).</li>
+<li>Instanciate OrangeTrustBadge storyboard with the following lines :</li>
+</ul>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">OrangeTrustBadge</span>
+
+<span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">onButtonClicked</span><span class="p">(){</span>
+    <span class="k">let</span> <span class="nv">storyboard</span> <span class="o">=</span> <span class="kt">UIStoryboard</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"OrangeTrustBadge"</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="kt">NSBundle</span><span class="p">(</span><span class="nv">forClass</span><span class="p">:</span> <span class="kt">TrustBadgeManager</span><span class="o">.</span><span class="k">self</span><span class="p">))</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">viewController</span> <span class="o">=</span> <span class="n">storyboard</span><span class="o">.</span><span class="nf">instantiateInitialViewController</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">navigationController</span><span class="p">?</span><span class="o">.</span><span class="nf">presentViewController</span><span class="p">(</span><span class="n">viewController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>That&rsquo;s it !</p>
+<a href='#using_storyboard_references_available_on_ios9_and_later' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='using_storyboard_references_available_on_ios9_and_later'>Using Storyboard References (available on iOS9 and later)</h4>
+
+<ul>
+<li>Open your storyboard file and add a Storyboard reference object in it</li>
+<li>Click on newly created Storyboard Reference and go into Attribute inspector on the right panel</li>
+<li>In Storyboard field, select <code>OrangeTrustBadge</code></li>
+<li>In Bundle field, type <code>org.cocoapods.OrangeTrustBadge</code></li>
+<li>Finally, create a segue from the appropriate button or cell in your app and this Storyboard Reference (Some segue types might be unavailable since this component is using UISplitViewController - Try <q>Present Modally</q> to start)</li>
+</ul>
+
+<p><img src="img/inspector.png" alt="inspector"></p>
+
+<p>That&rsquo;s it !</p>
+<a href='#add_localization_support' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='add_localization_support'>Add localization support</h3>
+
+<p>In order to localize properly the UI, OrangeTrustBadge is using standard iOS mechanisms.
+Concretly the SDK will take the current language setup on user&rsquo;s phone unless your app support this localization. English will be taken by Default.</p>
+
+<p>To add a localization support, go to Project Level and add appropriate localization in <q>Info</q> Tab.</p>
+
+<p>You can override every visible text using your own Localizable.strings file. To know which key you need to override, please see SDK &rsquo;s Localization file.</p>
+<a href='#customization' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='customization'>Customization</h2>
+
+<p>OrangeTrustBadge can be customized in various ways</p>
+<a href='#main_other_elements_view' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='main_other_elements_view'>Main / Other Elements View</h3>
+
+<p>In this View are displayed two pre-defined sections showing TrustBadge Elements and their underlying status. Although it is required to have at least one item in the first section, you can fully customize the different sections using PreDefined or Custom Elements.</p>
+
+<ul>
+<li>A PreDefinedElement that is automagically setup for common cases</li>
+</ul>
+
+<p><strong>In swift</strong></p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">advertisingElement</span> <span class="o">=</span> <span class="kt">PreDefinedElement</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="kt">Advertising</span><span class="p">)</span>
+<span class="n">advertisingElement</span><span class="o">.</span><span class="n">statusClosure</span> <span class="o">=</span> <span class="p">{()</span> <span class="k">in</span> <span class="k">return</span> <span class="kc">true</span><span class="p">}</span>
+<span class="n">config</span><span class="o">.</span><span class="n">mainElements</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">advertisingElement</span><span class="p">)</span>
+</code></pre>
+
+<ul>
+<li>A CustomElement on which you have full control of displayed informations</li>
+</ul>
+
+<p><strong>In swift</strong></p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">myCustomElement</span> <span class="o">=</span> <span class="kt">CustomElement</span><span class="p">(</span><span class="nv">nameKey</span><span class="p">:</span> <span class="s">"custom-element-name-key"</span><span class="p">,</span> <span class="nv">descriptionKey</span><span class="p">:</span> <span class="s">"custom-element-description-key"</span><span class="p">,</span> <span class="nv">statusEnabledIconName</span><span class="p">:</span> <span class="s">"custom-element-enabled-icon"</span><span class="p">,</span> <span class="nv">statusDisabledIconName</span><span class="p">:</span> <span class="s">"custom-element-disabled-icon"</span><span class="p">)</span>
+<span class="n">myCustomElement</span><span class="o">.</span><span class="n">isConfigurable</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="n">myCustomElement</span><span class="o">.</span><span class="n">statusClosure</span> <span class="o">=</span> <span class="p">{()</span> <span class="k">in</span> <span class="k">return</span> <span class="kc">true</span><span class="p">}</span>
+<span class="n">config</span><span class="o">.</span><span class="n">otherElements</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">myCustomElement</span><span class="p">)</span>
+</code></pre>
+<a href='#terms_and_conditions_view' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='terms_and_conditions_view'>Terms and Conditions View</h3>
+
+<p>In this section you will find Standardized Terms ans conditions that can be replaced / updated according to your needs through Localization.
+If you want to add a section in this View, you just have to add a new Term instance :</p>
+
+<p><strong>In swift</strong></p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">customTerm</span> <span class="o">=</span> <span class="kt">Term</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="kt">Custom</span><span class="p">,</span> <span class="nv">titleKey</span><span class="p">:</span> <span class="s">"term-custom-title"</span><span class="p">,</span> <span class="nv">contentKey</span><span class="p">:</span> <span class="s">"term-custom-content"</span><span class="p">)</span>
+<span class="n">config</span><span class="o">.</span><span class="n">terms</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">customTerm</span><span class="p">)</span>
+</code></pre>
+
+<p>You can even display Dailymotion videos explaining your policies using .Video TermType. Please fill in <q>contentKey</q> with the video ID from Dailymotion.</p>
+<a href='#css_and_htlm_tokens' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='css_and_htlm_tokens'>CSS and HTLM tokens</h3>
+
+<p>TrustBadgeElements and Terms descriptions may contains HTML code, with the following restriction :</p>
+
+<ul>
+<li>UTF-8 encoded</li>
+<li>no external resource (image, css, &hellip;) can be used</li>
+</ul>
+
+<p>When HTML is possible, there are 2 cases</p>
+
+<ul>
+<li>Full HTML : you must provide a HTML code WITH <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> tags</li>
+<li>Partial HTML : you must provide a HTML code WITHOUT <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> tags</li>
+</ul>
+
+<p>Descriptions should include a stylesheet named $$cssStylesheet$$ and format the text using h1, h2, p and <code>&lt;span class=&quot;p&quot;&gt;</code>.
+You can provide to OrangeTrustBadge your own CSS file by placing a file named style.css in your application bundle.</p>
+
+<p><strong>In HTML</strong></p>
+<pre class="highlight html"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">content=</span><span class="s">"text/html; charset=utf-8"</span> <span class="na">http-equiv=</span><span class="s">"content-type"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span><span class="err">$$</span><span class="nt">cssStylesheet</span><span class="err">$$</span><span class="nt">&lt;/style&gt;</span>
+        <span class="nt">&lt;/meta&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>Aide<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Si besoin, votre application met à disposition cette adresse mail pour répondre à vos questions :<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- span.p is used for last paragraph, otherwise layount is broken--&gt;</span>
+        foo.bar@example.com
+        <span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+
+<p>Some tokens will be available over time, but for the moment you can only use $$applicationName$$, configurable by using the appName field of TrustBadgeConfig (Default : CFBundleDisplayName or CFBundleName of host app)</p>
+<a href='#app_transport_security' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='app_transport_security'>App Transport Security</h2>
+
+<p>OrangeTrustBadge is not requesting anything on the network unless you include videos in the Terms section. Dailymotion SDK doesn&rsquo;t support ATS so far so if you are in this case, please add dailymotion.com as an exception in your ATS setup. </p>
+<a href='#dependencies' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='dependencies'>Dependencies</h2>
+
+<ul>
+<li>Dailymotion SDK : Copyright &copy; 2012 Dailymotion (<a href="http://www.dailymotion.com">http://www.dailymotion.com</a>) under MIT License (<a href="https://github.com/dailymotion/dailymotion-player-sdk-ios/blob/master/LICENSE">https://github.com/dailymotion/dailymotion-player-sdk-ios/blob/master/LICENSE</a>)</li>
+</ul>
+<a href='#credits' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='credits'>Credits</h2>
+
+<p>OrangeTrustBadge was made with love by Orange</p>
+<a href='#security_disclosure' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='security_disclosure'>Security Disclosure</h3>
+
+<p>If you believe you have identified a security vulnerability with OrangeTrustBadge, you should report it as soon as possible on the bug tracker.</p>
+<a href='#license' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='license'>License</h2>
+
+<p>OrangeTrustBadge 
+Copyright &copy; 2016 Orange</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the <q>License</q>);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an <q>AS IS</q> BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://github.com/Orange-OpenSource/orange-trust-badge-ios.git" target="_blank" rel="external">Orange</a>. All rights reserved. (Last updated: 2016-03-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.4.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

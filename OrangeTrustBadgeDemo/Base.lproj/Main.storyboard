@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YaP-cm-OqA">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main-->
+        <scene sceneID="wKL-tM-bwg">
+            <objects>
+                <viewController id="B3o-C4-dJi" userLabel="Main" customClass="ViewController" customModule="OrangeTrustBadgeDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="B7s-Bv-p5y"/>
+                        <viewControllerLayoutGuide type="bottom" id="TxC-Ft-rdH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lZs-nd-poh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_launcher" translatesAutoresizingMaskIntoConstraints="NO" id="eFS-Rk-fPR">
+                                <rect key="frame" x="276" y="84" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="FOr-Tq-Cjb"/>
+                                    <constraint firstAttribute="width" constant="48" id="aVN-CF-Py1"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orange trust badge - integration example" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="268" translatesAutoresizingMaskIntoConstraints="NO" id="svE-zd-alU">
+                                <rect key="frame" x="20" y="140" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*version 0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="5cY-W2-jfy">
+                                <rect key="frame" x="230" y="168" width="140" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="QNo-I4-j2y"/>
+                                    <constraint firstAttribute="height" constant="21" id="wod-41-1cc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j6E-b4-UUq" userLabel="Separator">
+                                <rect key="frame" x="0.0" y="539" width="600" height="1"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="f33-nv-E24"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More information on https://developer.orange.com" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="WfU-jM-V8Q">
+                                <rect key="frame" x="16" y="548" width="568" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKM-uV-wO7" customClass="OrangeButtonStandard" customModule="OrangeTrustBadgeDemo" customModuleProvider="target">
+                                <rect key="frame" x="16" y="479" width="568" height="45"/>
+                                <rect key="contentStretch" x="0.10000000000000001" y="0.10000000000000001" width="0.79999999999999982" height="0.79999999999999982"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="zVD-4g-xfo"/>
+                                </constraints>
+                                <state key="normal" title="Start the demo">
+                                    <color key="titleColor" red="1" green="0.47450980390000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startDemo" destination="B3o-C4-dJi" eventType="touchUpInside" id="q9E-eV-lVo"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="n1u-NC-R67">
+                                <rect key="frame" x="16" y="197" width="568" height="63"/>
+                                <string key="text">With the trust badge, or Badge de confiance, give more transparency and user control on personal data and reassure your users about the application contents and features.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eKM-uV-wO7" firstAttribute="leading" secondItem="lZs-nd-poh" secondAttribute="leading" constant="16" id="1WN-AX-Cyx"/>
+                            <constraint firstItem="svE-zd-alU" firstAttribute="centerX" secondItem="eFS-Rk-fPR" secondAttribute="centerX" id="6wz-3W-neY"/>
+                            <constraint firstItem="eFS-Rk-fPR" firstAttribute="top" secondItem="B7s-Bv-p5y" secondAttribute="bottom" constant="20" id="7au-4i-8du"/>
+                            <constraint firstItem="j6E-b4-UUq" firstAttribute="leading" secondItem="lZs-nd-poh" secondAttribute="leading" id="EJz-bf-RM4"/>
+                            <constraint firstAttribute="trailing" secondItem="j6E-b4-UUq" secondAttribute="trailing" id="I9S-fq-1Mq"/>
+                            <constraint firstItem="svE-zd-alU" firstAttribute="leading" secondItem="lZs-nd-poh" secondAttribute="leadingMargin" id="Jtr-cB-Dnt"/>
+                            <constraint firstItem="WfU-jM-V8Q" firstAttribute="leading" secondItem="lZs-nd-poh" secondAttribute="leading" constant="16" id="K7t-z1-A8g"/>
+                            <constraint firstAttribute="trailing" secondItem="WfU-jM-V8Q" secondAttribute="trailing" constant="16" id="Ogf-yu-MTU"/>
+                            <constraint firstAttribute="centerX" secondItem="eFS-Rk-fPR" secondAttribute="centerX" id="Qvc-uD-SCi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="svE-zd-alU" secondAttribute="trailing" id="VYC-8g-O8q"/>
+                            <constraint firstItem="svE-zd-alU" firstAttribute="top" secondItem="eFS-Rk-fPR" secondAttribute="bottom" constant="8" id="YB2-rT-SlS"/>
+                            <constraint firstItem="5cY-W2-jfy" firstAttribute="centerX" secondItem="svE-zd-alU" secondAttribute="centerX" id="Z9H-gM-kR3"/>
+                            <constraint firstItem="n1u-NC-R67" firstAttribute="top" secondItem="5cY-W2-jfy" secondAttribute="bottom" constant="8" id="aht-At-XKP"/>
+                            <constraint firstItem="TxC-Ft-rdH" firstAttribute="top" secondItem="WfU-jM-V8Q" secondAttribute="bottom" constant="20" id="bxB-fd-Xyj"/>
+                            <constraint firstAttribute="trailing" secondItem="eKM-uV-wO7" secondAttribute="trailing" constant="16" id="eks-Nc-gZB"/>
+                            <constraint firstItem="WfU-jM-V8Q" firstAttribute="top" secondItem="j6E-b4-UUq" secondAttribute="bottom" constant="8" id="fat-Td-Yx1"/>
+                            <constraint firstItem="5cY-W2-jfy" firstAttribute="top" secondItem="svE-zd-alU" secondAttribute="bottom" constant="8" id="k6W-fC-ORx"/>
+                            <constraint firstAttribute="trailing" secondItem="n1u-NC-R67" secondAttribute="trailing" constant="16" id="pIC-Aj-W4T"/>
+                            <constraint firstItem="j6E-b4-UUq" firstAttribute="top" secondItem="eKM-uV-wO7" secondAttribute="bottom" constant="15" id="qOY-R1-dtc"/>
+                            <constraint firstItem="n1u-NC-R67" firstAttribute="leading" secondItem="lZs-nd-poh" secondAttribute="leading" constant="16" id="yGW-ME-v3c"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="HPb-CA-hME"/>
+                    <navigationItem key="navigationItem" title="Orange Trust Badge Sample" id="43b-Ov-fh7">
+                        <barButtonItem key="backBarButtonItem" title=" Cancel" id="Ca4-dc-Yu9"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="versionLabel" destination="5cY-W2-jfy" id="hw3-Od-9aH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CS9-L9-wrL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2095" y="10"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WyM-Yi-oRd">
+            <objects>
+                <navigationController id="YaP-cm-OqA" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HQ7-BG-A0s">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="B3o-C4-dJi" kind="relationship" relationship="rootViewController" id="jyD-PS-ega"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I0V-Fq-jdB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2842" y="10"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_launcher" width="48" height="48"/>
+    </resources>
+</document>
