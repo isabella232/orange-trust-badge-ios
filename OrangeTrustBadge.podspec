@@ -12,5 +12,5 @@ DESC
   s.source       = { :git => "https://github.com/Orange-OpenSource/orange-trust-badge-ios" ,:tag => s.version.to_s }
   s.source_files = "OrangeTrustBadge/Classes/**/*.swift"
   s.resources 	 = ["OrangeTrustBadge/**/*.{lproj,storyboard,xib,css}","OrangeTrustBadge/**/*.xcassets"]
-  s.dependency "dailymotion-player-objc"
+  s.dependency 'dailymotion-player-objc', :podspec => 'https://github.com/dailymotion/dailymotion-player-sdk-ios/raw/master/dailymotion-player-objc.podspec'
 end

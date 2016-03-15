@@ -1,6 +1,6 @@
 #Orange trust badge iOS Reference
 
-![Orange trust badge : your privacy first](./img/logo.png)
+![Orange trust badge : your privacy first](https://github.com/Orange-OpenSource/orange-trust-badge-ios/raw/master/logo.png)
 
 With the Orange trust badge, aka "Badge de confiance", give transparent informations and user control on personal data and help users to identify if your application has any sensitive features.
 
@@ -169,7 +169,7 @@ That's it !
 - In Bundle field, type `org.cocoapods.OrangeTrustBadge`
 - Finally, create a segue from the appropriate button or cell in your app and this Storyboard Reference (Some segue types might be unavailable since this component is using UISplitViewController - Try "Present Modally" to start)
 
-![inspector](img/inspector.png)
+![inspector](https://github.com/Orange-OpenSource/orange-trust-badge-ios/raw/master/inspector.png)
 
 That's it !
 
