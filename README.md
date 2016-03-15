@@ -69,10 +69,9 @@ To integrate OrangeTrustBadge into your Xcode project using CocoaPods, specify i
 platform :ios, '8.0'
 use_frameworks!
 
-source 'https://github.com/Orange-OpenSource/orange-trust-badge-ios.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
-pod 'OrangeTrustBadge'
+pod 'OrangeTrustBadge', :git => 'https://github.com/Orange-OpenSource/orange-trust-badge-ios'
 ```
 
 Then, run the following command:
@@ -101,7 +100,7 @@ $ git submodule add https://github.com/Orange-OpenSource/orange-trust-badge-ios.
 
 - Open the new `OrangeTrustBadge` folder, and drag the `OrangeTrustBadge.xcodeproj` into the Project Navigator of your application's Xcode project.
 
-    > It should appear nested underneath your application's blue project icon. Whether it is above or below all the other Xcode groups does not matter.
+> It should appear nested underneath your application's blue project icon. Whether it is above or below all the other Xcode groups does not matter.
 
 - Select the `OrangeTrustBadge.xcodeproj` in the Project Navigator and verify the deployment target matches that of your application target.
 - Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
@@ -109,8 +108,8 @@ $ git submodule add https://github.com/Orange-OpenSource/orange-trust-badge-ios.
 - Click on the `+` button under the "Embedded Binaries" section.
 - You will see two different `OrangeTrustBadge.xcodeproj` folders each with two different versions of the `OrangeTrustBadge.framework` nested inside a `Products` folder.
 
-    > It does not matter which `Products` folder you choose from, but it does matter whether you choose the top or bottom `OrangeTrustBadge.framework`. 
-    
+> It does not matter which `Products` folder you choose from, but it does matter whether you choose the top or bottom `OrangeTrustBadge.framework`. 
+
 - Select the top `OrangeTrustBadge.framework` for iOS.
 
 - And that's it!
@@ -129,8 +128,8 @@ $ git submodule add https://github.com/Orange-OpenSource/orange-trust-badge-ios.
 import OrangeTrustBadge
 
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        TrustBadgeManager.with(TrustBadgeConfig())
-        return true
+TrustBadgeManager.with(TrustBadgeConfig())
+return true
 }
 ```
 **or in Objective-C**
@@ -139,8 +138,8 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 #import "OrangeTrustBadge-Swift.h"
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [TrustBadgeManager with:[[TrustBadgeConfig alloc] init]];
-    return YES;
+[TrustBadgeManager with:[[TrustBadgeConfig alloc] init]];
+return YES;
 }
 ```
 
@@ -154,10 +153,10 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 import OrangeTrustBadge
 
 @IBAction func onButtonClicked(){
-	let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: NSBundle(forClass: TrustBadgeManager.self))
-        if let viewController = storyboard.instantiateInitialViewController() {
-		self.navigationController?.presentViewController(viewController, animated: true, completion: nil)
-    }
+let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: NSBundle(forClass: TrustBadgeManager.self))
+if let viewController = storyboard.instantiateInitialViewController() {
+self.navigationController?.presentViewController(viewController, animated: true, completion: nil)
+}
 }
 ```
 That's it !
@@ -243,19 +242,19 @@ You can provide to OrangeTrustBadge your own CSS file by placing a file named st
 ```html
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta content="text/html; charset=utf-8" http-equiv="content-type">
-			<style type="text/css">$$cssStylesheet$$</style>
-		</meta>
-	</head>
-	<body>
-		<h1>Aide</h1>
-		<p>Si besoin, votre application met à disposition cette adresse mail pour répondre à vos questions :</p>
-		<span class="p">
-		<!-- span.p is used for last paragraph, otherwise layount is broken-->
-		foo.bar@example.com
-		</span>
-	</body>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<style type="text/css">$$cssStylesheet$$</style>
+</meta>
+</head>
+<body>
+<h1>Aide</h1>
+<p>Si besoin, votre application met à disposition cette adresse mail pour répondre à vos questions :</p>
+<span class="p">
+<!-- span.p is used for last paragraph, otherwise layount is broken-->
+foo.bar@example.com
+</span>
+</body>
 </html>
 ```
 
