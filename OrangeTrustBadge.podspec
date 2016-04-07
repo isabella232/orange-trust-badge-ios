@@ -12,5 +12,4 @@ DESC
   s.source       = { :git => "https://github.com/Orange-OpenSource/orange-trust-badge-ios.git" ,:tag => s.version.to_s }
   s.source_files = "OrangeTrustBadge/Classes/**/*.swift"
   s.resources 	 = ["OrangeTrustBadge/**/*.{lproj,storyboard,xib,css}","OrangeTrustBadge/**/*.xcassets"]
-  s.dependency "dailymotion-player-objc"
 end

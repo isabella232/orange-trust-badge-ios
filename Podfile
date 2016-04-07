@@ -9,7 +9,6 @@ xcodeproj 'OrangeTrustBadgeDemo.xcodeproj'
 
 target :OrangeTrustBadge do
     platform :ios, '8.0'
-    pod 'dailymotion-player-objc', :git => 'https://github.com/dailymotion/dailymotion-player-sdk-ios.git'
     xcodeproj 'OrangeTrustBadge.xcodeproj'
 end
 

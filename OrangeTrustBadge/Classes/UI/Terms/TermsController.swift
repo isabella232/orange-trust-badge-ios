@@ -22,12 +22,11 @@
 */
 
 import UIKit
-import dailymotion_player_objc
 
 class TermsController: UITableViewController {
     
     @IBOutlet weak var header : Header!
-    var players = [String : DMPlayerViewController]()
+    var players = [String : DailymotionPlayer]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +44,7 @@ class TermsController: UITableViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        players = [String : DMPlayerViewController]()
+        players = [String : DailymotionPlayer]()
     }
     
     // MARK: - Table view data source
@@ -67,15 +66,15 @@ class TermsController: UITableViewController {
             let videoId = Helper.localizedString(term.contentKey)
             var player = players[videoId]
             if player == nil {
-                player = DMPlayerViewController(video: videoId)
+                player = DailymotionPlayer(video: videoId)
                 players.updateValue(player!, forKey: videoId)
             }
             player!.pause()
-            player!.view.frame = cell.videoView.frame
-            cell.videoView.addSubview(player!.view)
-            player!.view.translatesAutoresizingMaskIntoConstraints = false
-            cell.videoView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view":player!.view]))
-            cell.videoView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view":player!.view]))
+            player!.frame = cell.videoView.frame
+            cell.videoView.addSubview(player!)
+            player!.translatesAutoresizingMaskIntoConstraints = false
+            cell.videoView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view":player!]))
+            cell.videoView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view":player!]))
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier(TermCell.reuseIdentifier, forIndexPath: indexPath) as! TermCell

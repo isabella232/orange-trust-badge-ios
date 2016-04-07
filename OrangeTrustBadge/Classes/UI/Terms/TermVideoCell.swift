@@ -22,8 +22,6 @@
 */
 
 import UIKit
-import dailymotion_player_objc
-
 
 class TermVideoCell: UITableViewCell {
     

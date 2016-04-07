@@ -34,6 +34,7 @@
 		54BFCC3B1C260F6F00E05B67 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 54BFCC3A1C260F6F00E05B67 /* style.css */; };
 		54BFCC451C2618BC00E05B67 /* ElementMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BFCC441C2618BC00E05B67 /* ElementMenuCell.swift */; };
 		54BFCC491C2618E300E05B67 /* TermsMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BFCC481C2618E300E05B67 /* TermsMenuCell.swift */; };
+		54C6FFD81CB6B345001ED15C /* DailymotionPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C6FFD71CB6B345001ED15C /* DailymotionPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		54BFCC3A1C260F6F00E05B67 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
 		54BFCC441C2618BC00E05B67 /* ElementMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementMenuCell.swift; sourceTree = "<group>"; };
 		54BFCC481C2618E300E05B67 /* TermsMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsMenuCell.swift; sourceTree = "<group>"; };
+		54C6FFD71CB6B345001ED15C /* DailymotionPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailymotionPlayer.swift; sourceTree = "<group>"; };
 		7BAB16CDC33E8D80ED471BBD /* Pods_OrangeTrustBadge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrangeTrustBadge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA78C7F101E32A680327FF0C /* Pods-OrangeTrustBadge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrangeTrustBadge.release.xcconfig"; path = "Pods/Target Support Files/Pods-OrangeTrustBadge/Pods-OrangeTrustBadge.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +118,7 @@
 				54BFCC341C257C0300E05B67 /* TermsController.swift */,
 				54BFCC381C26072B00E05B67 /* TermCell.swift */,
 				549B81531C585CD0006D2A59 /* TermVideoCell.swift */,
+				54C6FFD71CB6B345001ED15C /* DailymotionPlayer.swift */,
 			);
 			path = Terms;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				540B431A1C21974500509A62 /* PermissionsController.swift in Sources */,
 				54A0AF061C1F85370007684D /* PreDefinedElement.swift in Sources */,
 				54BFCC351C257C0300E05B67 /* TermsController.swift in Sources */,
+				54C6FFD81CB6B345001ED15C /* DailymotionPlayer.swift in Sources */,
 				54A0AF081C1F86760007684D /* CustomElement.swift in Sources */,
 				549A41751C205CC900BEDDE3 /* Rating.swift in Sources */,
 				549A41771C208ECE00BEDDE3 /* Helper.swift in Sources */,
