@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		497C9D011CB68FFF00816CE5 /* build-fat-framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 497C9D041CB68FFF00816CE5 /* Build configuration list for PBXAggregateTarget "build-fat-framework" */;
+			buildPhases = (
+				497C9D051CB6901100816CE5 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "build-fat-framework";
+			productName = "build-universal-framework";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		0596209B20CE4AF72374CBE5 /* Pods_OrangeTrustBadge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAB16CDC33E8D80ED471BBD /* Pods_OrangeTrustBadge.framework */; };
 		540B43171C21974500509A62 /* LandingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540B430F1C21974500509A62 /* LandingController.swift */; };
@@ -279,6 +293,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Romain BIARD";
 				TargetAttributes = {
+					497C9D011CB68FFF00816CE5 = {
+						CreatedOnToolsVersion = 7.3;
+					};
 					542B752F1C1F152D003C489A = {
 						CreatedOnToolsVersion = 7.2;
 					};
@@ -298,6 +315,7 @@
 			projectRoot = "";
 			targets = (
 				542B752F1C1F152D003C489A /* OrangeTrustBadge */,
+				497C9D011CB68FFF00816CE5 /* build-fat-framework */,
 			);
 		};
 /* End PBXProject section */
@@ -319,6 +337,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		497C9D051CB6901100816CE5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "Scripts/build-fat-framework.sh";
+		};
 		A8AEDF5F2169E68E9007688A /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -394,6 +425,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		497C9D021CB68FFF00816CE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		497C9D031CB68FFF00816CE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		542B75421C1F152D003C489A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -523,6 +568,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		497C9D041CB68FFF00816CE5 /* Build configuration list for PBXAggregateTarget "build-fat-framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				497C9D021CB68FFF00816CE5 /* Debug */,
+				497C9D031CB68FFF00816CE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		542B752A1C1F152D003C489A /* Build configuration list for PBXProject "OrangeTrustBadge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

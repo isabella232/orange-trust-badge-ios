@@ -29,7 +29,7 @@ import Foundation
  
  Implementations are available through BasicPermission and CustomPermission class
  */
-public class TrustBadgeElement{
+public class TrustBadgeElement: NSObject {
     /// Flag telling if OrangeTrustBadge should display a switch to enable/disable the element
     public var isToggable : Bool = false
     /// Closure allowing to update current element's status
