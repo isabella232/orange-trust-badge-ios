@@ -76,6 +76,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // uncomment this section to change highlight color used for enabled elements
         //config.highlightColor = UIColor.orangeColor()
         
+        // uncomment this section to change the status bar style
+        config.statusBarStyle = .LightContent
+        
         // uncomment this section to change the rating
         config.rating = Rating(type: .Level12)
         

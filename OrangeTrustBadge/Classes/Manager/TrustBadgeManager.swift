@@ -43,6 +43,9 @@ public class TrustBadgeConfig : NSObject{
     /// (Optional) background UIColor of the header (default blue)
     public var headerColor = UIColor(red: 57/256, green: 176/256, blue: 168/256, alpha: 1)
     
+    /// (Optional) Status bar style (default Application's default statusBarStyle)
+    public var statusBarStyle = UIApplication.sharedApplication().statusBarStyle
+    
     /** (Optional) Closure giving Tracking (Data Usage Permission) status (enabled/disabled) (Default : disabled)
      
      Example :

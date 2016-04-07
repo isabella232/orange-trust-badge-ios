@@ -352,7 +352,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.orange.omd.OrangeTrustBadgeDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9599c955-34c1-44f7-9f31-688d6bc8fc5c";
+				PROVISIONING_PROFILE = "3d72e1a7-1b97-43a2-aa9d-c1149654803b";
 			};
 			name = Debug;
 		};
@@ -366,7 +366,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.orange.omd.OrangeTrustBadgeDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9599c955-34c1-44f7-9f31-688d6bc8fc5c";
+				PROVISIONING_PROFILE = "3d72e1a7-1b97-43a2-aa9d-c1149654803b";
 			};
 			name = Release;
 		};

@@ -37,4 +37,12 @@ class SplitViewController: UISplitViewController, UISplitViewControllerDelegate 
     func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
         return false
     }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        if let config = TrustBadgeManager.sharedInstance.config{
+            return config.statusBarStyle
+        } else {
+            return UIApplication.sharedApplication().statusBarStyle
+        }
+    }
 }
