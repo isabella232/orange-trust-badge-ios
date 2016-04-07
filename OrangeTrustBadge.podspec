@@ -9,7 +9,7 @@ DESC
   s.license      = "Apache License, Version 2.0"
   s.author       = { "Orange" => "romain.biard@orange.com" }
   s.platform     = :ios, "8.0"
-  s.source       = { :git => "https://github.com/Orange-OpenSource/orange-trust-badge-ios" ,:tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/Orange-OpenSource/orange-trust-badge-ios.git" ,:tag => s.version.to_s }
   s.source_files = "OrangeTrustBadge/Classes/**/*.swift"
   s.resources 	 = ["OrangeTrustBadge/**/*.{lproj,storyboard,xib,css}","OrangeTrustBadge/**/*.xcassets"]
   s.dependency "dailymotion-player-objc"

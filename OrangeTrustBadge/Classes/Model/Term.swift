@@ -24,11 +24,18 @@
 import Foundation
 
 /// Enum describing the type of a Term
-public enum TermType : String{
+@objc public enum TermType : Int{
     /// A block displaying textual terms of use
     case Text
     /// A block displaying a video in terms of use
-    case Video = "video"
+    case Video
+    
+    func name() -> String {
+        switch self {
+            case Text: return "text"
+            case Video: return "video"
+        }
+    }
 }
 
 /// A Term is a block displayed in "Terms" section

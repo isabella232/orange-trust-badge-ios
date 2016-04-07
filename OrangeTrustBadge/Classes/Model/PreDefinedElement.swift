@@ -24,33 +24,51 @@
 import Foundation
 
 /// Enum describing the type of a PreDefinedElement
-public enum ElementType : String{
+@objc public enum ElementType : Int{
     /// Identity Element (firstname, lastname etc...)
-    case Identity = "identity"
+    case Identity
     /// Permission to access user's location
-    case Location = "location"
+    case Location
     /// Permission to access user's Photo Library
-    case PhotoLibrary = "photo-library"
+    case PhotoLibrary
     /// Permission to access user's Address Book
-    case Contacts = "contacts"
+    case Contacts
     /// Permission to anonymously track user's activity within the app
-    case DataUsage = "data-usage"
+    case DataUsage
     /// Permission to access user's Camera
-    case Camera = "camera"
+    case Camera
     /// Permission to access user's Calendar
-    case Calendar = "calendar"
+    case Calendar
     /// Permission to access user's Microphone
-    case Microphone = "microphone"
+    case Microphone
     /// Permission to access user's phone number
-    case Phone = "phone"
+    case Phone
     /// Permission to access user's Health and Sensors data
-    case BodySensors = "body-sensors"
+    case BodySensors
     /// Permission to access user's profile on Twitter/Facebook
-    case SocialSharing = "social-sharing"
+    case SocialSharing
     /// Permission to pay within the app
-    case InAppPurchase = "inapp-purchase"
+    case InAppPurchase
     /// Permission to store cookies for marketing purposes
-    case Advertising = "advertising"
+    case Advertising
+    
+    func name() -> String {
+        switch self {
+            case Identity: return "identity"
+            case Location: return "location"
+            case PhotoLibrary: return "photo-library"
+            case Contacts: return "contacts"
+            case DataUsage : return "data-usage"
+            case Camera : return "camera"
+            case Calendar : return "calendar"
+            case Microphone : return "microphone"
+            case Phone : return "phone"
+            case BodySensors : return "body-sensors"
+            case SocialSharing : return "social-sharing"
+            case InAppPurchase : return "inapp-purchase"
+            case Advertising : return "advertising"
+        }
+    }
     
     public static let defaultMainElementTypes  : [ElementType] = [Identity, Location, PhotoLibrary, Contacts, DataUsage]
     
@@ -77,9 +95,9 @@ public class PreDefinedElement: TrustBadgeElement {
     public init(type : ElementType) {
         self.type = type
         super.init()
-        nameKey = "permission-\(self.type.rawValue)-name"
-        descriptionKey = "permission-\(self.type.rawValue)-description"
-        statusEnabledIconName = "permission-\(self.type.rawValue)-enabled-icon"
-        statusDisabledIconName = "permission-\(self.type.rawValue)-disabled-icon"
+        nameKey = "permission-\(self.type.name())-name"
+        descriptionKey = "permission-\(self.type.name())-description"
+        statusEnabledIconName = "permission-\(self.type.name())-enabled-icon"
+        statusDisabledIconName = "permission-\(self.type.name())-disabled-icon"
     }
 }

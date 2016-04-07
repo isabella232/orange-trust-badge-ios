@@ -32,17 +32,27 @@ import Foundation
  - Level17:     This application may contain inappropriate content which may not be suitable for children under the age of 17.
  - CustomLevel: Custom rating if needed
  */
-public enum RatingType : String{
+@objc public enum RatingType : Int{
     /// This application is made for all (4 years old and older)
-    case Level4  = "level-4"
+    case Level4
     /// This application may contain inappropriate content which may not be suitable for children under the age of 9.
-    case Level9  = "level-9"
+    case Level9
     /// This application may contain inappropriate content which may not be suitable for children under the age of 12.
-    case Level12 = "level-12"
+    case Level12
     /// This application may contain inappropriate content which may not be suitable for children under the age of 17.
-    case Level17 = "level-17"
+    case Level17
     /// Custom rating if needed
-    case CustomLevel  = "custom"
+    case CustomLevel
+    
+    func name() -> String {
+        switch self {
+            case Level4: return "level-4"
+            case Level9: return "level-9"
+            case Level12: return "level-12"
+            case Level17: return "level-17"
+            case CustomLevel : return "level-17"
+        }
+    }
 }
 
 /// This class aims to encapsulate all informations about a rating (name, description and logo)
@@ -61,10 +71,10 @@ public class Rating: TrustBadgeElement {
     public init(type : RatingType) {
         self.type = type
         super.init()
-        self.nameKey = "rating-\(type.rawValue)-name"
-        self.descriptionKey = "rating-\(type.rawValue)-description"
-        self.statusEnabledIconName = "rating-\(type.rawValue)-icon"
-        self.statusDisabledIconName = "rating-\(type.rawValue)-icon"
+        self.nameKey = "rating-\(type.name())-name"
+        self.descriptionKey = "rating-\(type.name())-description"
+        self.statusEnabledIconName = "rating-\(type.name())-icon"
+        self.statusDisabledIconName = "rating-\(type.name())-icon"
         self.showStatus = false
     }
 }
