@@ -23,11 +23,11 @@
 #
 #
 
-OUTPUT_DIR="${PROJECT_DIR}/Output"
+OUTPUT_DIR="${DWARF_DSYM_FOLDER_PATH}/strip"
 rm -rf "$OUTPUT_DIR"
 mkdir "$OUTPUT_DIR"
 
-INPUT_FRAMEWORK_BINARY="${DWARF_DSYM_FOLDER_PATH}/${FRAMEWORKS_FOLDER_PATH}/OrangeTrustBadge.framework/OrangeTrustBadge"
+INPUT_FRAMEWORK_BINARY=‘find ${DWARF_DSYM_FOLDER_PATH}/${FRAMEWORKS_FOLDER_PATH}/ -type f -name OrangeTrustBadge‘
 OUTPUT_FRAMEWORK_BINARY="${OUTPUT_DIR}/OrangeTrustBadge"
 
 # remove simulator arch form the release binaire
