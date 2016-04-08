@@ -21,9 +21,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-######################
-# Options
-######################
+#
+
+OUTPUT_DIR="${PROJECT_DIR}/Output"
+rm -rf "$OUTPUT_DIR"
+mkdir "$OUTPUT_DIR"
+
+INPUT_FRAMEWORK_BINARY="${DWARF_DSYM_FOLDER_PATH}/${FRAMEWORKS_FOLDER_PATH}/OrangeTrustBadge.framework/OrangeTrustBadge"
+OUTPUT_FRAMEWORK_BINARY="${OUTPUT_DIR}/OrangeTrustBadge"
+
+# remove simulator arch form the release binaire
+if [ "$CONFIGURATION" == "Release" ]; then
+    if [  "$CURRENT_ARCH" != "x86_64" ]; then
+        lipo -remove x86_64  -remove i386 "${INPUT_FRAMEWORK_BINARY}" -output "${OUTPUT_FRAMEWORK_BINARY}"
+        cp -f "${OUTPUT_FRAMEWORK_BINARY}" "${INPUT_FRAMEWORK_BINARY}"
+        rm -rf "$OUTPUT_DIR"
+    fi
+fi
 
 exit 0
 
