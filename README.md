@@ -71,7 +71,7 @@ use_frameworks!
 
 source 'https://github.com/CocoaPods/Specs.git'
 
-pod 'OrangeTrustBadge', :git => 'https://github.com/Orange-OpenSource/orange-trust-badge-ios'
+pod 'OrangeTrustBadge'
 ```
 
 Then, run the following command:
@@ -85,19 +85,33 @@ $ pod install
 If you prefer not to use either of the aforementioned dependency managers, you can integrate OrangeTrustBadge into your project manually.
 
 #### Embedded Framework
+- Clone OrangeTrustBadge Repository by typing in your Terminal 
+```bash
+$ git clone https://github.com/Orange-OpenSource/orange-trust-badge-ios.git
+```
+- Go into `orange-trust-badge-ios` directory by typing in Terminal
+```bash
+$ cd orange-trust-badge-ios/
+```
+- Then, run the following command:
+```bash
+$ pod install
+```
+- You should now be able to open `OrangeTrustBadge.xcworkspace` located at the same level of `OrangeTrustBadge.xcodeproj`.
+- Now we will build a FAT dynamic framework containing all architectures to make it run on Simulator as well as Real Devices (ARM,ARM64,i386 and x86_64). To do that, please select the appropriate target named `build-fat-framework` and build it by pressing ⌘B.
+- Once finished, the Finder should have opened a window containing a fresh build of the framework named `OrangeTrustBadge.framework`
+- You can now drag and drop this Framework into your project.
 
+In your own Xcode project :  
 - In the tab bar at the top of that window, open the "General" panel.
 - Click on the `+` button under the "Embedded Binaries" section.
-- You will see two different `OrangeTrustBadge.xcodeproj` folders each with two different versions of the `OrangeTrustBadge.framework` nested inside a `Products` folder.
-
-> It does not matter which `Products` folder you choose from, but it does matter whether you choose the top or bottom `OrangeTrustBadge.framework`. 
-
 - Select the top `OrangeTrustBadge.framework` for iOS.
-
-- And that's it!
 
 > The `OrangeTrustBadge.framework` is automagically added as a target dependency, linked framework and embedded framework in a copy files build phase which is all you need to build on the simulator and a device.
 
+- Don't forget to add a build phase to strip simulators architectures in case of a Release to avoid any issues when uploading your app to the AppStore. To do that, simply go into `Build Phases` Tab of your project, add a `New Run Script Phase` and put "Scripts/strip-framework.sh" into the textfield located under "/bin/sh". This new Run Script phase should be placed at the end of the phases list.
+
+- And that's it!
 ---
 
 ## Usage
