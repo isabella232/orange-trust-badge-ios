@@ -27,7 +27,7 @@ public class DailymotionPlayer : UIWebView, UIWebViewDelegate {
     
     static let DMAPIVersion = "2.9.3"
     
-    let webBaseURLString = "http://www.dailymotion.com"
+    let webBaseURLString = "https://www.dailymotion.com"
     
     convenience init(video : NSString){
         self.init()

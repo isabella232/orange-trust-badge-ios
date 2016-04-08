@@ -216,7 +216,7 @@ let customTerm = Term(type: .Custom, titleKey: "term-custom-title", contentKey: 
 config.terms.append(customTerm)
 ```
 
-You can even display Dailymotion videos explaining your policies using .Video TermType. Please fill in "contentKey" with the video ID from Dailymotion.
+You can even display Dailymotion videos explaining your policies using .Video TermType. Please fill in "contentKey" with the video ID from Dailymotion (ex: x3xwu6v ).
 
 ### CSS and HTLM tokens
 
@@ -258,11 +258,7 @@ Some tokens will be available over time, but for the moment you can only use $$a
 
 ## App Transport Security
 
-OrangeTrustBadge is not requesting anything on the network unless you include videos in the Terms section. Dailymotion SDK doesn't support ATS so far so if you are in this case, please add dailymotion.com as an exception in your ATS setup. 
-
-## Dependencies
-
-- Dailymotion SDK : Copyright (c) 2012 Dailymotion (http://www.dailymotion.com) under MIT License (https://github.com/dailymotion/dailymotion-player-sdk-ios/blob/master/LICENSE)
+OrangeTrustBadge is not requesting anything on the network unless you include videos in the Terms section. Videos are hosted on Dailymotion.com and connections made to this service are compliant with ATS policies.  
 
 ## Credits
 
