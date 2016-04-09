@@ -98,18 +98,36 @@ $ cd orange-trust-badge-ios/
 $ pod install
 ```
 - You should now be able to open `OrangeTrustBadge.xcworkspace` located at the same level of `OrangeTrustBadge.xcodeproj`.
-- Now we will build a FAT dynamic framework containing all architectures to make it run on Simulator as well as Real Devices (ARM,ARM64,i386 and x86_64). To do that, please select the appropriate target named `build-fat-framework` and build it by pressing ⌘B.
+- Now we will build a FAT dynamic framework containing all architectures to make it run on Simulator as well as Real Devices (ARM,ARM64,i386 and x86_64). To do that, please select the appropriate target named `build-fat-framework` and start archiving it with `Product > Archive` (important to run "Archive" and not just Build/Run the target).
 - Once finished, the Finder should have opened a window containing a fresh build of the framework named `OrangeTrustBadge.framework`
-- You can now drag and drop this Framework into your project.
 
 In your own Xcode project :  
 - In the tab bar at the top of that window, open the "General" panel.
-- Click on the `+` button under the "Embedded Binaries" section.
-- Select the top `OrangeTrustBadge.framework` for iOS.
+- Drag and drop generated Framework into the "Embedded Binaries" section.
+- If your project is not a Swift Project, go into "Build Settings" tab and find the parameter EMBEDDED_CONTENT_CONTAINS_SWIFT and set it to YES.
+- Finally, find update the parameter value of "ENABLE_BITCODE" to "NO"
 
 > The `OrangeTrustBadge.framework` is automagically added as a target dependency, linked framework and embedded framework in a copy files build phase which is all you need to build on the simulator and a device.
 
-- Don't forget to add a build phase to strip simulators architectures in case of a Release to avoid any issues when uploading your app to the AppStore. To do that, simply go into `Build Phases` Tab of your project, add a `New Run Script Phase` and put "Scripts/strip-framework.sh" into the textfield located under "/bin/sh". This new Run Script phase should be placed at the end of the phases list.
+- Don't forget to add a build phase to strip simulators architectures in case of a Release to avoid any issues when uploading your app to the AppStore. To do that, simply go into `Build Phases` Tab of your project, add a `New Run Script Phase` and put the script above into the textfield located under "/bin/sh". This new Run Script phase should be placed at the end of the phases list.
+```bash
+OUTPUT_DIR="${DWARF_DSYM_FOLDER_PATH}/strip"
+rm -rf "$OUTPUT_DIR"
+mkdir "$OUTPUT_DIR"
+
+INPUT_FRAMEWORK_BINARY=‘find ${DWARF_DSYM_FOLDER_PATH}/${FRAMEWORKS_FOLDER_PATH}/ -type f -name OrangeTrustBadge‘
+OUTPUT_FRAMEWORK_BINARY="${OUTPUT_DIR}/OrangeTrustBadge"
+
+# remove simulator arch form the release binaire
+if [ "$CONFIGURATION" == "Release" ]; then
+    if [  "$CURRENT_ARCH" != "x86_64" ]; then
+        lipo -remove x86_64  -remove i386 "${INPUT_FRAMEWORK_BINARY}" -output "${OUTPUT_FRAMEWORK_BINARY}"
+        cp -f "${OUTPUT_FRAMEWORK_BINARY}" "${INPUT_FRAMEWORK_BINARY}"
+        rm -rf "$OUTPUT_DIR"
+    fi
+fi
+```
+
 
 - And that's it!
 ---
