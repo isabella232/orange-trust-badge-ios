@@ -41,8 +41,8 @@ class LandingController: UITableViewController {
         tableView.estimatedRowHeight = 70
         NSNotificationCenter.defaultCenter().postNotificationName(TrustBadgeManager.TRUSTBADGE_ENTER, object: nil)
         
-        mainGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("goToMainElements:"))
-        usageGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("goToUsageElements:"))
+        mainGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LandingController.goToMainElements(_:)))
+        usageGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LandingController.goToUsageElements(_:)))
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -109,7 +109,7 @@ class LandingController: UITableViewController {
                 cell.overview.reloadData()
                 cell.overview.removeGestureRecognizer(mainGestureRecognizer!)
                 cell.overview.removeGestureRecognizer(usageGestureRecognizer!)
-                cell.overview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("goToUsageElements:")))
+                cell.overview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(LandingController.goToUsageElements(_:))))
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCellWithIdentifier("DefaultCell", forIndexPath: indexPath)
@@ -165,13 +165,13 @@ class LandingController: UITableViewController {
         })
     }
     
-    @objc func goToMainElements(sender: UITapGestureRecognizer) {
+    @objc public func goToMainElements(sender: UITapGestureRecognizer) {
         if sender.state == .Ended {
             self.performSegueWithIdentifier("Permissions", sender: self)
         }
     }
     
-    @objc func goToUsageElements(sender: UITapGestureRecognizer) {
+    @objc public func goToUsageElements(sender: UITapGestureRecognizer) {
         if sender.state == .Ended {
             self.performSegueWithIdentifier("Usages", sender: self)
         }

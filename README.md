@@ -32,14 +32,14 @@ It also :
 
 - Works on iPhone and iPad using Autolayout (iPad Multitasking supported)
 - Localized in 2 languages (English,French)
-- Written in Swift 2.0 but works in Objective-C or Swift based Projects
+- Written in Swift 2.2 but works in Objective-C or Swift based Projects
 - API hooks
 - UI Customization
 
 ## Requirements
 
 - iOS 8.0+
-- Xcode 6.4+
+- Xcode 7.3+
 - CocoaPods 0.39.0+
 
 ## Bug tracker
