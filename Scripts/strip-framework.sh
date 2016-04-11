@@ -52,7 +52,7 @@ if [ "$CONFIGURATION" == "Release" ]; then
             cp -f "${OUTPUT_FRAMEWORK_BINARY}" "${INPUT_FRAMEWORK_BINARY}"
             rm -rf "$OUTPUT_DIR"
 
-            codesign --force --sign ${CODE_SIGN_IDENTITY} --timestamp=none --verbose `dirname ${INPUT_FRAMEWORK_BINARY}`
+            codesign --force --sign "${EXPANDED_CODE_SIGN_IDENTITY}" --timestamp=none --verbose `dirname ${INPUT_FRAMEWORK_BINARY}`
         fi
 
     fi
