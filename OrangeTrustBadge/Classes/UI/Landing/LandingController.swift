@@ -165,13 +165,13 @@ class LandingController: UITableViewController {
         })
     }
     
-    @objc public func goToMainElements(sender: UITapGestureRecognizer) {
+    @objc func goToMainElements(sender: UITapGestureRecognizer) {
         if sender.state == .Ended {
             self.performSegueWithIdentifier("Permissions", sender: self)
         }
     }
     
-    @objc public func goToUsageElements(sender: UITapGestureRecognizer) {
+    @objc func goToUsageElements(sender: UITapGestureRecognizer) {
         if sender.state == .Ended {
             self.performSegueWithIdentifier("Usages", sender: self)
         }
