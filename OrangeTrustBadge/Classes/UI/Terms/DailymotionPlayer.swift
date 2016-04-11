@@ -55,7 +55,8 @@ public class DailymotionPlayer : UIWebView, UIWebViewDelegate {
         
         let url = NSMutableString(format: "%@/embed/video/%@?api=location&objc_sdk_version=%@&endscreen-enable=false&sharing-enable=false", self.webBaseURLString, video, DailymotionPlayer.DMAPIVersion)
         let appName = NSBundle.mainBundle().bundleIdentifier;
-        url.appendFormat("&app=%@", appName!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
+        
+        url.appendFormat("&app=%@", appName!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
         
         self.loadRequest(NSURLRequest(URL: NSURL(string: url as String)!))
     }
