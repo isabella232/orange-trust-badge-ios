@@ -82,6 +82,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // uncomment this section to change the rating
         config.rating = Rating(type: .Level12)
         
+        // uncomment this section to change highlight color used for enabled elements
+        //config.headerLogo = UIImage(named:"my-logo")
+
         // uncomment this section to add a new custom entry in "Other Permissions"
         /**
         let myCustomElement = CustomElement(nameKey: "custom-permission-name-key", descriptionKey: "custom-permission-description-key", statusEnabledIconName: "permission-credit-card-enabled-icon", statusDisabledIconName: "permission-credit-card-disabled-icon")

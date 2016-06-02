@@ -31,5 +31,8 @@ class Header: UIView {
     
     override func awakeFromNib() {
         self.backgroundColor = TrustBadgeManager.sharedInstance.config?.headerColor
+        if let logoImage = TrustBadgeManager.sharedInstance.config?.headerLogo {
+            logo.image = logoImage
+        }
     }
 }
