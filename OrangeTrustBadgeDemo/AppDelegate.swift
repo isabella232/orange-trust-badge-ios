@@ -29,6 +29,7 @@ import PhotosUI
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    let locationManager = CLLocationManager()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         UITabBar.appearance().tintColor = UIColor.whiteColor()
@@ -39,6 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Request Access to MediaLibrary in order to show them in iOS Preferences Panel
         PHPhotoLibrary.requestAuthorization({(status:PHAuthorizationStatus) in })
         AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo) { (result) -> Void in }
+
+        // Request Access to UserLocation in order to show them in iOS Preferences Panel
+        locationManager.requestAlwaysAuthorization()
         
         // Let's begin OrangeTrustBadge's integration
         let config = TrustBadgeConfig()

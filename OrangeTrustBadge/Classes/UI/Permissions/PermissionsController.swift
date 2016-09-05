@@ -38,6 +38,11 @@ class PermissionsController: UITableViewController {
         self.tableView.registerNib(UINib(nibName: "ElementCell", bundle: NSBundle(forClass: TrustBadgeConfig.self)), forCellReuseIdentifier: ElementCell.reuseIdentifier)
         tableView.estimatedRowHeight = 65
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PermissionsController.refresh), name: TrustBadgeManager.TRUSTBADGE_ELEMENT_TOGGLED, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PermissionsController.refresh), name: UIApplicationWillEnterForegroundNotification, object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     override func viewWillAppear(animated: Bool) {
