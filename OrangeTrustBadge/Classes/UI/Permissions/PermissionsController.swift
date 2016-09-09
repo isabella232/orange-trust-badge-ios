@@ -155,7 +155,7 @@ class PermissionsController: UITableViewController {
         tableView.beginUpdates()
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         tableView.endUpdates()
-        self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
+        
         NSNotificationCenter.defaultCenter().postNotificationName(TrustBadgeManager.TRUSTBADGE_ELEMENT_TAPPED, object: element)
     }
     
