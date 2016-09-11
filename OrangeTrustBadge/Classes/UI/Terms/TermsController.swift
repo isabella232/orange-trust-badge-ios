@@ -30,37 +30,37 @@ class TermsController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+        navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         navigationItem.leftItemsSupplementBackButton = true
         self.navigationItem.title = Helper.localizedString("terms-title")
         self.header.title.text = Helper.localizedString("terms-header-title")
         tableView.estimatedRowHeight = 100
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().postNotificationName(TrustBadgeManager.TRUSTBADGE_TERMS_ENTER, object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_TERMS_ENTER), object: nil)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         players = [String : DailymotionPlayer]()
     }
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return TrustBadgeManager.sharedInstance.terms.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let term = TrustBadgeManager.sharedInstance.terms[indexPath.row]
-        if term.type == .Video{
-            let cell = tableView.dequeueReusableCellWithIdentifier(TermVideoCell.reuseIdentifier, forIndexPath: indexPath) as! TermVideoCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let term = TrustBadgeManager.sharedInstance.terms[(indexPath as NSIndexPath).row]
+        if term.type == .video{
+            let cell = tableView.dequeueReusableCell(withIdentifier: TermVideoCell.reuseIdentifier, for: indexPath) as! TermVideoCell
             cell.title.text = Helper.localizedString(term.titleKey)            
             
             let videoId = Helper.localizedString(term.contentKey)
@@ -73,23 +73,23 @@ class TermsController: UITableViewController {
             player!.frame = cell.videoView.frame
             cell.videoView.addSubview(player!)
             player!.translatesAutoresizingMaskIntoConstraints = false
-            cell.videoView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view":player!]))
-            cell.videoView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view":player!]))
+            cell.videoView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view":player!]))
+            cell.videoView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view":player!]))
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier(TermCell.reuseIdentifier, forIndexPath: indexPath) as! TermCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: TermCell.reuseIdentifier, for: indexPath) as! TermCell
             cell.title.text = Helper.localizedString(term.titleKey)
             let content = Helper.localizedString(term.contentKey)
-            let font = UIFont.systemFontOfSize(15)
+            let font = UIFont.systemFont(ofSize: 15)
             let formattedContent = String(format: content + "<style>body{font-family: '%@'; font-size:%@px;}</style>", arguments: [font.fontName, font.pointSize.description])
-            let attributedContent = try! NSAttributedString(data: formattedContent.dataUsingEncoding(NSUnicodeStringEncoding)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+            let attributedContent = try! NSAttributedString(data: formattedContent.data(using: String.Encoding.unicode)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
             
             cell.content.attributedText = attributedContent
             return cell
         }
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
 }

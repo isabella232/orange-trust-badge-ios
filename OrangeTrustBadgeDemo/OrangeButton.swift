@@ -25,14 +25,14 @@ import UIKit
 
 
 @IBDesignable
-public class OrangeButton: UIButton {
+open class OrangeButton: UIButton {
     
-    @IBInspectable var normalBorderColor = UIColor.clearColor()
-    @IBInspectable var highlightedBorderColor = UIColor.clearColor()
+    @IBInspectable var normalBorderColor = UIColor.clear
+    @IBInspectable var highlightedBorderColor = UIColor.clear
     
-    override public var highlighted: Bool {
+    override open var isHighlighted: Bool {
         willSet(willBeHighlighted) {
-            super.highlighted = willBeHighlighted
+            super.isHighlighted = willBeHighlighted
             self.borderColor = willBeHighlighted ? self.highlightedBorderColor : self.normalBorderColor
         }
     }
@@ -51,19 +51,19 @@ public class OrangeButton: UIButton {
         applyBrandCustomization()
         setupBorderColors()
         self.borderWidth = 3
-        self.highlighted = false
+        self.isHighlighted = false
         self.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     
     func setupBorderColors() {
     }
     
-    public override func prepareForInterfaceBuilder() {
+    open override func prepareForInterfaceBuilder() {
         applyBrandCustomization()
     }
     
     func setTitleFont() {
-        self.titleLabel?.font = UIFont.systemFontOfSize(20)
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 20)
     }
     
     func applyBrandCustomization() {
@@ -72,18 +72,18 @@ public class OrangeButton: UIButton {
 
 
 @IBDesignable
-public class OrangeButtonStandard: OrangeButton {
+open class OrangeButtonStandard: OrangeButton {
     
     override func setupBorderColors() {
-        self.normalBorderColor = UIColor.blackColor()
-        self.highlightedBorderColor = UIColor.orangeColor()
+        self.normalBorderColor = UIColor.black
+        self.highlightedBorderColor = UIColor.orange
     }
     
     override func applyBrandCustomization() {
-        self.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
-        self.setBackgroundImage(UIImage.imageWithColor(UIColor.clearColor()), forState: .Normal)
-        self.setBackgroundImage(UIImage.imageWithColor(UIColor.orangeColor()), forState: .Highlighted)
+        self.setTitleColor(UIColor.black, for: UIControlState())
+        self.setTitleColor(UIColor.white, for: UIControlState.highlighted)
+        self.setBackgroundImage(UIImage.imageWithColor(UIColor.clear), for: UIControlState())
+        self.setBackgroundImage(UIImage.imageWithColor(UIColor.orange), for: .highlighted)
         self.setTitleFont()
     }
 }
@@ -109,10 +109,10 @@ extension UIButton {
     
     @IBInspectable var borderColor: UIColor {
         get {
-            return UIColor(CGColor:self.layer.borderColor!)
+            return UIColor(cgColor:self.layer.borderColor!)
         }
         set {
-            self.layer.borderColor = newValue.CGColor
+            self.layer.borderColor = newValue.cgColor
         }
     }
     
@@ -129,13 +129,13 @@ extension UIButton {
 
 
 public extension UIImage {
-    public class func imageWithColor(color: UIColor) -> UIImage {
-        let rect = CGRectMake(0.0, 0.0, 1.0, 1.0)
+    public class func imageWithColor(_ color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()
         
-        CGContextSetFillColorWithColor(context!, color.CGColor)
-        CGContextFillRect(context!, rect)
+        context!.setFillColor(color.cgColor)
+        context!.fill(rect)
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

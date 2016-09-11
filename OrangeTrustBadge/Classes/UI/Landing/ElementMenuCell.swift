@@ -40,13 +40,13 @@ class ElementMenuCell: UITableViewCell,UICollectionViewDataSource,UICollectionVi
     
     // MARK: - Collection View data source
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let elements = representedObject else {
             return UICollectionViewCell()
         }
         
-        let element = elements[indexPath.row]
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ElementOverViewCell.reuseIdentifier, forIndexPath: indexPath) as! ElementOverViewCell
+        let element = elements[(indexPath as NSIndexPath).row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ElementOverViewCell.reuseIdentifier, for: indexPath) as! ElementOverViewCell
         
         let statusKey :String = {
             if element.statusClosure() {
@@ -58,11 +58,11 @@ class ElementMenuCell: UITableViewCell,UICollectionViewDataSource,UICollectionVi
         
         if element is Rating{
             cell.status.text = Helper.localizedString(element.nameKey)
-            cell.status.textColor = UIColor.blackColor()
+            cell.status.textColor = UIColor.black
             cell.accessibilityValue = "\(Helper.localizedString("rating-title")) : \(Helper.localizedString(element.nameKey))"
         } else {
             cell.status.text = Helper.localizedString(statusKey)
-            cell.status.textColor = element.statusClosure() ? TrustBadgeManager.sharedInstance.config?.highlightColor : UIColor.blackColor()
+            cell.status.textColor = element.statusClosure() ? TrustBadgeManager.sharedInstance.config?.highlightColor : UIColor.black
             let status = element.statusClosure() ? Helper.localizedString("accessibility-enabled") :  Helper.localizedString("accessibility-disabled")
             cell.accessibilityValue = "\(Helper.localizedString(element.nameKey)) : \(status)"
         }
@@ -73,14 +73,14 @@ class ElementMenuCell: UITableViewCell,UICollectionViewDataSource,UICollectionVi
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let elements = representedObject else{
             return 0
         }
         return elements.count
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 }

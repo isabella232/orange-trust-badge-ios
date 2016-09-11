@@ -30,19 +30,19 @@ class SplitViewController: UISplitViewController, UISplitViewControllerDelegate 
         self.delegate = self
     }
     
-    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool{
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool{
         return true
     }
     
-    func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
+    func splitViewController(_ svc: UISplitViewController, shouldHide vc: UIViewController, in orientation: UIInterfaceOrientation) -> Bool {
         return false
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+    override var preferredStatusBarStyle : UIStatusBarStyle {
         if let config = TrustBadgeManager.sharedInstance.config{
             return config.statusBarStyle
         } else {
-            return UIApplication.sharedApplication().statusBarStyle
+            return UIApplication.shared.statusBarStyle
         }
     }
 }

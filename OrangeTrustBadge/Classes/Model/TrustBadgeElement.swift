@@ -29,25 +29,25 @@ import Foundation
  
  Implementations are available through BasicPermission and CustomPermission class
  */
-public class TrustBadgeElement: NSObject {
+open class TrustBadgeElement: NSObject {
     /// Flag telling if OrangeTrustBadge should display a switch to enable/disable the element
-    public var isToggable : Bool = false
+    open var isToggable : Bool = false
     /// Closure allowing to update current element's status
-    public var toggleClosure : (UISwitch)-> Void = {(toggleSwitch) in }
+    open var toggleClosure : (UISwitch)-> Void = {(toggleSwitch) in }
     /// Closure giving element's status (enabled/disabled)
-    public var statusClosure : (Void) -> Bool = {() in return false}
+    open var statusClosure : (Void) -> Bool = {() in return false}
     /// Flag telling if OrangeTrustBadge should display the current status the element
-    public  var showStatus : Bool = true
+    open  var showStatus : Bool = true
     /// Flag telling if OrangeTrustBadge should display a link to iOS Preferences to enable/disable it.
-    public var isConfigurable : Bool = false
+    open var isConfigurable : Bool = false
     /// Localized Key for element's name
-    public var nameKey : String = ""
+    open var nameKey : String = ""
     /// Localized Key for element's description
-    public var descriptionKey :String = ""
+    open var descriptionKey :String = ""
     /// Icon name for element's enabled state
-    public var statusEnabledIconName : String = ""
+    open var statusEnabledIconName : String = ""
     /// Icon name for element's disabled state
-    public var statusDisabledIconName : String = ""
+    open var statusDisabledIconName : String = ""
     /// Flag telling if the corresponding UI is expanded (display details)
-    public var isExpanded : Bool = false
+    open var isExpanded : Bool = false
 }

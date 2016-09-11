@@ -26,27 +26,27 @@ import Foundation
 /// Enum describing the type of a Term
 @objc public enum TermType : Int{
     /// A block displaying textual terms of use
-    case Text
+    case text
     /// A block displaying a video in terms of use
-    case Video
+    case video
     
     func name() -> String {
         switch self {
-            case Text: return "text"
-            case Video: return "video"
+            case .text: return "text"
+            case .video: return "video"
         }
     }
 }
 
 /// A Term is a block displayed in "Terms" section
-public class Term: NSObject {
+open class Term: NSObject {
     
     /// Type of a Term
-    public var type : TermType
+    open var type : TermType
     /// Localized Key for Term's title
-    public var titleKey : String
+    open var titleKey : String
     /// Localized Key for Term's content (could include HTML content)
-    public var contentKey :String
+    open var contentKey :String
     
     /**
      Initializer

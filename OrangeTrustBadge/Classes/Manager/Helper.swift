@@ -27,10 +27,10 @@ class Helper {
     
     // MARK: Helper methods
     
-    static func localizedString(key : String)-> String{
+    static func localizedString(_ key : String)-> String{
         let localizedStringFromAppBundle = NSLocalizedString(key, comment: "")
         if(localizedStringFromAppBundle == key){
-            let localizedStringFromTrustBadgeBundle = NSLocalizedString(key, tableName: nil, bundle: NSBundle(forClass: TrustBadgeConfig.self), value: "", comment: "").stringByReplacingOccurrencesOfString("$$cssStylesheet$$", withString: TrustBadgeManager.sharedInstance.css).stringByReplacingOccurrencesOfString("$$applicationName$$", withString: TrustBadgeManager.sharedInstance.appName)
+            let localizedStringFromTrustBadgeBundle = NSLocalizedString(key, tableName: nil, bundle: Bundle(for: TrustBadgeConfig.self), value: "", comment: "").replacingOccurrences(of: "$$cssStylesheet$$", with: TrustBadgeManager.sharedInstance.css).replacingOccurrences(of: "$$applicationName$$", with: TrustBadgeManager.sharedInstance.appName)
             
             if(localizedStringFromTrustBadgeBundle == key){
                 return "To be localized key:\(key)"
@@ -38,17 +38,17 @@ class Helper {
                 return localizedStringFromTrustBadgeBundle
             }
         } else {
-            return localizedStringFromAppBundle.stringByReplacingOccurrencesOfString("$$cssStylesheet$$", withString: TrustBadgeManager.sharedInstance.css).stringByReplacingOccurrencesOfString("$$applicationName$$", withString: TrustBadgeManager.sharedInstance.appName)
+            return localizedStringFromAppBundle.replacingOccurrences(of: "$$cssStylesheet$$", with: TrustBadgeManager.sharedInstance.css).replacingOccurrences(of: "$$applicationName$$", with: TrustBadgeManager.sharedInstance.appName)
         }
     }
     
-    static func loadImage(name : String)-> UIImage{
+    static func loadImage(_ name : String)-> UIImage{
         if let imageFromAppBundle = UIImage(named: name){
             return imageFromAppBundle
-        } else if let imageFromTrustBadgeBundle = UIImage(named: name, inBundle: NSBundle(forClass: TrustBadgeConfig.self), compatibleWithTraitCollection: nil){
+        } else if let imageFromTrustBadgeBundle = UIImage(named: name, in: Bundle(for: TrustBadgeConfig.self), compatibleWith: nil){
             return imageFromTrustBadgeBundle
         } else {
-            return UIImage(named: "permission-placeholder-icon", inBundle: NSBundle(forClass: TrustBadgeConfig.self), compatibleWithTraitCollection: nil)!
+            return UIImage(named: "permission-placeholder-icon", in: Bundle(for: TrustBadgeConfig.self), compatibleWith: nil)!
         }
     }
 }

@@ -24,7 +24,7 @@
 import Foundation
 
 /// A CustomElement is a configurable/custom element, often related to your own application logic.
-public class CustomElement: TrustBadgeElement {
+open class CustomElement: TrustBadgeElement {
     /**
      Initializer of of CustomElement
      

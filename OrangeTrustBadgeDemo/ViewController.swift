@@ -31,15 +31,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let shortVersionString = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString"){
+        if let shortVersionString = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString"){
             versionLabel.text = "version \(shortVersionString)"
         }
     }
     
     @IBAction func startDemo(){
-        let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: NSBundle(forClass: TrustBadgeManager.self))
+        let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: Bundle(for: TrustBadgeManager.self))
         if let viewController = storyboard.instantiateInitialViewController(){
-            self.presentViewController(viewController, animated: true, completion: nil)
+            self.present(viewController, animated: true, completion: nil)
         }
     }
 }

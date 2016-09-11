@@ -34,29 +34,29 @@ import Foundation
  */
 @objc public enum RatingType : Int{
     /// This application is made for all (4 years old and older)
-    case Level4
+    case level4
     /// This application may contain inappropriate content which may not be suitable for children under the age of 9.
-    case Level9
+    case level9
     /// This application may contain inappropriate content which may not be suitable for children under the age of 12.
-    case Level12
+    case level12
     /// This application may contain inappropriate content which may not be suitable for children under the age of 17.
-    case Level17
+    case level17
     /// Custom rating if needed
-    case CustomLevel
+    case customLevel
     
     func name() -> String {
         switch self {
-            case Level4: return "level-4"
-            case Level9: return "level-9"
-            case Level12: return "level-12"
-            case Level17: return "level-17"
-            case CustomLevel : return "level-17"
+            case .level4: return "level-4"
+            case .level9: return "level-9"
+            case .level12: return "level-12"
+            case .level17: return "level-17"
+            case .customLevel : return "level-17"
         }
     }
 }
 
 /// This class aims to encapsulate all informations about a rating (name, description and logo)
-public class Rating: TrustBadgeElement {
+open class Rating: TrustBadgeElement {
     
     /// Rating's type
     var type : RatingType

@@ -23,42 +23,42 @@
 
 import Foundation
 
-public class DailymotionPlayer : UIWebView, UIWebViewDelegate {
+open class DailymotionPlayer : UIWebView, UIWebViewDelegate {
     
     static let DMAPIVersion = "2.9.3"
     
     let webBaseURLString = "https://www.dailymotion.com"
     
-    convenience init(video : NSString){
+    convenience init(video : String){
         self.init()
         self.load(video)
     }
     
-    public func load(video : NSString){
+    open func load(_ video : String){
         self.delegate = self
         
         // Remote white default background
-        self.opaque = false
-        self.backgroundColor = UIColor.clearColor()
+        self.isOpaque = false
+        self.backgroundColor = UIColor.clear
         
         // Autoresize by default
-        self.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight]
+        self.autoresizingMask = [UIViewAutoresizing.flexibleWidth , UIViewAutoresizing.flexibleHeight]
         
         
         // Hack: prevent vertical bouncing
         for subview in self.subviews {
-            if (subview.isKindOfClass(UIScrollView)) {
+            if (subview.isKind(of: UIScrollView.self)) {
                 (subview as! UIScrollView).bounces = false
-                (subview as! UIScrollView).scrollEnabled = false
+                (subview as! UIScrollView).isScrollEnabled = false
             }
         }
         
-        let url = NSMutableString(format: "%@/embed/video/%@?api=location&objc_sdk_version=%@&endscreen-enable=false&sharing-enable=false", self.webBaseURLString, video, DailymotionPlayer.DMAPIVersion)
-        let appName = NSBundle.mainBundle().bundleIdentifier;
+        var url = String(format: "%@/embed/video/%@?api=location&objc_sdk_version=%@&endscreen-enable=false&sharing-enable=false", self.webBaseURLString, video, DailymotionPlayer.DMAPIVersion)
+        let appName = Bundle.main.bundleIdentifier;
         
-        url.appendFormat("&app=%@", appName!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
+        url = url + String(format: "&app=%@", appName!.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
         
-        self.loadRequest(NSURLRequest(URL: NSURL(string: url as String)!))
+        self.loadRequest(URLRequest(url: URL(string: url)!))
     }
     
     deinit{
@@ -66,12 +66,12 @@ public class DailymotionPlayer : UIWebView, UIWebViewDelegate {
         self.stopLoading()
     }
     
-    public func pause(){
-        self.stringByEvaluatingJavaScriptFromString("player.api(\"pause\", \"null\")")
+    open func pause(){
+        self.stringByEvaluatingJavaScript(from: "player.api(\"pause\", \"null\")")
     }
     
-    public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        if let isInitialURL = request.URL?.path?.hasPrefix("/embed/video/"){
+    open func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        if let isInitialURL = request.url?.path.hasPrefix("/embed/video/"){
             return isInitialURL
         } else {
             return false

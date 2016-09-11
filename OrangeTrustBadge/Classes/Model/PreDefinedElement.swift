@@ -26,65 +26,65 @@ import Foundation
 /// Enum describing the type of a PreDefinedElement
 @objc public enum ElementType : Int{
     /// Identity Element (firstname, lastname etc...)
-    case Identity
+    case identity
     /// Permission to access user's location
-    case Location
+    case location
     /// Permission to access user's Photo Library
-    case PhotoLibrary
+    case photoLibrary
     /// Permission to access user's Address Book
-    case Contacts
+    case contacts
     /// Permission to anonymously track user's activity within the app
-    case DataUsage
+    case dataUsage
     /// Permission to access user's Camera
-    case Camera
+    case camera
     /// Permission to access user's Calendar
-    case Calendar
+    case calendar
     /// Permission to access user's Microphone
-    case Microphone
+    case microphone
     /// Permission to access user's phone number
-    case Phone
+    case phone
     /// Permission to access user's Health and Sensors data
-    case BodySensors
+    case bodySensors
     /// Permission to access user's profile on Twitter/Facebook
-    case SocialSharing
+    case socialSharing
     /// Permission to pay within the app
-    case InAppPurchase
+    case inAppPurchase
     /// Permission to store cookies for marketing purposes
-    case Advertising
+    case advertising
     
     func name() -> String {
         switch self {
-            case Identity: return "identity"
-            case Location: return "location"
-            case PhotoLibrary: return "photo-library"
-            case Contacts: return "contacts"
-            case DataUsage : return "data-usage"
-            case Camera : return "camera"
-            case Calendar : return "calendar"
-            case Microphone : return "microphone"
-            case Phone : return "phone"
-            case BodySensors : return "body-sensors"
-            case SocialSharing : return "social-sharing"
-            case InAppPurchase : return "inapp-purchase"
-            case Advertising : return "advertising"
+            case .identity: return "identity"
+            case .location: return "location"
+            case .photoLibrary: return "photo-library"
+            case .contacts: return "contacts"
+            case .dataUsage : return "data-usage"
+            case .camera : return "camera"
+            case .calendar : return "calendar"
+            case .microphone : return "microphone"
+            case .phone : return "phone"
+            case .bodySensors : return "body-sensors"
+            case .socialSharing : return "social-sharing"
+            case .inAppPurchase : return "inapp-purchase"
+            case .advertising : return "advertising"
         }
     }
     
-    public static let defaultMainElementTypes  : [ElementType] = [Identity, Location, PhotoLibrary, Contacts, DataUsage]
+    public static let defaultMainElementTypes  : [ElementType] = [identity, location, photoLibrary, contacts, dataUsage]
     
     public static let defaultOtherElementTypes : [ElementType] = []
     
-    public static let defaultUsageElementTypes : [ElementType] = [SocialSharing, InAppPurchase, Advertising]
+    public static let defaultUsageElementTypes : [ElementType] = [socialSharing, inAppPurchase, advertising]
 }
 
 /// A PreDefinedElement is a pre-defined TrustBadgeElement, often backed by a system-permission (e.g. Location for instance)
-public class PreDefinedElement: TrustBadgeElement {
+open class PreDefinedElement: TrustBadgeElement {
     
     /// Type of a PreDefinedElement
     let type : ElementType
     
     /// Flag telling if the manager should autoConfigure the element
-    public var shouldBeAutoConfigured : Bool = true
+    open var shouldBeAutoConfigured : Bool = true
     
     /**
      Standard initializer

@@ -31,28 +31,28 @@ class PermissionsController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+        navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         navigationItem.leftItemsSupplementBackButton = true
         self.navigationItem.title = Helper.localizedString("permission-title")
         self.header.title.text = Helper.localizedString("permission-header-title")
-        self.tableView.registerNib(UINib(nibName: "ElementCell", bundle: NSBundle(forClass: TrustBadgeConfig.self)), forCellReuseIdentifier: ElementCell.reuseIdentifier)
+        self.tableView.register(UINib(nibName: "ElementCell", bundle: Bundle(for: TrustBadgeConfig.self)), forCellReuseIdentifier: ElementCell.reuseIdentifier)
         tableView.estimatedRowHeight = 65
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PermissionsController.refresh), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PermissionsController.refresh), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().postNotificationName(TrustBadgeManager.TRUSTBADGE_PERMISSION_ENTER, object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_PERMISSION_ENTER), object: nil)
     }
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         if TrustBadgeManager.sharedInstance.otherElements.count > 0 {
             return 2
         } else {
@@ -60,7 +60,7 @@ class PermissionsController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(section){
         case 0 :
             return TrustBadgeManager.sharedInstance.mainElements.count
@@ -69,15 +69,15 @@ class PermissionsController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let element = elementForIndexPath(indexPath)
-        let cell = tableView.dequeueReusableCellWithIdentifier(ElementCell.reuseIdentifier, forIndexPath: indexPath) as! ElementCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ElementCell.reuseIdentifier, for: indexPath) as! ElementCell
         
         cell.nameLabel.text = Helper.localizedString(element.nameKey)
         let description = Helper.localizedString(element.descriptionKey)
-        let attributeddDescription = try! NSAttributedString(data: description.dataUsingEncoding(NSUnicodeStringEncoding)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+        let attributeddDescription = try! NSAttributedString(data: description.data(using: String.Encoding.unicode)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
         cell.descriptionLabel.attributedText = attributeddDescription
-        cell.descriptionLabel.font = UIFont.systemFontOfSize(14)
+        cell.descriptionLabel.font = UIFont.systemFont(ofSize: 14)
         
         let statusKey :String = {
             if element.statusClosure() {
@@ -88,50 +88,50 @@ class PermissionsController: UITableViewController {
         }()
         
         cell.statusLabel.text = Helper.localizedString(statusKey)
-        cell.statusLabel.textColor = element.statusClosure() ? TrustBadgeManager.sharedInstance.config?.highlightColor : UIColor.blackColor()
+        cell.statusLabel.textColor = element.statusClosure() ? TrustBadgeManager.sharedInstance.config?.highlightColor : UIColor.black
         cell.icon.image = element.statusClosure() ? Helper.loadImage(element.statusEnabledIconName) : Helper.loadImage(element.statusDisabledIconName)
-        cell.actionButton.setTitle(Helper.localizedString("update-permission"), forState: UIControlState.Normal)
+        cell.actionButton.setTitle(Helper.localizedString("update-permission"), for: UIControlState())
         
         if element.isExpanded{
-            UIView.animateWithDuration(0.4, animations: { () -> Void in
-                cell.disclosureArrow.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-                cell.descriptionLabel.hidden = false
+            UIView.animate(withDuration: 0.4, animations: { () -> Void in
+                cell.disclosureArrow.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI))
+                cell.descriptionLabel.isHidden = false
                 cell.descriptionLabelHiddingConstraint.priority = 250
-                cell.actionPanel.hidden = !element.isConfigurable
+                cell.actionPanel.isHidden = !element.isConfigurable
                 cell.actionButtonHiddingConstraint.priority = element.isConfigurable ? 250 : 999
             })
             
         } else{
-            UIView.animateWithDuration(0.4, animations: { () -> Void in
-                cell.disclosureArrow.transform = CGAffineTransformMakeRotation(CGFloat(-2 * M_PI))
-                cell.descriptionLabel.hidden = true
+            UIView.animate(withDuration: 0.4, animations: { () -> Void in
+                cell.disclosureArrow.transform = CGAffineTransform(rotationAngle: CGFloat(-2 * M_PI))
+                cell.descriptionLabel.isHidden = true
                 cell.descriptionLabelHiddingConstraint.priority = 999
-                cell.actionPanel.hidden = true
+                cell.actionPanel.isHidden = true
                 cell.actionButtonHiddingConstraint.priority = 999
             })
         }
         
         cell.toggle.setOn(element.statusClosure(), animated: false)
         if element.isToggable{
-            cell.toggle.hidden = false
+            cell.toggle.isHidden = false
             cell.toggle.isAccessibilityElement = true
-            cell.statusLabel.hidden = true
+            cell.statusLabel.isHidden = true
             cell.switchHiddingConstraint.priority = 250
         } else {
-            cell.toggle.hidden = true
+            cell.toggle.isHidden = true
             cell.toggle.isAccessibilityElement = false
-            cell.statusLabel.hidden = false
+            cell.statusLabel.isHidden = false
             cell.switchHiddingConstraint.priority = 999
         }
         
         cell.toggleClosure = {(cell : ElementCell) in
             element.toggleClosure(cell.toggle)
-            NSNotificationCenter.defaultCenter().postNotificationName(TrustBadgeManager.TRUSTBADGE_ELEMENT_TOGGLED, object: element)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_ELEMENT_TOGGLED), object: element)
         }
         
         cell.openPreferencesClosure = { () in
-            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
-            NSNotificationCenter.defaultCenter().postNotificationName(TrustBadgeManager.TRUSTBADGE_GO_TO_SETTINGS, object: element)
+            UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_GO_TO_SETTINGS), object: element)
         }
         
         let status = element.statusClosure() ? Helper.localizedString("accessibility-enabled") :  Helper.localizedString("accessibility-disabled")
@@ -140,7 +140,7 @@ class PermissionsController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let element = elementForIndexPath(indexPath)
         if element.isExpanded {
             return UITableViewAutomaticDimension
@@ -149,17 +149,17 @@ class PermissionsController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let element = elementForIndexPath(indexPath)
         element.isExpanded = !element.isExpanded
         tableView.beginUpdates()
-        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
         tableView.endUpdates()
         
-        NSNotificationCenter.defaultCenter().postNotificationName(TrustBadgeManager.TRUSTBADGE_ELEMENT_TAPPED, object: element)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_ELEMENT_TAPPED), object: element)
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch(section){
         case 0 :
             return Helper.localizedString("permission-main-section-name")
@@ -168,9 +168,9 @@ class PermissionsController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-        header.textLabel!.textColor = UIColor.blackColor()
+        header.textLabel!.textColor = UIColor.black
     }
     
     // MARK: - Other Methods
@@ -179,12 +179,12 @@ class PermissionsController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    func elementForIndexPath(indexPath : NSIndexPath) -> TrustBadgeElement{
-        switch(indexPath.section){
+    func elementForIndexPath(_ indexPath : IndexPath) -> TrustBadgeElement{
+        switch((indexPath as NSIndexPath).section){
         case 0 :
-            return TrustBadgeManager.sharedInstance.mainElements[indexPath.row]
+            return TrustBadgeManager.sharedInstance.mainElements[(indexPath as NSIndexPath).row]
         default :
-            return TrustBadgeManager.sharedInstance.otherElements[indexPath.row]
+            return TrustBadgeManager.sharedInstance.otherElements[(indexPath as NSIndexPath).row]
         }
     }
     
