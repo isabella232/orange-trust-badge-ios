@@ -32,15 +32,15 @@ It also :
 
 - Works on iPhone and iPad using Autolayout (iPad Multitasking supported)
 - Localized in 2 languages (English,French)
-- Written in Swift 2.2 but works in Objective-C or Swift based Projects
+- Written in Swift 3.0 but works in Objective-C or Swift based Projects
 - API hooks
 - UI Customization
 
 ## Requirements
 
 - iOS 8.0+
-- Xcode 7.3+
-- CocoaPods 0.39.0+
+- Xcode 8.0+
+- CocoaPods 1.0.1+
 
 ## Bug tracker
 
@@ -61,7 +61,7 @@ An example of integration is provided in OrangeTrustBadgeDemo project.
 $ gem install cocoapods
 ```
 
-> CocoaPods 0.39.0+ is required to build OrangeTrustBadge.
+> CocoaPods 1.0.1+ is required to build OrangeTrustBadge.
 
 To integrate OrangeTrustBadge into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
