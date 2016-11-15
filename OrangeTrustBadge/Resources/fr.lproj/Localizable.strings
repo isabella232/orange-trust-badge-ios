@@ -45,7 +45,7 @@
 "landing-header-title" = "Utilisez en toute confiance votre application !";
 "landing-permission-title" = "Vos données";
 "landing-permission-content" = "Quelles sont les données utilisées par votre application et pour quelles raisons ?";
-"landing-usages-title" = "Vos usages";
+"landing-usages-title" = "Les usages";
 "landing-usages-content" = "Quels sont les contenus et les fonctionnalités de votre application ?";
 "landing-terms-title" = "Nos engagements";
 "landing-terms-content" = "Nous vous accompagnons pour protéger votre vie numérique et vos données personnelles.";
@@ -77,7 +77,7 @@
 "permission-body-sensors-description" = "Cette application peut accéder aux données collectées par votre objet connecté qui est synchronisé avec votre mobile.";
 
 /* Usages Page */
-"usages-title" = "Vos usages";
+"usages-title" = "Les usages";
 "usages-header-title" = "Quels sont les contenus et les fonctionnalités de votre application ?";
 "permission-social-sharing-name" = "Réseaux sociaux";
 "permission-social-sharing-description" = "Cette application peut intégrer des fonctionnalités permettant la redirection vers les réseaux sociaux comme Facebook ou Twitter.";

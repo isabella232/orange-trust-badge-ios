@@ -5,6 +5,9 @@
 ## Build generated
 build/
 DerivedData
+Pods
+Podfile.lock
+OrangeTrustBadge.xcworkspace/
 
 ## Various settings
 *.pbxuser

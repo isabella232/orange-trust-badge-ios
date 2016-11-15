@@ -45,7 +45,7 @@
 "landing-header-title" = "Use your application trustfully";
 "landing-permission-title" = "My data";
 "landing-permission-content" = "Personal data your application in using and why";
-"landing-usages-title" = "My usages";
+"landing-usages-title" = "Usages";
 "landing-usages-content" = "Contents and features of your application";
 "landing-terms-title" = "Our commitments";
 "landing-terms-content" = "We support you to protect your digital life and your personnal informations";
@@ -77,7 +77,7 @@
 "permission-body-sensors-description" = "This application can access data collected by your connected object which is synchronized with your device. ";
 
 /* Usages Page */
-"usages-title" = "My usages";
+"usages-title" = "Usages";
 "usages-header-title" = "Contents and features of your application";
 "permission-social-sharing-name" = "Social networks";
 "permission-social-sharing-description" = "This application can integrate social features. This application can redirect you to social networks like Facebook or Twitter.";
