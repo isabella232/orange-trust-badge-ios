@@ -42,7 +42,7 @@
 
 /* Landing Page */
 "landing-title" = "Badge de confiance";
-"landing-header-title" = "Utilisez en toute confiance votre application !";
+"landing-header-title" = "Retrouvez et contrôlez l'utilisation de vos données personnelles dans l’application.";
 "landing-permission-title" = "Vos données";
 "landing-permission-content" = "Quelles sont les données utilisées par votre application et pour quelles raisons ?";
 "landing-usages-title" = "Les usages";

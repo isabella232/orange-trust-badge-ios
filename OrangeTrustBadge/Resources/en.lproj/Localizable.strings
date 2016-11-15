@@ -41,8 +41,8 @@
 "rating-level-17-description" = "The indicated age corresponds to the minimum age recommended to use your application according to presented content.";
 
 /* Landing Page */
-"landing-title" = "trust badge";
-"landing-header-title" = "Use your application trustfully";
+"landing-title" = "Trust badge";
+"landing-header-title" = "Find and control the use of your personal information in your application.";
 "landing-permission-title" = "My data";
 "landing-permission-content" = "Personal data your application in using and why";
 "landing-usages-title" = "Usages";
