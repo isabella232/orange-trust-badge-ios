@@ -86,8 +86,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // uncomment this section to change the rating
         config.rating = Rating(type: .level12)
         
-        // uncomment this section to change highlight color used for enabled elements
+        // uncomment this section to change header logo
         //config.headerLogo = UIImage(named:"my-logo")
+
+        // uncomment this section to change header text color
+        //config.headerTextColor = .red
 
         // uncomment this section to add a new custom entry in "Other Permissions"
         /**

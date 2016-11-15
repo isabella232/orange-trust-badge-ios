@@ -43,7 +43,10 @@ open class TrustBadgeConfig : NSObject{
     /// (Optional) background UIColor of the header (default blue)
     open var headerColor = UIColor(red: 57/256, green: 176/256, blue: 168/256, alpha: 1)
     
-    /// (Optional) UIImage use for the logo of the header 
+    /// (Optional) text UIcolor of the header
+    open var headerTextColor: UIColor = .black
+    
+    /// (Optional) UIImage use for the logo of the header
     open var headerLogo : UIImage?
 
     /// (Optional) Status bar style (default Application's default statusBarStyle)
