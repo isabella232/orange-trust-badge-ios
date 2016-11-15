@@ -85,7 +85,7 @@ $ pod install
 If you prefer not to use either of the aforementioned dependency managers, you can integrate OrangeTrustBadge into your project manually.
 
 #### Embedded Framework
-- Clone OrangeTrustBadge Repository by typing in your Terminal 
+- Clone OrangeTrustBadge Repository by typing in your Terminal
 ```bash
 $ git clone https://github.com/Orange-OpenSource/orange-trust-badge-ios.git
 ```
@@ -118,7 +118,7 @@ mkdir "$OUTPUT_DIR"
 INPUT_FRAMEWORK_BINARY=`find ${DWARF_DSYM_FOLDER_PATH}/${FRAMEWORKS_FOLDER_PATH}/ -type f -name OrangeTrustBadge`
 OUTPUT_FRAMEWORK_BINARY="${OUTPUT_DIR}/OrangeTrustBadge"
 
-# remove simulator arch form the release binaire
+# remove simulator arch from the release
 if [ "$CONFIGURATION" == "Release" ]; then
     if [  "$CURRENT_ARCH" != "x86_64" ]; then
 
@@ -222,6 +222,8 @@ In this View are displayed two pre-defined sections showing TrustBadge Elements 
 
 - A PreDefinedElement that is automagically setup for common cases
 
+Note: If desired, you will be able to also customize the behavior of PreDefinedElements. Be sure to disengage automatic setup by setting the property shouldBeAutoConfigured to false. (e.g : aPreDefinedElement.shouldBeAutoConfigured = false)
+
 **In swift**
 
 ```swift
@@ -231,6 +233,8 @@ config.mainElements.append(advertisingElement)
 ```
 
 - A CustomElement on which you have full control of displayed informations
+
+
 
 **In swift**
 
@@ -306,7 +310,7 @@ If you believe you have identified a security vulnerability with OrangeTrustBadg
 
 ## License
 
-OrangeTrustBadge 
+OrangeTrustBadge
 Copyright (C) 2016 Orange
 
 Licensed under the Apache License, Version 2.0 (the "License");
