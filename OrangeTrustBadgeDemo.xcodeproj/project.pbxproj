@@ -360,11 +360,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 269J2W3P7L;
 				INFOPLIST_FILE = OrangeTrustBadgeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.orange.omd.OrangeTrustBadgeDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "39efb7fd-4807-418a-b67e-85739a0136ff";
+				PROVISIONING_PROFILE_SPECIFIER = "Orange Development";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;

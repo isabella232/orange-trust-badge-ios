@@ -25,6 +25,8 @@ import UIKit
 
 class LandingController: UITableViewController {
     
+    static let defaultReuseIdentifier = "DefaultCell"
+    
     var mainGestureRecognizer : UIGestureRecognizer?
     var usageGestureRecognizer : UIGestureRecognizer?
     @IBOutlet weak var header : Header!
@@ -41,7 +43,7 @@ class LandingController: UITableViewController {
         if UIDevice.current.userInterfaceIdiom == .pad{
             self.clearsSelectionOnViewWillAppear = false
         }
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: LandingController.defaultReuseIdentifier)
         tableView.estimatedRowHeight = 70
         NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_ENTER), object: nil)
         
@@ -59,6 +61,7 @@ class LandingController: UITableViewController {
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         self.manageLogoVisibility()
+        self.tableView.reloadData()
     }
     
     /**
@@ -100,7 +103,7 @@ class LandingController: UITableViewController {
                 cell.overview.addGestureRecognizer(mainGestureRecognizer!)
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+                let cell = tableView.dequeueReusableCell(withIdentifier: LandingController.defaultReuseIdentifier, for: indexPath)
                 cell.textLabel?.text = Helper.localizedString("landing-permission-title")
                 cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
                 return cell
@@ -117,7 +120,7 @@ class LandingController: UITableViewController {
                 cell.overview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(LandingController.goToUsageElements(_:))))
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+                let cell = tableView.dequeueReusableCell(withIdentifier: LandingController.defaultReuseIdentifier, for: indexPath)
                 cell.textLabel?.text = Helper.localizedString("landing-usages-title")
                 cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
                 return cell
@@ -129,7 +132,7 @@ class LandingController: UITableViewController {
                 cell.content.text = Helper.localizedString("landing-terms-content")
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+                let cell = tableView.dequeueReusableCell(withIdentifier: LandingController.defaultReuseIdentifier, for: indexPath)
                 cell.textLabel?.text = Helper.localizedString("landing-terms-title")
                 cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
                 return cell
