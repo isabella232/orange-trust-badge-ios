@@ -29,6 +29,11 @@ class LandingController: UITableViewController {
     var usageGestureRecognizer : UIGestureRecognizer?
     @IBOutlet weak var header : Header!
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.title = Helper.localizedString("landing-title")
+    }
+
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
@@ -36,7 +41,6 @@ class LandingController: UITableViewController {
         if UIDevice.current.userInterfaceIdiom == .pad{
             self.clearsSelectionOnViewWillAppear = false
         }
-        self.navigationItem.title = Helper.localizedString("landing-title")
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
         tableView.estimatedRowHeight = 70
         NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_ENTER), object: nil)

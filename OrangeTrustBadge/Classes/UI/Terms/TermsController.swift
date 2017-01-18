@@ -28,11 +28,15 @@ class TermsController: UITableViewController {
     @IBOutlet weak var header : Header!
     var players = [String : DailymotionPlayer]()
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.title = Helper.localizedString("terms-title")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         navigationItem.leftItemsSupplementBackButton = true
-        self.navigationItem.title = Helper.localizedString("terms-title")
         self.header.title.text = Helper.localizedString("terms-header-title")
         tableView.estimatedRowHeight = 100
     }

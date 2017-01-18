@@ -25,7 +25,13 @@ import UIKit
 
 class PermissionsController: UITableViewController {
     
+    
     @IBOutlet weak var header : Header!
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.title = Helper.localizedString("permission-title")
+    }
     
     // MARK: View Lifecycle
     
@@ -33,7 +39,6 @@ class PermissionsController: UITableViewController {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         navigationItem.leftItemsSupplementBackButton = true
-        self.navigationItem.title = Helper.localizedString("permission-title")
         self.header.title.text = Helper.localizedString("permission-header-title")
         self.tableView.register(UINib(nibName: "ElementCell", bundle: Bundle(for: TrustBadgeConfig.self)), forCellReuseIdentifier: ElementCell.reuseIdentifier)
         tableView.estimatedRowHeight = 65

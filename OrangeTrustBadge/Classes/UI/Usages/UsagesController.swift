@@ -27,11 +27,15 @@ class UsagesController: UITableViewController {
     
     @IBOutlet weak var header : Header!
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.title = Helper.localizedString("usages-title")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         navigationItem.leftItemsSupplementBackButton = true
-        self.navigationItem.title = Helper.localizedString("usages-title")
         self.header.title.text = Helper.localizedString("usages-header-title")
         self.tableView.register(UINib(nibName: "ElementCell", bundle: Bundle(for: TrustBadgeConfig.self)), forCellReuseIdentifier: ElementCell.reuseIdentifier)
         tableView.estimatedRowHeight = 65
