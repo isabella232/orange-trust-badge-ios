@@ -30,7 +30,7 @@ class PermissionsController: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.title = Helper.localizedString("permission-title")
+        self.title = TrustBadgeManager.sharedInstance.localizedString("permission-title")
     }
     
     // MARK: View Lifecycle
@@ -39,7 +39,7 @@ class PermissionsController: UITableViewController {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         navigationItem.leftItemsSupplementBackButton = true
-        self.header.title.text = Helper.localizedString("permission-header-title")
+        self.header.title.text = TrustBadgeManager.sharedInstance.localizedString("permission-header-title")
         self.tableView.register(UINib(nibName: "ElementCell", bundle: Bundle(for: TrustBadgeConfig.self)), forCellReuseIdentifier: ElementCell.reuseIdentifier)
         tableView.estimatedRowHeight = 65
 
@@ -78,8 +78,8 @@ class PermissionsController: UITableViewController {
         let element = elementForIndexPath(indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: ElementCell.reuseIdentifier, for: indexPath) as! ElementCell
         
-        cell.nameLabel.text = Helper.localizedString(element.nameKey)
-        let description = Helper.localizedString(element.descriptionKey)
+        cell.nameLabel.text = TrustBadgeManager.sharedInstance.localizedString(element.nameKey)
+        let description = TrustBadgeManager.sharedInstance.localizedString(element.descriptionKey)
         let attributeddDescription = try! NSAttributedString(data: description.data(using: String.Encoding.unicode)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
         cell.descriptionLabel.attributedText = attributeddDescription
         cell.descriptionLabel.font = UIFont.systemFont(ofSize: 14)
@@ -92,10 +92,10 @@ class PermissionsController: UITableViewController {
             }
         }()
         
-        cell.statusLabel.text = Helper.localizedString(statusKey)
+        cell.statusLabel.text = TrustBadgeManager.sharedInstance.localizedString(statusKey)
         cell.statusLabel.textColor = element.statusClosure() ? TrustBadgeManager.sharedInstance.config?.highlightColor : UIColor.black
-        cell.icon.image = element.statusClosure() ? Helper.loadImage(element.statusEnabledIconName) : Helper.loadImage(element.statusDisabledIconName)
-        cell.actionButton.setTitle(Helper.localizedString("update-permission"), for: UIControlState())
+        cell.icon.image = element.statusClosure() ? TrustBadgeManager.sharedInstance.loadImage(element.statusEnabledIconName) : TrustBadgeManager.sharedInstance.loadImage(element.statusDisabledIconName)
+        cell.actionButton.setTitle(TrustBadgeManager.sharedInstance.localizedString("update-permission"), for: UIControlState())
         
         if element.isExpanded{
             UIView.animate(withDuration: 0.4, animations: { () -> Void in
@@ -139,9 +139,9 @@ class PermissionsController: UITableViewController {
             NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_GO_TO_SETTINGS), object: element)
         }
         
-        let status = element.statusClosure() ? Helper.localizedString("accessibility-enabled") :  Helper.localizedString("accessibility-disabled")
-        cell.accessibilityValue = "\(Helper.localizedString(element.nameKey)) : \(status)"
-        cell.accessibilityHint = Helper.localizedString("accessibility-double-tap")
+        let status = element.statusClosure() ? TrustBadgeManager.sharedInstance.localizedString("accessibility-enabled") : TrustBadgeManager.sharedInstance.localizedString("accessibility-disabled")
+        cell.accessibilityValue = "\(TrustBadgeManager.sharedInstance.localizedString(element.nameKey)) : \(status)"
+        cell.accessibilityHint = TrustBadgeManager.sharedInstance.localizedString("accessibility-double-tap")
         return cell
     }
     
@@ -167,9 +167,9 @@ class PermissionsController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch(section){
         case 0 :
-            return Helper.localizedString("permission-main-section-name")
+            return TrustBadgeManager.sharedInstance.localizedString("permission-main-section-name")
         default :
-            return Helper.localizedString("permission-others-section-name")
+            return TrustBadgeManager.sharedInstance.localizedString("permission-others-section-name")
         }
     }
     

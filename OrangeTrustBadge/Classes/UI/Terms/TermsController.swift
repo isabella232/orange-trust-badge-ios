@@ -30,14 +30,14 @@ class TermsController: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.title = Helper.localizedString("terms-title")
+        self.title = TrustBadgeManager.sharedInstance.localizedString("terms-title")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         navigationItem.leftItemsSupplementBackButton = true
-        self.header.title.text = Helper.localizedString("terms-header-title")
+        self.header.title.text = TrustBadgeManager.sharedInstance.localizedString("terms-header-title")
         tableView.estimatedRowHeight = 100
     }
     
@@ -65,9 +65,9 @@ class TermsController: UITableViewController {
         let term = TrustBadgeManager.sharedInstance.terms[(indexPath as NSIndexPath).row]
         if term.type == .video{
             let cell = tableView.dequeueReusableCell(withIdentifier: TermVideoCell.reuseIdentifier, for: indexPath) as! TermVideoCell
-            cell.title.text = Helper.localizedString(term.titleKey)            
+            cell.title.text = TrustBadgeManager.sharedInstance.localizedString(term.titleKey)
             
-            let videoId = Helper.localizedString(term.contentKey)
+            let videoId = TrustBadgeManager.sharedInstance.localizedString(term.contentKey)
             var player = players[videoId]
             if player == nil {
                 player = DailymotionPlayer(video: videoId)
@@ -82,8 +82,8 @@ class TermsController: UITableViewController {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: TermCell.reuseIdentifier, for: indexPath) as! TermCell
-            cell.title.text = Helper.localizedString(term.titleKey)
-            let content = Helper.localizedString(term.contentKey)
+            cell.title.text = TrustBadgeManager.sharedInstance.localizedString(term.titleKey)
+            let content = TrustBadgeManager.sharedInstance.localizedString(term.contentKey)
             let font = UIFont.systemFont(ofSize: 15)
             let formattedContent = String(format: content + "<style>body{font-family: '%@'; font-size:%@px;}</style>", arguments: [font.fontName, font.pointSize.description])
             let attributedContent = try! NSAttributedString(data: formattedContent.data(using: String.Encoding.unicode)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)

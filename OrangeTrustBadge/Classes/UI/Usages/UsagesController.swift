@@ -29,14 +29,14 @@ class UsagesController: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.title = Helper.localizedString("usages-title")
+        self.title = TrustBadgeManager.sharedInstance.localizedString("usages-title")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         navigationItem.leftItemsSupplementBackButton = true
-        self.header.title.text = Helper.localizedString("usages-header-title")
+        self.header.title.text = TrustBadgeManager.sharedInstance.localizedString("usages-header-title")
         self.tableView.register(UINib(nibName: "ElementCell", bundle: Bundle(for: TrustBadgeConfig.self)), forCellReuseIdentifier: ElementCell.reuseIdentifier)
         tableView.estimatedRowHeight = 65
     }
@@ -61,12 +61,12 @@ class UsagesController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: ElementCell.reuseIdentifier, for: indexPath) as! ElementCell
         
         if element is Rating {
-            cell.nameLabel.text = Helper.localizedString("rating-title")
+            cell.nameLabel.text = TrustBadgeManager.sharedInstance.localizedString("rating-title")
         } else {
-            cell.nameLabel.text = Helper.localizedString(element.nameKey)
+            cell.nameLabel.text = TrustBadgeManager.sharedInstance.localizedString(element.nameKey)
         }
         
-        let description = Helper.localizedString(element.descriptionKey)
+        let description = TrustBadgeManager.sharedInstance.localizedString(element.descriptionKey)
         var attributeddDescription : NSAttributedString?
         do {
             attributeddDescription = try NSAttributedString(data: description.data(using: String.Encoding.unicode)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
@@ -83,10 +83,10 @@ class UsagesController: UITableViewController {
                 return "status-disabled"
             }
         }()
-        cell.statusLabel.text = Helper.localizedString(statusKey)
+        cell.statusLabel.text = TrustBadgeManager.sharedInstance.localizedString(statusKey)
         cell.statusLabel.textColor = element.statusClosure() ? TrustBadgeManager.sharedInstance.config?.highlightColor : UIColor.black
-        cell.icon.image = element.statusClosure() ? Helper.loadImage(element.statusEnabledIconName) : Helper.loadImage(element.statusDisabledIconName)
-        cell.actionButton.setTitle(Helper.localizedString("update-permission"), for: UIControlState())
+        cell.icon.image = element.statusClosure() ? TrustBadgeManager.sharedInstance.loadImage(element.statusEnabledIconName) : TrustBadgeManager.sharedInstance.loadImage(element.statusDisabledIconName)
+        cell.actionButton.setTitle(TrustBadgeManager.sharedInstance.localizedString("update-permission"), for: UIControlState())
         
         cell.toggle.setOn(element.statusClosure(), animated: true)
         if element.isToggable{
@@ -138,9 +138,9 @@ class UsagesController: UITableViewController {
             NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_GO_TO_SETTINGS), object: element)
         }
         
-        let status = element.statusClosure() ? Helper.localizedString("accessibility-enabled") :  Helper.localizedString("accessibility-disabled")
-        cell.accessibilityValue = "\(Helper.localizedString(element.nameKey)) : \(status)"
-        cell.accessibilityHint = Helper.localizedString("accessibility-double-tap")
+        let status = element.statusClosure() ? TrustBadgeManager.sharedInstance.localizedString("accessibility-enabled") :  TrustBadgeManager.sharedInstance.localizedString("accessibility-disabled")
+        cell.accessibilityValue = "\(TrustBadgeManager.sharedInstance.localizedString(element.nameKey)) : \(status)"
+        cell.accessibilityHint = TrustBadgeManager.sharedInstance.localizedString("accessibility-double-tap")
         return cell
     }
     
