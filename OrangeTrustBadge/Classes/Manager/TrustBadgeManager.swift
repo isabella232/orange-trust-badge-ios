@@ -152,6 +152,13 @@ open class TrustBadgeConfig : NSObject{
     open lazy var terms = [Term]()
     
     /**
+     Closure called when a page is displayed (optional).
+     - Parameters:
+     - pageName: the name of the page
+     */
+    open var pageDidAppear: ((_ pageName: String) -> Void)?
+
+    /**
      Closure to get the localized string for a wording key.
      - Parameters:
      - key: The wording key to localize.
@@ -421,6 +428,10 @@ open class TrustBadgeManager: NSObject {
                 }
             }
         }
+    }
+
+    func pageDidAppear(_ pageName: String) -> Void {
+        config?.pageDidAppear?(pageName)
     }
 
     func localizedString(_ key: String) -> String {

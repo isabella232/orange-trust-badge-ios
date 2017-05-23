@@ -51,6 +51,11 @@ class TermsController: UITableViewController {
         players = [String : DailymotionPlayer]()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        TrustBadgeManager.sharedInstance.pageDidAppear("Terms")
+    }
+
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {

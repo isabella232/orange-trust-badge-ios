@@ -59,6 +59,11 @@ class LandingController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        TrustBadgeManager.sharedInstance.pageDidAppear("Landing")
+    }
+
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         self.manageLogoVisibility()
         self.tableView.reloadData()
