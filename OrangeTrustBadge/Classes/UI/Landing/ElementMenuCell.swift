@@ -57,18 +57,18 @@ class ElementMenuCell: UITableViewCell,UICollectionViewDataSource,UICollectionVi
         }()
         
         if element is Rating{
-            cell.status.text = Helper.localizedString(element.nameKey)
+            cell.status.text = TrustBadgeManager.sharedInstance.localizedString(element.nameKey)
             cell.status.textColor = UIColor.black
-            cell.accessibilityValue = "\(Helper.localizedString("rating-title")) : \(Helper.localizedString(element.nameKey))"
+            cell.accessibilityValue = "\(TrustBadgeManager.sharedInstance.localizedString("rating-title")) : \(TrustBadgeManager.sharedInstance.localizedString(element.nameKey))"
         } else {
-            cell.status.text = Helper.localizedString(statusKey)
+            cell.status.text = TrustBadgeManager.sharedInstance.localizedString(statusKey)
             cell.status.textColor = element.statusClosure() ? TrustBadgeManager.sharedInstance.config?.highlightColor : UIColor.black
-            let status = element.statusClosure() ? Helper.localizedString("accessibility-enabled") :  Helper.localizedString("accessibility-disabled")
-            cell.accessibilityValue = "\(Helper.localizedString(element.nameKey)) : \(status)"
+            let status = element.statusClosure() ? TrustBadgeManager.sharedInstance.localizedString("accessibility-enabled") :  TrustBadgeManager.sharedInstance.localizedString("accessibility-disabled")
+            cell.accessibilityValue = "\(TrustBadgeManager.sharedInstance.localizedString(element.nameKey)) : \(status)"
         }
         
-        cell.icon.image = element.statusClosure() ? Helper.loadImage(element.statusEnabledIconName) : Helper.loadImage(element.statusDisabledIconName)
-        cell.accessibilityHint = Helper.localizedString("accessibility-double-tap")
+        cell.icon.image = element.statusClosure() ? TrustBadgeManager.sharedInstance.loadImage(element.statusEnabledIconName) : TrustBadgeManager.sharedInstance.loadImage(element.statusDisabledIconName)
+        cell.accessibilityHint = TrustBadgeManager.sharedInstance.localizedString("accessibility-double-tap")
         
         return cell
     }

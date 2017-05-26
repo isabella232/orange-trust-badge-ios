@@ -152,6 +152,42 @@ open class TrustBadgeConfig : NSObject{
     open lazy var terms = [Term]()
     
     /**
+     Closure to get the localized string for a wording key.
+     - Parameters:
+     - key: The wording key to localize.
+     - Returns:
+     The localized string or `nil` to use the default localized string.
+     */
+    open var localizedString: (_ key: String) -> String? = { key in
+        let localizedStringFromAppBundle = NSLocalizedString(key, comment: "")
+        if localizedStringFromAppBundle != key {
+            return localizedStringFromAppBundle
+        }
+        let localizedStringFromTrustBadgeBundle = NSLocalizedString(key, tableName: nil, bundle: Bundle(for: TrustBadgeConfig.self), value: "", comment: "")
+        if localizedStringFromTrustBadgeBundle != key {
+            return localizedStringFromTrustBadgeBundle
+        }
+        return nil
+    }
+
+    /**
+     Closure to get the image for a name.
+     - Parameters:
+     - name: The name of the image to get
+     - Returns:
+     The image or `nil` to use the default image.
+     */
+    open var loadImage: (_ name : String) -> UIImage? = { name in
+        if let imageFromAppBundle = UIImage(named: name) {
+            return imageFromAppBundle
+        }
+        if let imageFromTrustBadgeBundle = UIImage(named: name, in: Bundle(for: TrustBadgeConfig.self), compatibleWith: nil) {
+            return imageFromTrustBadgeBundle
+        }
+        return nil
+    }
+
+    /**
      Convenience method to create the array of the default TrustBadgeElement that should be displayed in Main Elements section.
      
      - returns: an initialized array of TrustBadgeElement
@@ -226,7 +262,6 @@ open class TrustBadgeConfig : NSObject{
         }
         return searchedElements
     }
-    
 }
 
 /// TrustBadgeManager Class is the heart of OrangeTrustBadge
@@ -386,5 +421,21 @@ open class TrustBadgeManager: NSObject {
                 }
             }
         }
+    }
+
+    func localizedString(_ key: String) -> String {
+        guard var result = config?.localizedString(key) else {
+            return "To be localized key:\(key)"
+        }
+        result = result.replacingOccurrences(of: "$$cssStylesheet$$", with: TrustBadgeManager.sharedInstance.css)
+        result = result.replacingOccurrences(of: "$$applicationName$$", with: TrustBadgeManager.sharedInstance.appName)
+        return result
+    }
+
+    func loadImage(_ name: String) -> UIImage {
+        guard let result = config?.loadImage(name) else {
+            return UIImage(named: "permission-placeholder-icon", in: Bundle(for: TrustBadgeConfig.self), compatibleWith: nil)!
+        }
+        return result
     }
 }
