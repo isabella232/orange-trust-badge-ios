@@ -4,18 +4,18 @@ inhibit_all_warnings!
 use_frameworks!
 
 workspace 'OrangeTrustBadge'
-xcodeproj 'OrangeTrustBadge.xcodeproj'
-xcodeproj 'OrangeTrustBadgeDemo.xcodeproj'
+project 'OrangeTrustBadge.xcodeproj'
+project 'OrangeTrustBadgeDemo.xcodeproj'
 
 target :OrangeTrustBadge do
     platform :ios, '8.0'
-    xcodeproj 'OrangeTrustBadge.xcodeproj'
+    project 'OrangeTrustBadge.xcodeproj'
 end
 
 target :OrangeTrustBadgeDemo do
     platform :ios, '8.0'
     pod 'OrangeTrustBadge', :path => "./"
-    xcodeproj 'OrangeTrustBadgeDemo.xcodeproj'
+    project 'OrangeTrustBadgeDemo.xcodeproj'
 end
 
 post_install do |installer|

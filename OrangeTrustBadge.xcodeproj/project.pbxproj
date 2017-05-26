@@ -36,7 +36,6 @@
 		5462E19E1C20C788008B625A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5462E1A01C20C788008B625A /* Localizable.strings */; };
 		5463CA981C263EED004F9F22 /* OrangeTrustBadge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5463CA971C263EED004F9F22 /* OrangeTrustBadge.storyboard */; };
 		549A41751C205CC900BEDDE3 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549A41741C205CC900BEDDE3 /* Rating.swift */; };
-		549A41771C208ECE00BEDDE3 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549A41761C208ECE00BEDDE3 /* Helper.swift */; };
 		549B81541C585CD0006D2A59 /* TermVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B81531C585CD0006D2A59 /* TermVideoCell.swift */; };
 		54A0AF061C1F85370007684D /* PreDefinedElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A0AF051C1F85370007684D /* PreDefinedElement.swift */; };
 		54A0AF081C1F86760007684D /* CustomElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A0AF071C1F86760007684D /* CustomElement.swift */; };
@@ -71,7 +70,6 @@
 		5463CA971C263EED004F9F22 /* OrangeTrustBadge.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrangeTrustBadge.storyboard; sourceTree = "<group>"; };
 		5463CA9B1C263FC8004F9F22 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		549A41741C205CC900BEDDE3 /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
-		549A41761C208ECE00BEDDE3 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		549B81531C585CD0006D2A59 /* TermVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermVideoCell.swift; sourceTree = "<group>"; };
 		54A0AF051C1F85370007684D /* PreDefinedElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreDefinedElement.swift; sourceTree = "<group>"; };
 		54A0AF071C1F86760007684D /* CustomElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomElement.swift; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				5414BAD71C1F18F500087C67 /* TrustBadgeManager.swift */,
-				549A41761C208ECE00BEDDE3 /* Helper.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -398,7 +395,6 @@
 				54C6FFD81CB6B345001ED15C /* DailymotionPlayer.swift in Sources */,
 				54A0AF081C1F86760007684D /* CustomElement.swift in Sources */,
 				549A41751C205CC900BEDDE3 /* Rating.swift in Sources */,
-				549A41771C208ECE00BEDDE3 /* Helper.swift in Sources */,
 				54BFCC491C2618E300E05B67 /* TermsMenuCell.swift in Sources */,
 				5414BAE21C1F772D00087C67 /* TrustBadgeElement.swift in Sources */,
 				540B43171C21974500509A62 /* LandingController.swift in Sources */,

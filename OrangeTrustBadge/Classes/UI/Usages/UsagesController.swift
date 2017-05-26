@@ -111,7 +111,7 @@ class UsagesController: UITableViewController {
         
         if element.isExpanded{
             UIView.animate(withDuration: 0.4, animations: { () -> Void in
-                cell.disclosureArrow.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI))
+                cell.disclosureArrow.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
                 cell.descriptionLabel.isHidden = false
                 cell.descriptionLabelHiddingConstraint.priority = 250
                 cell.actionPanel.isHidden = !element.isConfigurable
@@ -120,7 +120,7 @@ class UsagesController: UITableViewController {
             
         } else{
             UIView.animate(withDuration: 0.4, animations: { () -> Void in
-                cell.disclosureArrow.transform = CGAffineTransform(rotationAngle: CGFloat(-2 * M_PI))
+                cell.disclosureArrow.transform = CGAffineTransform(rotationAngle: CGFloat(-2 * Double.pi))
                 cell.descriptionLabel.isHidden = true
                 cell.descriptionLabelHiddingConstraint.priority = 999
                 cell.actionPanel.isHidden = true
