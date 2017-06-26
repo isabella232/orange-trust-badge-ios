@@ -23,7 +23,7 @@
 
 import UIKit
 
-class PermissionsController: UITableViewController {
+class PermissionsController: UITableViewController, TableWithHeaderProtocol {
     
     
     @IBOutlet weak var header : Header!
@@ -39,10 +39,12 @@ class PermissionsController: UITableViewController {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         navigationItem.leftItemsSupplementBackButton = true
-        self.header.title.text = TrustBadgeManager.sharedInstance.localizedString("permission-header-title")
+        
         self.tableView.register(UINib(nibName: "ElementCell", bundle: Bundle(for: TrustBadgeConfig.self)), forCellReuseIdentifier: ElementCell.reuseIdentifier)
         tableView.estimatedRowHeight = 65
 
+        configureHeader(in: tableView, withTitle: TrustBadgeManager.sharedInstance.localizedString("permission-header-title"))
+        
         NotificationCenter.default.addObserver(self, selector: #selector(PermissionsController.refresh), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
     }
     
