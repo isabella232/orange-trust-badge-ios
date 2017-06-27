@@ -101,6 +101,7 @@ class LandingController: UITableViewController {
                 cell.overview.removeGestureRecognizer(mainGestureRecognizer!)
                 cell.overview.removeGestureRecognizer(usageGestureRecognizer!)
                 cell.overview.addGestureRecognizer(mainGestureRecognizer!)
+                cell.layoutIfNeeded() // needed for iOS 8 to allow multiline in "content" label
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: LandingController.defaultReuseIdentifier, for: indexPath)
@@ -118,6 +119,7 @@ class LandingController: UITableViewController {
                 cell.overview.removeGestureRecognizer(mainGestureRecognizer!)
                 cell.overview.removeGestureRecognizer(usageGestureRecognizer!)
                 cell.overview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(LandingController.goToUsageElements(_:))))
+                cell.layoutIfNeeded() // needed for iOS 8 to allow multiline in "content" label
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: LandingController.defaultReuseIdentifier, for: indexPath)
