@@ -568,7 +568,6 @@
                                         <constraint firstItem="YNG-lo-i7H" firstAttribute="top" secondItem="atk-4l-xPN" secondAttribute="bottom" constant="10" id="pN2-5X-Rit"/>
                                         <constraint firstItem="atk-4l-xPN" firstAttribute="top" secondItem="J8P-Jj-iEO" secondAttribute="top" constant="15" id="sQ0-ll-pAy"/>
                                         <constraint firstAttribute="trailing" secondItem="RYt-lV-afv" secondAttribute="trailing" constant="15" id="scF-Ef-Wdb"/>
-                                        <constraint firstItem="YNG-lo-i7H" firstAttribute="top" secondItem="atk-4l-xPN" secondAttribute="bottom" constant="10" id="v2b-w2-ffb"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
