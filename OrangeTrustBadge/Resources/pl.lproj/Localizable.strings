@@ -1,0 +1,91 @@
+/* 
+ *
+ * OrangeTrustBadge
+ *
+ * File name:   OrangeTrustBadge.strings
+ * Created:     15/12/2015
+ * Created by:  Romain BIARD
+ *
+ * Copyright 2015 Orange
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+*/
+/* Common Items */
+
+"status-enabled" = "Tak";
+"status-disabled" = "Nie";
+"update-permission" = "Zmień ustawienia";
+"accessibility-double-tap" = "Stuknij w ekran dwukrotnie, aby dowiedzieć się więcej";
+"accessibility-enabled" = "aktywuj";
+"accessibility-disabled" = "wyłączone";
+
+/* Rating Items */
+"rating-title" = "Zalecany wiek";
+"rating-level-4-name" = "4 lata +";
+"rating-level-4-description" = "Ograniczenie wiekowe wskazuje minimalny wiek uprawniający do korzystania z aplikacji w oparciu o treści w niej zawarte";
+"rating-level-9-name" = "9 lat +";
+"rating-level-9-description" = "Ta aplikacja może zawierać treści, które nie są odpowiednie dla osób poniżej 9 roku życia.";
+"rating-level-12-name" = "12 lat +";
+"rating-level-12-description" = "Ta aplikacja może zawierać treści, które nie są odpowiednie dla osób poniżej 12 roku życia.";
+"rating-level-17-name" = "17lat+";
+"rating-level-17-description" = "Ta aplikacja może zawierać treści, które nie są odpowiednie dla osób poniżej 17 roku życia.";
+
+/* Landing Page */
+"landing-title" = "Odznaka zaufania";
+"landing-header-title" = "Zweryfikuj stopień dostępu aplikacji do danych prywatnych ";
+"landing-permission-title" = "Twoje dane";
+"landing-permission-content" = "Z jakich danych korzysta aplikacja i w jakim celu?";
+"landing-usages-title" = "Korzystanie z aplikacji";
+"landing-usages-content" = "Jakie funkcje oraz zawartość posiada aplikacja?";
+"landing-terms-title" = "Nasze zobowiązania";
+"landing-terms-content" = "Pomożemy chronić Twoje \"cyfrowe\" życie oraz dane osobowe.";
+
+/* Permissions Page */
+"permission-title" = "Twoje dane";
+"permission-header-title" = "Z jakich danych korzysta aplikacja i w jakim celu?";
+"permission-main-section-name" = "Główne dane";
+"permission-others-section-name" = "Pozostałe dane oraz uprawnienia";
+"permission-identity-name" = "Moja tożsamość";
+"permission-identity-description" = "Aplikacja ma dostęp do informacji dotyczących Twoich kont/profili. Można więc w celach identyfikacyjnych wykorzystać na przykład nazwisko, datę urodzenia, adres e-mail. ";
+"permission-location-name" = "Lokalizacja";
+"permission-location-description" = "Usługa lokalizacji pozwala aplikacjom korzystanie z informacji pochodzących z sieci komórkowych, Wi-Fi i GPS, w celu określania przybliżonej lokalizacji. Dane osobowe nie są zbierane.";
+"permission-photo-library-name" = "Zdjęcia i filmy";
+"permission-photo-library-description" = "Aplikacja ma dostęp do plików zapisanych na urządzeniu. Dostęp pozwala aplikacji na odczyt, modyfikację oraz usunięcie tych plików.";
+"permission-contacts-name" = "Kontakty";
+"permission-contacts-description" = "Aplikacja może uzyskać dostęp do Twoich kontaktów, pozwala na ich dodawanie lub edycję.";
+"permission-data-usage-name" = "Transmisja danych";
+"permission-data-usage-description" = "Aplikacja zbiera informacje na temat jej użycia i są one wysyłane do analizy statystycznej w celu udoskonalenia produktu. Informacje są zbierane i przetwarzane zgodnie z obowiązującymi przepisami prawa. W dowolnym momencie masz możliwość wyłączenia zgody na zbieranie informacji.";
+"permission-camera-name" = "Aparat/kamera";
+"permission-camera-description" = "Aplikacja może korzystać z kamery/aparatu urządzenia. Dostęp pozwala aplikacji na robienie zdjęć oraz nagrywanie filmów.";
+"permission-calendar-name" = "Kalendarz";
+"permission-calendar-description" = "Aplikacja ma dostęp do informacji zapisanych w Kalendarzu i umożliwia ich przegląd.";
+"permission-microphone-name" = "Mikrofon";
+"permission-microphone-description" = "Aplikacja może korzystać z mikrofonu urządzenia. Dostęp do mikrofonu może umożliwić aplikacji nagrywanie treści audio.";
+"permission-phone-name" = "telefonia IP";
+"permission-phone-description" = "Aplikacja ma dostęp do danych identyfikacyjnych urządzenia oraz do numeru telefonu.";
+"permission-body-sensors-name" = "Podłączone urządzenia";
+"permission-body-sensors-description" = "Aplikacja ma dostęp do informacji zgromadzonych na urządzeniach podłączonych/zsynchronizowanych z telefonem komórkowym. ";
+
+/* Usages Page */
+"usages-title" = "Korzystanie z aplikacji";
+"usages-header-title" = "Co potrafi aplikacja Mój FunBox?";
+"permission-social-sharing-name" = "Sieci społecznościowe";
+"permission-social-sharing-description" = "Aplikacja może przekierowywać do serwisów społecznościowych takich jak Facebook czy Twitter.";
+"permission-inapp-purchase-name" = "Zakupy w aplikacji";
+"permission-inapp-purchase-description" = "Aplikacja umożliwia zakup dodatkowych treści lub usług.";
+"permission-advertising-name" = "Reklamy";
+"permission-advertising-description" = "Aplikacja może zawierać reklamy (za pomocą plików cookie), aby zaoferować Państwu produkty i usługi dostosowane do indywidualnych potrzeb i zainteresowań. ";
+
+/* Terms Page */
+"terms-title" = "Nasze zobowiązania";
+"terms-header-title" = "Pomożemy chronić Twoje \"cyfrowe\" życie oraz dane osobowe.";
