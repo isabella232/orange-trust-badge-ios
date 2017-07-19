@@ -46,6 +46,11 @@ class UsagesController: UITableViewController {
         NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_USAGE_ENTER), object: nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        TrustBadgeManager.sharedInstance.pageDidAppear("Usages")
+    }
+
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
