@@ -36,3 +36,17 @@ class Header: UIView {
         }
     }
 }
+
+extension UITableView {
+
+    func configure(header: Header, with title: String, and titleColor: UIColor? = nil) {
+        header.title.text = title
+        header.title.textColor = titleColor
+        // get a frame with the right height and make it the frame of the header
+        self.layoutIfNeeded()
+        header.title.preferredMaxLayoutWidth = header.title.frame.width // needed only for iOS 8
+        var headerFrame = header.frame
+        headerFrame.size.height = header.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+        header.frame = headerFrame
+    }
+}

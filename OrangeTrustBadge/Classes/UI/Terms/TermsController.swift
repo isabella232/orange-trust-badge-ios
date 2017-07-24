@@ -37,8 +37,8 @@ class TermsController: UITableViewController {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         navigationItem.leftItemsSupplementBackButton = true
-        self.header.title.text = TrustBadgeManager.sharedInstance.localizedString("terms-header-title")
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = 100       
+        tableView.configure(header: header, with: TrustBadgeManager.sharedInstance.localizedString("terms-header-title"))
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -53,9 +53,8 @@ class LandingController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        header.title.text = TrustBadgeManager.sharedInstance.localizedString("landing-header-title")
-        header.title.textColor = TrustBadgeManager.sharedInstance.config?.headerTextColor
         self.manageLogoVisibility()
+        tableView.configure(header: header, with: TrustBadgeManager.sharedInstance.localizedString("landing-header-title"), and: TrustBadgeManager.sharedInstance.config?.headerTextColor)
         self.tableView.reloadData()
     }
     
