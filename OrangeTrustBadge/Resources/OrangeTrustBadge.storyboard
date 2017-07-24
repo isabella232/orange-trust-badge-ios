@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UuF-5s-lpI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UuF-5s-lpI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,6 +40,7 @@
                             </subviews>
                             <color key="backgroundColor" red="0.22352941179999999" green="0.69019607839999997" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="wEj-KN-Lhq" secondAttribute="bottom" id="7Qf-Bb-Mtq"/>
                                 <constraint firstItem="Na8-f2-KZs" firstAttribute="top" secondItem="8QZ-Vw-0cG" secondAttribute="top" constant="15" id="DlT-sg-2iJ"/>
                                 <constraint firstItem="wEj-KN-Lhq" firstAttribute="top" secondItem="8QZ-Vw-0cG" secondAttribute="top" id="OZd-NF-CbF"/>
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Na8-f2-KZs" secondAttribute="bottom" constant="15" id="fR7-vM-AW8"/>
@@ -104,6 +105,7 @@
                                 <constraint firstItem="bsy-Pt-UyS" firstAttribute="top" secondItem="U0d-np-bI1" secondAttribute="top" id="LW4-GT-Yxr"/>
                                 <constraint firstAttribute="trailing" secondItem="bsy-Pt-UyS" secondAttribute="trailing" id="Naf-K4-qPz"/>
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="LdS-fQ-9gu" secondAttribute="bottom" constant="15" id="XRb-vL-DLU"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bsy-Pt-UyS" secondAttribute="bottom" id="pQb-2C-Gua"/>
                             </constraints>
                             <connections>
                                 <outlet property="hiddingConstraint" destination="mLj-t6-GIh" id="1lS-Vf-JEe"/>
@@ -160,6 +162,7 @@
                                 <constraint firstItem="aC9-4o-5Hq" firstAttribute="top" secondItem="nry-vZ-74Z" secondAttribute="top" id="LE9-Nh-FrO"/>
                                 <constraint firstItem="HCv-7k-PKV" firstAttribute="top" secondItem="nry-vZ-74Z" secondAttribute="top" constant="15" id="dMs-rR-Lzp"/>
                                 <constraint firstItem="aC9-4o-5Hq" firstAttribute="leading" secondItem="HCv-7k-PKV" secondAttribute="trailing" constant="15" id="fLz-ac-XSd"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="aC9-4o-5Hq" secondAttribute="bottom" id="gnx-bp-E3k"/>
                                 <constraint firstAttribute="trailing" secondItem="aC9-4o-5Hq" secondAttribute="trailing" id="hDh-Gg-Luq"/>
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HCv-7k-PKV" secondAttribute="bottom" constant="15" id="yKL-PW-fc7"/>
                             </constraints>
@@ -174,7 +177,7 @@
                                 <rect key="frame" x="0.0" y="158" width="375" height="167"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GMf-L2-gNB" id="1iA-8c-3Ib">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="166"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="167"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3n-K1-w6M">
@@ -222,7 +225,7 @@
                                 <rect key="frame" x="0.0" y="325" width="375" height="360"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OhJ-YG-6db" id="yB4-uA-hSO">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="359"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="360"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Slj-u6-7a4">
@@ -370,6 +373,7 @@
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hcO-M2-S3Q" secondAttribute="bottom" constant="15" id="5Ns-0l-HBh"/>
                                 <constraint firstAttribute="trailing" secondItem="v8I-7p-b4o" secondAttribute="trailing" id="7As-of-wRL"/>
                                 <constraint firstItem="hcO-M2-S3Q" firstAttribute="top" secondItem="YZn-dP-b9m" secondAttribute="top" constant="15" id="BNF-3g-UeP"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="v8I-7p-b4o" secondAttribute="bottom" id="E5G-gn-uJa"/>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hcO-M2-S3Q" secondAttribute="trailing" constant="15" id="EDo-AB-cUr"/>
                                 <constraint firstItem="v8I-7p-b4o" firstAttribute="leading" secondItem="hcO-M2-S3Q" secondAttribute="trailing" constant="15" id="JNU-qB-Noj"/>
                                 <constraint firstItem="v8I-7p-b4o" firstAttribute="top" secondItem="YZn-dP-b9m" secondAttribute="top" id="JnD-9I-SrA"/>
@@ -604,7 +608,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nzi-1W-rUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1268" y="-279"/>
+            <point key="canvasLocation" x="1268" y="-279.31034482758622"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="UGy-Rg-kk6">
