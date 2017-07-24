@@ -23,7 +23,7 @@
 
 import UIKit
 
-class LandingController: UITableViewController, TableWithHeaderProtocol {
+class LandingController: UITableViewController {
     
     static let defaultReuseIdentifier = "DefaultCell"
     
@@ -54,7 +54,7 @@ class LandingController: UITableViewController, TableWithHeaderProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.manageLogoVisibility()
-        configureHeader(in: tableView, withTitle: TrustBadgeManager.sharedInstance.localizedString("landing-header-title"), ofColor: TrustBadgeManager.sharedInstance.config?.headerTextColor)
+        tableView.configure(header: header, with: TrustBadgeManager.sharedInstance.localizedString("landing-header-title"), and: TrustBadgeManager.sharedInstance.config?.headerTextColor)
         self.tableView.reloadData()
     }
     

@@ -23,7 +23,7 @@
 
 import UIKit
 
-class TermsController: UITableViewController, TableWithHeaderProtocol {
+class TermsController: UITableViewController {
     
     @IBOutlet weak var header : Header!
     var players = [String : DailymotionPlayer]()
@@ -38,7 +38,7 @@ class TermsController: UITableViewController, TableWithHeaderProtocol {
         navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         navigationItem.leftItemsSupplementBackButton = true
         tableView.estimatedRowHeight = 100       
-        configureHeader(in: tableView, withTitle: TrustBadgeManager.sharedInstance.localizedString("terms-header-title"))
+        tableView.configure(header: header, with: TrustBadgeManager.sharedInstance.localizedString("terms-header-title"))
     }
     
     override func viewWillAppear(_ animated: Bool) {

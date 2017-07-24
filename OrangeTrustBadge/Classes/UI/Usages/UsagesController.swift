@@ -23,7 +23,7 @@
 
 import UIKit
 
-class UsagesController: UITableViewController, TableWithHeaderProtocol {
+class UsagesController: UITableViewController {
     
     @IBOutlet weak var header : Header!
     
@@ -38,7 +38,7 @@ class UsagesController: UITableViewController, TableWithHeaderProtocol {
         navigationItem.leftItemsSupplementBackButton = true
         self.tableView.register(UINib(nibName: "ElementCell", bundle: Bundle(for: TrustBadgeConfig.self)), forCellReuseIdentifier: ElementCell.reuseIdentifier)
         tableView.estimatedRowHeight = 65       
-        configureHeader(in: tableView, withTitle: TrustBadgeManager.sharedInstance.localizedString("usages-header-title"))
+        tableView.configure(header: header, with: TrustBadgeManager.sharedInstance.localizedString("usages-header-title"))
     }
     
     override func viewWillAppear(_ animated: Bool) {
