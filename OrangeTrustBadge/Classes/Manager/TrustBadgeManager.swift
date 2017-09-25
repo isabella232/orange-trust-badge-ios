@@ -61,19 +61,19 @@ open class TrustBadgeConfig : NSObject{
      config.isTrackingEnabled = {() in return NSUserDefaults.standardUserDefaults().boolForKey("TRACKING_KEY")}
      ```
      */
-    open var isTrackingEnabled : (Void) -> Bool = {() in return false}
+    open var isTrackingEnabled : () -> Bool = {() in return false}
     
     /// (Optional) Closure giving Identity usage (Identity ElementType) status (enabled/disabled) (Default : disabled)
-    open var isIdentityUsed : (Void) -> Bool = {() in return true}
+    open var isIdentityUsed : () -> Bool = {() in return true}
     
     /// (Optional) Closure giving Social Sharing (Social Sharing ElementType) status (enabled/disabled) (Default : disabled)
-    open var isSocialSharingUsed : (Void) -> Bool = {() in return false}
+    open var isSocialSharingUsed : () -> Bool = {() in return false}
     
     /// (Optional) Closure giving InApp Purchase (InApp Purchase ElementType) status (enabled/disabled) (Default : disabled)
-    open var isInappPurchaseUsed : (Void) -> Bool = {() in return false}
+    open var isInappPurchaseUsed : () -> Bool = {() in return false}
     
     /// (Optional) Closure giving Advertisement (Advertisement ElementType) status (enabled/disabled) (Default : disabled)
-    open var isAdvertisementUsed : (Void) -> Bool = {() in return false}
+    open var isAdvertisementUsed : () -> Bool = {() in return false}
     
     /** (Optional) Closure allowing to update the Tracking (Data Usage ElementType) status (enabled/disabled).
      
@@ -409,7 +409,7 @@ open class TrustBadgeManager: NSObject {
                         preDefinedElement.statusClosure = {() in return ![AVAudioSessionRecordPermission.denied,AVAudioSessionRecordPermission.undetermined].contains(AVAudioSession.sharedInstance().recordPermission())}
                         preDefinedElement.isConfigurable = true
                     case .camera :
-                        preDefinedElement.statusClosure = {() in return ![AVAuthorizationStatus.denied,AVAuthorizationStatus.notDetermined,AVAuthorizationStatus.restricted].contains(AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo))}
+                        preDefinedElement.statusClosure = {() in return ![AVAuthorizationStatus.denied,AVAuthorizationStatus.notDetermined,AVAuthorizationStatus.restricted].contains(AVCaptureDevice.authorizationStatus(for: AVMediaType.video))}
                         preDefinedElement.isConfigurable = true
                     case .dataUsage :
                         preDefinedElement.isToggable = true

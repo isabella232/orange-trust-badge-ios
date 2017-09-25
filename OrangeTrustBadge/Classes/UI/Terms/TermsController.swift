@@ -91,7 +91,7 @@ class TermsController: UITableViewController {
             let content = TrustBadgeManager.sharedInstance.localizedString(term.contentKey)
             let font = UIFont.systemFont(ofSize: 15)
             let formattedContent = String(format: content + "<style>body{font-family: '%@'; font-size:%@px;}</style>", arguments: [font.fontName, font.pointSize.description])
-            let attributedContent = try! NSAttributedString(data: formattedContent.data(using: String.Encoding.unicode)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+            let attributedContent = try! NSAttributedString(data: formattedContent.data(using: String.Encoding.unicode)!, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
             
             cell.content.attributedText = attributedContent
             return cell

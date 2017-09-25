@@ -35,11 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().barTintColor = UIColor.black
         UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
         
         // Request Access to MediaLibrary in order to show them in iOS Preferences Panel
         PHPhotoLibrary.requestAuthorization({(status:PHAuthorizationStatus) in })
-        AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo) { (result) -> Void in }
+        AVCaptureDevice.requestAccess(for: AVMediaType.video) { (result) -> Void in }
 
         // Request Access to UserLocation in order to show them in iOS Preferences Panel
         locationManager.requestAlwaysAuthorization()

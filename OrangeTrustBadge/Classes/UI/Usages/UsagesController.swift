@@ -74,7 +74,7 @@ class UsagesController: UITableViewController {
         let description = TrustBadgeManager.sharedInstance.localizedString(element.descriptionKey)
         var attributeddDescription : NSAttributedString?
         do {
-            attributeddDescription = try NSAttributedString(data: description.data(using: String.Encoding.unicode)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+            attributeddDescription = try NSAttributedString(data: description.data(using: String.Encoding.unicode)!, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
             cell.descriptionLabel.attributedText = attributeddDescription
         } catch {
             cell.descriptionLabel.text = description
@@ -98,19 +98,19 @@ class UsagesController: UITableViewController {
             cell.toggle.isHidden = false
             cell.toggle.isAccessibilityElement = true
             cell.statusLabel.isHidden = true
-            cell.switchHiddingConstraint.priority = 250
+            cell.switchHiddingConstraint.priority = UILayoutPriority(rawValue: 250)
         } else {
             cell.toggle.isHidden = true
             cell.toggle.isAccessibilityElement = false
             cell.statusLabel.isHidden = false
-            cell.switchHiddingConstraint.priority = 999
+            cell.switchHiddingConstraint.priority = UILayoutPriority(rawValue: 999)
         }
         
         if element.showStatus{
-            cell.statusHiddingConstraint.priority = 250
+            cell.statusHiddingConstraint.priority = UILayoutPriority(rawValue: 250)
             cell.statusLabel.isHidden = false
         } else {
-            cell.statusHiddingConstraint.priority = 750
+            cell.statusHiddingConstraint.priority = UILayoutPriority(rawValue: 750)
             cell.statusLabel.isHidden = true
         }
         
@@ -118,18 +118,18 @@ class UsagesController: UITableViewController {
             UIView.animate(withDuration: 0.4, animations: { () -> Void in
                 cell.disclosureArrow.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
                 cell.descriptionLabel.isHidden = false
-                cell.descriptionLabelHiddingConstraint.priority = 250
+                cell.descriptionLabelHiddingConstraint.priority = UILayoutPriority(rawValue: 250)
                 cell.actionPanel.isHidden = !element.isConfigurable
-                cell.actionButtonHiddingConstraint.priority = element.isConfigurable ? 250 : 999
+                cell.actionButtonHiddingConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.RawValue(element.isConfigurable ? 250 : 999))
             })
             
         } else{
             UIView.animate(withDuration: 0.4, animations: { () -> Void in
                 cell.disclosureArrow.transform = CGAffineTransform(rotationAngle: CGFloat(-2 * Double.pi))
                 cell.descriptionLabel.isHidden = true
-                cell.descriptionLabelHiddingConstraint.priority = 999
+                cell.descriptionLabelHiddingConstraint.priority = UILayoutPriority(rawValue: 999)
                 cell.actionPanel.isHidden = true
-                cell.actionButtonHiddingConstraint.priority = 999
+                cell.actionButtonHiddingConstraint.priority = UILayoutPriority(rawValue: 999)
             })
         }
         

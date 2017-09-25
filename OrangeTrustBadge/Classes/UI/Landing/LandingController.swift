@@ -75,10 +75,10 @@ class LandingController: UITableViewController {
         if let header = self.header{
             if (self.splitViewController?.traitCollection.horizontalSizeClass != .compact) {
                 header.logo.isHidden = true
-                header.hiddingConstraint.priority = 999
+                header.hiddingConstraint.priority = UILayoutPriority(rawValue: 999)
             } else {
                 header.logo.isHidden = false
-                header.hiddingConstraint.priority = 250
+                header.hiddingConstraint.priority = UILayoutPriority(rawValue: 250)
             }
         }
     }

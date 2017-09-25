@@ -35,7 +35,7 @@ open class TrustBadgeElement: NSObject {
     /// Closure allowing to update current element's status
     open var toggleClosure : (UISwitch)-> Void = {(toggleSwitch) in }
     /// Closure giving element's status (enabled/disabled)
-    open var statusClosure : (Void) -> Bool = {() in return false}
+    open var statusClosure : () -> Bool = {() in return false}
     /// Flag telling if OrangeTrustBadge should display the current status the element
     open  var showStatus : Bool = true
     /// Flag telling if OrangeTrustBadge should display a link to iOS Preferences to enable/disable it.
