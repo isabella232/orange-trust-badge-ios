@@ -145,6 +145,7 @@
 				en,
 				Base,
 				fr,
+				ar,
 			);
 			mainGroup = 542B754A1C1F154C003C489A;
 			productRefGroup = 542B75541C1F154C003C489A /* Products */;
