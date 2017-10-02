@@ -289,7 +289,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = "Romain BIARD";
+				ORGANIZATIONNAME = Orange;
 				TargetAttributes = {
 					497C9D011CB68FFF00816CE5 = {
 						CreatedOnToolsVersion = 7.3;
@@ -306,6 +306,7 @@
 			knownRegions = (
 				en,
 				fr,
+				ar,
 			);
 			mainGroup = 542B75261C1F152D003C489A;
 			productRefGroup = 542B75311C1F152D003C489A /* Products */;

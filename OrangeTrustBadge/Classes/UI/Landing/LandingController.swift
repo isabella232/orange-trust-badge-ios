@@ -43,6 +43,9 @@ class LandingController: UITableViewController {
         if UIDevice.current.userInterfaceIdiom == .pad{
             self.clearsSelectionOnViewWillAppear = false
         }
+        if #available(iOS 11.0, *) {
+            self.tableView.contentInsetAdjustmentBehavior = .never
+        }
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: LandingController.defaultReuseIdentifier)
         tableView.estimatedRowHeight = 70
         NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_ENTER), object: nil)
