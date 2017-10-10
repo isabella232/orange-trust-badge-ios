@@ -46,6 +46,10 @@ class PermissionsController: UITableViewController {
         tableView.configure(header: header, with: TrustBadgeManager.sharedInstance.localizedString("permission-header-title"))
         
         NotificationCenter.default.addObserver(self, selector: #selector(PermissionsController.refresh), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+        if #available(iOS 11, *) {
+            self.tableView.contentInsetAdjustmentBehavior = .never
+        }
     }
     
     deinit {

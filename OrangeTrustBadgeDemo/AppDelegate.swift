@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let config = TrustBadgeConfig()
         
         // uncomment this section to let TrustBadge know the status of UserTracking (DataUsage) and how to update its state
-        config.isTrackingEnabled = {() in
+        config.isTrackingEnabled = { 
             // Call here your tracking SDK API to get the current Status
             return UserDefaults.standard.bool(forKey: "TRACKING_KEY")}
         

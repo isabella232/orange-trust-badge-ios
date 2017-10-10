@@ -39,6 +39,10 @@ class TermsController: UITableViewController {
         navigationItem.leftItemsSupplementBackButton = true
         tableView.estimatedRowHeight = 100       
         tableView.configure(header: header, with: TrustBadgeManager.sharedInstance.localizedString("terms-header-title"))
+
+        if #available(iOS 11, *) {
+            self.tableView.contentInsetAdjustmentBehavior = .never
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
