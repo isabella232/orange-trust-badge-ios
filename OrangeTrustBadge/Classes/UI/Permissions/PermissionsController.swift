@@ -87,8 +87,19 @@ class PermissionsController: UITableViewController {
         
         cell.nameLabel.text = TrustBadgeManager.sharedInstance.localizedString(element.nameKey)
         let description = TrustBadgeManager.sharedInstance.localizedString(element.descriptionKey)
-        let attributeddDescription = try! NSAttributedString(data: description.data(using: String.Encoding.unicode)!, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
-        cell.descriptionLabel.attributedText = attributeddDescription
+        if description.contains("<html") {
+            var attributeddDescription : NSAttributedString?
+            do {
+                attributeddDescription = try NSAttributedString(data: description.data(using: String.Encoding.unicode)!, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+                cell.descriptionLabel.attributedText = attributeddDescription
+            } catch {
+                cell.descriptionLabel.text = description
+            }
+        } else {
+            cell.descriptionLabel.text = description
+        }
+
+                
         cell.descriptionLabel.font = UIFont.systemFont(ofSize: 14)
         
         let statusKey :String = {
