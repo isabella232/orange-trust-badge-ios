@@ -56,7 +56,7 @@ import Foundation
 }
 
 /// This class aims to encapsulate all informations about a rating (name, description and logo)
-open class Rating: TrustBadgeElement {
+@objc open class Rating: TrustBadgeElement {
     
     /// Rating's type
     var type : RatingType
@@ -68,7 +68,7 @@ open class Rating: TrustBadgeElement {
      
      - returns: a properly initialized rating object
      */
-    public init(type : RatingType) {
+    @objc public init(type : RatingType) {
         self.type = type
         super.init()
         self.nameKey = "rating-\(type.name())-name"

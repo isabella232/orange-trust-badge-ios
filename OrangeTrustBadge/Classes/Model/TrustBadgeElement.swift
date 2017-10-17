@@ -29,25 +29,25 @@ import Foundation
  
  Implementations are available through BasicPermission and CustomPermission class
  */
-open class TrustBadgeElement: NSObject {
+@objc open class TrustBadgeElement: NSObject {
     /// Flag telling if OrangeTrustBadge should display a switch to enable/disable the element
-    open var isToggable : Bool = false
+    @objc open var isToggable : Bool = false
     /// Closure allowing to update current element's status
-    open var toggleClosure : (UISwitch)-> Void = {(toggleSwitch) in }
+    @objc open var toggleClosure : (UISwitch)-> Void = {(toggleSwitch) in }
     /// Closure giving element's status (enabled/disabled)
-    open var statusClosure : () -> Bool = {() in return false}
+    @objc open var statusClosure : () -> Bool = {() in return false}
     /// Flag telling if OrangeTrustBadge should display the current status the element
-    open  var showStatus : Bool = true
+    @objc open  var showStatus : Bool = true
     /// Flag telling if OrangeTrustBadge should display a link to iOS Preferences to enable/disable it.
-    open var isConfigurable : Bool = false
+    @objc open var isConfigurable : Bool = false
     /// Localized Key for element's name
-    open var nameKey : String = ""
+    @objc open var nameKey : String = ""
     /// Localized Key for element's description
-    open var descriptionKey :String = ""
+    @objc open var descriptionKey :String = ""
     /// Icon name for element's enabled state
-    open var statusEnabledIconName : String = ""
+    @objc open var statusEnabledIconName : String = ""
     /// Icon name for element's disabled state
-    open var statusDisabledIconName : String = ""
+    @objc open var statusDisabledIconName : String = ""
     /// Flag telling if the corresponding UI is expanded (display details)
-    open var isExpanded : Bool = false
+    @objc open var isExpanded : Bool = false
 }

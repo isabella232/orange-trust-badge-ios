@@ -24,7 +24,7 @@
 import Foundation
 
 /// A CustomElement is a configurable/custom element, often related to your own application logic.
-open class CustomElement: TrustBadgeElement {
+@objc open class CustomElement: TrustBadgeElement {
     /**
      Initializer of of CustomElement
      
@@ -35,7 +35,7 @@ open class CustomElement: TrustBadgeElement {
      
      - returns: initialized CustomElement object
      */
-    public init(nameKey : String, descriptionKey : String, statusEnabledIconName : String, statusDisabledIconName : String){
+    @objc public init(nameKey : String, descriptionKey : String, statusEnabledIconName : String, statusDisabledIconName : String){
         super.init()
         self.nameKey = nameKey
         self.descriptionKey = descriptionKey

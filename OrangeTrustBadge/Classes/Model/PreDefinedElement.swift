@@ -78,13 +78,13 @@ import Foundation
 }
 
 /// A PreDefinedElement is a pre-defined TrustBadgeElement, often backed by a system-permission (e.g. Location for instance)
-open class PreDefinedElement: TrustBadgeElement {
+@objc open class PreDefinedElement: TrustBadgeElement {
     
     /// Type of a PreDefinedElement
     let type : ElementType
     
     /// Flag telling if the manager should autoConfigure the element
-    open var shouldBeAutoConfigured : Bool = true
+    @objc open var shouldBeAutoConfigured : Bool = true
     
     /**
      Standard initializer
@@ -92,7 +92,7 @@ open class PreDefinedElement: TrustBadgeElement {
      - parameter type: desired ElementType
      - returns: initialized PreDefinedElement object
      */
-    public init(type : ElementType) {
+    @objc public init(type : ElementType) {
         self.type = type
         super.init()
         nameKey = "permission-\(self.type.name())-name"
