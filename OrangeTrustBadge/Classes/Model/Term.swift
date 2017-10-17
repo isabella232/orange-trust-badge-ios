@@ -39,14 +39,14 @@ import Foundation
 }
 
 /// A Term is a block displayed in "Terms" section
-open class Term: NSObject {
+@objc open class Term: NSObject {
     
     /// Type of a Term
-    open var type : TermType
+    @objc open var type : TermType
     /// Localized Key for Term's title
-    open var titleKey : String
+    @objc open var titleKey : String
     /// Localized Key for Term's content (could include HTML content)
-    open var contentKey :String
+    @objc open var contentKey :String
     
     /**
      Initializer
@@ -57,7 +57,7 @@ open class Term: NSObject {
      
      - returns: initialized Term object
      */
-    public init(type : TermType, titleKey : String, contentKey : String) {
+    @objc public init(type : TermType, titleKey : String, contentKey : String) {
         self.type = type
         self.titleKey = titleKey
         self.contentKey = contentKey
