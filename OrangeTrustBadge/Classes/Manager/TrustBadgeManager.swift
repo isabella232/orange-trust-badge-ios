@@ -29,28 +29,28 @@ import Contacts
 import AVKit
 
 /// TrustBadgeConfig aims to encapsulate all the configuration variables and custom handlers of TrustBadgeManager
-open class TrustBadgeConfig : NSObject{
+@objc open class TrustBadgeConfig : NSObject{
     
     /// Name of the app, (Default : Bundle Display Name of host app)
-    open var appName : String?
+    @objc open var appName : String?
     
     /// (Optional) Rating of your application (Default : 4+)
-    open var rating = Rating(type: RatingType.level4)
+    @objc open var rating = Rating(type: RatingType.level4)
     
     /// (Optional) UIColor used to highlight element with a positive status (default black)
-    open var highlightColor = UIColor.black
+    @objc open var highlightColor = UIColor.black
     
     /// (Optional) background UIColor of the header (default blue)
-    open var headerColor = UIColor(red: 57/256, green: 176/256, blue: 168/256, alpha: 1)
+    @objc open var headerColor = UIColor(red: 57/256, green: 176/256, blue: 168/256, alpha: 1)
     
     /// (Optional) text UIcolor of the header
-    open var headerTextColor: UIColor = .black
+    @objc open var headerTextColor: UIColor = .black
     
     /// (Optional) UIImage use for the logo of the header
-    open var headerLogo : UIImage?
+    @objc open var headerLogo : UIImage?
 
     /// (Optional) Status bar style (default Application's default statusBarStyle)
-    open var statusBarStyle = UIApplication.shared.statusBarStyle
+    @objc open var statusBarStyle = UIApplication.shared.statusBarStyle
     
     /** (Optional) Closure giving Tracking (Data Usage Permission) status (enabled/disabled) (Default : disabled)
      
@@ -61,19 +61,19 @@ open class TrustBadgeConfig : NSObject{
      config.isTrackingEnabled = {() in return NSUserDefaults.standardUserDefaults().boolForKey("TRACKING_KEY")}
      ```
      */
-    open var isTrackingEnabled : () -> Bool = {() in return false}
+    @objc open var isTrackingEnabled : () -> Bool = {() in return false}
     
     /// (Optional) Closure giving Identity usage (Identity ElementType) status (enabled/disabled) (Default : disabled)
-    open var isIdentityUsed : () -> Bool = {() in return true}
+    @objc open var isIdentityUsed : () -> Bool = {() in return true}
     
     /// (Optional) Closure giving Social Sharing (Social Sharing ElementType) status (enabled/disabled) (Default : disabled)
-    open var isSocialSharingUsed : () -> Bool = {() in return false}
+    @objc open var isSocialSharingUsed : () -> Bool = {() in return false}
     
     /// (Optional) Closure giving InApp Purchase (InApp Purchase ElementType) status (enabled/disabled) (Default : disabled)
-    open var isInappPurchaseUsed : () -> Bool = {() in return false}
+    @objc open var isInappPurchaseUsed : () -> Bool = {() in return false}
     
     /// (Optional) Closure giving Advertisement (Advertisement ElementType) status (enabled/disabled) (Default : disabled)
-    open var isAdvertisementUsed : () -> Bool = {() in return false}
+    @objc open var isAdvertisementUsed : () -> Bool = {() in return false}
     
     /** (Optional) Closure allowing to update the Tracking (Data Usage ElementType) status (enabled/disabled).
      
@@ -84,7 +84,7 @@ open class TrustBadgeConfig : NSObject{
      config.updateTracking = {(Bool status) in NSUserDefaults.standardUserDefaults().setBool(status, forKey: "TRACKING_KEY")}
      ```
      */
-    open var updateTracking : (UISwitch)-> Void = {(toggle) in }
+    @objc open var updateTracking : (UISwitch)-> Void = {(toggle) in }
     
     /** (Optional) List of TrustBadgeElements that should be displayed in "Main Elements" section. If you append an TrustBadgeElement to the Array, it will add it at the end of it. If you want to ave full control of what should be displayed, please assign a new array to this property. This section must contains at least 1 element to let TrustBadgeManager initialize properly.
      
@@ -102,7 +102,7 @@ open class TrustBadgeConfig : NSObject{
      config.mainElements.append(calendarElement)
      ```
      */
-    open lazy var mainElements  : [TrustBadgeElement] = self.initializeMainElements()
+    @objc open lazy var mainElements  : [TrustBadgeElement] = self.initializeMainElements()
     
     /** (Optional) List of TrustBadgeElements that should be displayed in "Other Elements" section. If you append an TrustBadgeElement to the Array, it will add it at the end of it. If you want to ave full control of what should be displayed, please assign a new array to this property. If no elements are in the list, this section will not be displayed. (empty by default)
      
@@ -120,7 +120,7 @@ open class TrustBadgeConfig : NSObject{
      config.otherElements.append(calendarElement)
      ```
      */
-    open lazy var otherElements : [TrustBadgeElement] = self.initializeOtherElements()
+    @objc open lazy var otherElements : [TrustBadgeElement] = self.initializeOtherElements()
     
     /** (Optional) List of TrustBadgeElements that should be displayed in "Usage" section. If you append an TrustBadgeElement to the Array, it will add it at the end of it. If you want to ave full control of what should be displayed, please assign a new array to this property.
      
@@ -138,7 +138,7 @@ open class TrustBadgeConfig : NSObject{
      config.usageElements.append(calendarElement)
      ```
      */
-    open lazy var usageElements : [TrustBadgeElement] = self.initializeUsageElements()
+    @objc open lazy var usageElements : [TrustBadgeElement] = self.initializeUsageElements()
     
     /** (Optional) List of Terms and Conditions that should be displayed in "terms and conditions" section. (empty by default)
      
@@ -149,14 +149,14 @@ open class TrustBadgeConfig : NSObject{
      config.terms = [customTerm]
      ```
      */
-    open lazy var terms = [Term]()
+    @objc open lazy var terms = [Term]()
     
     /**
      Closure called when a page is displayed (optional).
      - Parameters:
      - pageName: the name of the page
      */
-    open var pageDidAppear: ((_ pageName: String) -> Void)?
+    @objc open var pageDidAppear: ((_ pageName: String) -> Void)?
 
     /**
      Closure to get the localized string for a wording key.
@@ -165,7 +165,7 @@ open class TrustBadgeConfig : NSObject{
      - Returns:
      The localized string or `nil` to use the default localized string.
      */
-    open var localizedString: (_ key: String) -> String? = { key in
+    @objc open var localizedString: (_ key: String) -> String? = { key in
         let localizedStringFromAppBundle = NSLocalizedString(key, comment: "")
         if localizedStringFromAppBundle != key {
             return localizedStringFromAppBundle
@@ -184,7 +184,7 @@ open class TrustBadgeConfig : NSObject{
      - Returns:
      The image or `nil` to use the default image.
      */
-    open var loadImage: (_ name : String) -> UIImage? = { name in
+    @objc open var loadImage: (_ name : String) -> UIImage? = { name in
         if let imageFromAppBundle = UIImage(named: name) {
             return imageFromAppBundle
         }
@@ -199,7 +199,7 @@ open class TrustBadgeConfig : NSObject{
      
      - returns: an initialized array of TrustBadgeElement
      */
-    open func initializeMainElements() -> [TrustBadgeElement] {
+    @objc open func initializeMainElements() -> [TrustBadgeElement] {
         var defaults = [TrustBadgeElement]()
         for type in ElementType.defaultMainElementTypes{
             defaults.append(PreDefinedElement(type : type))
@@ -212,7 +212,7 @@ open class TrustBadgeConfig : NSObject{
      
      - returns: an initialized array of TrustBadgeElement
      */
-    open func initializeOtherElements() -> [TrustBadgeElement] {
+    @objc open func initializeOtherElements() -> [TrustBadgeElement] {
         var defaults = [TrustBadgeElement]()
         for type in ElementType.defaultOtherElementTypes{
             defaults.append(PreDefinedElement(type : type))
@@ -225,7 +225,7 @@ open class TrustBadgeConfig : NSObject{
      
      - returns: an initialized array of TrustBadgeElement
      */
-    open func initializeUsageElements() -> [TrustBadgeElement] {
+    @objc open func initializeUsageElements() -> [TrustBadgeElement] {
         var defaults = [TrustBadgeElement]()
         for type in ElementType.defaultUsageElementTypes{
             defaults.append(PreDefinedElement(type : type))
@@ -241,7 +241,7 @@ open class TrustBadgeConfig : NSObject{
      
      - returns: array of PreDefinedElements matching a given type
      */
-    open func elementForType(_ type : ElementType) -> [PreDefinedElement] {
+    @objc open func elementForType(_ type : ElementType) -> [PreDefinedElement] {
         var searchedElements = [PreDefinedElement]()
         for mainElement in self.mainElements {
             if mainElement is PreDefinedElement {
@@ -272,7 +272,7 @@ open class TrustBadgeConfig : NSObject{
 }
 
 /// TrustBadgeManager Class is the heart of OrangeTrustBadge
-open class TrustBadgeManager: NSObject {
+@objc open class TrustBadgeManager: NSObject {
     
     /// Event triggered when entering in TrustBadge component
     open static let TRUSTBADGE_ENTER = "TRUSTBADGE_ENTER"
@@ -325,7 +325,7 @@ open class TrustBadgeManager: NSObject {
      
      - parameter configuration: An TrustBadgeConfig containing TrustBadge configuration
      */
-    open static func with(_ configuration : TrustBadgeConfig) {
+    @objc open static func with(_ configuration : TrustBadgeConfig) {
         sharedInstance.config = configuration
         sharedInstance.initialize()
     }
