@@ -44,7 +44,7 @@ class LandingController: UITableViewController {
             self.clearsSelectionOnViewWillAppear = false
         }
         if #available(iOS 11.0, *) {
-            self.tableView.contentInsetAdjustmentBehavior = .automatic
+            self.tableView.contentInsetAdjustmentBehavior = .never
         }
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: LandingController.defaultReuseIdentifier)
         tableView.estimatedRowHeight = 70
