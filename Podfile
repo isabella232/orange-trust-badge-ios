@@ -13,7 +13,7 @@ target :OrangeTrustBadge do
 end
 
 target :OrangeTrustBadgeDemo do
-    platform :ios, '8.0'
+    platform :ios, '9.0'
     pod 'OrangeTrustBadge', :path => "./"
     project 'OrangeTrustBadgeDemo.xcodeproj'
 end

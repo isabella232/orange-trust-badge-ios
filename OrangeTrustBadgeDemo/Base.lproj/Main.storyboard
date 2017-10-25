@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YaP-cm-OqA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YaP-cm-OqA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
+        <deployment version="2304" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,30 +14,26 @@
         <scene sceneID="wKL-tM-bwg">
             <objects>
                 <viewController id="B3o-C4-dJi" userLabel="Main" customClass="ViewController" customModule="OrangeTrustBadgeDemo" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="B7s-Bv-p5y"/>
-                        <viewControllerLayoutGuide type="bottom" id="TxC-Ft-rdH"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lZs-nd-poh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_launcher" translatesAutoresizingMaskIntoConstraints="NO" id="eFS-Rk-fPR">
-                                <rect key="frame" x="163.5" y="104" width="48" height="48"/>
+                                <rect key="frame" x="163.5" y="84" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="FOr-Tq-Cjb"/>
                                     <constraint firstAttribute="width" constant="48" id="aVN-CF-Py1"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orange trust badge - integration example" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="268" translatesAutoresizingMaskIntoConstraints="NO" id="svE-zd-alU">
-                                <rect key="frame" x="16" y="160" width="343" height="21"/>
+                                <rect key="frame" x="18.5" y="140" width="338" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*version 0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="5cY-W2-jfy">
-                                <rect key="frame" x="117.5" y="189" width="140" height="21"/>
+                                <rect key="frame" x="117.5" y="169" width="140" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="QNo-I4-j2y"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="QNo-I4-j2y"/>
                                     <constraint firstAttribute="height" constant="21" id="wod-41-1cc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -72,7 +68,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="n1u-NC-R67">
-                                <rect key="frame" x="16" y="218" width="343" height="63"/>
+                                <rect key="frame" x="16" y="198" width="343" height="63"/>
                                 <string key="text">With the trust badge, or Badge de confiance, give more transparency and user control on personal data and reassure your users about the application contents and features.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -81,27 +77,26 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="eKM-uV-wO7" firstAttribute="leading" secondItem="lZs-nd-poh" secondAttribute="leading" constant="16" id="1WN-AX-Cyx"/>
+                            <constraint firstItem="eKM-uV-wO7" firstAttribute="leading" secondItem="iZE-i2-mxk" secondAttribute="leading" constant="16" id="1WN-AX-Cyx"/>
                             <constraint firstItem="svE-zd-alU" firstAttribute="centerX" secondItem="eFS-Rk-fPR" secondAttribute="centerX" id="6wz-3W-neY"/>
-                            <constraint firstItem="eFS-Rk-fPR" firstAttribute="top" secondItem="B7s-Bv-p5y" secondAttribute="bottom" constant="20" id="7au-4i-8du"/>
-                            <constraint firstItem="j6E-b4-UUq" firstAttribute="leading" secondItem="lZs-nd-poh" secondAttribute="leading" id="EJz-bf-RM4"/>
-                            <constraint firstAttribute="trailing" secondItem="j6E-b4-UUq" secondAttribute="trailing" id="I9S-fq-1Mq"/>
-                            <constraint firstItem="svE-zd-alU" firstAttribute="leading" secondItem="lZs-nd-poh" secondAttribute="leadingMargin" id="Jtr-cB-Dnt"/>
-                            <constraint firstItem="WfU-jM-V8Q" firstAttribute="leading" secondItem="lZs-nd-poh" secondAttribute="leading" constant="16" id="K7t-z1-A8g"/>
-                            <constraint firstAttribute="trailing" secondItem="WfU-jM-V8Q" secondAttribute="trailing" constant="16" id="Ogf-yu-MTU"/>
-                            <constraint firstAttribute="centerX" secondItem="eFS-Rk-fPR" secondAttribute="centerX" id="Qvc-uD-SCi"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="svE-zd-alU" secondAttribute="trailing" id="VYC-8g-O8q"/>
+                            <constraint firstItem="eFS-Rk-fPR" firstAttribute="top" secondItem="iZE-i2-mxk" secondAttribute="top" constant="20" id="7au-4i-8du"/>
+                            <constraint firstItem="j6E-b4-UUq" firstAttribute="leading" secondItem="iZE-i2-mxk" secondAttribute="leading" id="EJz-bf-RM4"/>
+                            <constraint firstItem="iZE-i2-mxk" firstAttribute="trailing" secondItem="j6E-b4-UUq" secondAttribute="trailing" id="I9S-fq-1Mq"/>
+                            <constraint firstItem="WfU-jM-V8Q" firstAttribute="leading" secondItem="iZE-i2-mxk" secondAttribute="leading" constant="16" id="K7t-z1-A8g"/>
+                            <constraint firstItem="iZE-i2-mxk" firstAttribute="trailing" secondItem="WfU-jM-V8Q" secondAttribute="trailing" constant="16" id="Ogf-yu-MTU"/>
+                            <constraint firstItem="iZE-i2-mxk" firstAttribute="centerX" secondItem="eFS-Rk-fPR" secondAttribute="centerX" id="Qvc-uD-SCi"/>
                             <constraint firstItem="svE-zd-alU" firstAttribute="top" secondItem="eFS-Rk-fPR" secondAttribute="bottom" constant="8" id="YB2-rT-SlS"/>
                             <constraint firstItem="5cY-W2-jfy" firstAttribute="centerX" secondItem="svE-zd-alU" secondAttribute="centerX" id="Z9H-gM-kR3"/>
                             <constraint firstItem="n1u-NC-R67" firstAttribute="top" secondItem="5cY-W2-jfy" secondAttribute="bottom" constant="8" id="aht-At-XKP"/>
-                            <constraint firstItem="TxC-Ft-rdH" firstAttribute="top" secondItem="WfU-jM-V8Q" secondAttribute="bottom" constant="20" id="bxB-fd-Xyj"/>
-                            <constraint firstAttribute="trailing" secondItem="eKM-uV-wO7" secondAttribute="trailing" constant="16" id="eks-Nc-gZB"/>
+                            <constraint firstItem="iZE-i2-mxk" firstAttribute="bottom" secondItem="WfU-jM-V8Q" secondAttribute="bottom" constant="20" id="bxB-fd-Xyj"/>
+                            <constraint firstItem="iZE-i2-mxk" firstAttribute="trailing" secondItem="eKM-uV-wO7" secondAttribute="trailing" constant="16" id="eks-Nc-gZB"/>
                             <constraint firstItem="WfU-jM-V8Q" firstAttribute="top" secondItem="j6E-b4-UUq" secondAttribute="bottom" constant="8" id="fat-Td-Yx1"/>
                             <constraint firstItem="5cY-W2-jfy" firstAttribute="top" secondItem="svE-zd-alU" secondAttribute="bottom" constant="8" id="k6W-fC-ORx"/>
-                            <constraint firstAttribute="trailing" secondItem="n1u-NC-R67" secondAttribute="trailing" constant="16" id="pIC-Aj-W4T"/>
+                            <constraint firstItem="iZE-i2-mxk" firstAttribute="trailing" secondItem="n1u-NC-R67" secondAttribute="trailing" constant="16" id="pIC-Aj-W4T"/>
                             <constraint firstItem="j6E-b4-UUq" firstAttribute="top" secondItem="eKM-uV-wO7" secondAttribute="bottom" constant="15" id="qOY-R1-dtc"/>
-                            <constraint firstItem="n1u-NC-R67" firstAttribute="leading" secondItem="lZs-nd-poh" secondAttribute="leading" constant="16" id="yGW-ME-v3c"/>
+                            <constraint firstItem="n1u-NC-R67" firstAttribute="leading" secondItem="iZE-i2-mxk" secondAttribute="leading" constant="16" id="yGW-ME-v3c"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="iZE-i2-mxk"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="HPb-CA-hME"/>
                     <navigationItem key="navigationItem" title="Orange Trust Badge Sample" id="43b-Ov-fh7">

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UuF-5s-lpI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UuF-5s-lpI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
+        <deployment version="2304" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -44,10 +45,11 @@
                                 <constraint firstItem="Na8-f2-KZs" firstAttribute="top" secondItem="8QZ-Vw-0cG" secondAttribute="top" constant="15" id="DlT-sg-2iJ"/>
                                 <constraint firstItem="wEj-KN-Lhq" firstAttribute="top" secondItem="8QZ-Vw-0cG" secondAttribute="top" id="OZd-NF-CbF"/>
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Na8-f2-KZs" secondAttribute="bottom" constant="15" id="fR7-vM-AW8"/>
-                                <constraint firstAttribute="trailing" secondItem="wEj-KN-Lhq" secondAttribute="trailing" id="ine-3u-AcA"/>
+                                <constraint firstItem="JNd-Gd-g5u" firstAttribute="trailing" secondItem="wEj-KN-Lhq" secondAttribute="trailing" id="ine-3u-AcA"/>
                                 <constraint firstItem="wEj-KN-Lhq" firstAttribute="leading" secondItem="Na8-f2-KZs" secondAttribute="trailing" constant="15" id="sCW-SH-zNw"/>
-                                <constraint firstItem="Na8-f2-KZs" firstAttribute="leading" secondItem="8QZ-Vw-0cG" secondAttribute="leading" constant="15" id="xb4-Fj-QpS"/>
+                                <constraint firstItem="Na8-f2-KZs" firstAttribute="leading" secondItem="JNd-Gd-g5u" secondAttribute="leading" constant="15" id="xb4-Fj-QpS"/>
                             </constraints>
+                            <viewLayoutGuide key="safeArea" id="JNd-Gd-g5u"/>
                             <connections>
                                 <outlet property="hiddingConstraint" destination="wIx-JC-Hlz" id="hFH-bd-LQj"/>
                                 <outlet property="logo" destination="wEj-KN-Lhq" id="o8l-qC-VW1"/>
@@ -99,14 +101,15 @@
                             </subviews>
                             <color key="backgroundColor" red="0.22352941179999999" green="0.69019607839999997" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstItem="LdS-fQ-9gu" firstAttribute="leading" secondItem="U0d-np-bI1" secondAttribute="leading" constant="15" id="7gr-4F-tTp"/>
+                                <constraint firstItem="LdS-fQ-9gu" firstAttribute="leading" secondItem="jcw-Rx-Os8" secondAttribute="leading" constant="15" id="7gr-4F-tTp"/>
                                 <constraint firstItem="bsy-Pt-UyS" firstAttribute="leading" secondItem="LdS-fQ-9gu" secondAttribute="trailing" constant="15" id="FIS-jw-eo6"/>
                                 <constraint firstItem="LdS-fQ-9gu" firstAttribute="top" secondItem="U0d-np-bI1" secondAttribute="top" constant="15" id="JcP-IS-T6w"/>
                                 <constraint firstItem="bsy-Pt-UyS" firstAttribute="top" secondItem="U0d-np-bI1" secondAttribute="top" id="LW4-GT-Yxr"/>
-                                <constraint firstAttribute="trailing" secondItem="bsy-Pt-UyS" secondAttribute="trailing" id="Naf-K4-qPz"/>
+                                <constraint firstItem="jcw-Rx-Os8" firstAttribute="trailing" secondItem="bsy-Pt-UyS" secondAttribute="trailing" id="Naf-K4-qPz"/>
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="LdS-fQ-9gu" secondAttribute="bottom" constant="15" id="XRb-vL-DLU"/>
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bsy-Pt-UyS" secondAttribute="bottom" id="pQb-2C-Gua"/>
                             </constraints>
+                            <viewLayoutGuide key="safeArea" id="jcw-Rx-Os8"/>
                             <connections>
                                 <outlet property="hiddingConstraint" destination="mLj-t6-GIh" id="1lS-Vf-JEe"/>
                                 <outlet property="logo" destination="bsy-Pt-UyS" id="nU8-gF-4DL"/>
@@ -158,14 +161,15 @@
                             </subviews>
                             <color key="backgroundColor" red="0.22352941179999999" green="0.69019607839999997" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstItem="HCv-7k-PKV" firstAttribute="leading" secondItem="nry-vZ-74Z" secondAttribute="leading" constant="15" id="BHb-LE-6Ai"/>
+                                <constraint firstItem="HCv-7k-PKV" firstAttribute="leading" secondItem="dlt-gk-Ga9" secondAttribute="leading" constant="15" id="BHb-LE-6Ai"/>
                                 <constraint firstItem="aC9-4o-5Hq" firstAttribute="top" secondItem="nry-vZ-74Z" secondAttribute="top" id="LE9-Nh-FrO"/>
                                 <constraint firstItem="HCv-7k-PKV" firstAttribute="top" secondItem="nry-vZ-74Z" secondAttribute="top" constant="15" id="dMs-rR-Lzp"/>
                                 <constraint firstItem="aC9-4o-5Hq" firstAttribute="leading" secondItem="HCv-7k-PKV" secondAttribute="trailing" constant="15" id="fLz-ac-XSd"/>
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="aC9-4o-5Hq" secondAttribute="bottom" id="gnx-bp-E3k"/>
-                                <constraint firstAttribute="trailing" secondItem="aC9-4o-5Hq" secondAttribute="trailing" id="hDh-Gg-Luq"/>
+                                <constraint firstItem="dlt-gk-Ga9" firstAttribute="trailing" secondItem="aC9-4o-5Hq" secondAttribute="trailing" id="hDh-Gg-Luq"/>
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HCv-7k-PKV" secondAttribute="bottom" constant="15" id="yKL-PW-fc7"/>
                             </constraints>
+                            <viewLayoutGuide key="safeArea" id="dlt-gk-Ga9"/>
                             <connections>
                                 <outlet property="hiddingConstraint" destination="N0Q-hk-DlF" id="mmQ-MW-sDl"/>
                                 <outlet property="logo" destination="aC9-4o-5Hq" id="NOg-3A-qI5"/>
@@ -369,9 +373,9 @@
                             </subviews>
                             <color key="backgroundColor" red="0.22352941179999999" green="0.69019607839999997" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstItem="hcO-M2-S3Q" firstAttribute="leading" secondItem="YZn-dP-b9m" secondAttribute="leading" constant="15" id="5Cu-Ex-qO4"/>
+                                <constraint firstItem="hcO-M2-S3Q" firstAttribute="leading" secondItem="ZcB-lz-nQJ" secondAttribute="leading" constant="15" id="5Cu-Ex-qO4"/>
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hcO-M2-S3Q" secondAttribute="bottom" constant="15" id="5Ns-0l-HBh"/>
-                                <constraint firstAttribute="trailing" secondItem="v8I-7p-b4o" secondAttribute="trailing" id="7As-of-wRL"/>
+                                <constraint firstItem="ZcB-lz-nQJ" firstAttribute="trailing" secondItem="v8I-7p-b4o" secondAttribute="trailing" id="7As-of-wRL"/>
                                 <constraint firstItem="hcO-M2-S3Q" firstAttribute="top" secondItem="YZn-dP-b9m" secondAttribute="top" constant="15" id="BNF-3g-UeP"/>
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="v8I-7p-b4o" secondAttribute="bottom" id="E5G-gn-uJa"/>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hcO-M2-S3Q" secondAttribute="trailing" constant="15" id="EDo-AB-cUr"/>
@@ -379,6 +383,7 @@
                                 <constraint firstItem="v8I-7p-b4o" firstAttribute="top" secondItem="YZn-dP-b9m" secondAttribute="top" id="JnD-9I-SrA"/>
                                 <constraint firstItem="v8I-7p-b4o" firstAttribute="leading" secondItem="hcO-M2-S3Q" secondAttribute="trailing" constant="15" id="yJN-hY-4cs"/>
                             </constraints>
+                            <viewLayoutGuide key="safeArea" id="ZcB-lz-nQJ"/>
                             <variation key="default">
                                 <mask key="constraints">
                                     <exclude reference="yJN-hY-4cs"/>
