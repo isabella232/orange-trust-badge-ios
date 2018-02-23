@@ -1,4 +1,4 @@
-#Orange trust badge iOS Reference
+# Orange trust badge iOS Reference
 
 ![Orange trust badge : your privacy first](https://github.com/Orange-OpenSource/orange-trust-badge-ios/raw/master/logo.png)
 
@@ -31,7 +31,7 @@ It also displays the following informations :
 It also :
 
 - Works on iPhone and iPad using Autolayout (iPad Multitasking supported)
-- Localized in 2 languages (English,French)
+- Localized in 2 languages (English, French)
 - Written in Swift 4.0 but works in Objective-C or Swift based Projects
 - API hooks
 - UI Customization
@@ -78,6 +78,26 @@ Then, run the following command:
 
 ```bash
 $ pod install
+```
+### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+You can install Carthage with Homebrew using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate OrangeTrustBadge into your Xcode project using Carthage, specify it in your Cartfile:
+
+>github "Orange-OpenSource/orange-trust-badge-ios" ~> 1.0
+
+Run carthage update to build the framework and drag the built OrangeTrustBadge.framework into your Xcode project.
+
+```bash
+$ carthage update --platform iOS 
 ```
 
 ### Manually
@@ -167,6 +187,7 @@ return true
 **or in Objective-C**
 
 ```objc
+
 #import "OrangeTrustBadge-Swift.h"
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -311,7 +332,7 @@ If you believe you have identified a security vulnerability with OrangeTrustBadg
 ## License
 
 OrangeTrustBadge
-Copyright (C) 2016 Orange
+Copyright (C) 2016 - 2018 Orange
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
