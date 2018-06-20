@@ -29,7 +29,7 @@ class UsagesController: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.title = TrustBadgeManager.sharedInstance.localizedString("usages-title")
+        self.title = TrustBadge.shared.localizedString("usages-title")
     }
 
     override func viewDidLoad() {
@@ -38,7 +38,7 @@ class UsagesController: UITableViewController {
         navigationItem.leftItemsSupplementBackButton = true
         self.tableView.register(UINib(nibName: "ElementCell", bundle: Bundle(for: TrustBadgeConfig.self)), forCellReuseIdentifier: ElementCell.reuseIdentifier)
         tableView.estimatedRowHeight = 65       
-        tableView.configure(header: header, with: TrustBadgeManager.sharedInstance.localizedString("usages-header-title"))
+        tableView.configure(header: header, with: TrustBadge.shared.localizedString("usages-header-title"))
 
         if #available(iOS 11, *) {
             self.tableView.contentInsetAdjustmentBehavior = .never
@@ -47,12 +47,12 @@ class UsagesController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_USAGE_ENTER), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_USAGE_ENTER), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        TrustBadgeManager.sharedInstance.pageDidAppear("Usages")
+        TrustBadge.shared.pageDidAppear("Usages")
     }
 
     // MARK: - Table view data source
@@ -62,20 +62,20 @@ class UsagesController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TrustBadgeManager.sharedInstance.usageElements.count
+        return TrustBadge.shared.usageElements.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let element = TrustBadgeManager.sharedInstance.usageElements[(indexPath as NSIndexPath).row]
+        let element = TrustBadge.shared.usageElements[(indexPath as NSIndexPath).row]
         let cell = tableView.dequeueReusableCell(withIdentifier: ElementCell.reuseIdentifier, for: indexPath) as! ElementCell
         
         if element is Rating {
-            cell.nameLabel.text = TrustBadgeManager.sharedInstance.localizedString("rating-title")
+            cell.nameLabel.text = TrustBadge.shared.localizedString("rating-title")
         } else {
-            cell.nameLabel.text = TrustBadgeManager.sharedInstance.localizedString(element.nameKey)
+            cell.nameLabel.text = TrustBadge.shared.localizedString(element.nameKey)
         }
         
-        let description = TrustBadgeManager.sharedInstance.localizedString(element.descriptionKey)
+        let description = TrustBadge.shared.localizedString(element.descriptionKey)
         if description.contains("<html") {
             var attributeddDescription : NSAttributedString?
             do {
@@ -96,10 +96,10 @@ class UsagesController: UITableViewController {
                 return "status-disabled"
             }
         }()
-        cell.statusLabel.text = TrustBadgeManager.sharedInstance.localizedString(statusKey)
-        cell.statusLabel.textColor = element.statusClosure() ? TrustBadgeManager.sharedInstance.config?.highlightColor : UIColor.black
-        cell.icon.image = element.statusClosure() ? TrustBadgeManager.sharedInstance.loadImage(element.statusEnabledIconName) : TrustBadgeManager.sharedInstance.loadImage(element.statusDisabledIconName)
-        cell.actionButton.setTitle(TrustBadgeManager.sharedInstance.localizedString("update-permission"), for: UIControlState())
+        cell.statusLabel.text = TrustBadge.shared.localizedString(statusKey)
+        cell.statusLabel.textColor = element.statusClosure() ? TrustBadge.shared.config?.highlightColor : UIColor.black
+        cell.icon.image = element.statusClosure() ? TrustBadge.shared.loadImage(element.statusEnabledIconName) : TrustBadge.shared.loadImage(element.statusDisabledIconName)
+        cell.actionButton.setTitle(TrustBadge.shared.localizedString("update-permission"), for: UIControlState())
         
         cell.toggle.setOn(element.statusClosure(), animated: true)
         if element.isToggable{
@@ -143,22 +143,22 @@ class UsagesController: UITableViewController {
         
         cell.toggleClosure = { (cell : ElementCell) in
             element.toggleClosure(cell.toggle)
-            NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_ELEMENT_TOGGLED), object: element)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_ELEMENT_TOGGLED), object: element)
         }
         
         cell.openPreferencesClosure = { () in
             UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
-            NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_GO_TO_SETTINGS), object: element)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_GO_TO_SETTINGS), object: element)
         }
         
-        let status = element.statusClosure() ? TrustBadgeManager.sharedInstance.localizedString("accessibility-enabled") :  TrustBadgeManager.sharedInstance.localizedString("accessibility-disabled")
-        cell.accessibilityValue = "\(TrustBadgeManager.sharedInstance.localizedString(element.nameKey)) : \(status)"
-        cell.accessibilityHint = TrustBadgeManager.sharedInstance.localizedString("accessibility-double-tap")
+        let status = element.statusClosure() ? TrustBadge.shared.localizedString("accessibility-enabled") :  TrustBadge.shared.localizedString("accessibility-disabled")
+        cell.accessibilityValue = "\(TrustBadge.shared.localizedString(element.nameKey)) : \(status)"
+        cell.accessibilityHint = TrustBadge.shared.localizedString("accessibility-double-tap")
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let element = TrustBadgeManager.sharedInstance.usageElements[(indexPath as NSIndexPath).row]
+        let element = TrustBadge.shared.usageElements[(indexPath as NSIndexPath).row]
         if element.isExpanded {
             return UITableViewAutomaticDimension
         } else {
@@ -167,12 +167,12 @@ class UsagesController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let element = TrustBadgeManager.sharedInstance.usageElements[(indexPath as NSIndexPath).row]
+        let element = TrustBadge.shared.usageElements[(indexPath as NSIndexPath).row]
         element.isExpanded = !element.isExpanded
         tableView.beginUpdates()
         tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
         tableView.endUpdates()
         self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.middle, animated: true)
-        NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_ELEMENT_TAPPED), object: element)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_ELEMENT_TAPPED), object: element)
     }
 }

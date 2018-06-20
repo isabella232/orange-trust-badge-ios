@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YaP-cm-OqA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YaP-cm-OqA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="2304" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -41,20 +41,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j6E-b4-UUq" userLabel="Separator">
-                                <rect key="frame" x="0.0" y="606" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="606.5" width="375" height="1"/>
                                 <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="f33-nv-E24"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More information on https://developer.orange.com" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="WfU-jM-V8Q">
-                                <rect key="frame" x="16" y="615" width="343" height="32"/>
+                                <rect key="frame" x="16" y="615.5" width="343" height="31.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKM-uV-wO7" customClass="OrangeButtonStandard" customModule="OrangeTrustBadgeDemo" customModuleProvider="target">
-                                <rect key="frame" x="16" y="546" width="343" height="45"/>
+                                <rect key="frame" x="16" y="546.5" width="343" height="45"/>
                                 <rect key="contentStretch" x="0.10000000000000001" y="0.10000000000000001" width="0.79999999999999982" height="0.79999999999999982"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="zVD-4g-xfo"/>
@@ -68,7 +68,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="n1u-NC-R67">
-                                <rect key="frame" x="16" y="198" width="343" height="63"/>
+                                <rect key="frame" x="16" y="198" width="343" height="62.5"/>
                                 <string key="text">With the trust badge, or Badge de confiance, give more transparency and user control on personal data and reassure your users about the application contents and features.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

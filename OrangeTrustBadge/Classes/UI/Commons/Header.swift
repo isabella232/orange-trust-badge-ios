@@ -25,13 +25,14 @@ import UIKit
 
 class Header: UIView {
     
+    @IBOutlet weak var appName : UILabel!
     @IBOutlet weak var title : UILabel!
     @IBOutlet weak var logo : UIImageView!
     @IBOutlet weak var hiddingConstraint : NSLayoutConstraint!
     
     override func awakeFromNib() {
-        self.backgroundColor = TrustBadgeManager.sharedInstance.config?.headerColor
-        if let logoImage = TrustBadgeManager.sharedInstance.config?.headerLogo {
+        self.backgroundColor = TrustBadge.shared.config?.headerColor
+        if let logoImage = TrustBadge.shared.config?.headerLogo {
             logo.image = logoImage
         }
     }
@@ -40,6 +41,7 @@ class Header: UIView {
 extension UITableView {
 
     func configure(header: Header, with title: String, and titleColor: UIColor? = nil) {
+        header.appName.text = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String
         header.title.text = title
         header.title.textColor = titleColor
         // get a frame with the right height and make it the frame of the header

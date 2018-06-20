@@ -127,7 +127,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         config.terms = terms
         
         // finally, initialize TrustBadgeManager with our configuration
-        TrustBadgeManager.with(config)
+        TrustBadge.with(config)
         
         return true
     }

@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startDemo(){
-        let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: Bundle(for: TrustBadgeManager.self))
+        let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: Bundle(for: TrustBadge.self))
         if let viewController = storyboard.instantiateInitialViewController(){
             self.present(viewController, animated: true, completion: nil)
         }

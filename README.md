@@ -92,7 +92,7 @@ $ brew install carthage
 
 To integrate OrangeTrustBadge into your Xcode project using Carthage, specify it in your Cartfile:
 
->github "Orange-OpenSource/orange-trust-badge-ios" ~> 1.0
+>github "Orange-OpenSource/orange-trust-badge-ios" ~> 1.1
 
 Run carthage update to build the framework and drag the built OrangeTrustBadge.framework into your Xcode project.
 
@@ -180,7 +180,7 @@ fi
 import OrangeTrustBadge
 
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-TrustBadgeManager.with(TrustBadgeConfig())
+TrustBadge.with(TrustBadgeConfig())
 return true
 }
 ```
@@ -191,7 +191,7 @@ return true
 #import "OrangeTrustBadge-Swift.h"
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-[TrustBadgeManager with:[[TrustBadgeConfig alloc] init]];
+[TrustBadge with:[[TrustBadgeConfig alloc] init]];
 return YES;
 }
 ```
@@ -206,7 +206,7 @@ return YES;
 import OrangeTrustBadge
 
 @IBAction func onButtonClicked(){
-let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: NSBundle(forClass: TrustBadgeManager.self))
+let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: NSBundle(forClass: TrustBadge.self))
 if let viewController = storyboard.instantiateInitialViewController() {
 self.navigationController?.presentViewController(viewController, animated: true, completion: nil)
 }

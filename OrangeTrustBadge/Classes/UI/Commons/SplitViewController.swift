@@ -39,7 +39,7 @@ class SplitViewController: UISplitViewController, UISplitViewControllerDelegate 
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
-        if let config = TrustBadgeManager.sharedInstance.config{
+        if let config = TrustBadge.shared.config{
             return config.statusBarStyle
         } else {
             return UIApplication.shared.statusBarStyle

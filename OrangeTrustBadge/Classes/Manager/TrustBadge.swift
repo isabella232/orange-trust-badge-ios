@@ -272,7 +272,7 @@ import AVKit
 }
 
 /// TrustBadgeManager Class is the heart of OrangeTrustBadge
-@objc open class TrustBadgeManager: NSObject {
+@objc open class TrustBadge: NSObject {
     
     /// Event triggered when entering in TrustBadge component
     open static let TRUSTBADGE_ENTER = "TRUSTBADGE_ENTER"
@@ -299,7 +299,7 @@ import AVKit
     open static let TRUSTBADGE_GO_TO_SETTINGS = "TRUSTBADGE_GO_TO_SETTINGS"
     
     /// Access to the manager's singleton
-    open static let sharedInstance = TrustBadgeManager()
+    open static let shared = TrustBadge()
     
     /// Access to the terms collection
     var terms = [Term]()
@@ -326,8 +326,8 @@ import AVKit
      - parameter configuration: An TrustBadgeConfig containing TrustBadge configuration
      */
     @objc open static func with(_ configuration : TrustBadgeConfig) {
-        sharedInstance.config = configuration
-        sharedInstance.initialize()
+        shared.config = configuration
+        shared.initialize()
     }
     
     func initialize(){
@@ -413,16 +413,16 @@ import AVKit
                         preDefinedElement.isConfigurable = true
                     case .dataUsage :
                         preDefinedElement.isToggable = true
-                        preDefinedElement.statusClosure = (TrustBadgeManager.sharedInstance.config?.isTrackingEnabled)!
-                        preDefinedElement.toggleClosure = (TrustBadgeManager.sharedInstance.config?.updateTracking)!
+                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isTrackingEnabled)!
+                        preDefinedElement.toggleClosure = (TrustBadge.shared.config?.updateTracking)!
                     case .identity :
-                        preDefinedElement.statusClosure = (TrustBadgeManager.sharedInstance.config?.isIdentityUsed)!
+                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isIdentityUsed)!
                     case .socialSharing :
-                        preDefinedElement.statusClosure = (TrustBadgeManager.sharedInstance.config?.isSocialSharingUsed)!
+                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isSocialSharingUsed)!
                     case .inAppPurchase :
-                        preDefinedElement.statusClosure = (TrustBadgeManager.sharedInstance.config?.isInappPurchaseUsed)!
+                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isInappPurchaseUsed)!
                     case .advertising :
-                        preDefinedElement.statusClosure = (TrustBadgeManager.sharedInstance.config?.isAdvertisementUsed)!
+                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isAdvertisementUsed)!
                     default: break
                     }
                 }
@@ -438,8 +438,8 @@ import AVKit
         guard var result = config?.localizedString(key) else {
             return "To be localized key:\(key)"
         }
-        result = result.replacingOccurrences(of: "$$cssStylesheet$$", with: TrustBadgeManager.sharedInstance.css)
-        result = result.replacingOccurrences(of: "$$applicationName$$", with: TrustBadgeManager.sharedInstance.appName)
+        result = result.replacingOccurrences(of: "$$cssStylesheet$$", with: TrustBadge.shared.css)
+        result = result.replacingOccurrences(of: "$$applicationName$$", with: TrustBadge.shared.appName)
         return result
     }
 

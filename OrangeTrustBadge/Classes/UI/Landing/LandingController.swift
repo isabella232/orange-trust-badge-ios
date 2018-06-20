@@ -33,7 +33,7 @@ class LandingController: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.title = TrustBadgeManager.sharedInstance.localizedString("landing-title")
+        self.title = TrustBadge.shared.localizedString("landing-title")
     }
 
     // MARK: - View Lifecycle
@@ -48,7 +48,7 @@ class LandingController: UITableViewController {
         }
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: LandingController.defaultReuseIdentifier)
         tableView.estimatedRowHeight = 70
-        NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_ENTER), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_ENTER), object: nil)
         
         mainGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LandingController.goToMainElements(_:)))
         usageGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LandingController.goToUsageElements(_:)))
@@ -57,13 +57,13 @@ class LandingController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.manageLogoVisibility()
-        tableView.configure(header: header, with: TrustBadgeManager.sharedInstance.localizedString("landing-header-title"), and: TrustBadgeManager.sharedInstance.config?.headerTextColor)
+        tableView.configure(header: header, with: TrustBadge.shared.localizedString("landing-header-title"), and: TrustBadge.shared.config?.headerTextColor)
         self.tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        TrustBadgeManager.sharedInstance.pageDidAppear("Landing")
+        TrustBadge.shared.pageDidAppear("Landing")
     }
 
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -101,9 +101,9 @@ class LandingController: UITableViewController {
         case 0 :
             if (self.splitViewController?.traitCollection.horizontalSizeClass == .compact) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ElementMenuCell.reuseIdentifier, for: indexPath) as! ElementMenuCell
-                cell.title.text = TrustBadgeManager.sharedInstance.localizedString("landing-permission-title")
-                cell.content.text = TrustBadgeManager.sharedInstance.localizedString("landing-permission-content")
-                cell.representedObject = TrustBadgeManager.sharedInstance.mainElements
+                cell.title.text = TrustBadge.shared.localizedString("landing-permission-title")
+                cell.content.text = TrustBadge.shared.localizedString("landing-permission-content")
+                cell.representedObject = TrustBadge.shared.mainElements
                 cell.overview.reloadData()
                 cell.overview.removeGestureRecognizer(mainGestureRecognizer!)
                 cell.overview.removeGestureRecognizer(usageGestureRecognizer!)
@@ -112,16 +112,16 @@ class LandingController: UITableViewController {
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: LandingController.defaultReuseIdentifier, for: indexPath)
-                cell.textLabel?.text = TrustBadgeManager.sharedInstance.localizedString("landing-permission-title")
+                cell.textLabel?.text = TrustBadge.shared.localizedString("landing-permission-title")
                 cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
                 return cell
             }
         case 1 :
             if (self.splitViewController?.traitCollection.horizontalSizeClass == .compact) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ElementMenuCell.reuseIdentifier, for: indexPath) as! ElementMenuCell
-                cell.title.text = TrustBadgeManager.sharedInstance.localizedString("landing-usages-title")
-                cell.content.text = TrustBadgeManager.sharedInstance.localizedString("landing-usages-content")
-                cell.representedObject = TrustBadgeManager.sharedInstance.usageElements
+                cell.title.text = TrustBadge.shared.localizedString("landing-usages-title")
+                cell.content.text = TrustBadge.shared.localizedString("landing-usages-content")
+                cell.representedObject = TrustBadge.shared.usageElements
                 cell.overview.reloadData()
                 cell.overview.removeGestureRecognizer(mainGestureRecognizer!)
                 cell.overview.removeGestureRecognizer(usageGestureRecognizer!)
@@ -130,19 +130,19 @@ class LandingController: UITableViewController {
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: LandingController.defaultReuseIdentifier, for: indexPath)
-                cell.textLabel?.text = TrustBadgeManager.sharedInstance.localizedString("landing-usages-title")
+                cell.textLabel?.text = TrustBadge.shared.localizedString("landing-usages-title")
                 cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
                 return cell
             }
         case 2 :
             if (self.splitViewController?.traitCollection.horizontalSizeClass == .compact) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: TermsMenuCell.reuseIdentifier, for: indexPath) as! TermsMenuCell
-                cell.title.text = TrustBadgeManager.sharedInstance.localizedString("landing-terms-title")
-                cell.content.text = TrustBadgeManager.sharedInstance.localizedString("landing-terms-content")
+                cell.title.text = TrustBadge.shared.localizedString("landing-terms-title")
+                cell.content.text = TrustBadge.shared.localizedString("landing-terms-content")
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: LandingController.defaultReuseIdentifier, for: indexPath)
-                cell.textLabel?.text = TrustBadgeManager.sharedInstance.localizedString("landing-terms-title")
+                cell.textLabel?.text = TrustBadge.shared.localizedString("landing-terms-title")
                 cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
                 return cell
             }
@@ -178,7 +178,7 @@ class LandingController: UITableViewController {
     @IBAction func dismissModal(){
         self.splitViewController?.preferredDisplayMode = .primaryHidden
         self.splitViewController?.dismiss(animated: true, completion: { () -> Void in
-            NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_LEAVE), object: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_LEAVE), object: nil)
         })
     }
     
