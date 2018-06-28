@@ -110,6 +110,43 @@
             </objects>
             <point key="canvasLocation" x="-2095" y="10"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="eSk-Is-Pmq">
+            <objects>
+                <viewController storyboardIdentifier="MoreAppsViewController" id="WP9-uo-Cim" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sU4-e5-3pq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a custom viewcontroller" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIG-ye-feb">
+                                <rect key="frame" x="47" y="86" width="281" height="69"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="your application can provide" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d45-F6-7EA">
+                                <rect key="frame" x="59" y="163" width="257" height="23"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hIG-ye-feb" firstAttribute="centerX" secondItem="sU4-e5-3pq" secondAttribute="centerX" id="9pg-q9-SsU"/>
+                            <constraint firstItem="d45-F6-7EA" firstAttribute="top" secondItem="hIG-ye-feb" secondAttribute="bottom" constant="8" symbolic="YES" id="gka-dK-lwG"/>
+                            <constraint firstItem="d45-F6-7EA" firstAttribute="centerX" secondItem="hIG-ye-feb" secondAttribute="centerX" id="jde-Zn-kSU"/>
+                            <constraint firstItem="hIG-ye-feb" firstAttribute="top" secondItem="uvD-Bf-Z59" secondAttribute="top" constant="66" id="l2k-5g-Zf7"/>
+                            <constraint firstItem="hIG-ye-feb" firstAttribute="leading" secondItem="uvD-Bf-Z59" secondAttribute="leading" constant="47" id="nIz-MX-iFM"/>
+                            <constraint firstItem="uvD-Bf-Z59" firstAttribute="bottom" secondItem="hIG-ye-feb" secondAttribute="bottom" constant="512" id="nzK-5A-ShY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uvD-Bf-Z59"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ael-Pk-xSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2460" y="794.75262368815595"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="WyM-Yi-oRd">
             <objects>

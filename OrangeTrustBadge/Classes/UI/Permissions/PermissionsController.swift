@@ -42,8 +42,8 @@ class PermissionsController: UITableViewController {
         
         self.tableView.register(UINib(nibName: "ElementCell", bundle: Bundle(for: TrustBadgeConfig.self)), forCellReuseIdentifier: ElementCell.reuseIdentifier)
         tableView.estimatedRowHeight = 65
-
-        tableView.configure(header: header, with: TrustBadge.shared.localizedString("permission-header-title"))
+        // TODO: use the title ?
+//        tableView.configure(header: header, with: TrustBadge.shared.localizedString("permission-header-title"))
         
         NotificationCenter.default.addObserver(self, selector: #selector(PermissionsController.refresh), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
@@ -185,7 +185,7 @@ class PermissionsController: UITableViewController {
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_ELEMENT_TAPPED), object: element)
     }
-    
+    //TODO: Only on iPad
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch(section){
         case 0 :

@@ -42,10 +42,11 @@
 
 /* Landing Page */
 "landing-title" = "Badge de confiance";
-"landing-header-title" = "Retrouvez et contrôlez l'utilisation de vos données personnelles dans l’application.";
-"landing-permission-title" = "Vos données";
+"landing-header-title" = "Avec le Badge de confiance, les applications Orange deviennent transparentes pour vous.";
+"landing-header-subtitle" = "Retrouvez et contrôlez l'utilisation de vos données personnelles dans l’application.";
+"landing-permission-title" = "Données accessibles par l'application";
 "landing-permission-content" = "Quelles sont les données utilisées par votre application et pour quelles raisons ?";
-"landing-usages-title" = "Les usages";
+"landing-usages-title" = "Données d'usage de l'application";
 "landing-usages-content" = "Quels sont les contenus et les fonctionnalités de votre application ?";
 "landing-terms-title" = "Nos engagements";
 "landing-terms-content" = "Nous vous accompagnons pour protéger votre vie numérique et vos données personnelles.";

@@ -1,3 +1,30 @@
 
-/* Class = "UIButton"; normalTitle = "Start Demo"; ObjectID = "0LH-p7-hWi"; */
-"0LH-p7-hWi.normalTitle" = "Start Demo";
+/* Class = "UINavigationItem"; title = "Orange Trust Badge Sample"; ObjectID = "43b-Ov-fh7"; */
+"43b-Ov-fh7.title" = "Orange Trust Badge Sample";
+
+/* Class = "UILabel"; text = "*version 0.0"; ObjectID = "5cY-W2-jfy"; */
+"5cY-W2-jfy.text" = "*version 0.0";
+
+/* Class = "UIBarButtonItem"; title = " Cancel"; ObjectID = "Ca4-dc-Yu9"; */
+"Ca4-dc-Yu9.title" = " Cancel";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "HPb-CA-hME"; */
+"HPb-CA-hME.title" = "Item";
+
+/* Class = "UILabel"; text = "More information on https://developer.orange.com"; ObjectID = "WfU-jM-V8Q"; */
+"WfU-jM-V8Q.text" = "More information on https://developer.orange.com";
+
+/* Class = "UILabel"; text = "your application can provide"; ObjectID = "d45-F6-7EA"; */
+"d45-F6-7EA.text" = "que votre app peut fournir";
+
+/* Class = "UIButton"; normalTitle = "Start the demo"; ObjectID = "eKM-uV-wO7"; */
+"eKM-uV-wO7.normalTitle" = "Start the demo";
+
+/* Class = "UILabel"; text = "This is a custom viewcontroller"; ObjectID = "hIG-ye-feb"; */
+"hIG-ye-feb.text" = "Ceci est un custom view controller";
+
+/* Class = "UILabel"; text = "With the trust badge, or Badge de confiance, give more transparency and user control on personal data and reassure your users about the application contents and features."; ObjectID = "n1u-NC-R67"; */
+"n1u-NC-R67.text" = "With the trust badge, or Badge de confiance, give more transparency and user control on personal data and reassure your users about the application contents and features.";
+
+/* Class = "UILabel"; text = "Orange trust badge - integration example"; ObjectID = "svE-zd-alU"; */
+"svE-zd-alU.text" = "Orange trust badge - integration example";

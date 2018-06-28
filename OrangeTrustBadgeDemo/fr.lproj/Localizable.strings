@@ -23,6 +23,9 @@
 
 "landing-terms-title" = "Nos engagements";
 "landing-terms-content" = "Nous vous accompagnons pour protéger votre vie numérique et vos données personnelles.";
+"landing-custom-title" = "Plus d'applications";
+"landing-custom-content" = "Découvrez d'autres applications qui ont adoptées le Badge confiance";
+
 "permission-location-description" = "Le service de localisation permet aux applications d’utiliser des informations des réseaux mobiles, Wi-Fi et GPS  pour localiser votre emplacement approximatif. Aucune donnée personnelle n’est collectée à cette occasion.";
 "terms-title" = "Nos engagements";
 "terms-header-title" = "Nous vous accompagnons pour protéger votre vie numérique et vos données personnelles.";

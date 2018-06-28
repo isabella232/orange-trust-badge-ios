@@ -57,7 +57,9 @@ class LandingController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.manageLogoVisibility()
-        tableView.configure(header: header, with: TrustBadge.shared.localizedString("landing-header-title"), and: TrustBadge.shared.config?.headerTextColor)
+        tableView.configure(header: header, with: TrustBadge.shared.localizedString("landing-header-title"),
+                            subtitle: TrustBadge.shared.localizedString("landing-header-subtitle"),
+                            textColor: TrustBadge.shared.config?.headerTextColor)
         self.tableView.reloadData()
     }
     
@@ -75,13 +77,13 @@ class LandingController: UITableViewController {
      Hide the logo on MasterView when sizeClass != .Compact (e.g on iPad and Iphone6 Plus for instance)
      */
     func manageLogoVisibility(){
-        if let header = self.header{
+        if let header = self.header, let image = header.logo.image {
             if (self.splitViewController?.traitCollection.horizontalSizeClass != .compact) {
                 header.logo.isHidden = true
-                header.hiddingConstraint.priority = UILayoutPriority(rawValue: 999)
+                header.hiddingConstraint.constant = 0
             } else {
                 header.logo.isHidden = false
-                header.hiddingConstraint.priority = UILayoutPriority(rawValue: 250)
+                header.hiddingConstraint.constant = image.size.width
             }
         }
     }
@@ -93,11 +95,15 @@ class LandingController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        guard let delegate = TrustBadge.shared.delegate,
+            let should = delegate.shouldDisplayCustomViewController?(), should else {
+            return 3
+        }
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch((indexPath as NSIndexPath).row) {
+        switch indexPath.row {
         case 0 :
             if (self.splitViewController?.traitCollection.horizontalSizeClass == .compact) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ElementMenuCell.reuseIdentifier, for: indexPath) as! ElementMenuCell
@@ -148,7 +154,17 @@ class LandingController: UITableViewController {
             }
             
         default :
-            return UITableViewCell()
+            if (self.splitViewController?.traitCollection.horizontalSizeClass == .compact) {
+                let cell = tableView.dequeueReusableCell(withIdentifier: CustomMenuCell.reuseIdentifier, for: indexPath) as! CustomMenuCell
+                cell.title.text = TrustBadge.shared.localizedString("landing-custom-title")
+                cell.content.text = TrustBadge.shared.localizedString("landing-custom-content")
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: LandingController.defaultReuseIdentifier, for: indexPath)
+                cell.textLabel?.text = TrustBadge.shared.localizedString("landing-custom-title")
+                cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+                return cell
+            }
         }
     }
     
@@ -161,7 +177,7 @@ class LandingController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch ((indexPath as NSIndexPath).row){
+        switch indexPath.row {
         case 0 :
             self.performSegue(withIdentifier: "Permissions", sender: self)
         case 1 :
@@ -169,6 +185,10 @@ class LandingController: UITableViewController {
         case 2 :
             self.performSegue(withIdentifier: "Terms", sender: self)
         default :
+            if let delegate = TrustBadge.shared.delegate,
+                let viewController = delegate.viewController?(at: indexPath) {
+                self.show(viewController, sender: self)
+            }
             break
         }
     }

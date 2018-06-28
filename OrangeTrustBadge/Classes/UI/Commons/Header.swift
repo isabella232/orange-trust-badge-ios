@@ -25,11 +25,14 @@ import UIKit
 
 class Header: UIView {
     
-    @IBOutlet weak var appName : UILabel!
-    @IBOutlet weak var title : UILabel!
-    @IBOutlet weak var logo : UIImageView!
-    @IBOutlet weak var hiddingConstraint : NSLayoutConstraint!
-    
+    @IBOutlet weak var appName: UILabel!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var logo: UIImageView!
+    @IBOutlet weak var hiddingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var subtitle: UILabel!
+
     override func awakeFromNib() {
         self.backgroundColor = TrustBadge.shared.config?.headerColor
         if let logoImage = TrustBadge.shared.config?.headerLogo {
@@ -40,13 +43,14 @@ class Header: UIView {
 
 extension UITableView {
 
-    func configure(header: Header, with title: String, and titleColor: UIColor? = nil) {
-        header.appName.text = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String
+    func configure(header: Header, with title: String, subtitle: String, textColor: UIColor? = nil) {
+        header.appName.text = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
         header.title.text = title
-        header.title.textColor = titleColor
+        header.subtitle.text = subtitle
+        header.title.textColor = textColor
+
         // get a frame with the right height and make it the frame of the header
         self.layoutIfNeeded()
-        header.title.preferredMaxLayoutWidth = header.title.frame.width // needed only for iOS 8
         var headerFrame = header.frame
         headerFrame.size.height = header.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
         header.frame = headerFrame

@@ -25,7 +25,7 @@
 import UIKit
 import OrangeTrustBadge
 
-class ViewController: UIViewController {
+class ViewController: UIViewController  {
     
     @IBOutlet weak var versionLabel : UILabel!
     
@@ -34,6 +34,7 @@ class ViewController: UIViewController {
         if let shortVersionString = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString"){
             versionLabel.text = "version \(shortVersionString)"
         }
+        TrustBadge.shared.delegate = self
     }
     
     @IBAction func startDemo(){
@@ -41,5 +42,20 @@ class ViewController: UIViewController {
         if let viewController = storyboard.instantiateInitialViewController(){
             self.present(viewController, animated: true, completion: nil)
         }
+    }
+}
+
+// MARK: TrustBadgeDelegate
+extension ViewController: TrustBadgeDelegate {
+
+    func shouldDisplayCustomViewController() -> Bool {
+        return true
+    }
+
+    func viewController(at indexPath: IndexPath) -> UIViewController {
+        let viewController = storyboard!.instantiateViewController(withIdentifier: "MoreAppsViewController")
+        viewController.title = NSLocalizedString("landing-custom-title", comment: "custom view controller title")
+        return viewController
+        
     }
 }

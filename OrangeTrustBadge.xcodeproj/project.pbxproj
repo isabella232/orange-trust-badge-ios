@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		49FBC29C20E3B5EA00F3F486 /* CustomMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FBC29B20E3B5EA00F3F486 /* CustomMenuCell.swift */; };
 		540B43171C21974500509A62 /* LandingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540B430F1C21974500509A62 /* LandingController.swift */; };
 		540B43181C21974500509A62 /* ElementOverViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540B43101C21974500509A62 /* ElementOverViewCell.swift */; };
 		540B431A1C21974500509A62 /* PermissionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540B43131C21974500509A62 /* PermissionsController.swift */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		1EFA620737C03CA2FEB265CA /* Pods_OrangeTrustBadge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrangeTrustBadge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		49FBC29B20E3B5EA00F3F486 /* CustomMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuCell.swift; sourceTree = "<group>"; };
 		540B430F1C21974500509A62 /* LandingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingController.swift; sourceTree = "<group>"; };
 		540B43101C21974500509A62 /* ElementOverViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementOverViewCell.swift; sourceTree = "<group>"; };
 		540B43131C21974500509A62 /* PermissionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionsController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				54BFCC441C2618BC00E05B67 /* ElementMenuCell.swift */,
 				540B43101C21974500509A62 /* ElementOverViewCell.swift */,
 				54BFCC481C2618E300E05B67 /* TermsMenuCell.swift */,
+				49FBC29B20E3B5EA00F3F486 /* CustomMenuCell.swift */,
 			);
 			path = Landing;
 			sourceTree = "<group>";
@@ -270,7 +273,6 @@
 				542B752C1C1F152D003C489A /* Frameworks */,
 				542B752D1C1F152D003C489A /* Headers */,
 				542B752E1C1F152D003C489A /* Resources */,
-				7C4E74E1CA9C49A67617F67B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -342,13 +344,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OrangeTrustBadge-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		497C9D051CB6901100816CE5 /* ShellScript */ = {
@@ -363,21 +368,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "Scripts/build-fat-framework.sh";
-		};
-		7C4E74E1CA9C49A67617F67B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OrangeTrustBadge/Pods-OrangeTrustBadge-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -397,6 +387,7 @@
 				54C6FFD81CB6B345001ED15C /* DailymotionPlayer.swift in Sources */,
 				54A0AF081C1F86760007684D /* CustomElement.swift in Sources */,
 				549A41751C205CC900BEDDE3 /* Rating.swift in Sources */,
+				49FBC29C20E3B5EA00F3F486 /* CustomMenuCell.swift in Sources */,
 				54BFCC491C2618E300E05B67 /* TermsMenuCell.swift in Sources */,
 				5414BAE21C1F772D00087C67 /* TrustBadgeElement.swift in Sources */,
 				540B43171C21974500509A62 /* LandingController.swift in Sources */,

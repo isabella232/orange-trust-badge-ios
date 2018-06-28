@@ -44,6 +44,7 @@
 "landing-title" = "Odznaka zaufania";
 "landing-header-title" = "Zweryfikuj stopień dostępu aplikacji do danych prywatnych ";
 "landing-permission-title" = "Twoje dane";
+"landing-permission-subtitle" = "Znajdź i kontroluj wykorzystanie swoich danych osobowych w aplikacji.";
 "landing-permission-content" = "Z jakich danych korzysta aplikacja i w jakim celu?";
 "landing-usages-title" = "Korzystanie z aplikacji";
 "landing-usages-content" = "Jakie funkcje oraz zawartość posiada aplikacja?";

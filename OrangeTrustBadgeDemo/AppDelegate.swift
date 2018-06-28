@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return UserDefaults.standard.bool(forKey: "TRACKING_KEY")}
         
         // enable identity usage
-        //config.isIdentityUsed = {() in return true}
+        config.isIdentityUsed = {() in return false}
         
         // uncomment this section to apply a custom behavior when the user toggle the data-usage switch (confirmation popup)
         
@@ -125,7 +125,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         terms.append(Term(type: .text, titleKey: "terms-help-title", contentKey: "terms-help-content"))
         terms.append(Term(type: .text, titleKey: "terms-more-info-title", contentKey: "terms-more-info-content"))
         config.terms = terms
-        
+                
         // finally, initialize TrustBadgeManager with our configuration
         TrustBadge.with(config)
         

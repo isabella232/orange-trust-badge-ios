@@ -38,7 +38,8 @@ class TermsController: UITableViewController {
         navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         navigationItem.leftItemsSupplementBackButton = true
         tableView.estimatedRowHeight = 100       
-        tableView.configure(header: header, with: TrustBadge.shared.localizedString("terms-header-title"))
+        // TODO: use the title ?
+        //                tableView.configure(header: header, with: TrustBadge.shared.localizedString("terms-header-title"))
 
         if #available(iOS 11, *) {
             self.tableView.contentInsetAdjustmentBehavior = .never

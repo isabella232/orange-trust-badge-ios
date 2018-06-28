@@ -23,6 +23,9 @@
 
 "landing-terms-title" = "Our commitments";
 "landing-terms-content" = "We support you to protect your digital life and your personnal informations.";
+"landing-custom-title" = "More apps";
+"landing-custom-content" = "Find out other apps that have adopted the Trust Badge";
+
 "permission-location-description" = "Geolocation service allows application to use mobile network, Wi-Fi and GPS information to locate you approximatively. In this case, we don't collect any personal data";
 "terms-title" = "Our commitments";
 "terms-header-title" = "We support you to protect your digital life and your personnal informations.";

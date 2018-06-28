@@ -42,18 +42,22 @@
 
 /* Landing Page */
 "landing-title" = "Trust badge";
-"landing-header-title" = "Find and control the use of your personal information in your application.";
-"landing-permission-title" = "My data";
-"landing-permission-content" = "Personal data your application in using and why";
-"landing-usages-title" = "Usages";
+"landing-header-title" = "With the Trust badge, Orange apps become transparent to you.";
+"landing-header-subtitle" = "Find and control the use of your personal information in your application.";
+"landing-permission-title" = "Data that app can access";
+"landing-permission-content" = "The app does not request access to any data";
+"landing-permission-empty" = "Personal data your application in using and why";
+"landing-usages-title" = "Data from app usage";
 "landing-usages-content" = "Contents and features of your application";
+"landing-usages-empty" = "Contents and features of your application";
 "landing-terms-title" = "Our commitments";
 "landing-terms-content" = "We support you to protect your digital life and your personnal informations";
+"landing-terms-empty" = "We support you to protect your digital life and your personnal informations";
 
 /* Permissions Page */
-"permission-title" = "My data";
+"permission-title" = "Data that app can access";
 "permission-header-title" = "Personnal data this application is using and why";
-"permission-main-section-name" = "Main data";
+"permission-main-section-name" = "Data that app can access";
 "permission-others-section-name" = "Autres données et permissions";
 "permission-identity-name" = "My identity";
 "permission-identity-description" = "This application can access information linked to your accounts/profile. This application can use your name, date of birth and email in order to identify you for example.";

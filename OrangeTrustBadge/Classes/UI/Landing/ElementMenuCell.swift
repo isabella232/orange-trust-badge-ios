@@ -26,6 +26,7 @@ import UIKit
 class ElementMenuCell: UITableViewCell,UICollectionViewDataSource,UICollectionViewDelegate {
     
     static let reuseIdentifier = "ElementMenu"
+    static let maxDisplayedElement = 4
     
     var representedObject : [TrustBadgeElement]?
     
@@ -45,10 +46,10 @@ class ElementMenuCell: UITableViewCell,UICollectionViewDataSource,UICollectionVi
             return UICollectionViewCell()
         }
         
-        let element = elements[(indexPath as NSIndexPath).row]
+        let element = elements[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ElementOverViewCell.reuseIdentifier, for: indexPath) as! ElementOverViewCell
         
-        let statusKey :String = {
+        let statusKey: String = {
             if element.statusClosure() {
                 return "status-enabled"
             } else {
@@ -56,19 +57,24 @@ class ElementMenuCell: UITableViewCell,UICollectionViewDataSource,UICollectionVi
             }
         }()
         
-        if element is Rating{
-            cell.status.text = TrustBadge.shared.localizedString(element.nameKey)
-            cell.status.textColor = UIColor.black
-            cell.accessibilityValue = "\(TrustBadge.shared.localizedString("rating-title")) : \(TrustBadge.shared.localizedString(element.nameKey))"
+        if indexPath.row < ElementMenuCell.maxDisplayedElement {
+            if element is Rating {
+                cell.status.text = TrustBadge.shared.localizedString(element.nameKey)
+                cell.status.textColor = UIColor.black
+                cell.accessibilityValue = "\(TrustBadge.shared.localizedString("rating-title")) : \(TrustBadge.shared.localizedString(element.nameKey))"
+            } else {
+                cell.status.text = TrustBadge.shared.localizedString(statusKey)
+                cell.status.textColor = element.statusClosure() ? TrustBadge.shared.config?.highlightColor : UIColor.black
+                let status = element.statusClosure() ? TrustBadge.shared.localizedString("accessibility-enabled") :  TrustBadge.shared.localizedString("accessibility-disabled")
+                cell.accessibilityValue = "\(TrustBadge.shared.localizedString(element.nameKey)) : \(status)"
+            }
+            
+            cell.icon.image = element.statusClosure() ? TrustBadge.shared.loadImage("element.statusEnabledIconName") : TrustBadge.shared.loadImage(element.statusDisabledIconName)
+            cell.accessibilityHint = TrustBadge.shared.localizedString("accessibility-double-tap")
         } else {
-            cell.status.text = TrustBadge.shared.localizedString(statusKey)
-            cell.status.textColor = element.statusClosure() ? TrustBadge.shared.config?.highlightColor : UIColor.black
-            let status = element.statusClosure() ? TrustBadge.shared.localizedString("accessibility-enabled") :  TrustBadge.shared.localizedString("accessibility-disabled")
-            cell.accessibilityValue = "\(TrustBadge.shared.localizedString(element.nameKey)) : \(status)"
+            cell.icon.image = TrustBadge.shared.loadImage("more-dots")
+            cell.status.text = nil
         }
-        
-        cell.icon.image = element.statusClosure() ? TrustBadge.shared.loadImage(element.statusEnabledIconName) : TrustBadge.shared.loadImage(element.statusDisabledIconName)
-        cell.accessibilityHint = TrustBadge.shared.localizedString("accessibility-double-tap")
         
         return cell
     }
@@ -77,7 +83,7 @@ class ElementMenuCell: UITableViewCell,UICollectionViewDataSource,UICollectionVi
         guard let elements = representedObject else{
             return 0
         }
-        return elements.count
+        return min(ElementMenuCell.maxDisplayedElement + 1, elements.count)
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

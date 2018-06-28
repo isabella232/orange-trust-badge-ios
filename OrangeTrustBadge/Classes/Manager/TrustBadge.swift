@@ -28,6 +28,15 @@ import Photos
 import Contacts
 import AVKit
 
+@objc public protocol TrustBadgeDelegate {
+    /// If this method returns true, the landing page will displayed a cell that allows to access
+    //// to this view controller.
+    @objc optional func shouldDisplayCustomViewController() -> Bool
+    
+    /// Implement this method to return a viewController to displayed for the CustomMenuCell
+    @objc optional func viewController(at indexPath: IndexPath) -> UIViewController
+}
+
 /// TrustBadgeConfig aims to encapsulate all the configuration variables and custom handlers of TrustBadgeManager
 @objc open class TrustBadgeConfig : NSObject{
     
@@ -306,6 +315,9 @@ import AVKit
     
     var config : TrustBadgeConfig?
     
+    /// A TrustBade delegate to manage custom viewcontrollers
+    public var delegate: TrustBadgeDelegate?
+    
     var mainElements  = [TrustBadgeElement]()
     var otherElements = [TrustBadgeElement]()
     var usageElements = [TrustBadgeElement]()
@@ -385,9 +397,8 @@ import AVKit
     
     func configurePredefinedElements(_ elements : [TrustBadgeElement]) {
         for element in elements {
-            if element is PreDefinedElement {
-                let preDefinedElement = element as! PreDefinedElement
-                if preDefinedElement.shouldBeAutoConfigured{
+            if let preDefinedElement = element as? PreDefinedElement {
+                if preDefinedElement.shouldBeAutoConfigured {
                     switch(preDefinedElement.type){
                     case .calendar :
                         preDefinedElement.statusClosure = {() in return EKEventStore.authorizationStatus(for: EKEntityType.event) == EKAuthorizationStatus.authorized}
