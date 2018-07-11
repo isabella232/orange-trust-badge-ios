@@ -24,6 +24,7 @@
 import UIKit
 import OrangeTrustBadge
 import PhotosUI
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -44,9 +45,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Request Access to UserLocation in order to show them in iOS Preferences Panel
         locationManager.requestAlwaysAuthorization()
         
+        // Request microphone access permission
+        
+        
         // Let's begin OrangeTrustBadge's integration
         let config = TrustBadgeConfig()
         
+        // configure device permissions your app use
+        config.mainElements.append(PreDefinedElement(type: .location))
+        config.mainElements.append(PreDefinedElement(type: .contacts))
+        config.mainElements.append(PreDefinedElement(type: .photoLibrary))
+        config.mainElements.append(PreDefinedElement(type: .media))
+        config.mainElements.append(PreDefinedElement(type: .calendar))
+        config.mainElements.append(PreDefinedElement(type: .camera))
+        config.mainElements.append(PreDefinedElement(type: .reminders))
+        config.mainElements.append(PreDefinedElement(type: .bluetoothSharing))
+        config.mainElements.append(PreDefinedElement(type: .microphone))
+        config.mainElements.append(PreDefinedElement(type: .speechRecognition))
+        
+        config.mainElements.append(PreDefinedElement(type: .health))
+        config.isHealfDataUsed = { return true } // Call here your tracking SDK API to get the current Status of user's health data access
+        
+        config.mainElements.append(PreDefinedElement(type: .homekit))
+        config.isHomeKitUsed = { return true } // Call here your tracking SDK API to get the current Status of user's homekit data access
+
+        config.mainElements.append(PreDefinedElement(type: .motionFitness))
+        config.isMotionFitnessUsed = { return true } // Call here your tracking SDK API to get the current Status of user's motion activity & fitness data access
+
+        // configure application data your app use
+        //
         // uncomment this section to let TrustBadge know the status of UserTracking (DataUsage) and how to update its state
         config.isTrackingEnabled = { 
             // Call here your tracking SDK API to get the current Status
@@ -108,11 +135,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // uncomment this section to add a new Calendar entry in "Other Permissions"
-        /**
-        let calendarElement = PreDefinedElement(type: .Calendar)
-        calendarElement.statusClosure = {() in return true}
-        config.otherElements.append(calendarElement)
-        */
         
         // uncomment this section to add a new custom entry in "Terms and Conditions"
         //let customTerm = Term(type: .Custom, titleKey: "term-custom-title", contentKey: "term-custom-content")

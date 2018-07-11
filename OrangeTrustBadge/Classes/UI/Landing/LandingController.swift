@@ -22,6 +22,15 @@
 */
 
 import UIKit
+import CoreLocation
+import Contacts
+import Photos
+import MediaPlayer
+import EventKit
+import CoreBluetooth
+import AVFoundation
+import Speech
+import UserNotifications
 
 class LandingController: UITableViewController {
     
@@ -108,8 +117,8 @@ class LandingController: UITableViewController {
             if (self.splitViewController?.traitCollection.horizontalSizeClass == .compact) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ElementMenuCell.reuseIdentifier, for: indexPath) as! ElementMenuCell
                 cell.title.text = TrustBadge.shared.localizedString("landing-permission-title")
-                cell.content.text = TrustBadge.shared.localizedString("landing-permission-content")
                 cell.representedObject = TrustBadge.shared.mainElements
+                cell.content.text = permissionSubtitle
                 cell.overview.reloadData()
                 cell.overview.removeGestureRecognizer(mainGestureRecognizer!)
                 cell.overview.removeGestureRecognizer(usageGestureRecognizer!)
@@ -214,4 +223,69 @@ class LandingController: UITableViewController {
         }
     }
     
+    private var permissionSubtitle: String {
+        guard !TrustBadge.shared.mainElements.isEmpty else { return TrustBadge.shared.localizedString("landing-permission-unrequested") }
+        
+        var subtitleKey = "landing-permission-denied"
+        let firstRequestedDevicePermission =
+            TrustBadge.shared.mainElements
+                .compactMap { return $0 as? PreDefinedElement }
+                .filter { $0.type.isDevicePermission }
+                .first { $0.isPermissionRequested }
+        
+        if let _ = firstRequestedDevicePermission {
+            subtitleKey = "landing-permission-content"
+        }
+        return TrustBadge.shared.localizedString(subtitleKey)
+    }
+    
+}
+
+extension PreDefinedElement {
+    var isPermissionRequested: Bool {
+        switch type {
+        case .location:
+            return CLLocationManager.authorizationStatus() != .notDetermined
+        
+        case .contacts:
+            return CNContactStore.authorizationStatus(for: CNEntityType.contacts) != .notDetermined
+        
+        case .photoLibrary:
+            return PHPhotoLibrary.authorizationStatus() != .notDetermined
+        
+        case .media:
+            if #available(iOS 9.3, *) {
+                return MPMediaLibrary.authorizationStatus() != .notDetermined
+            } else {
+                return false
+            }
+        
+        case .calendar:
+            return EKEventStore.authorizationStatus(for: EKEntityType.event) != .notDetermined
+        
+        case .camera:
+            return AVCaptureDevice.authorizationStatus(for: AVMediaType.video) != .notDetermined
+        
+        case .reminders:
+            return EKEventStore.authorizationStatus(for: EKEntityType.reminder) != .notDetermined
+        
+        case .bluetoothSharing:
+            return CBPeripheralManager.authorizationStatus() != .notDetermined
+        
+        case .microphone:
+            return AVAudioSession.sharedInstance().recordPermission() != .undetermined
+        
+        case .speechRecognition:
+            if #available(iOS 10.0, *) {
+                return SFSpeechRecognizer.authorizationStatus() != .notDetermined
+            } else {
+                return false
+            }
+
+        default:
+            return statusClosure()
+            break
+        }
+        return true
+    }
 }

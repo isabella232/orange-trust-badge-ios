@@ -24,57 +24,92 @@
 import Foundation
 
 /// Enum describing the type of a PreDefinedElement
-@objc public enum ElementType : Int{
-    /// Identity Element (firstname, lastname etc...)
-    case identity
+@objc public enum ElementType : Int {
+    
+    //MARK: Device permissions
     /// Permission to access user's location
     case location
-    /// Permission to access user's Photo Library
-    case photoLibrary
     /// Permission to access user's Address Book
     case contacts
-    /// Permission to anonymously track user's activity within the app
-    case dataUsage
-    /// Permission to access user's Camera
-    case camera
+    /// Permission to access user's Photo Library 
+    case photoLibrary
+    /// Permission to access user's Media Library
+    case media
     /// Permission to access user's Calendar
     case calendar
+    /// Permission to access user's Camera
+    case camera
+    /// Permission to access user's REminders
+    case reminders
+    /// Permission to share datas via Bluetooh
+    case bluetoothSharing
     /// Permission to access user's Microphone
     case microphone
-    /// Permission to access user's phone number
-    case phone
-    /// Permission to access user's Health and Sensors data
-    case bodySensors
+    /// Permission to access user's Music activity and Media Library
+    case speechRecognition
+    /// Permission to access user's Health data
+    case health
+    /// Permission to access user's Homekit data
+    case homekit
+    /// Permission to access user's Motion activity & Fitness data
+    case motionFitness
+
+    //MARK: Application Data
+    /// Permission to access user's account informations
+    case accountInformations
     /// Permission to access user's profile on Twitter/Facebook
     case socialSharing
     /// Permission to pay within the app
     case inAppPurchase
     /// Permission to store cookies for marketing purposes
     case advertising
-    
+    /// Identity Element (firstname, lastname etc...)
+    case identity
+    /// Permission to anonymously track user's activity within the app
+    case dataUsage
+    /// Permission to receive local and remote notifications
+    case notifications
+
     func name() -> String {
         switch self {
-            case .identity: return "identity"
-            case .location: return "location"
-            case .photoLibrary: return "photo-library"
-            case .contacts: return "contacts"
-            case .dataUsage : return "data-usage"
-            case .camera : return "camera"
-            case .calendar : return "calendar"
-            case .microphone : return "microphone"
-            case .phone : return "phone"
-            case .bodySensors : return "body-sensors"
-            case .socialSharing : return "social-sharing"
-            case .inAppPurchase : return "inapp-purchase"
-            case .advertising : return "advertising"
+        case .location: return "location"
+        case .contacts: return "contacts"
+        case .photoLibrary: return "photo-library"
+        case .media : return "media"
+        case .calendar : return "calendar"
+        case .camera : return "camera"
+        case .reminders : return "reminders"
+        case .bluetoothSharing : return "bluetooth-sharing"
+        case .microphone : return "microphone"
+        case .speechRecognition : return "speech-recognition"
+        case .health: return "health"
+        case .homekit: return "homekit"
+        case .motionFitness : return "motion-activity-fitness"
+        case .accountInformations : return "account-informations"
+        case .socialSharing : return "social-sharing"
+        case .inAppPurchase : return "inapp-purchase"
+        case .advertising : return "advertising"
+        case .identity: return "identity"
+        case .dataUsage : return "data-usage"
+        case .notifications: return "notifications"
         }
     }
     
-    public static let defaultMainElementTypes  : [ElementType] = [identity, location, photoLibrary, contacts, dataUsage]
+    public static let defaultMainElementTypes  : [ElementType] = []
     
     public static let defaultOtherElementTypes : [ElementType] = []
     
     public static let defaultUsageElementTypes : [ElementType] = [socialSharing, inAppPurchase, advertising]
+
+    private var devicePermissions: [ElementType] {
+        return [.location, .contacts, .photoLibrary, .media, .calendar,
+                .camera, .reminders, .bluetoothSharing, .microphone,
+                .speechRecognition, .health, .homekit, .motionFitness]
+    }
+    /// true if self is a device permission
+    public var isDevicePermission: Bool {
+        return devicePermissions.contains(self)
+    }
 }
 
 /// A PreDefinedElement is a pre-defined TrustBadgeElement, often backed by a system-permission (e.g. Location for instance)

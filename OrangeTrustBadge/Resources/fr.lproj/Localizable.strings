@@ -46,6 +46,8 @@
 "landing-header-subtitle" = "Retrouvez et contrôlez l'utilisation de vos données personnelles dans l’application.";
 "landing-permission-title" = "Données accessibles par l'application";
 "landing-permission-content" = "Quelles sont les données utilisées par votre application et pour quelles raisons ?";
+"landing-permission-unrequested" = "L'application ne demande accès à aucune donnée";
+"landing-permission-denied" = "L'application n'est autorisée à accéder à aucune donnée";
 "landing-usages-title" = "Données d'usage de l'application";
 "landing-usages-content" = "Quels sont les contenus et les fonctionnalités de votre application ?";
 "landing-terms-title" = "Nos engagements";
@@ -61,7 +63,7 @@
 "permission-location-name" = "Localisation";
 "permission-location-description" = "Le service de localisation permet aux applications d’utiliser des informations des réseaux mobiles, Wi-Fi et GPS  pour localiser votre emplacement approximatif. Aucune donnée personnelle n’est collectée à cette occasion.";
 "permission-photo-library-name" = "Photos et vidéos";
-"permission-photo-library-description" = "Cette application peut accéder aux fichiers stockés sur votre terminal. Cette autorisation permet à l’application de lire, modifier ou supprimer ces fichiers.";
+"permission-photo-library-description" = "Cette application peut exploiter le dossier photos sur votre terminal. Cette autorisation permet à l'application de lire les fichiers stockés, les modifier ou les supprimer.";
 "permission-contacts-name" = "Contacts";
 "permission-contacts-description" = "Cette application peut accéder, ajouter et/ou modifier les contacts de votre téléphone.";
 "permission-data-usage-name" = "Données d'usage";
@@ -76,6 +78,20 @@
 "permission-phone-description" = "Cette application peut accéder à l'identifiant de votre mobile et à votre numéro de téléphone.";
 "permission-body-sensors-name" = "Objets connectés";
 "permission-body-sensors-description" = "Cette application peut accéder aux données collectées par votre objet connecté qui est synchronisé avec votre mobile.";
+"permission-reminders-name"="Rappels";
+"permission-reminders-description"="Cette application peut exploiter les informations de rappel sur votre terminal, y compris pour consulter les évènements enregistrés.";
+"permission-bluetooth-sharing-name"="Partage Bluetooth";
+"permission-bluetooth-sharing-description"="L'application peut échanger des données par Bluetooth.";
+"permission-speech-recognition-name"="Reconnaissance vocale";
+"permission-speech-recognition-description"="Cette application a demandé l'accès à la reconnaissance vocale. La reconnaissance vocale envoie vos enregistremenst vocaux à Apple pour traiter vos demandes.";
+"permission-health-name"="Santé";
+"permission-health-description"="L'application a demandé l'accès à vos Données Santé.";
+"permission-homekit-name"="Homekit";
+"permission-homekit-description"="L'application a demandé l'accès à vos données de la maison.";
+"permission-motion-activity-fitness-name"="Mouvements et forme";
+"permission-motion-activity-fitness-description"="Mouvements et forme permet aux apps d'accéder aux données du capteur, notamment aux mouvements du corps, au nombre de pas, et bien plus.";
+"permission-media-name"="Médias";
+"permission-media-description"="L'application a demandé l'accès à votre activité Musique et votre librairie de média.";
 
 /* Usages Page */
 "usages-title" = "Les usages";

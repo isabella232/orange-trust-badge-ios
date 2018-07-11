@@ -43,9 +43,11 @@
 /* Landing Page */
 "landing-title" = "Odznaka zaufania";
 "landing-header-title" = "Zweryfikuj stopień dostępu aplikacji do danych prywatnych ";
+"landing-header-subtitle" = "Znajdź i kontroluj wykorzystanie swoich danych osobowych w aplikacji.";
 "landing-permission-title" = "Twoje dane";
-"landing-permission-subtitle" = "Znajdź i kontroluj wykorzystanie swoich danych osobowych w aplikacji.";
 "landing-permission-content" = "Z jakich danych korzysta aplikacja i w jakim celu?";
+"landing-permission-unrequested" = "Aplikacja nie żąda dostępu do żadnych danych";
+"landing-permission-denied" = "Aplikacja nie ma dostępu do żadnych danych";
 "landing-usages-title" = "Korzystanie z aplikacji";
 "landing-usages-content" = "Jakie funkcje oraz zawartość posiada aplikacja?";
 "landing-terms-title" = "Nasze zobowiązania";

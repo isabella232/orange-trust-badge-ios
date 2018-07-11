@@ -22,11 +22,15 @@
 */
 
 import UIKit
-import EventKit
 import CoreLocation
-import Photos
 import Contacts
-import AVKit
+import Photos
+import MediaPlayer
+import EventKit
+import CoreBluetooth
+import AVFoundation
+import Speech
+import UserNotifications
 
 @objc public protocol TrustBadgeDelegate {
     /// If this method returns true, the landing page will displayed a cell that allows to access
@@ -84,6 +88,18 @@ import AVKit
     /// (Optional) Closure giving Advertisement (Advertisement ElementType) status (enabled/disabled) (Default : disabled)
     @objc open var isAdvertisementUsed : () -> Bool = {() in return false}
     
+    /// (Optional) Closure giving Phone Number (phoneNumber ElementType) status (enabled/disabled) (Default : disabled)
+    @objc open var isPhoneNumberUsed : () -> Bool = {() in return false}
+    
+    /// (Optional) Closure giving health data status (enabled/disabled) (Default : disabled)
+    @objc open var isHealfDataUsed : () -> Bool = {() in return false}
+
+    /// (Optional) Closure giving homekit status (enabled/disabled) (Default : disabled)
+    @objc open var isHomeKitUsed : () -> Bool = {() in return false}
+
+    /// (Optional) Closure giving Motion & Fitness status (enabled/disabled) (Default : disabled)
+    @objc open var isMotionFitnessUsed : () -> Bool = {() in return false}
+
     /** (Optional) Closure allowing to update the Tracking (Data Usage ElementType) status (enabled/disabled).
      
      Example :
@@ -350,8 +366,6 @@ import AVKit
             self.configurePredefinedElements(self.mainElements)
         }
         
-        assert(self.mainElements.count > 0, "You must have at least 1 element in Main Elements section to initialize this manager")
-        
         //initialize other Elements
         if let otherElements = self.config?.otherElements{
             self.otherElements.append(contentsOf: otherElements)
@@ -399,42 +413,144 @@ import AVKit
         for element in elements {
             if let preDefinedElement = element as? PreDefinedElement {
                 if preDefinedElement.shouldBeAutoConfigured {
+                    
                     switch(preDefinedElement.type){
-                    case .calendar :
-                        preDefinedElement.statusClosure = {() in return EKEventStore.authorizationStatus(for: EKEntityType.event) == EKAuthorizationStatus.authorized}
-                        preDefinedElement.isConfigurable = true
+                    //Device permissions
                     case .location :
-                        preDefinedElement.statusClosure = {() in return ![CLAuthorizationStatus.denied,CLAuthorizationStatus.notDetermined,CLAuthorizationStatus.restricted].contains(CLLocationManager.authorizationStatus()) }
-                        preDefinedElement.isConfigurable = true
-                    case .photoLibrary :
-                        preDefinedElement.statusClosure = {() in return ![PHAuthorizationStatus.denied,PHAuthorizationStatus.notDetermined,PHAuthorizationStatus.restricted].contains(PHPhotoLibrary.authorizationStatus()) }
-                        preDefinedElement.isConfigurable = true
-                    case .contacts :
-                        if #available(iOS 9.0, *) {
-                            preDefinedElement.statusClosure = {() in return ![CNAuthorizationStatus.denied,CNAuthorizationStatus.notDetermined,CNAuthorizationStatus.restricted].contains(CNContactStore.authorizationStatus(for: CNEntityType.contacts))}
-                        } else {
-                            preDefinedElement.statusClosure = {() in return ![ABAuthorizationStatus.denied,ABAuthorizationStatus.notDetermined,ABAuthorizationStatus.restricted].contains(ABAddressBookGetAuthorizationStatus())}
+                        preDefinedElement.statusClosure = {
+                            return ![CLAuthorizationStatus.denied,
+                                     CLAuthorizationStatus.notDetermined,
+                                     CLAuthorizationStatus.restricted]
+                                .contains(CLLocationManager.authorizationStatus())
                         }
                         preDefinedElement.isConfigurable = true
-                    case .microphone :
-                        preDefinedElement.statusClosure = {() in return ![AVAudioSessionRecordPermission.denied,AVAudioSessionRecordPermission.undetermined].contains(AVAudioSession.sharedInstance().recordPermission())}
+
+                    case .contacts :
+                        if #available(iOS 9.0, *) {
+                            preDefinedElement.statusClosure = {
+                                return ![CNAuthorizationStatus.denied,
+                                         CNAuthorizationStatus.notDetermined,
+                                         CNAuthorizationStatus.restricted]
+                                    .contains(CNContactStore.authorizationStatus(for: CNEntityType.contacts))
+                            }
+                        } else {
+                            preDefinedElement.statusClosure = {
+                                return ![ABAuthorizationStatus.denied,
+                                         ABAuthorizationStatus.notDetermined,
+                                         ABAuthorizationStatus.restricted]
+                                    .contains(ABAddressBookGetAuthorizationStatus())}
+                        }
                         preDefinedElement.isConfigurable = true
+                        
+                    case .photoLibrary :
+                        preDefinedElement.statusClosure = {
+                            return ![PHAuthorizationStatus.denied,
+                                     PHAuthorizationStatus.notDetermined,
+                                     PHAuthorizationStatus.restricted]
+                                .contains(PHPhotoLibrary.authorizationStatus())
+                        }
+                        preDefinedElement.isConfigurable = true
+
+                    case .media:
+                        preDefinedElement.statusClosure = {
+                            if #available(iOS 9.3, *) {
+                                return ![MPMediaLibraryAuthorizationStatus.denied,
+                                         MPMediaLibraryAuthorizationStatus.notDetermined,
+                                         MPMediaLibraryAuthorizationStatus.restricted]
+                                    .contains(MPMediaLibrary.authorizationStatus())
+                            } else {
+                                return false
+                            }
+                        }
+                        preDefinedElement.isConfigurable = true
+
+                    case .calendar :
+                        preDefinedElement.statusClosure = {
+                            return EKEventStore.authorizationStatus(for: EKEntityType.event) == EKAuthorizationStatus.authorized
+                        }
+                        preDefinedElement.isConfigurable = true
+                    
                     case .camera :
-                        preDefinedElement.statusClosure = {() in return ![AVAuthorizationStatus.denied,AVAuthorizationStatus.notDetermined,AVAuthorizationStatus.restricted].contains(AVCaptureDevice.authorizationStatus(for: AVMediaType.video))}
+                        preDefinedElement.statusClosure = {
+                            return ![AVAuthorizationStatus.denied,
+                                     AVAuthorizationStatus.notDetermined,
+                                     AVAuthorizationStatus.restricted]
+                                .contains(AVCaptureDevice.authorizationStatus(for: AVMediaType.video))}
                         preDefinedElement.isConfigurable = true
+
+                    case .reminders :
+                        preDefinedElement.statusClosure = {
+                            return EKEventStore.authorizationStatus(for: EKEntityType.reminder) == EKAuthorizationStatus.authorized
+                        }
+                        preDefinedElement.isConfigurable = true
+                    
+                    case .bluetoothSharing:
+                        preDefinedElement.statusClosure = {
+                            return ![CBPeripheralManagerAuthorizationStatus.denied,
+                                     CBPeripheralManagerAuthorizationStatus.notDetermined,
+                                     CBPeripheralManagerAuthorizationStatus.restricted].contains(CBPeripheralManager.authorizationStatus())
+                        }
+                        preDefinedElement.isConfigurable = true
+
+                    case .microphone :
+                        preDefinedElement.statusClosure = {
+                            return ![AVAudioSessionRecordPermission.denied,AVAudioSessionRecordPermission.undetermined].contains(AVAudioSession.sharedInstance().recordPermission())}
+                        preDefinedElement.isConfigurable = true
+                    
+                    case .speechRecognition:
+                        if #available(iOS 10.0, *) {
+                            preDefinedElement.statusClosure = {
+                                return ![SFSpeechRecognizerAuthorizationStatus.denied,
+                                         SFSpeechRecognizerAuthorizationStatus.notDetermined,
+                                         SFSpeechRecognizerAuthorizationStatus.restricted].contains(SFSpeechRecognizer.authorizationStatus())
+                            }
+                            preDefinedElement.isConfigurable = true
+                        }
+                        
+                    case .health:
+                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isHealfDataUsed)!
+
+                    case .homekit:
+                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isHomeKitUsed)!
+                        preDefinedElement.isConfigurable = true
+
+                    case .motionFitness:
+                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isMotionFitnessUsed)!
+                        preDefinedElement.isConfigurable = true
+
+                    //Application data
+                    case .accountInformations:
+                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isPhoneNumberUsed)!
+
+                    case .socialSharing :
+                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isSocialSharingUsed)!
+
+                    case .inAppPurchase :
+                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isInappPurchaseUsed)!
+
+                    case .advertising :
+                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isAdvertisementUsed)!
+                        
+                    case .identity :
+                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isIdentityUsed)!
+
                     case .dataUsage :
                         preDefinedElement.isToggable = true
                         preDefinedElement.statusClosure = (TrustBadge.shared.config?.isTrackingEnabled)!
                         preDefinedElement.toggleClosure = (TrustBadge.shared.config?.updateTracking)!
-                    case .identity :
-                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isIdentityUsed)!
-                    case .socialSharing :
-                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isSocialSharingUsed)!
-                    case .inAppPurchase :
-                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isInappPurchaseUsed)!
-                    case .advertising :
-                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isAdvertisementUsed)!
-                    default: break
+                    
+                    case .notifications:
+                        if #available(iOS 10.0, *) {
+                            preDefinedElement.statusClosure = {
+                                var status = false
+                                UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { (settings) in
+                                    status = ![UNAuthorizationStatus.denied,
+                                               UNAuthorizationStatus.notDetermined].contains(settings.authorizationStatus)
+                                })
+                                return status
+                            }
+                            preDefinedElement.isConfigurable = true
+                        }
                     }
                 }
             }

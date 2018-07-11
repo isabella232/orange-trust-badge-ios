@@ -45,8 +45,9 @@
 "landing-header-title" = "With the Trust badge, Orange apps become transparent to you.";
 "landing-header-subtitle" = "Find and control the use of your personal information in your application.";
 "landing-permission-title" = "Data that app can access";
-"landing-permission-content" = "The app does not request access to any data";
-"landing-permission-empty" = "Personal data your application in using and why";
+"landing-permission-content" = "The app is not allowed to access any data";
+"landing-permission-unrequested" = "The app does not request access to any data";
+"landing-permission-denied" = "The app is not allowed to access any data";
 "landing-usages-title" = "Data from app usage";
 "landing-usages-content" = "Contents and features of your application";
 "landing-usages-empty" = "Contents and features of your application";
@@ -63,8 +64,8 @@
 "permission-identity-description" = "This application can access information linked to your accounts/profile. This application can use your name, date of birth and email in order to identify you for example.";
 "permission-location-name" = "Location";
 "permission-location-description" = "Geolocation service allows application to use mobile network, Wi-Fi and GPS information to locate you approximatively.";
-"permission-photo-library-name" = "Media & Photo Library";
-"permission-photo-library-description" = "This application can access files stored on your device. This permission allows this application to read, edit or delete them";
+"permission-photo-library-name" = "Photos and videos";
+"permission-photo-library-description" = "This application can use photos stored on your device. This permission allows the application to read, edit or delete stored files.";
 "permission-contacts-name" = "Contacts";
 "permission-contacts-description" = "This application can access, add and / or change your phone contacts.";
 "permission-data-usage-name" = "Usage data";
@@ -79,6 +80,20 @@
 "permission-phone-description" = "This application can access the ID of your mobile and your phone number.";
 "permission-body-sensors-name" = "Connected objects";
 "permission-body-sensors-description" = "This application can access data collected by your connected object which is synchronized with your device. ";
+"permission-reminders-name"="Reminders";
+"permission-reminders-description"="This application can use the reminders information on your device, including consultation of recorded events.";
+"permission-bluetooth-sharing-name"="Bluetooth Sharing";
+"permission-bluetooth-sharing-description"="This application has the ability to share data via Bluetooth.";
+"permission-speech-recognition-name"="Speech Recognition";
+"permission-speech-recognition-description"="This application has requested access to speech recognition. Speech recognition sends recorded voice to Apple to process your requests.";
+"permission-health-name"="Healthkit";
+"permission-health-description"="This application has requested access to your health data.";
+"permission-homekit-name"="Homekit";
+"permission-homekit-description"="This application has requested access to your home data.";
+"permission-motion-activity-fitness-name"="Fitness and health tracking";
+"permission-motion-activity-fitness-description"="Fitness and health tracking allows apps to access sensor data, including body movement, steps count, and more.";
+"permission-media-name"="Media";
+"permission-media-description"="This application has requested access to your music activity and your media library.";
 
 /* Usages Page */
 "usages-title" = "Usages";
