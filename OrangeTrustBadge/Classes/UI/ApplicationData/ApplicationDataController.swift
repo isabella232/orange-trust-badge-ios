@@ -2,7 +2,7 @@
 *
 * OrangeTrustBadge
 *
-* File name:   UsagesController.swift
+* File name:   ApplicationDataController.swift
 * Created:     15/12/2015
 * Created by:  Romain BIARD
 *
@@ -23,7 +23,7 @@
 
 import UIKit
 
-class UsagesController: UITableViewController {
+class ApplicationDataController: UITableViewController {
     
     @IBOutlet weak var header : Header!
     
@@ -63,18 +63,14 @@ class UsagesController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TrustBadge.shared.usageElements.count
+        return TrustBadge.shared.applicationData.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let element = TrustBadge.shared.usageElements[(indexPath as NSIndexPath).row]
+        let element = TrustBadge.shared.applicationData[(indexPath as NSIndexPath).row]
         let cell = tableView.dequeueReusableCell(withIdentifier: ElementCell.reuseIdentifier, for: indexPath) as! ElementCell
         
-        if element is Rating {
-            cell.nameLabel.text = TrustBadge.shared.localizedString("rating-title")
-        } else {
-            cell.nameLabel.text = TrustBadge.shared.localizedString(element.nameKey)
-        }
+        cell.nameLabel.text = TrustBadge.shared.localizedString(element.nameKey)
         
         let description = TrustBadge.shared.localizedString(element.descriptionKey)
         if description.contains("<html") {
@@ -159,7 +155,7 @@ class UsagesController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let element = TrustBadge.shared.usageElements[(indexPath as NSIndexPath).row]
+        let element = TrustBadge.shared.applicationData[(indexPath as NSIndexPath).row]
         if element.isExpanded {
             return UITableViewAutomaticDimension
         } else {
@@ -168,7 +164,7 @@ class UsagesController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let element = TrustBadge.shared.usageElements[(indexPath as NSIndexPath).row]
+        let element = TrustBadge.shared.applicationData[(indexPath as NSIndexPath).row]
         element.isExpanded = !element.isExpanded
         tableView.beginUpdates()
         tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)

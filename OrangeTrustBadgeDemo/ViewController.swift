@@ -46,6 +46,7 @@ class ViewController: UIViewController  {
 }
 
 // MARK: TrustBadgeDelegate
+// Implements this delegate if your application should display a custom viewcontroller
 extension ViewController: TrustBadgeDelegate {
 
     func shouldDisplayCustomViewController() -> Bool {

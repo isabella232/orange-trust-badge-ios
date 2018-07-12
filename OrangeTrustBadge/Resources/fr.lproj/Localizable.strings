@@ -58,16 +58,15 @@
 "permission-header-title" = "Quelles sont les données utilisées par votre application et pour quelles raisons ?";
 "permission-main-section-name" = "Données principales";
 "permission-others-section-name" = "Autres données et permissions";
-"permission-identity-name" = "Mon identité";
-"permission-identity-description" = "Cette application peut accéder aux informations liées à vos comptes/profils. Elle peut ainsi utiliser votre nom, date de naissance, adresse mail dans le cadre de votre identification par exemple.";
-"permission-location-name" = "Localisation";
+"permission-identity-name" = "Identifiants";
+"permission-identity-description" = "Lors du lancement de l'application, vous devez renseigner votre identifiant et votre mot de passe de compte. Ces informations permettent la création d'un cookie d'authentification. Celui-ci vous permet de ne pas avoir à saisir l'identifiant et le mot de passe à chaque connexion. Vous pouvez le supprimer depuis paramètres > changer de compte. Un nouveau cookie sera créé lors de votre prochaine identification.";
 "permission-location-description" = "Le service de localisation permet aux applications d’utiliser des informations des réseaux mobiles, Wi-Fi et GPS  pour localiser votre emplacement approximatif. Aucune donnée personnelle n’est collectée à cette occasion.";
 "permission-photo-library-name" = "Photos et vidéos";
 "permission-photo-library-description" = "Cette application peut exploiter le dossier photos sur votre terminal. Cette autorisation permet à l'application de lire les fichiers stockés, les modifier ou les supprimer.";
 "permission-contacts-name" = "Contacts";
 "permission-contacts-description" = "Cette application peut accéder, ajouter et/ou modifier les contacts de votre téléphone.";
-"permission-data-usage-name" = "Données d'usage";
-"permission-data-usage-description" = "Cette application peut collecter des informations concernant l'utilisation de l'application et nous renvoyer ces informations pour des analyses statistiques afin d'améliorer le service qui vous est proposé et la pertinence des messages de notification qui vous sont envoyés. Ces informations sont collectées et traitées en conformité avec les lois applicables.";
+"permission-data-usage-name" = "Programme d'amélioration";
+"permission-data-usage-description" = "Cette application collecte des informations concernant l'utilisation de l'application et nous envoie ces informations pour des analyses statistiques afin d'améliorer le service et la pertinence des messages envoyés par le service.  Toutes le informations collectées sont entièrement anonymes. Ces informations sont collectées et traitées en conformité avec les lois applicables.";
 "permission-camera-name" = "Appareil photo";
 "permission-camera-description" = "Cette application peut utiliser l'appareil photo de votre appareil. L'accès à la caméra peut permettre à l'application d'effectuer les actions suivantes : prendre des photos, enregistrer des vidéos.";
 "permission-calendar-name" = "Agenda";
@@ -92,6 +91,10 @@
 "permission-motion-activity-fitness-description"="Mouvements et forme permet aux apps d'accéder aux données du capteur, notamment aux mouvements du corps, au nombre de pas, et bien plus.";
 "permission-media-name"="Médias";
 "permission-media-description"="L'application a demandé l'accès à votre activité Musique et votre librairie de média.";
+"permission-notifications-name"="Notifications";
+"permission-notifications-description"="Recevoir des notifications de l'application. Les notifications peuvent inclure des sons et s'affichent sous différents formats (message dans le centre de notification).";
+"permission-account-informations-name"="Infos de comptes ";
+"permission-account-informations-description"="Cette application accède aux informations liées à vos comptes/profils. Cette application peut ainsi utiliser votre nom, date de naissance, adresse mail dans le cadre de votre identification par exemple.";
 
 /* Usages Page */
 "usages-title" = "Les usages";
@@ -102,6 +105,8 @@
 "permission-inapp-purchase-description" = "Dans cette application, vous pouvez acheter des contenus ou des services supplémentaires.";
 "permission-advertising-name" = "Publicité";
 "permission-advertising-description" = "Cette application peut contenir de la publicité grâce à des cookies publicitaires afin de vous proposer des produits et services  adaptés à vos centres d'intérêts réels ou supposés.";
+"permission-history-name" = "History";
+"permission-history-description" = "Cette application collecte des informations concernant vos préférences et l'historique de vos usages afin de vous proposer des services personnalisés.";
 
 /* Terms Page */
 "terms-title" = "Nos engagements";

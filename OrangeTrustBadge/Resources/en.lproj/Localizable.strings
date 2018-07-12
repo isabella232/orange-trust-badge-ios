@@ -60,16 +60,16 @@
 "permission-header-title" = "Personnal data this application is using and why";
 "permission-main-section-name" = "Data that app can access";
 "permission-others-section-name" = "Autres données et permissions";
-"permission-identity-name" = "My identity";
-"permission-identity-description" = "This application can access information linked to your accounts/profile. This application can use your name, date of birth and email in order to identify you for example.";
+"permission-identity-name" = "Account credentials";
+"permission-identity-description" = "When launching the application, you must fill in your account ID and password. This information allows the creation of an authentication cookie. This allows you not to have to enter the username and password for each connection. You can delete it from settings> change account. A new cookie will be created the next time you log in.";
 "permission-location-name" = "Location";
 "permission-location-description" = "Geolocation service allows application to use mobile network, Wi-Fi and GPS information to locate you approximatively.";
 "permission-photo-library-name" = "Photos and videos";
 "permission-photo-library-description" = "This application can use photos stored on your device. This permission allows the application to read, edit or delete stored files.";
 "permission-contacts-name" = "Contacts";
 "permission-contacts-description" = "This application can access, add and / or change your phone contacts.";
-"permission-data-usage-name" = "Usage data";
-"permission-data-usage-description" = "This application collects information on the use of the application and sends us such information for statistical analysis to further improve the service provided to you and the relevance of the notification messages sent by the service. Such information is collected and processed in compliance with applicable laws";
+"permission-data-usage-name" = "Improvement program";
+"permission-data-usage-description" = "This application collects information on the use of the application and sens us such information for statistical analysis to further improve the service and the relevance of the notification messages sent by the service. Such information is anonymously collected and processed in compliance with applicable laws.";
 "permission-camera-name" = "Camera";
 "permission-camera-description" = "This application can use the camera of your device. The camera access allows this application to take pictures and record video.";
 "permission-calendar-name" = "Agenda";
@@ -94,6 +94,10 @@
 "permission-motion-activity-fitness-description"="Fitness and health tracking allows apps to access sensor data, including body movement, steps count, and more.";
 "permission-media-name"="Media";
 "permission-media-description"="This application has requested access to your music activity and your media library.";
+"permission-notifications-name"="Notifications";
+"permission-notifications-description"="Receive notifications from the application. Notifications can include sounds and be displayed in different formats (message in the notification center).";
+"permission-account-informations-name"="Account information";
+"permission-account-informations-description"="This application can access information linked to your account/profiles. This application can use your name, date of birth and email in order to identify you for example.";
 
 /* Usages Page */
 "usages-title" = "Usages";
@@ -104,7 +108,8 @@
 "permission-inapp-purchase-description" = "In this application, you can buy other contents or services.";
 "permission-advertising-name" = "Advertising";
 "permission-advertising-description" = "This application can broadcast advertising thanks to stored cookies in order to propose you products and services adapted to your real or supposed interests.";
-
+"permission-history-name" = "Historique et préférences";
+"permission-history-description" = "Cette application collecte des informations concernant vos préférences et l'historique de vos usages afin de vous proposer des services personnalisés.";
 /* Terms Page */
 "terms-title" = "Our commitments";
 "terms-header-title" = "We support you to protect your digital life and your personnal informations";

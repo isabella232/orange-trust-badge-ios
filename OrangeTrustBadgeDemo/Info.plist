@@ -26,6 +26,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Camera Usage Description</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Geolocation service allows application to use mobile network, Wi-Fi and GPS information to locate you approximatively. In this case, we don't collect any personal data</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Geolocation service allows application to use mobile network, Wi-Fi and GPS information to locate you approximatively. In this case, we don't collect any personal data</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

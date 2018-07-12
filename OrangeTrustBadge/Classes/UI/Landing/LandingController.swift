@@ -117,7 +117,7 @@ class LandingController: UITableViewController {
             if (self.splitViewController?.traitCollection.horizontalSizeClass == .compact) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ElementMenuCell.reuseIdentifier, for: indexPath) as! ElementMenuCell
                 cell.title.text = TrustBadge.shared.localizedString("landing-permission-title")
-                cell.representedObject = TrustBadge.shared.mainElements
+                cell.representedObject = TrustBadge.shared.devicePermissions
                 cell.content.text = permissionSubtitle
                 cell.overview.reloadData()
                 cell.overview.removeGestureRecognizer(mainGestureRecognizer!)
@@ -136,7 +136,7 @@ class LandingController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ElementMenuCell.reuseIdentifier, for: indexPath) as! ElementMenuCell
                 cell.title.text = TrustBadge.shared.localizedString("landing-usages-title")
                 cell.content.text = TrustBadge.shared.localizedString("landing-usages-content")
-                cell.representedObject = TrustBadge.shared.usageElements
+                cell.representedObject = TrustBadge.shared.applicationData
                 cell.overview.reloadData()
                 cell.overview.removeGestureRecognizer(mainGestureRecognizer!)
                 cell.overview.removeGestureRecognizer(usageGestureRecognizer!)
@@ -224,11 +224,11 @@ class LandingController: UITableViewController {
     }
     
     private var permissionSubtitle: String {
-        guard !TrustBadge.shared.mainElements.isEmpty else { return TrustBadge.shared.localizedString("landing-permission-unrequested") }
+        guard !TrustBadge.shared.devicePermissions.isEmpty else { return TrustBadge.shared.localizedString("landing-permission-unrequested") }
         
         var subtitleKey = "landing-permission-denied"
         let firstRequestedDevicePermission =
-            TrustBadge.shared.mainElements
+            TrustBadge.shared.devicePermissions
                 .compactMap { return $0 as? PreDefinedElement }
                 .filter { $0.type.isDevicePermission }
                 .first { $0.isPermissionRequested }
@@ -284,8 +284,6 @@ extension PreDefinedElement {
 
         default:
             return statusClosure()
-            break
         }
-        return true
     }
 }

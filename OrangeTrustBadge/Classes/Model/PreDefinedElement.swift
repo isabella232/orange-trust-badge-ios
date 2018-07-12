@@ -55,20 +55,18 @@ import Foundation
     case motionFitness
 
     //MARK: Application Data
-    /// Permission to access user's account informations
-    case accountInformations
-    /// Permission to access user's profile on Twitter/Facebook
-    case socialSharing
-    /// Permission to pay within the app
-    case inAppPurchase
-    /// Permission to store cookies for marketing purposes
-    case advertising
-    /// Identity Element (firstname, lastname etc...)
-    case identity
-    /// Permission to anonymously track user's activity within the app
-    case dataUsage
     /// Permission to receive local and remote notifications
     case notifications
+    /// Identity Element (firstname, lastname etc...)
+    case identity
+    /// Permission to access user's account informations
+    case accountInformations
+    /// Permission to anonymously track user's activity within the app
+    case dataUsage
+    /// Permission to store cookies for marketing purposes
+    case advertising
+    /// Permission to ollects information about your preferences and usage history
+    case history
 
     func name() -> String {
         switch self {
@@ -86,20 +84,20 @@ import Foundation
         case .homekit: return "homekit"
         case .motionFitness : return "motion-activity-fitness"
         case .accountInformations : return "account-informations"
-        case .socialSharing : return "social-sharing"
-        case .inAppPurchase : return "inapp-purchase"
         case .advertising : return "advertising"
         case .identity: return "identity"
         case .dataUsage : return "data-usage"
         case .notifications: return "notifications"
+        case .history: return "history"
         }
     }
     
     public static let defaultMainElementTypes  : [ElementType] = []
     
-    public static let defaultOtherElementTypes : [ElementType] = []
+    public static let defaultOtherElementTypes : [ElementType] = [.notifications, .identity, .accountInformations, .dataUsage,
+                                                                  .advertising]
     
-    public static let defaultUsageElementTypes : [ElementType] = [socialSharing, inAppPurchase, advertising]
+    public static let defaultUsageElementTypes : [ElementType] = []
 
     private var devicePermissions: [ElementType] {
         return [.location, .contacts, .photoLibrary, .media, .calendar,

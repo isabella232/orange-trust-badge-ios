@@ -23,7 +23,7 @@
 
 import UIKit
 
-class PermissionsController: UITableViewController {
+class DevicePermissionsController: UITableViewController {
     
     
     @IBOutlet weak var header : Header!
@@ -45,7 +45,7 @@ class PermissionsController: UITableViewController {
         // TODO: use the title ?
 //        tableView.configure(header: header, with: TrustBadge.shared.localizedString("permission-header-title"))
         
-        NotificationCenter.default.addObserver(self, selector: #selector(PermissionsController.refresh), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DevicePermissionsController.refresh), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
         if #available(iOS 11, *) {
             self.tableView.contentInsetAdjustmentBehavior = .never
@@ -67,26 +67,16 @@ class PermissionsController: UITableViewController {
     }
 
     // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if TrustBadge.shared.otherElements.count > 0 {
-            return 2
-        } else {
-            return 1
-        }
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch(section){
-        case 0 :
-            return TrustBadge.shared.mainElements.count
-        default :
-            return TrustBadge.shared.otherElements.count
-        }
+        return TrustBadge.shared.devicePermissions.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let element = elementForIndexPath(indexPath)
+        let element = TrustBadge.shared.devicePermissions[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: ElementCell.reuseIdentifier, for: indexPath) as! ElementCell
         
         cell.nameLabel.text = TrustBadge.shared.localizedString(element.nameKey)
@@ -168,7 +158,7 @@ class PermissionsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let element = elementForIndexPath(indexPath)
+        let element = TrustBadge.shared.devicePermissions[indexPath.row]
         if element.isExpanded {
             return UITableViewAutomaticDimension
         } else {
@@ -177,7 +167,7 @@ class PermissionsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let element = elementForIndexPath(indexPath)
+        let element = TrustBadge.shared.devicePermissions[indexPath.row]
         element.isExpanded = !element.isExpanded
         tableView.beginUpdates()
         tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
@@ -204,15 +194,6 @@ class PermissionsController: UITableViewController {
     
     @objc func refresh() {
         self.tableView.reloadData()
-    }
-    
-    func elementForIndexPath(_ indexPath : IndexPath) -> TrustBadgeElement{
-        switch((indexPath as NSIndexPath).section){
-        case 0 :
-            return TrustBadge.shared.mainElements[(indexPath as NSIndexPath).row]
-        default :
-            return TrustBadge.shared.otherElements[(indexPath as NSIndexPath).row]
-        }
     }
     
 }

@@ -47,8 +47,6 @@ import UserNotifications
     /// Name of the app, (Default : Bundle Display Name of host app)
     @objc open var appName : String?
     
-    /// (Optional) Rating of your application (Default : 4+)
-    @objc open var rating = Rating(type: RatingType.level4)
     
     /// (Optional) UIColor used to highlight element with a positive status (default black)
     @objc open var highlightColor = UIColor.black
@@ -79,15 +77,12 @@ import UserNotifications
     /// (Optional) Closure giving Identity usage (Identity ElementType) status (enabled/disabled) (Default : disabled)
     @objc open var isIdentityUsed : () -> Bool = {() in return true}
     
-    /// (Optional) Closure giving Social Sharing (Social Sharing ElementType) status (enabled/disabled) (Default : disabled)
-    @objc open var isSocialSharingUsed : () -> Bool = {() in return false}
-    
-    /// (Optional) Closure giving InApp Purchase (InApp Purchase ElementType) status (enabled/disabled) (Default : disabled)
-    @objc open var isInappPurchaseUsed : () -> Bool = {() in return false}
-    
     /// (Optional) Closure giving Advertisement (Advertisement ElementType) status (enabled/disabled) (Default : disabled)
     @objc open var isAdvertisementUsed : () -> Bool = {() in return false}
     
+    /// (Optional) Closure giving History (history ElementType) status (enabled/disabled) (Default : disabled)
+    @objc open var isHistoryUsed : () -> Bool = {() in return false}
+
     /// (Optional) Closure giving Phone Number (phoneNumber ElementType) status (enabled/disabled) (Default : disabled)
     @objc open var isPhoneNumberUsed : () -> Bool = {() in return false}
     
@@ -127,7 +122,7 @@ import UserNotifications
      config.mainElements.append(calendarElement)
      ```
      */
-    @objc open lazy var mainElements  : [TrustBadgeElement] = self.initializeMainElements()
+    @objc open lazy var devicePermissions  : [TrustBadgeElement] = self.initializeDevicePermissions()
     
     /** (Optional) List of TrustBadgeElements that should be displayed in "Other Elements" section. If you append an TrustBadgeElement to the Array, it will add it at the end of it. If you want to ave full control of what should be displayed, please assign a new array to this property. If no elements are in the list, this section will not be displayed. (empty by default)
      
@@ -145,25 +140,8 @@ import UserNotifications
      config.otherElements.append(calendarElement)
      ```
      */
-    @objc open lazy var otherElements : [TrustBadgeElement] = self.initializeOtherElements()
+    @objc open lazy var applicationData : [TrustBadgeElement] = self.initializeApplicationData()
     
-    /** (Optional) List of TrustBadgeElements that should be displayed in "Usage" section. If you append an TrustBadgeElement to the Array, it will add it at the end of it. If you want to ave full control of what should be displayed, please assign a new array to this property.
-     
-     Example :
-     
-     ```
-     let myCustomElement = CustomElement(nameKey: "custom-permission-name-key", descriptionKey: "custom-permission-description-key", statusEnabledIconName: "permission-credit-card-enabled-icon", statusDisabledIconName: "permission-credit-card-disabled-icon")
-     myCustomElement.isConfigurable = false
-     myCustomElement.statusClosure = {() in return true}
-     config.usageElements.append(myCustomElement)
-     
-     //or with pre-defined permissions such as Calendar :
-     
-     let calendarElement = PreDefinedElement(type: .Calendar)
-     config.usageElements.append(calendarElement)
-     ```
-     */
-    @objc open lazy var usageElements : [TrustBadgeElement] = self.initializeUsageElements()
     
     /** (Optional) List of Terms and Conditions that should be displayed in "terms and conditions" section. (empty by default)
      
@@ -224,7 +202,7 @@ import UserNotifications
      
      - returns: an initialized array of TrustBadgeElement
      */
-    @objc open func initializeMainElements() -> [TrustBadgeElement] {
+    @objc open func initializeDevicePermissions() -> [TrustBadgeElement] {
         var defaults = [TrustBadgeElement]()
         for type in ElementType.defaultMainElementTypes{
             defaults.append(PreDefinedElement(type : type))
@@ -237,22 +215,9 @@ import UserNotifications
      
      - returns: an initialized array of TrustBadgeElement
      */
-    @objc open func initializeOtherElements() -> [TrustBadgeElement] {
+    @objc open func initializeApplicationData() -> [TrustBadgeElement] {
         var defaults = [TrustBadgeElement]()
         for type in ElementType.defaultOtherElementTypes{
-            defaults.append(PreDefinedElement(type : type))
-        }
-        return defaults
-    }
-    
-    /**
-     Convenience method to create the array of the default TrustBadgeElement that should be displayed in Usage Elements section.
-     
-     - returns: an initialized array of TrustBadgeElement
-     */
-    @objc open func initializeUsageElements() -> [TrustBadgeElement] {
-        var defaults = [TrustBadgeElement]()
-        for type in ElementType.defaultUsageElementTypes{
             defaults.append(PreDefinedElement(type : type))
         }
         return defaults
@@ -268,7 +233,7 @@ import UserNotifications
      */
     @objc open func elementForType(_ type : ElementType) -> [PreDefinedElement] {
         var searchedElements = [PreDefinedElement]()
-        for mainElement in self.mainElements {
+        for mainElement in self.devicePermissions {
             if mainElement is PreDefinedElement {
                 let preDefinedElement = mainElement as! PreDefinedElement
                 if preDefinedElement.type == type {
@@ -276,17 +241,9 @@ import UserNotifications
                 }
             }
         }
-        for otherElement in self.otherElements {
+        for otherElement in self.applicationData {
             if otherElement is PreDefinedElement {
                 let preDefinedElement = otherElement as! PreDefinedElement
-                if preDefinedElement.type == type {
-                    searchedElements.append(preDefinedElement)
-                }
-            }
-        }
-        for usageElement in self.usageElements {
-            if usageElement is PreDefinedElement {
-                let preDefinedElement = usageElement as! PreDefinedElement
                 if preDefinedElement.type == type {
                     searchedElements.append(preDefinedElement)
                 }
@@ -334,9 +291,8 @@ import UserNotifications
     /// A TrustBade delegate to manage custom viewcontrollers
     public var delegate: TrustBadgeDelegate?
     
-    var mainElements  = [TrustBadgeElement]()
-    var otherElements = [TrustBadgeElement]()
-    var usageElements = [TrustBadgeElement]()
+    var devicePermissions  = [TrustBadgeElement]()
+    var applicationData = [TrustBadgeElement]()
     
     var css = ""
     var appName = ""
@@ -361,26 +317,15 @@ import UserNotifications
     func initialize(){
         
         //initialize main Elements
-        if let mainElements = self.config?.mainElements{
-            self.mainElements.append(contentsOf: mainElements)
-            self.configurePredefinedElements(self.mainElements)
+        if let mainElements = self.config?.devicePermissions{
+            self.devicePermissions.append(contentsOf: mainElements)
+            self.configurePredefinedElements(self.devicePermissions)
         }
         
         //initialize other Elements
-        if let otherElements = self.config?.otherElements{
-            self.otherElements.append(contentsOf: otherElements)
-            self.configurePredefinedElements(self.otherElements)
-        }
-        
-        //initialize usage and rating Elements
-        
-        if let rating = config?.rating{
-            self.usageElements.append(rating)
-        }
-        
-        if let usageElements = self.config?.usageElements{
-            self.usageElements.append(contentsOf: usageElements)
-            self.configurePredefinedElements(self.usageElements)
+        if let otherElements = self.config?.applicationData{
+            self.applicationData.append(contentsOf: otherElements)
+            self.configurePredefinedElements(self.applicationData)
         }
         
         if let terms = self.config?.terms{
@@ -522,15 +467,12 @@ import UserNotifications
                     case .accountInformations:
                         preDefinedElement.statusClosure = (TrustBadge.shared.config?.isPhoneNumberUsed)!
 
-                    case .socialSharing :
-                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isSocialSharingUsed)!
-
-                    case .inAppPurchase :
-                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isInappPurchaseUsed)!
-
                     case .advertising :
                         preDefinedElement.statusClosure = (TrustBadge.shared.config?.isAdvertisementUsed)!
-                        
+                    
+                    case .history :
+                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isHistoryUsed)!
+
                     case .identity :
                         preDefinedElement.statusClosure = (TrustBadge.shared.config?.isIdentityUsed)!
 
@@ -549,8 +491,8 @@ import UserNotifications
                                 })
                                 return status
                             }
-                            preDefinedElement.isConfigurable = true
                         }
+                        preDefinedElement.isConfigurable = true
                     }
                 }
             }
