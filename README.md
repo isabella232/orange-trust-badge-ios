@@ -5,28 +5,31 @@
 With the Orange trust badge, aka "Badge de confiance", give transparent informations and user control on personal data and help users to identify if your application has any sensitive features.
 
 ## Features
-Orange trust badge displays how are handled the following data :
+Orange trust badge displays how are handled the following device permissions :
 
-- Identity of the User
 - Location
-- Photos
 - Contacts
+- Photos Library
+- Media
 - Usage data
 - Calendar
-- SMS
+- Reminders
 - Microphone
-- Phone
-- Body sensors
-- Social Sharing
-- In-app purchase
+- Bluetooth Sharing
+- Microphone
+- Speech Recognition
+- Health
+- Homekit
+- Motion Activity & Fitness
+
+It can also displays the following application data :
+
+- Notifications
+- Identity
+- Account Informations
+- Data usage
 - Advertising
-
-It also displays the following informations :
-
-- Application's rating
-- Data usage general description
-- Help
-- Privacy policy
+- History
 
 It also :
 
@@ -39,8 +42,8 @@ It also :
 ## Requirements
 
 - iOS 9.0+
-- Xcode 9.0+
-- CocoaPods 1.0.1+
+- Xcode 9.4.1+
+- CocoaPods 1.5.3+
 
 ## Bug tracker
 
@@ -198,7 +201,7 @@ return YES;
 
 ### Add OrangeTrustBadge UI in your storyboard
 
-#### Using code (available on iOS8 and later)
+#### Using code (available on iOS 9 and later)
 - create an IBAction connected to one of your interface element (e.g a button, a cell etc...).
 - Instanciate OrangeTrustBadge storyboard with the following lines :
 
@@ -248,23 +251,11 @@ Note: If desired, you will be able to also customize the behavior of PreDefinedE
 **In swift**
 
 ```swift
-let advertisingElement = PreDefinedElement(type: .Advertising)
+let advertisingElement = PreDefinedElement(type: .advertising)
 advertisingElement.statusClosure = {() in return true}
-config.mainElements.append(advertisingElement)
+config.applicationData.append(advertisingElement)
 ```
 
-- A CustomElement on which you have full control of displayed informations
-
-
-
-**In swift**
-
-```swift
-let myCustomElement = CustomElement(nameKey: "custom-element-name-key", descriptionKey: "custom-element-description-key", statusEnabledIconName: "custom-element-enabled-icon", statusDisabledIconName: "custom-element-disabled-icon")
-myCustomElement.isConfigurable = false
-myCustomElement.statusClosure = {() in return true}
-config.otherElements.append(myCustomElement)
-```
 ### Terms and Conditions View
 
 In this section you will find Standardized Terms ans conditions that can be replaced / updated according to your needs through Localization.

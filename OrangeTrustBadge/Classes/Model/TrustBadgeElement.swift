@@ -31,7 +31,13 @@ import Foundation
  */
 @objc open class TrustBadgeElement: NSObject {
     /// Flag telling if OrangeTrustBadge should display a switch to enable/disable the element
-    @objc open var isToggable : Bool = false
+    @objc open var isToggable : Bool = false {
+        didSet {
+            if isToggable {
+                showStatus = false
+            }
+        }
+    }
     /// Closure allowing to update current element's status
     @objc open var toggleClosure : (UISwitch)-> Void = {(toggleSwitch) in }
     /// Closure giving element's status (enabled/disabled)

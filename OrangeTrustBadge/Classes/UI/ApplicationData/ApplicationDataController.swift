@@ -29,7 +29,7 @@ class ApplicationDataController: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.title = TrustBadge.shared.localizedString("usages-title")
+        self.title = TrustBadge.shared.localizedString("application-data-title")
     }
 
     override func viewDidLoad() {
@@ -38,8 +38,6 @@ class ApplicationDataController: UITableViewController {
         navigationItem.leftItemsSupplementBackButton = true
         self.tableView.register(UINib(nibName: "ElementCell", bundle: Bundle(for: TrustBadgeConfig.self)), forCellReuseIdentifier: ElementCell.reuseIdentifier)
         tableView.estimatedRowHeight = 65       
-        // TODO: use the title ?
-        //                tableView.configure(header: header, with: TrustBadge.shared.localizedString("usages-header-title"))
 
         if #available(iOS 11, *) {
             self.tableView.contentInsetAdjustmentBehavior = .never

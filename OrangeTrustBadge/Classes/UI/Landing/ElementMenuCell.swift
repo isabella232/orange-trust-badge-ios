@@ -33,6 +33,8 @@ class ElementMenuCell: UITableViewCell,UICollectionViewDataSource,UICollectionVi
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var content: UILabel!
     @IBOutlet weak var overview: UICollectionView!
+    @IBOutlet var customDisclosureIndicator: UIImageView!
+    @IBOutlet var contentHeightConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         self.accessibilityTraits = UIAccessibilityTraitButton
@@ -42,8 +44,11 @@ class ElementMenuCell: UITableViewCell,UICollectionViewDataSource,UICollectionVi
     // MARK: - Collection View data source
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let elements = representedObject else {
+        guard let objects = representedObject else {
             return UICollectionViewCell()
+        }
+        let elements = objects.sorted { (e1, e2) -> Bool in
+            return e1.statusClosure() == true && e2.statusClosure() == false
         }
         
         let element = elements[indexPath.row]
@@ -83,3 +88,4 @@ class ElementMenuCell: UITableViewCell,UICollectionViewDataSource,UICollectionVi
         return 1
     }
 }
+

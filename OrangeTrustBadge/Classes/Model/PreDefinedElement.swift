@@ -92,21 +92,14 @@ import Foundation
         }
     }
     
-    public static let defaultMainElementTypes  : [ElementType] = []
-    
-    public static let defaultOtherElementTypes : [ElementType] = [.notifications, .identity, .accountInformations, .dataUsage,
-                                                                  .advertising]
-    
-    public static let defaultUsageElementTypes : [ElementType] = []
-
-    private var devicePermissions: [ElementType] {
+    private var regularDevicePermissions: [ElementType] {
         return [.location, .contacts, .photoLibrary, .media, .calendar,
                 .camera, .reminders, .bluetoothSharing, .microphone,
                 .speechRecognition, .health, .homekit, .motionFitness]
     }
     /// true if self is a device permission
     public var isDevicePermission: Bool {
-        return devicePermissions.contains(self)
+        return regularDevicePermissions.contains(self)
     }
 }
 

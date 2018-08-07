@@ -48,9 +48,10 @@
 "landing-permission-content" = "The app is not allowed to access any data";
 "landing-permission-unrequested" = "The app does not request access to any data";
 "landing-permission-denied" = "The app is not allowed to access any data";
-"landing-usages-title" = "Data from app usage";
-"landing-usages-content" = "Contents and features of your application";
-"landing-usages-empty" = "Contents and features of your application";
+"landing-application-data-title" = "Data from app usage";
+"landing-application-data-content" = "Contents and features of your application";
+"landing-application-data-unrequested" = "The app does not use any data";
+"landing-application-data-denied" = "The app is not allowed to use any data";
 "landing-terms-title" = "Our commitments";
 "landing-terms-content" = "We support you to protect your digital life and your personnal informations";
 "landing-terms-empty" = "We support you to protect your digital life and your personnal informations";
@@ -99,8 +100,8 @@
 "permission-account-informations-name"="Account information";
 "permission-account-informations-description"="This application can access information linked to your account/profiles. This application can use your name, date of birth and email in order to identify you for example.";
 
-/* Usages Page */
-"usages-title" = "Usages";
+/* Application Data Page */
+"application-data-title" = "Data from app usage";
 "usages-header-title" = "Contents and features of your application";
 "permission-social-sharing-name" = "Social networks";
 "permission-social-sharing-description" = "This application can integrate social features. This application can redirect you to social networks like Facebook or Twitter.";

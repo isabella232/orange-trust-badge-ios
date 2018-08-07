@@ -36,8 +36,6 @@ class LandingController: UITableViewController {
     
     static let defaultReuseIdentifier = "DefaultCell"
     
-    var mainGestureRecognizer : UIGestureRecognizer?
-    var usageGestureRecognizer : UIGestureRecognizer?
     @IBOutlet weak var header : Header!
     
     required init?(coder aDecoder: NSCoder) {
@@ -58,9 +56,6 @@ class LandingController: UITableViewController {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: LandingController.defaultReuseIdentifier)
         tableView.estimatedRowHeight = 70
         NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_ENTER), object: nil)
-        
-        mainGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LandingController.goToMainElements(_:)))
-        usageGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LandingController.goToUsageElements(_:)))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -114,16 +109,16 @@ class LandingController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0 :
-            if (self.splitViewController?.traitCollection.horizontalSizeClass == .compact) {
+            if self.splitViewController?.traitCollection.horizontalSizeClass == .compact {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ElementMenuCell.reuseIdentifier, for: indexPath) as! ElementMenuCell
                 cell.title.text = TrustBadge.shared.localizedString("landing-permission-title")
                 cell.representedObject = TrustBadge.shared.devicePermissions
                 cell.content.text = permissionSubtitle
                 cell.overview.reloadData()
-                cell.overview.removeGestureRecognizer(mainGestureRecognizer!)
-                cell.overview.removeGestureRecognizer(usageGestureRecognizer!)
-                cell.overview.addGestureRecognizer(mainGestureRecognizer!)
-                cell.layoutIfNeeded() // needed for iOS 8 to allow multiline in "content" label
+                cell.customDisclosureIndicator.isHidden = TrustBadge.shared.devicePermissions.count == 0
+                cell.selectionStyle = TrustBadge.shared.devicePermissions.count > 0 ? .blue : .none
+                cell.contentHeightConstraint.constant = TrustBadge.shared.devicePermissions.count > 0 ? 70 : 0
+                cell.setNeedsLayout()
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: LandingController.defaultReuseIdentifier, for: indexPath)
@@ -134,18 +129,18 @@ class LandingController: UITableViewController {
         case 1 :
             if (self.splitViewController?.traitCollection.horizontalSizeClass == .compact) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ElementMenuCell.reuseIdentifier, for: indexPath) as! ElementMenuCell
-                cell.title.text = TrustBadge.shared.localizedString("landing-usages-title")
-                cell.content.text = TrustBadge.shared.localizedString("landing-usages-content")
+                cell.title.text = TrustBadge.shared.localizedString("landing-application-data-title")
+                cell.content.text = applicationDataSubtitle
                 cell.representedObject = TrustBadge.shared.applicationData
                 cell.overview.reloadData()
-                cell.overview.removeGestureRecognizer(mainGestureRecognizer!)
-                cell.overview.removeGestureRecognizer(usageGestureRecognizer!)
-                cell.overview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(LandingController.goToUsageElements(_:))))
-                cell.layoutIfNeeded() // needed for iOS 8 to allow multiline in "content" label
+                cell.customDisclosureIndicator.isHidden = TrustBadge.shared.applicationData.count == 0
+                cell.selectionStyle = TrustBadge.shared.applicationData.count > 0 ? .blue : .none
+                cell.contentHeightConstraint.constant = TrustBadge.shared.applicationData.count > 0 ? 70 : 0
+                cell.setNeedsLayout()
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: LandingController.defaultReuseIdentifier, for: indexPath)
-                cell.textLabel?.text = TrustBadge.shared.localizedString("landing-usages-title")
+                cell.textLabel?.text = TrustBadge.shared.localizedString("landing-application-data-title")
                 cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
                 return cell
             }
@@ -178,26 +173,36 @@ class LandingController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (self.splitViewController?.traitCollection.horizontalSizeClass == .compact) {
+        if self.splitViewController?.traitCollection.horizontalSizeClass == .compact {
             return UITableViewAutomaticDimension
         } else {
             return 55
         }
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "Permissions" {
+            return TrustBadge.shared.devicePermissions.count > 0
+        } else if identifier == "Datas" {
+            return TrustBadge.shared.applicationData.count > 0
+        }
+        return true
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 0 :
+        case 0 where TrustBadge.shared.devicePermissions.count > 0 :
             self.performSegue(withIdentifier: "Permissions", sender: self)
-        case 1 :
-            self.performSegue(withIdentifier: "Usages", sender: self)
+        case 1 where TrustBadge.shared.applicationData.count > 0 :
+            self.performSegue(withIdentifier: "Datas", sender: self)
         case 2 :
             self.performSegue(withIdentifier: "Terms", sender: self)
-        default :
+        case 3 :
             if let delegate = TrustBadge.shared.delegate,
                 let viewController = delegate.viewController?(at: indexPath) {
-                self.show(viewController, sender: self)
+                self.showDetailViewController(viewController, sender: self)
             }
+        default:
             break
         }
     }
@@ -209,18 +214,6 @@ class LandingController: UITableViewController {
         self.splitViewController?.dismiss(animated: true, completion: { () -> Void in
             NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_LEAVE), object: nil)
         })
-    }
-    
-    @objc func goToMainElements(_ sender: UITapGestureRecognizer) {
-        if sender.state == .ended {
-            self.performSegue(withIdentifier: "Permissions", sender: self)
-        }
-    }
-    
-    @objc func goToUsageElements(_ sender: UITapGestureRecognizer) {
-        if sender.state == .ended {
-            self.performSegue(withIdentifier: "Usages", sender: self)
-        }
     }
     
     private var permissionSubtitle: String {
@@ -235,6 +228,22 @@ class LandingController: UITableViewController {
         
         if let _ = firstRequestedDevicePermission {
             subtitleKey = "landing-permission-content"
+        }
+        return TrustBadge.shared.localizedString(subtitleKey)
+    }
+    
+    private var applicationDataSubtitle: String {
+        guard !TrustBadge.shared.applicationData.isEmpty else { return TrustBadge.shared.localizedString("landing-application-data-unrequested") }
+        
+        var subtitleKey = "landing-application-data-denied"
+        let firstRequestedDevicePermission =
+            TrustBadge.shared.applicationData
+                .compactMap { return $0 as? PreDefinedElement }
+                .filter { !$0.type.isDevicePermission }
+                .first { $0.isPermissionRequested }
+        
+        if let _ = firstRequestedDevicePermission {
+            subtitleKey = "landing-application-data-content"
         }
         return TrustBadge.shared.localizedString(subtitleKey)
     }

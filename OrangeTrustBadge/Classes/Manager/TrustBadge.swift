@@ -122,7 +122,7 @@ import UserNotifications
      config.mainElements.append(calendarElement)
      ```
      */
-    @objc open lazy var devicePermissions  : [TrustBadgeElement] = self.initializeDevicePermissions()
+    @objc open lazy var devicePermissions = [TrustBadgeElement]()
     
     /** (Optional) List of TrustBadgeElements that should be displayed in "Other Elements" section. If you append an TrustBadgeElement to the Array, it will add it at the end of it. If you want to ave full control of what should be displayed, please assign a new array to this property. If no elements are in the list, this section will not be displayed. (empty by default)
      
@@ -140,7 +140,7 @@ import UserNotifications
      config.otherElements.append(calendarElement)
      ```
      */
-    @objc open lazy var applicationData : [TrustBadgeElement] = self.initializeApplicationData()
+    @objc open lazy var applicationData = [TrustBadgeElement]()
     
     
     /** (Optional) List of Terms and Conditions that should be displayed in "terms and conditions" section. (empty by default)
@@ -195,32 +195,6 @@ import UserNotifications
             return imageFromTrustBadgeBundle
         }
         return nil
-    }
-
-    /**
-     Convenience method to create the array of the default TrustBadgeElement that should be displayed in Main Elements section.
-     
-     - returns: an initialized array of TrustBadgeElement
-     */
-    @objc open func initializeDevicePermissions() -> [TrustBadgeElement] {
-        var defaults = [TrustBadgeElement]()
-        for type in ElementType.defaultMainElementTypes{
-            defaults.append(PreDefinedElement(type : type))
-        }
-        return defaults
-    }
-    
-    /**
-     Convenience method to create the array of the default TrustBadgeElement that should be displayed in Other Elements section.
-     
-     - returns: an initialized array of TrustBadgeElement
-     */
-    @objc open func initializeApplicationData() -> [TrustBadgeElement] {
-        var defaults = [TrustBadgeElement]()
-        for type in ElementType.defaultOtherElementTypes{
-            defaults.append(PreDefinedElement(type : type))
-        }
-        return defaults
     }
     
     /**
@@ -368,7 +342,7 @@ import UserNotifications
                                      CLAuthorizationStatus.restricted]
                                 .contains(CLLocationManager.authorizationStatus())
                         }
-                        preDefinedElement.isConfigurable = true
+                        preDefinedElement.isConfigurable = CLLocationManager.authorizationStatus() != .notDetermined
 
                     case .contacts :
                         if #available(iOS 9.0, *) {
@@ -394,7 +368,7 @@ import UserNotifications
                                      PHAuthorizationStatus.restricted]
                                 .contains(PHPhotoLibrary.authorizationStatus())
                         }
-                        preDefinedElement.isConfigurable = true
+                        preDefinedElement.isConfigurable = PHPhotoLibrary.authorizationStatus() != .notDetermined
 
                     case .media:
                         preDefinedElement.statusClosure = {
@@ -407,7 +381,11 @@ import UserNotifications
                                 return false
                             }
                         }
-                        preDefinedElement.isConfigurable = true
+                        if #available(iOS 9.3, *) {
+                            preDefinedElement.isConfigurable = MPMediaLibrary.authorizationStatus() != .notDetermined
+                        } else {
+                            preDefinedElement.isConfigurable = true
+                        }
 
                     case .calendar :
                         preDefinedElement.statusClosure = {
@@ -421,7 +399,7 @@ import UserNotifications
                                      AVAuthorizationStatus.notDetermined,
                                      AVAuthorizationStatus.restricted]
                                 .contains(AVCaptureDevice.authorizationStatus(for: AVMediaType.video))}
-                        preDefinedElement.isConfigurable = true
+                        preDefinedElement.isConfigurable = AVCaptureDevice.authorizationStatus(for: AVMediaType.video) != .notDetermined
 
                     case .reminders :
                         preDefinedElement.statusClosure = {
@@ -480,7 +458,7 @@ import UserNotifications
                         preDefinedElement.isToggable = true
                         preDefinedElement.statusClosure = (TrustBadge.shared.config?.isTrackingEnabled)!
                         preDefinedElement.toggleClosure = (TrustBadge.shared.config?.updateTracking)!
-                    
+                        
                     case .notifications:
                         if #available(iOS 10.0, *) {
                             preDefinedElement.statusClosure = {

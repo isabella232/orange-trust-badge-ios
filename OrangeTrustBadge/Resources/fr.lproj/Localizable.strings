@@ -48,8 +48,10 @@
 "landing-permission-content" = "Quelles sont les données utilisées par votre application et pour quelles raisons ?";
 "landing-permission-unrequested" = "L'application ne demande accès à aucune donnée";
 "landing-permission-denied" = "L'application n'est autorisée à accéder à aucune donnée";
-"landing-usages-title" = "Données d'usage de l'application";
-"landing-usages-content" = "Quels sont les contenus et les fonctionnalités de votre application ?";
+"landing-application-data-title" = "Données d'usage de l'application";
+"landing-application-data-content" = "Quels sont les contenus et les fonctionnalités de votre application ?";
+"landing-application-data-unrequested" = "L'application n'utilise aucune donnée";
+"landing-application-data-denied" = "L'application n'utilise aucune donnée";
 "landing-terms-title" = "Nos engagements";
 "landing-terms-content" = "Nous vous accompagnons pour protéger votre vie numérique et vos données personnelles.";
 
@@ -60,6 +62,7 @@
 "permission-others-section-name" = "Autres données et permissions";
 "permission-identity-name" = "Identifiants";
 "permission-identity-description" = "Lors du lancement de l'application, vous devez renseigner votre identifiant et votre mot de passe de compte. Ces informations permettent la création d'un cookie d'authentification. Celui-ci vous permet de ne pas avoir à saisir l'identifiant et le mot de passe à chaque connexion. Vous pouvez le supprimer depuis paramètres > changer de compte. Un nouveau cookie sera créé lors de votre prochaine identification.";
+"permission-location-name" = "Localisation";
 "permission-location-description" = "Le service de localisation permet aux applications d’utiliser des informations des réseaux mobiles, Wi-Fi et GPS  pour localiser votre emplacement approximatif. Aucune donnée personnelle n’est collectée à cette occasion.";
 "permission-photo-library-name" = "Photos et vidéos";
 "permission-photo-library-description" = "Cette application peut exploiter le dossier photos sur votre terminal. Cette autorisation permet à l'application de lire les fichiers stockés, les modifier ou les supprimer.";
@@ -96,8 +99,8 @@
 "permission-account-informations-name"="Infos de comptes ";
 "permission-account-informations-description"="Cette application accède aux informations liées à vos comptes/profils. Cette application peut ainsi utiliser votre nom, date de naissance, adresse mail dans le cadre de votre identification par exemple.";
 
-/* Usages Page */
-"usages-title" = "Les usages";
+/* Application Data Page */
+"application-data-title" = "Données de l'application";
 "usages-header-title" = "Quels sont les contenus et les fonctionnalités de votre application ?";
 "permission-social-sharing-name" = "Réseaux sociaux";
 "permission-social-sharing-description" = "Cette application peut intégrer des fonctionnalités permettant la redirection vers les réseaux sociaux comme Facebook ou Twitter.";

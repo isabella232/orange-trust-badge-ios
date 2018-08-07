@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AVCaptureDevice.requestAccess(for: AVMediaType.video) { (result) -> Void in }
 
         // Request Access to UserLocation in order to show them in iOS Preferences Panel
-        locationManager.requestAlwaysAuthorization()
+        //locationManager.requestAlwaysAuthorization()
         
         // Request microphone access permission
         
@@ -53,44 +53,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //
         // CONFIGURE DEVICE PERMISSIONS YOUR APP USE
+        // Remove the permissions your app do not use from this array below
         //
-        config.devicePermissions.append(PreDefinedElement(type: .location))
-        config.devicePermissions.append(PreDefinedElement(type: .contacts))
-        config.devicePermissions.append(PreDefinedElement(type: .photoLibrary))
-        config.devicePermissions.append(PreDefinedElement(type: .media))
-        config.devicePermissions.append(PreDefinedElement(type: .calendar))
-        config.devicePermissions.append(PreDefinedElement(type: .camera))
-        config.devicePermissions.append(PreDefinedElement(type: .reminders))
-        config.devicePermissions.append(PreDefinedElement(type: .bluetoothSharing))
-        config.devicePermissions.append(PreDefinedElement(type: .microphone))
-        config.devicePermissions.append(PreDefinedElement(type: .speechRecognition))
-        
+        config.devicePermissions = [.location,
+                                   .contacts,
+                                   .photoLibrary,
+                                   .media,
+                                   .calendar,
+                                   .camera,
+                                   .reminders,
+                                   .bluetoothSharing,
+                                   .microphone,
+                                   .speechRecognition].map { return PreDefinedElement(type: $0) }
+
+
+        // Comment this section if your app do not use health permission
         config.devicePermissions.append(PreDefinedElement(type: .health))
         config.isHealfDataUsed = { return true } // Call here your tracking SDK API to get the current Status of user's health data access
         
+        // Comment this section if your app do not use homekit
         config.devicePermissions.append(PreDefinedElement(type: .homekit))
         config.isHomeKitUsed = { return true } // Call here your tracking SDK API to get the current Status of user's homekit data access
 
+        // Comment this section if your app do not use motion activity & fitness permission
         config.devicePermissions.append(PreDefinedElement(type: .motionFitness))
         config.isMotionFitnessUsed = { return true } // Call here your tracking SDK API to get the current Status of user's motion activity & fitness data access
         
         
-        // uncomment this section to configure a predifined entry in "Main Permissions" (Here we force the Contact element to be always false and hide the "Go to settings" button)
+        // comment this section to configure a predifined entry in "Main Permissions" (Here we force the Contact element to be always false and hide the "Go to settings" button)
         if let contactElement = config.elementForType(.contacts).first {
             contactElement.shouldBeAutoConfigured = false
             contactElement.isConfigurable = false
         }
 
-        
+ 
         
         //
         // CONFIGURE APPLICATION DATA YOUR APP USE
-        //
+        // Remove the data your app do not use from this array below
+        config.applicationData = [.notifications,
+                                  .identity,
+                                  .accountInformations,
+                                  .dataUsage,
+                                  .advertising].map { return PreDefinedElement(type: $0) }
+
         // enable account credentials usage
         config.isIdentityUsed = {() in return false}
 
         // adds the optionnal data : .history
         config.applicationData.append(PreDefinedElement(type: .history))
+        config.isHistoryUsed = {() in return true }
 
         // let TrustBadge know the status of UserTracking (DataUsage) and how to update its state
         config.isTrackingEnabled = { 
@@ -102,10 +114,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if !toggle.isOn{
                 let alert = UIAlertController(title: NSLocalizedString("disable-data-usage-confirmation-title", comment: ""), message: NSLocalizedString("disable-data-usage-confirmation-content", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                 alert.view.tintColor = UIColor.black
-                alert.addAction(UIAlertAction(title: NSLocalizedString("disable-data-usage-confirmation-cancel", comment: ""), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+                alert.addAction(UIAlertAction(title: NSLocalizedString("disable-data-usage-confirmation-cancel", comment: ""), style: .default, handler: { (action) -> Void in
                     toggle.setOn(true, animated: true)
                 }))
-                alert.addAction(UIAlertAction(title: NSLocalizedString("disable-data-usage-confirmation-confirm", comment: ""), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+                alert.addAction(UIAlertAction(title: NSLocalizedString("disable-data-usage-confirmation-confirm", comment: ""), style: .default, handler: { (action) -> Void in
                     UserDefaults.standard.set(false, forKey: "TRACKING_KEY")
                     // Call here your desactivation API for tracking
                     toggle.setOn(false, animated: true)
@@ -117,20 +129,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // Call here your activation API for tracking
             }
         }
-        
+ 
 
-        // uncomment this section to add a new custom entry in "Other Applcation Data"
-
-        /**
-        let myCustomElement = CustomElement(nameKey: "custom-permission-name-key", descriptionKey: "custom-permission-description-key", statusEnabledIconName: "permission-credit-card-enabled-icon", statusDisabledIconName: "permission-credit-card-disabled-icon")
-        myCustomElement.isConfigurable = false
-        myCustomElement.statusClosure = {() in return true}
-        config.otherElements.append(myCustomElement)
-        */
-        
-        
-        // uncomment this section to add a new Calendar entry in "Other Permissions"
-        
+                
         // uncomment this section to add a new custom entry in "Terms and Conditions"
         //let customTerm = Term(type: .Custom, titleKey: "term-custom-title", contentKey: "term-custom-content")
         //config.terms.append(customTerm)

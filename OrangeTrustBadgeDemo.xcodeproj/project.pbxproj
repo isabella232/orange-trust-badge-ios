@@ -395,8 +395,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.orange.omd.OrangeTrustBadgeDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0abd554c-dccb-4fd6-a27f-3b0f31b8bb01";
-				PROVISIONING_PROFILE_SPECIFIER = "InHouse-orange-2018";
+				PROVISIONING_PROFILE = "83ad1583-ddbf-4eb2-9870-c09bc3a1bf9b";
+				PROVISIONING_PROFILE_SPECIFIER = "Orange Development";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
