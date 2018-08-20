@@ -51,8 +51,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Let's begin OrangeTrustBadge's integration
         let config = TrustBadgeConfig()
         
+        
+        
         //
         // CONFIGURE DEVICE PERMISSIONS YOUR APP USE
+        //
+        
+        
+        
         // Remove the permissions your app do not use from this array below
         //
         config.devicePermissions = [.location,
@@ -90,6 +96,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //
         // CONFIGURE APPLICATION DATA YOUR APP USE
+        //
+        
+        
+        
         // Remove the data your app do not use from this array below
         config.applicationData = [.notifications,
                                   .identity,

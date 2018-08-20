@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "permission-health-enabled-icon.png",
+      "filename" : "ic_health.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "ic_health@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "ic_health@3x.png",
       "scale" : "3x"
     }
   ],

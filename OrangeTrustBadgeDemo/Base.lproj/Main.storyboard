@@ -113,7 +113,7 @@
         <!--View Controller-->
         <scene sceneID="eSk-Is-Pmq">
             <objects>
-                <viewController storyboardIdentifier="MoreAppsViewController" id="WP9-uo-Cim" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CustomViewController" id="WP9-uo-Cim" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sU4-e5-3pq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -54,7 +54,7 @@ extension ViewController: TrustBadgeDelegate {
     }
 
     func viewController(at indexPath: IndexPath) -> UIViewController {
-        let viewController = storyboard!.instantiateViewController(withIdentifier: "MoreAppsViewController")
+        let viewController = storyboard!.instantiateViewController(withIdentifier: "CustomViewController")
         viewController.title = NSLocalizedString("landing-custom-title", comment: "custom view controller title")
         return viewController
         
