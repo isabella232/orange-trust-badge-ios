@@ -38,6 +38,11 @@ class LandingController: UITableViewController {
     
     @IBOutlet weak var header : Header!
     
+    private var isSizeClassCompact: Bool {
+        return self.splitViewController?.traitCollection.horizontalSizeClass == .compact ||
+            self.splitViewController == nil
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.title = TrustBadge.shared.localizedString("landing-title")
@@ -60,10 +65,16 @@ class LandingController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if let _ = self.splitViewController {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissModal))
+        }
+
         self.manageLogoVisibility()
         tableView.configure(header: header, with: TrustBadge.shared.localizedString("landing-header-title"),
                             subtitle: TrustBadge.shared.localizedString("landing-header-subtitle"),
                             textColor: TrustBadge.shared.config?.headerTextColor)
+        
         self.tableView.reloadData()
     }
     
@@ -82,7 +93,7 @@ class LandingController: UITableViewController {
      */
     func manageLogoVisibility(){
         if let header = self.header, let image = header.logo.image {
-            if (self.splitViewController?.traitCollection.horizontalSizeClass != .compact) {
+            if !isSizeClassCompact {
                 header.logo.isHidden = true
                 header.hiddingConstraint.constant = 0
             } else {
@@ -109,7 +120,7 @@ class LandingController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0 :
-            if self.splitViewController?.traitCollection.horizontalSizeClass == .compact {
+            if isSizeClassCompact {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ElementMenuCell.reuseIdentifier, for: indexPath) as! ElementMenuCell
                 cell.title.text = TrustBadge.shared.localizedString("landing-permission-title")
                 cell.representedObject = TrustBadge.shared.devicePermissions
@@ -127,7 +138,7 @@ class LandingController: UITableViewController {
                 return cell
             }
         case 1 :
-            if (self.splitViewController?.traitCollection.horizontalSizeClass == .compact) {
+            if isSizeClassCompact {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ElementMenuCell.reuseIdentifier, for: indexPath) as! ElementMenuCell
                 cell.title.text = TrustBadge.shared.localizedString("landing-application-data-title")
                 cell.content.text = applicationDataSubtitle
@@ -145,7 +156,7 @@ class LandingController: UITableViewController {
                 return cell
             }
         case 2 :
-            if (self.splitViewController?.traitCollection.horizontalSizeClass == .compact) {
+            if isSizeClassCompact {
                 let cell = tableView.dequeueReusableCell(withIdentifier: TermsMenuCell.reuseIdentifier, for: indexPath) as! TermsMenuCell
                 cell.title.text = TrustBadge.shared.localizedString("landing-terms-title")
                 cell.content.text = TrustBadge.shared.localizedString("landing-terms-content")
@@ -158,7 +169,7 @@ class LandingController: UITableViewController {
             }
             
         default :
-            if (self.splitViewController?.traitCollection.horizontalSizeClass == .compact) {
+            if isSizeClassCompact {
                 let cell = tableView.dequeueReusableCell(withIdentifier: CustomMenuCell.reuseIdentifier, for: indexPath) as! CustomMenuCell
                 cell.title.text = TrustBadge.shared.localizedString("landing-custom-title")
                 cell.content.text = TrustBadge.shared.localizedString("landing-custom-content")
@@ -173,7 +184,7 @@ class LandingController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.splitViewController?.traitCollection.horizontalSizeClass == .compact {
+        if isSizeClassCompact {
             return UITableViewAutomaticDimension
         } else {
             return 55

@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor.black
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
-        
+
         // Request Access to MediaLibrary in order to show them in iOS Preferences Panel
         PHPhotoLibrary.requestAuthorization({(status:PHAuthorizationStatus) in })
         AVCaptureDevice.requestAccess(for: AVMediaType.video) { (result) -> Void in }

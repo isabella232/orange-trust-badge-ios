@@ -31,32 +31,60 @@ class ViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if let shortVersionString = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString"){
             versionLabel.text = "version \(shortVersionString)"
         }
+        // The delegate that will manage an eventual CustomViewController
+        // Set this property if your app should display a custom viewcontroller
         TrustBadge.shared.delegate = self
     }
     
     @IBAction func startDemo(){
         let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: Bundle(for: TrustBadge.self))
-        if let viewController = storyboard.instantiateInitialViewController(){
-            self.present(viewController, animated: true, completion: nil)
-        }
+        
+        // Uncomment those line if you want TrustBage to be presented modally
+//        if let viewController = storyboard.instantiateInitialViewController(){
+//            self.present(viewController, animated: true, completion: nil)
+//        }
+        
+        // Uncomment those line if you want TrustBage to be pushed
+        let viewController = storyboard.instantiateViewController(withIdentifier: "LandingController")
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
 // MARK: TrustBadgeDelegate
-// Implements this delegate if your application should display a custom viewcontroller
+// Implement this delegate if your app should display a custom viewcontroller
 extension ViewController: TrustBadgeDelegate {
-
+    
     func shouldDisplayCustomViewController() -> Bool {
         return true
     }
-
+    
     func viewController(at indexPath: IndexPath) -> UIViewController {
-        let viewController = storyboard!.instantiateViewController(withIdentifier: "CustomViewController")
-        viewController.title = NSLocalizedString("landing-custom-title", comment: "custom view controller title")
-        return viewController
-        
+        let navigationController = storyboard?.instantiateViewController(withIdentifier: "CustomEntry") as! UINavigationController
+        navigationController.viewControllers.first?.title = NSLocalizedString("landing-custom-title", comment: "custom view controller title")
+        return navigationController
     }
 }
+
+/// A custom view controller added to trusbadge UI
+class CustomViewController: UIViewController, TrustBadgeDelegate {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        if let splitViewController = self.splitViewController {
+            navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+            navigationItem.leftItemsSupplementBackButton = true
+        } else {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissModal))
+        }
+    }
+    
+    @objc func dismissModal() {
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+

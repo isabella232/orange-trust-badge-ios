@@ -35,9 +35,15 @@ class TermsController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-        navigationItem.leftItemsSupplementBackButton = true
-        tableView.estimatedRowHeight = 100       
+
+        if let splitViewController = self.splitViewController {
+            navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+            navigationItem.leftItemsSupplementBackButton = true
+        } else {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissModal))
+        }
+
+        tableView.estimatedRowHeight = 100
         // TODO: use the title ?
         //                tableView.configure(header: header, with: TrustBadge.shared.localizedString("terms-header-title"))
 
@@ -105,5 +111,9 @@ class TermsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    
+    @objc func dismissModal() {
+        self.dismiss(animated: true, completion: nil)
     }
 }

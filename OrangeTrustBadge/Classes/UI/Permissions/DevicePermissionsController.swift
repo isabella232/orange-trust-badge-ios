@@ -37,8 +37,13 @@ class DevicePermissionsController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-        navigationItem.leftItemsSupplementBackButton = true
+        
+        if let splitViewController = self.splitViewController {
+            navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+            navigationItem.leftItemsSupplementBackButton = true
+        } else {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissModal))
+        }
         
         self.tableView.register(UINib(nibName: "ElementCell", bundle: Bundle(for: TrustBadgeConfig.self)), forCellReuseIdentifier: ElementCell.reuseIdentifier)
         tableView.estimatedRowHeight = 65
@@ -194,4 +199,7 @@ class DevicePermissionsController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    @objc func dismissModal() {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

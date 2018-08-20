@@ -34,8 +34,14 @@ class ApplicationDataController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-        navigationItem.leftItemsSupplementBackButton = true
+
+        if let splitViewController = self.splitViewController {
+            navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+            navigationItem.leftItemsSupplementBackButton = true
+        } else {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissModal))
+        }
+
         self.tableView.register(UINib(nibName: "ElementCell", bundle: Bundle(for: TrustBadgeConfig.self)), forCellReuseIdentifier: ElementCell.reuseIdentifier)
         tableView.estimatedRowHeight = 65       
 
@@ -169,5 +175,9 @@ class ApplicationDataController: UITableViewController {
         tableView.endUpdates()
         self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.middle, animated: true)
         NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_ELEMENT_TAPPED), object: element)
+    }
+
+    @objc func dismissModal() {
+        self.dismiss(animated: true, completion: nil)
     }
 }

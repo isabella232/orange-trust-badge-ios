@@ -13,25 +13,25 @@
         <!--Main-->
         <scene sceneID="wKL-tM-bwg">
             <objects>
-                <viewController id="B3o-C4-dJi" userLabel="Main" customClass="ViewController" customModule="OrangeTrustBadgeDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Orange Trust Badge Sample" id="B3o-C4-dJi" userLabel="Main" customClass="ViewController" customModule="OrangeTrustBadgeDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lZs-nd-poh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_launcher" translatesAutoresizingMaskIntoConstraints="NO" id="eFS-Rk-fPR">
-                                <rect key="frame" x="163.5" y="84" width="48" height="48"/>
+                                <rect key="frame" x="163.5" y="20" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="FOr-Tq-Cjb"/>
                                     <constraint firstAttribute="width" constant="48" id="aVN-CF-Py1"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orange trust badge integration example" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="268" translatesAutoresizingMaskIntoConstraints="NO" id="svE-zd-alU">
-                                <rect key="frame" x="106.5" y="140" width="163" height="41"/>
+                                <rect key="frame" x="106.5" y="76" width="163" height="41"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*version 0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="5cY-W2-jfy">
-                                <rect key="frame" x="117.5" y="189" width="140" height="21"/>
+                                <rect key="frame" x="117.5" y="125" width="140" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="QNo-I4-j2y"/>
                                     <constraint firstAttribute="height" constant="21" id="wod-41-1cc"/>
@@ -41,20 +41,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j6E-b4-UUq" userLabel="Separator">
-                                <rect key="frame" x="0.0" y="606.5" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="542.5" width="375" height="1"/>
                                 <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="f33-nv-E24"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More information on https://developer.orange.com" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="WfU-jM-V8Q">
-                                <rect key="frame" x="16" y="615.5" width="343" height="31.5"/>
+                                <rect key="frame" x="16" y="551.5" width="343" height="31.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKM-uV-wO7" customClass="OrangeButtonStandard" customModule="OrangeTrustBadgeDemo" customModuleProvider="target">
-                                <rect key="frame" x="16" y="546.5" width="343" height="45"/>
+                                <rect key="frame" x="16" y="482.5" width="343" height="45"/>
                                 <rect key="contentStretch" x="0.10000000000000001" y="0.10000000000000001" width="0.79999999999999982" height="0.79999999999999982"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="zVD-4g-xfo"/>
@@ -68,7 +68,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="n1u-NC-R67">
-                                <rect key="frame" x="16" y="218" width="343" height="62.5"/>
+                                <rect key="frame" x="16" y="154" width="343" height="62.5"/>
                                 <string key="text">With the trust badge, or Badge de confiance, give more transparency and user control on personal data and reassure your users about the application contents and features.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -98,10 +98,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iZE-i2-mxk"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="HPb-CA-hME"/>
-                    <navigationItem key="navigationItem" title="Orange Trust Badge Sample" id="43b-Ov-fh7">
-                        <barButtonItem key="backBarButtonItem" title=" Cancel" id="Ca4-dc-Yu9"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Orange Trust Badge Sample" id="43b-Ov-fh7"/>
                     <connections>
                         <outlet property="versionLabel" destination="5cY-W2-jfy" id="hw3-Od-9aH"/>
                     </connections>
@@ -110,16 +107,16 @@
             </objects>
             <point key="canvasLocation" x="-2095" y="10"/>
         </scene>
-        <!--View Controller-->
+        <!--Custom View Controller-->
         <scene sceneID="eSk-Is-Pmq">
             <objects>
-                <viewController storyboardIdentifier="CustomViewController" id="WP9-uo-Cim" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CustomViewController" id="WP9-uo-Cim" customClass="CustomViewController" customModule="OrangeTrustBadgeDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sU4-e5-3pq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a custom viewcontroller" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIG-ye-feb">
-                                <rect key="frame" x="47" y="86" width="281" height="69"/>
+                                <rect key="frame" x="47" y="130" width="281" height="25"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -142,19 +139,37 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uvD-Bf-Z59"/>
                     </view>
+                    <navigationItem key="navigationItem" id="atI-qz-Onf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ael-Pk-xSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2460" y="794.75262368815595"/>
+            <point key="canvasLocation" x="-2095" y="741"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pvw-Q1-2wI">
+            <objects>
+                <navigationController storyboardIdentifier="CustomEntry" id="adf-QE-Kzg" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OLV-iV-Hma">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="WP9-uo-Cim" kind="relationship" relationship="rootViewController" id="ZYD-dZ-zm2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VnA-4S-SDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2842" y="741"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WyM-Yi-oRd">
             <objects>
                 <navigationController id="YaP-cm-OqA" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HQ7-BG-A0s">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="HQ7-BG-A0s">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <connections>
                         <segue destination="B3o-C4-dJi" kind="relationship" relationship="rootViewController" id="jyD-PS-ega"/>
