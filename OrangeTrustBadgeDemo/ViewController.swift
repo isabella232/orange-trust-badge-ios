@@ -44,13 +44,13 @@ class ViewController: UIViewController  {
         let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: Bundle(for: TrustBadge.self))
         
         // Uncomment those line if you want TrustBage to be presented modally
-//        if let viewController = storyboard.instantiateInitialViewController(){
-//            self.present(viewController, animated: true, completion: nil)
-//        }
+        if let viewController = storyboard.instantiateInitialViewController() {
+            self.present(viewController, animated: true, completion: nil)
+        }
         
         // Uncomment those line if you want TrustBage to be pushed
-        let viewController = storyboard.instantiateViewController(withIdentifier: "LandingController")
-        self.navigationController?.pushViewController(viewController, animated: true)
+//        let viewController = storyboard.instantiateViewController(withIdentifier: "LandingController")
+//        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

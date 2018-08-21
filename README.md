@@ -183,8 +183,8 @@ fi
 import OrangeTrustBadge
 
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-TrustBadge.with(TrustBadgeConfig())
-return true
+	TrustBadge.with(TrustBadgeConfig())
+	return true
 }
 ```
 **or in Objective-C**
@@ -194,8 +194,8 @@ return true
 #import "OrangeTrustBadge-Swift.h"
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-[TrustBadge with:[[TrustBadgeConfig alloc] init]];
-return YES;
+	[TrustBadge with:[[TrustBadgeConfig alloc] init]];
+	return YES;
 }
 ```
 
@@ -205,16 +205,31 @@ return YES;
 - create an IBAction connected to one of your interface element (e.g a button, a cell etc...).
 - Instanciate OrangeTrustBadge storyboard with the following lines :
 
+**Present the badge modally**
+
 ```swift
 import OrangeTrustBadge
 
 @IBAction func onButtonClicked(){
-let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: NSBundle(forClass: TrustBadge.self))
-if let viewController = storyboard.instantiateInitialViewController() {
-self.navigationController?.presentViewController(viewController, animated: true, completion: nil)
-}
+	let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: NSBundle(forClass: TrustBadge.self))
+	if let viewController = storyboard.instantiateInitialViewController() {
+    	self.present(viewController, animated: true, completion: nil)
+    }
 }
 ```
+**Push the badge**
+
+```swift
+import OrangeTrustBadge
+
+@IBAction func onButtonClicked(){
+	let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: NSBundle(forClass: TrustBadge.self))
+	let viewController = storyboard.instantiateViewController(withIdentifier: "LandingController")
+    self.navigationController?.pushViewController(viewController, animated: true)
+}
+```
+
+
 That's it !
 
 #### Using Storyboard References (available on iOS9 and later)
@@ -228,6 +243,36 @@ That's it !
 
 That's it !
 
+### Add custom view to the badge
+You may have to add  some informations related to your app in the badge section.
+Orange Trust Badge allow you to provide a view controller wich will be displayed as a custom view.
+
+To provide this view controller, you must implement two methods of `TrustBadgeDelegate` protocol.
+
+    /// If this method returns true, the landing page will displayed a cell that allows to access
+    //// to this view controller.
+    @objc optional func shouldDisplayCustomViewController() -> Bool
+    
+    
+    /// Implement this method to return a viewController to displayed for the CustomMenuCell
+    @objc optional func viewController(at indexPath: IndexPath) -> UIViewController
+
+
+To allow the user to access you custom view controller, TrustBadge will add a an entry in LandingController.
+The title and the subtitle of this entry (UITableViewCell) must be configured with the following Localizable.string keys.
+
+Title
+
+`
+"landing-custom-title" = "Customizable content";
+`
+
+Subtitle
+
+`
+"landing-custom-content" = "Find out other apps that have adopted the Trust Badge";
+`
+
 ### Add localization support
 
 In order to localize properly the UI, OrangeTrustBadge is using standard iOS mechanisms.
@@ -236,6 +281,7 @@ Concretly the SDK will take the current language setup on user's phone unless yo
 To add a localization support, go to Project Level and add appropriate localization in "Info" Tab.
 
 You can override every visible text using your own Localizable.strings file. To know which key you need to override, please see SDK 's Localization file.
+
 
 ## Customization
 
