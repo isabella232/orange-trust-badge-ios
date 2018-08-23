@@ -24,11 +24,14 @@
 
 import UIKit
 import OrangeTrustBadge
+import CoreLocation
 
 class ViewController: UIViewController  {
     
     @IBOutlet weak var versionLabel : UILabel!
-    
+
+    let locationManager = CLLocationManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,17 +43,18 @@ class ViewController: UIViewController  {
         TrustBadge.shared.delegate = self
     }
     
-    @IBAction func startDemo(){
+    @IBAction func startDemo() {
+        
         let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: Bundle(for: TrustBadge.self))
         
-        // Uncomment those line if you want TrustBage to be presented modally
+        // Uncomment those lines if you want TrustBage to be presented modally
         if let viewController = storyboard.instantiateInitialViewController() {
             self.present(viewController, animated: true, completion: nil)
         }
         
-        // Uncomment those line if you want TrustBage to be pushed
-//        let viewController = storyboard.instantiateViewController(withIdentifier: "LandingController")
-//        self.navigationController?.pushViewController(viewController, animated: true)
+        // Uncomment those lines if you want TrustBage to be pushed
+        //let viewController = storyboard.instantiateViewController(withIdentifier: "LandingController")
+        //self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

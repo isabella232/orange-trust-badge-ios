@@ -110,7 +110,9 @@ class DevicePermissionsController: UITableViewController {
         cell.statusLabel.text = TrustBadge.shared.localizedString(statusKey)
         cell.statusLabel.textColor = element.statusClosure() ? TrustBadge.shared.config?.highlightColor : UIColor.black
         cell.icon.image = element.statusClosure() ? TrustBadge.shared.loadImage(element.statusEnabledIconName) : TrustBadge.shared.loadImage(element.statusDisabledIconName)
-        cell.actionButton.setTitle(TrustBadge.shared.localizedString("update-permission"), for: UIControlState())
+        
+        let key = (element as! PreDefinedElement).type == .health ? "update-health-permission" : "update-permission"
+        cell.actionButton.setTitle(TrustBadge.shared.localizedString(key), for: UIControlState())
         
         if element.isExpanded{
             UIView.animate(withDuration: 0.4, animations: { () -> Void in
@@ -149,11 +151,17 @@ class DevicePermissionsController: UITableViewController {
             NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_ELEMENT_TOGGLED), object: element)
         }
         
-        cell.openPreferencesClosure = { () in
-            UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
-            NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_GO_TO_SETTINGS), object: element)
+        if (element as! PreDefinedElement).type == .health {
+            cell.openPreferencesClosure = { () in
+                UIApplication.shared.openURL(URL(string: "x-apple-health://sources")!)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_GO_TO_SETTINGS), object: element)
+            }
+        } else {
+            cell.openPreferencesClosure = { () in
+                UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_GO_TO_SETTINGS), object: element)
+            }
         }
-        
         let status = element.statusClosure() ? TrustBadge.shared.localizedString("accessibility-enabled") : TrustBadge.shared.localizedString("accessibility-disabled")
         cell.accessibilityValue = "\(TrustBadge.shared.localizedString(element.nameKey)) : \(status)"
         cell.accessibilityHint = TrustBadge.shared.localizedString("accessibility-double-tap")

@@ -227,38 +227,56 @@ class LandingController: UITableViewController {
         })
     }
     
+    
+    //MARK: Helpers methods
+    
+    private func buildSubtitle(from elements: [TrustBadgeElement]) -> String {
+        
+        var subtitle = ""
+        let elements = elements.sorted { (e1, e2) -> Bool in
+            return e1.statusClosure() == true && e2.statusClosure() == false
+        }
+        let numberOfActivatedElements = elements.index { $0.statusClosure() == false } ?? 0
+        let maxIndex = min(ElementMenuCell.maxDisplayedElement, numberOfActivatedElements)
+        
+        for index in 0..<maxIndex {
+            if let element = elements[index] as? PreDefinedElement {
+                let key = "landing-\(element.type.name())-name"
+                let value = TrustBadge.shared.localizedString(key)
+                
+                if subtitle.isEmpty {
+                    subtitle = value
+                } else if index == maxIndex - 1 {
+                    if numberOfActivatedElements > ElementMenuCell.maxDisplayedElement {
+                        subtitle += value + TrustBadge.shared.localizedString("landing-and") + "\(numberOfActivatedElements-maxIndex)" + TrustBadge.shared.localizedString("landing-more")
+                    } else {
+                        subtitle += TrustBadge.shared.localizedString("landing-and") + value
+                    }
+                } else {
+                    subtitle += ", \(value)"
+                }
+            }
+        }
+        return subtitle
+    }
+    
     private var permissionSubtitle: String {
         guard !TrustBadge.shared.devicePermissions.isEmpty else { return TrustBadge.shared.localizedString("landing-permission-unrequested") }
         
-        var subtitleKey = "landing-permission-denied"
-        let firstRequestedDevicePermission =
-            TrustBadge.shared.devicePermissions
-                .compactMap { return $0 as? PreDefinedElement }
-                .filter { $0.type.isDevicePermission }
-                .first { $0.isPermissionRequested }
-        
-        if let _ = firstRequestedDevicePermission {
-            subtitleKey = "landing-permission-content"
+        if let _ = (TrustBadge.shared.devicePermissions.compactMap { return $0 as? PreDefinedElement }.first { $0.isPermissionRequested }) {
+            return buildSubtitle(from: TrustBadge.shared.devicePermissions)
         }
-        return TrustBadge.shared.localizedString(subtitleKey)
+        return TrustBadge.shared.localizedString("landing-permission-denied")
     }
     
     private var applicationDataSubtitle: String {
         guard !TrustBadge.shared.applicationData.isEmpty else { return TrustBadge.shared.localizedString("landing-application-data-unrequested") }
         
-        var subtitleKey = "landing-application-data-denied"
-        let firstRequestedDevicePermission =
-            TrustBadge.shared.applicationData
-                .compactMap { return $0 as? PreDefinedElement }
-                .filter { !$0.type.isDevicePermission }
-                .first { $0.isPermissionRequested }
-        
-        if let _ = firstRequestedDevicePermission {
-            subtitleKey = "landing-application-data-content"
+        if let _ = (TrustBadge.shared.applicationData.compactMap { return $0 as? PreDefinedElement }.first { $0.isPermissionRequested }) {
+            return buildSubtitle(from: TrustBadge.shared.applicationData)
         }
-        return TrustBadge.shared.localizedString(subtitleKey)
+        return TrustBadge.shared.localizedString("landing-application-data-denied")
     }
-    
 }
 
 extension PreDefinedElement {

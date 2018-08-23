@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		495EBB4B212EE8B50067D548 /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495EBB4A212EE8B50067D548 /* HomeKit.framework */; };
+		495EBB4E212EEF5F0067D548 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 495EBB50212EEF5F0067D548 /* InfoPlist.strings */; };
+		49832A17212EB557005C3998 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49832A16212EB557005C3998 /* HealthKit.framework */; };
 		542715611C2663D700289336 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5427155F1C2663D700289336 /* LaunchScreen.storyboard */; };
 		542B75571C1F154C003C489A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542B75561C1F154C003C489A /* AppDelegate.swift */; };
 		542B75591C1F154C003C489A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542B75581C1F154C003C489A /* ViewController.swift */; };
@@ -19,6 +22,12 @@
 
 /* Begin PBXFileReference section */
 		46BC6B3A6D4F3F4279DDDE92 /* Pods-OrangeTrustBadgeDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrangeTrustBadgeDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OrangeTrustBadgeDemo/Pods-OrangeTrustBadgeDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		495EBB4A212EE8B50067D548 /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
+		495EBB4F212EEF5F0067D548 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		495EBB51212EEF620067D548 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		49832A0F212D5C3B005C3998 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49832A15212EB1F9005C3998 /* OrangeTrustBadgeDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OrangeTrustBadgeDemo.entitlements; sourceTree = "<group>"; };
+		49832A16212EB557005C3998 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		49FBC29D20E513E100F3F486 /* OrangeTrustBadge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OrangeTrustBadge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FBC2A020E51F3500F3F486 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		542715601C2663D700289336 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = OrangeTrustBadgeDemo/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -27,7 +36,6 @@
 		542B75581C1F154C003C489A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		542B755B1C1F154C003C489A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		542B755D1C1F154C003C489A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		542B75621C1F154C003C489A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5462E1A41C20CD6E008B625A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5463CA9E1C2640B9004F9F22 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		54BE47221C6CD6E9005CFEB9 /* OrangeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrangeButton.swift; sourceTree = "<group>"; };
@@ -40,7 +48,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				495EBB4B212EE8B50067D548 /* HomeKit.framework in Frameworks */,
 				80A656BFFB47FBBD8F9D71A4 /* Pods_OrangeTrustBadgeDemo.framework in Frameworks */,
+				49832A17212EB557005C3998 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,13 +78,15 @@
 		542B75551C1F154C003C489A /* OrangeTrustBadgeDemo */ = {
 			isa = PBXGroup;
 			children = (
+				49832A15212EB1F9005C3998 /* OrangeTrustBadgeDemo.entitlements */,
 				542B75561C1F154C003C489A /* AppDelegate.swift */,
 				542B75581C1F154C003C489A /* ViewController.swift */,
 				542B755A1C1F154C003C489A /* Main.storyboard */,
 				542B755D1C1F154C003C489A /* Assets.xcassets */,
 				5427155F1C2663D700289336 /* LaunchScreen.storyboard */,
 				54BE47221C6CD6E9005CFEB9 /* OrangeButton.swift */,
-				542B75621C1F154C003C489A /* Info.plist */,
+				49832A0F212D5C3B005C3998 /* Info.plist */,
+				495EBB50212EEF5F0067D548 /* InfoPlist.strings */,
 				5462E1A51C20CD6E008B625A /* Localizable.strings */,
 			);
 			path = OrangeTrustBadgeDemo;
@@ -92,6 +104,8 @@
 		E0BD30F2377A735CA19AF316 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				495EBB4A212EE8B50067D548 /* HomeKit.framework */,
+				49832A16212EB557005C3998 /* HealthKit.framework */,
 				49FBC29D20E513E100F3F486 /* OrangeTrustBadge.framework */,
 				9B55C9780E364324000F4096 /* Pods_OrangeTrustBadgeDemo.framework */,
 			);
@@ -134,7 +148,15 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 269J2W3P7L;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+							com.apple.HomeKit = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -167,6 +189,7 @@
 				542715611C2663D700289336 /* LaunchScreen.storyboard in Resources */,
 				542B755E1C1F154C003C489A /* Assets.xcassets in Resources */,
 				542B755C1C1F154C003C489A /* Main.storyboard in Resources */,
+				495EBB4E212EEF5F0067D548 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +248,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		495EBB50212EEF5F0067D548 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				495EBB4F212EEF5F0067D548 /* en */,
+				495EBB51212EEF620067D548 /* fr */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		5427155F1C2663D700289336 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -369,14 +401,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 269J2W3P7L;
+				CODE_SIGN_ENTITLEMENTS = OrangeTrustBadgeDemo/OrangeTrustBadgeDemo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = OrangeTrustBadgeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.orange.omd.OrangeTrustBadgeDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.orange.OrangeTrustBadgeDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "39efb7fd-4807-418a-b67e-85739a0136ff";
-				PROVISIONING_PROFILE_SPECIFIER = "Orange Development";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -387,16 +422,18 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_ENTITLEMENTS = OrangeTrustBadgeDemo/OrangeTrustBadgeDemo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 269J2W3P7L;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = OrangeTrustBadgeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.orange.omd.OrangeTrustBadgeDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.orange.OrangeTrustBadgeDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "83ad1583-ddbf-4eb2-9870-c09bc3a1bf9b";
-				PROVISIONING_PROFILE_SPECIFIER = "Orange Development";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

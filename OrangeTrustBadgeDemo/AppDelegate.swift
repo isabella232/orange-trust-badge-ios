@@ -1,52 +1,168 @@
 /*
-*
-* OrangeTrustBadgeDemo
-*
-* File name:   AppDelegate.swift
-* Created:     15/12/2015
-* Created by:  Romain BIARD
-*
-* Copyright 2015 Orange
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ *
+ * OrangeTrustBadgeDemo
+ *
+ * File name:   AppDelegate.swift
+ * Created:     15/12/2015
+ * Created by:  Romain BIARD
+ *
+ * Copyright 2015 Orange
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 import UIKit
 import OrangeTrustBadge
-import PhotosUI
+
+import CoreLocation
+import Contacts
+import Photos
+import MediaPlayer
+import EventKit
+import CoreBluetooth
 import AVFoundation
+import Speech
+import UserNotifications
+import HomeKit
+import CoreMotion
+import HealthKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    
+    // Location
     let locationManager = CLLocationManager()
+    
+    // HealthKit
+    let hkShareTypes: Set<HKSampleType> = [HKWorkoutType.workoutType()]
+    let hkReadTypes: Set<HKObjectType> = [HKWorkoutType.workoutType()]
+    
+    // HomeKit
+    let homeManager = HMHomeManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UITabBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().barTintColor = UIColor.black
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+        
+        // request Authorizations and then setup the badge
+        requestAuthorization {
+            DispatchQueue.main.async {
+                self.setupTrustBadge()
+            }
+        }
+        
+        return true
+    }
+    
+    func requestSpeechRecognitionAuthorization(completionHandler: @escaping ()->Void) {
+        if #available(iOS 10.0, *) {
+            SFSpeechRecognizer.requestAuthorization { _ in
+                completionHandler()
+            }
+        } else {
+            completionHandler()
+        }
+    }
 
-        // Request Access to MediaLibrary in order to show them in iOS Preferences Panel
-        PHPhotoLibrary.requestAuthorization({(status:PHAuthorizationStatus) in })
-        AVCaptureDevice.requestAccess(for: AVMediaType.video) { (result) -> Void in }
+    func requestMediaLibraryAuthorization(completionHandler: @escaping ()->Void) {
+        if #available(iOS 9.3, *) {
+            MPMediaLibrary.requestAuthorization({ (_) in
+                completionHandler()
+            })
+        } else {
+            completionHandler()
+        }
+    }
+    
+    func requestMotionActivityAuthorization(completionHandler: @escaping ()->Void) {
+        let manager = CMMotionActivityManager()
+        manager.queryActivityStarting(from: Date(), to: Date(), to: OperationQueue()) { _,_  in
+            completionHandler()
+        }
+    }
 
+    func requestHealthKitAuthorization(completionHandler: @escaping ()->Void) {
+        if HKHealthStore.isHealthDataAvailable() {
+            HKHealthStore().requestAuthorization(toShare: hkShareTypes, read: hkReadTypes) { _,_ in
+                completionHandler()
+            }
+        }
+    }
+
+    func requestAuthorization(completionHandler: @escaping ()->Void) {
+        
+        // Request photoLibrary authorization
+        PHPhotoLibrary.requestAuthorization { _ in
+            
+            // Request camera authorization
+            AVCaptureDevice.requestAccess(for: AVMediaType.video) { _ in
+                
+                // Request calendar authorization
+                EKEventStore().requestAccess(to: .event) { _,_  in
+                    
+                    // Request reminders authorization
+                    EKEventStore().requestAccess(to: .reminder) { _,_  in
+                        
+                        // Request microphone authorization
+                        AVAudioSession().requestRecordPermission {_ in 
+                            
+                            // Request speech recongnition authorization
+                            self.requestSpeechRecognitionAuthorization {
+                                
+                                // Request contacts authorization
+                                CNContactStore().requestAccess(for: .contacts) { _,_  in
+                                    
+                                    // Request media authorization
+                                    self.requestMediaLibraryAuthorization {
+                                        
+                                        // Request motion & activity authorization
+                                        self.requestMotionActivityAuthorization {
+
+                                            // Request healthKit authorization
+                                            self.requestHealthKitAuthorization {
+                                                
+                                                // Request homekit authorization
+                                                _ = self.homeManager.homes
+                                                completionHandler()
+                                                
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        
         // Request Access to UserLocation in order to show them in iOS Preferences Panel
-        //locationManager.requestAlwaysAuthorization()
-        
-        // Request microphone access permission
-        
+        locationManager.requestAlwaysAuthorization()
+    }
+    
+    
+    
+    //MARK: TrustBadge integration
+    
+    /*
+     Setting up TrustBadge
+     */
+    func setupTrustBadge() {
         
         // Let's begin OrangeTrustBadge's integration
         let config = TrustBadgeConfig()
@@ -62,37 +178,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Remove the permissions your app do not use from this array below
         //
         config.devicePermissions = [.location,
-                                   .contacts,
-                                   .photoLibrary,
-                                   .media,
-                                   .calendar,
-                                   .camera,
-                                   .reminders,
-                                   .bluetoothSharing,
-                                   .microphone,
-                                   .speechRecognition].map { return PreDefinedElement(type: $0) }
-
-
+                                    .contacts,
+                                    .photoLibrary,
+                                    .media,
+                                    .calendar,
+                                    .camera,
+                                    .reminders,
+                                    .bluetoothSharing,
+                                    .microphone,
+                                    .speechRecognition].map { return PreDefinedElement(type: $0) }
+        
+        
         // Comment this section if your app do not use health permission
         config.devicePermissions.append(PreDefinedElement(type: .health))
-        config.isHealfDataUsed = { return true } // Call here your tracking SDK API to get the current Status of user's health data access
+        config.isHealfDataUsed = {
+            // get the current Status of user's health data access
+           let objectType = self.hkReadTypes.first(where: { (objectType) -> Bool in
+                return HKHealthStore().authorizationStatus(for: objectType) == .sharingAuthorized
+            })
+            
+            return objectType == nil ? false : true
+        }
         
         // Comment this section if your app do not use homekit
         config.devicePermissions.append(PreDefinedElement(type: .homekit))
-        config.isHomeKitUsed = { return true } // Call here your tracking SDK API to get the current Status of user's homekit data access
-
+        config.isHomeKitUsed = { // get the current Status of user's homekit data access
+            // consider the user have create a home and you can access it
+            // or change this code to be more accurate
+            return self.homeManager.primaryHome != nil
+        }
+        
         // Comment this section if your app do not use motion activity & fitness permission
         config.devicePermissions.append(PreDefinedElement(type: .motionFitness))
-        config.isMotionFitnessUsed = { return true } // Call here your tracking SDK API to get the current Status of user's motion activity & fitness data access
-        
-        
-        // comment this section to configure a predifined entry in "Main Permissions" (Here we force the Contact element to be always false and hide the "Go to settings" button)
-        if let contactElement = config.elementForType(.contacts).first {
-            contactElement.shouldBeAutoConfigured = false
-            contactElement.isConfigurable = false
+        if #available(iOS 11, *) {} else { // on iOS < 11 only use isMotionFitnessUsed
+            config.isMotionFitnessUsed = { return true } // Call here your tracking SDK API to get the current Status of user's motion activity & fitness data access
         }
-
- 
+        
+        // uncomment this section to configure a predifined entry in "Main Permissions" (Here we force the Contact element to be always false and hide the "Go to settings" button)
+        //if let contactElement = config.elementForType(.contacts).first {
+        //    contactElement.shouldBeAutoConfigured = false
+        //    contactElement.isConfigurable = false
+        //}
+        
+        
         
         //
         // CONFIGURE APPLICATION DATA YOUR APP USE
@@ -106,16 +234,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                   .accountInformations,
                                   .dataUsage,
                                   .advertising].map { return PreDefinedElement(type: $0) }
-
+        
         // enable account credentials usage
         config.isIdentityUsed = {() in return false}
-
+        
         // adds the optionnal data : .history
         config.applicationData.append(PreDefinedElement(type: .history))
         config.isHistoryUsed = {() in return true }
-
+        
         // let TrustBadge know the status of UserTracking (DataUsage) and how to update its state
-        config.isTrackingEnabled = { 
+        config.isTrackingEnabled = {
             // Call here your tracking SDK API to get the current Status
             return UserDefaults.standard.bool(forKey: "TRACKING_KEY")}
         
@@ -139,9 +267,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // Call here your activation API for tracking
             }
         }
- 
-
-                
+        
+        
+        
         // uncomment this section to add a new custom entry in "Terms and Conditions"
         //let customTerm = Term(type: .Custom, titleKey: "term-custom-title", contentKey: "term-custom-content")
         //config.terms.append(customTerm)
@@ -158,7 +286,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //
         // CONFIGURE TrustBadge UI
         //
-
+        
         
         // uncomment this section to change highlight color used for enabled elements
         //config.highlightColor = UIColor.orangeColor()
@@ -171,14 +299,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // uncomment this section to change header text color
         //config.headerTextColor = .red
-
+        
         
         
         
         // finally, initialize TrustBadgeManager with our configuration
         TrustBadge.with(config)
         
-        return true
     }
 }
 

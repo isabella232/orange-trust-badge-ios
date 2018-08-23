@@ -31,6 +31,8 @@ import CoreBluetooth
 import AVFoundation
 import Speech
 import UserNotifications
+import CoreMotion
+import HealthKit
 
 @objc public protocol TrustBadgeDelegate {
     /// If this method returns true, the landing page will displayed a cell that allows to access
@@ -345,19 +347,11 @@ import UserNotifications
                         preDefinedElement.isConfigurable = CLLocationManager.authorizationStatus() != .notDetermined
 
                     case .contacts :
-                        if #available(iOS 9.0, *) {
-                            preDefinedElement.statusClosure = {
-                                return ![CNAuthorizationStatus.denied,
-                                         CNAuthorizationStatus.notDetermined,
-                                         CNAuthorizationStatus.restricted]
-                                    .contains(CNContactStore.authorizationStatus(for: CNEntityType.contacts))
-                            }
-                        } else {
-                            preDefinedElement.statusClosure = {
-                                return ![ABAuthorizationStatus.denied,
-                                         ABAuthorizationStatus.notDetermined,
-                                         ABAuthorizationStatus.restricted]
-                                    .contains(ABAddressBookGetAuthorizationStatus())}
+                        preDefinedElement.statusClosure = {
+                            return ![CNAuthorizationStatus.denied,
+                                     CNAuthorizationStatus.notDetermined,
+                                     CNAuthorizationStatus.restricted]
+                                .contains(CNContactStore.authorizationStatus(for: CNEntityType.contacts))
                         }
                         preDefinedElement.isConfigurable = true
                         
@@ -432,13 +426,24 @@ import UserNotifications
                         
                     case .health:
                         preDefinedElement.statusClosure = (TrustBadge.shared.config?.isHealfDataUsed)!
+                        preDefinedElement.isConfigurable = true
 
                     case .homekit:
                         preDefinedElement.statusClosure = (TrustBadge.shared.config?.isHomeKitUsed)!
                         preDefinedElement.isConfigurable = true
 
                     case .motionFitness:
-                        preDefinedElement.statusClosure = (TrustBadge.shared.config?.isMotionFitnessUsed)!
+                        if #available(iOS 11, *) {
+                            preDefinedElement.statusClosure = {
+                                return ![CMAuthorizationStatus.denied,
+                                         CMAuthorizationStatus.notDetermined,
+                                         CMAuthorizationStatus.restricted]
+                                    .contains(CMMotionActivityManager.authorizationStatus())
+                            }
+                        } else {
+                            preDefinedElement.statusClosure = (TrustBadge.shared.config?.isMotionFitnessUsed)!
+                        }
+                        
                         preDefinedElement.isConfigurable = true
 
                     //Application data

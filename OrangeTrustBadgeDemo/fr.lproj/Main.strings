@@ -24,7 +24,7 @@
 "hIG-ye-feb.text" = "Ceci est un custom view controller";
 
 /* Class = "UILabel"; text = "With the trust badge, or Badge de confiance, give more transparency and user control on personal data and reassure your users about the application contents and features."; ObjectID = "n1u-NC-R67"; */
-"n1u-NC-R67.text" = "With the trust badge, or Badge de confiance, give more transparency and user control on personal data and reassure your users about the application contents and features.";
+"n1u-NC-R67.text" = "With the trust badge, or Badge de confiance, give more transparency and user control on personal data and put forward your commitments for general responsible usage of personal data about the application contents and features.";
 
 /* Class = "UILabel"; text = "Orange trust badge - integration example"; ObjectID = "svE-zd-alU"; */
 "svE-zd-alU.text" = "Orange trust badge - integration example";

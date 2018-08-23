@@ -25,20 +25,10 @@
 "status-enabled" = "Oui";
 "status-disabled" = "Non";
 "update-permission" = "Modifier cette autorisation";
+"update-health-permission" = "Modifier dans l'app Santé";
 "accessibility-double-tap" = "Touchez l'écran deux foix rapidement pour en savoir plus";
 "accessibility-enabled" = "activé";
 "accessibility-disabled" = "desactivé";
-
-/* Rating Items */
-"rating-title" = "Age recommandé";
-"rating-level-4-name" = "4 ans +";
-"rating-level-4-description" = "L’âge indiqué correspond à l’âge minimum conseillé d’utilisation de votre application en fonction du contenu présenté";
-"rating-level-9-name" = "9 ans +";
-"rating-level-9-description" = "Cette application peut contenir du contenu non adapté au moins de 9 ans.";
-"rating-level-12-name" = "12 ans +";
-"rating-level-12-description" = "Cette application peut contenir du contenu non adapté au moins de 12 ans.";
-"rating-level-17-name" = "17 ans +";
-"rating-level-17-description" = "Cette application peut contenir du contenu non adapté au moins de 17 ans.";
 
 /* Landing Page */
 "landing-title" = "Badge de confiance";
@@ -55,6 +45,28 @@
 "landing-terms-title" = "Nos engagements";
 "landing-terms-content" = "Nous vous accompagnons pour protéger votre vie numérique et vos données personnelles.";
 
+"landing-location-name" = "Position";
+"landing-contacts-name" = "Contacts";
+"landing-photo-library-name" = "Photos";
+"landing-media-name" = "Médias";
+"landing-calendar-name" = "Calendriers";
+"landing-camera-name" = "Appareil photo";
+"landing-reminders-name" = "Rappels";
+"landing-bluetooth-sharing-name" = "Partage Bluetooth";
+"landing-microphone-name" = "Micro";
+"landing-speech-recognition-name" = "Reconnaissance vocale";
+"landing-health-name" = "Santé";
+"landing-homekit-name" = "Homekit";
+"landing-motion-activity-fitness-name" = "Mouvements et forme";
+"landing-account-informations-name" = "Infos de compte";
+"landing-advertising-name" = "Publicité";
+"landing-identity-name" = "Identifiants";
+"landing-data-usage-name" = "Programme d'améliorations";
+"landing-notifications-name" = "Notifications";
+"landing-history-name" = "Historique et préférences";
+"landing-and" = " et ";
+"landing-more" = " autre(s)";
+
 /* Permissions Page */
 "permission-title" = "Vos données";
 "permission-header-title" = "Quelles sont les données utilisées par votre application et pour quelles raisons ?";
@@ -63,7 +75,7 @@
 "permission-identity-name" = "Identifiants";
 "permission-identity-description" = "Lors du lancement de l'application, vous devez renseigner votre identifiant et votre mot de passe de compte. Ces informations permettent la création d'un cookie d'authentification. Celui-ci vous permet de ne pas avoir à saisir l'identifiant et le mot de passe à chaque connexion. Vous pouvez le supprimer depuis paramètres > changer de compte. Un nouveau cookie sera créé lors de votre prochaine identification.";
 "permission-location-name" = "Localisation";
-"permission-location-description" = "Le service de localisation permet aux applications d’utiliser des informations des réseaux mobiles, Wi-Fi et GPS  pour localiser votre emplacement approximatif. Aucune donnée personnelle n’est collectée à cette occasion.";
+"permission-location-description" = "Avec votre permission, les services de localisation permettent à cette application d'utiliser des informations provenant de réseaux cellulaires, wifi, système de positionnement global (GPS) et Bluetooth pour déterminer votre position approximative.";
 "permission-photo-library-name" = "Photos et vidéos";
 "permission-photo-library-description" = "Cette application peut exploiter le dossier photos sur votre terminal. Cette autorisation permet à l'application de lire les fichiers stockés, les modifier ou les supprimer.";
 "permission-contacts-name" = "Contacts";
@@ -113,4 +125,4 @@
 
 /* Terms Page */
 "terms-title" = "Nos engagements";
-"terms-header-title" = "Nous vous accompagnons pour protéger votre vie numérique et vos données personnelles.";
+"terms-header-title" = "Nous respectons votre vie privée et  nous vous accompagnons pour protéger votre vie numérique et vos données personnelles.";

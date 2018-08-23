@@ -25,20 +25,10 @@
 "status-enabled" = "Yes";
 "status-disabled" = "No";
 "update-permission" = "Change this permission";
+"update-health-permission" = "Edit in the Health app";
 "accessibility-double-tap" = "Double tap to know more";
 "accessibility-enabled" = "enabled";
 "accessibility-disabled" = "disabled";
-
-/* Rating Items */
-"rating-title" = "Age Rating";
-"rating-level-4-name" = "4+";
-"rating-level-4-description" = "The indicated age corresponds to the minimum age recommended to use your application according to presented content.";
-"rating-level-9-name" = "9+";
-"rating-level-9-description" = "The indicated age corresponds to the minimum age recommended to use your application according to presented content.";
-"rating-level-12-name" = "12+";
-"rating-level-12-description" = "The indicated age corresponds to the minimum age recommended to use your application according to presented content.";
-"rating-level-17-name" = "17+";
-"rating-level-17-description" = "The indicated age corresponds to the minimum age recommended to use your application according to presented content.";
 
 /* Landing Page */
 "landing-title" = "Trust badge";
@@ -54,7 +44,28 @@
 "landing-application-data-denied" = "The app is not allowed to use any data";
 "landing-terms-title" = "Our commitments";
 "landing-terms-content" = "We support you to protect your digital life and your personnal informations";
-"landing-terms-empty" = "We support you to protect your digital life and your personnal informations";
+
+"landing-location-name" = "Location";
+"landing-contacts-name" = "Contacts";
+"landing-photo-library-name" = "Photos";
+"landing-media-name" = "Media";
+"landing-calendar-name" = "Calendars";
+"landing-camera-name" = "Camera";
+"landing-reminders-name" = "Reminders";
+"landing-bluetooth-sharing-name" = "Bluetooth Sharing";
+"landing-microphone-name" = "Micro";
+"landing-speech-recognition-name" = "Speech Recognition";
+"landing-health-name" = "Healthkit";
+"landing-homekit-name" = "Homekit";
+"landing-motion-activity-fitness-name" = "Fitness and health tracking";
+"landing-account-informations-name" = "Account information";
+"landing-advertising-name" = "Advertising";
+"landing-identity-name" = "Account credentials";
+"landing-data-usage-name" =" Improvement program";
+"landing-notifications-name" = "Notifications";
+"landing-history-name" = "Usage history";
+"landing-and" = " and ";
+"landing-more" = " more";
 
 /* Permissions Page */
 "permission-title" = "Data that app can access";
@@ -64,7 +75,7 @@
 "permission-identity-name" = "Account credentials";
 "permission-identity-description" = "When launching the application, you must fill in your account ID and password. This information allows the creation of an authentication cookie. This allows you not to have to enter the username and password for each connection. You can delete it from settings> change account. A new cookie will be created the next time you log in.";
 "permission-location-name" = "Location";
-"permission-location-description" = "Geolocation service allows application to use mobile network, Wi-Fi and GPS information to locate you approximatively.";
+"permission-location-description" = "With your permission, Location Services allows this application to use information from cellular, Wi-Fi, Global Positioning System (GPS) networks, and Bluetooth to determine your approximate location.";
 "permission-photo-library-name" = "Photos and videos";
 "permission-photo-library-description" = "This application can use photos stored on your device. This permission allows the application to read, edit or delete stored files.";
 "permission-contacts-name" = "Contacts";
