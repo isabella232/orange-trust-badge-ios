@@ -68,7 +68,7 @@ import Foundation
     /// Permission to ollects information about your preferences and usage history
     case history
 
-    func name() -> String {
+    public var name: String {
         switch self {
         case .location: return "location"
         case .contacts: return "contacts"
@@ -121,9 +121,9 @@ import Foundation
     @objc public init(type : ElementType) {
         self.type = type
         super.init()
-        nameKey = "permission-\(self.type.name())-name"
-        descriptionKey = "permission-\(self.type.name())-description"
-        statusEnabledIconName = "permission-\(self.type.name())-enabled-icon"
-        statusDisabledIconName = "permission-\(self.type.name())-disabled-icon"
+        nameKey = "permission-\(self.type.name)-name"
+        descriptionKey = "permission-\(self.type.name)-description"
+        statusEnabledIconName = "permission-\(self.type.name)-enabled-icon"
+        statusDisabledIconName = "permission-\(self.type.name)-disabled-icon"
     }
 }

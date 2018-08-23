@@ -241,14 +241,14 @@ class LandingController: UITableViewController {
         
         for index in 0..<maxIndex {
             if let element = elements[index] as? PreDefinedElement {
-                let key = "landing-\(element.type.name())-name"
+                let key = "landing-\(element.type.name)-name"
                 let value = TrustBadge.shared.localizedString(key)
                 
                 if subtitle.isEmpty {
                     subtitle = value
                 } else if index == maxIndex - 1 {
                     if numberOfActivatedElements > ElementMenuCell.maxDisplayedElement {
-                        subtitle += value + TrustBadge.shared.localizedString("landing-and") + "\(numberOfActivatedElements-maxIndex)" + TrustBadge.shared.localizedString("landing-more")
+                        subtitle += ", " + value + TrustBadge.shared.localizedString("landing-and") + "\(numberOfActivatedElements-maxIndex)" + TrustBadge.shared.localizedString("landing-more")
                     } else {
                         subtitle += TrustBadge.shared.localizedString("landing-and") + value
                     }
