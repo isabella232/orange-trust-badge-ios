@@ -15,10 +15,10 @@
         <scene sceneID="sEX-gd-zXf">
             <objects>
                 <tableViewController id="mgC-D1-cnK" customClass="DevicePermissionsController" customModule="OrangeTrustBadge" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Dqs-HC-Rvz">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dqs-HC-Rvz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="t94-1x-6mg"/>
                         <color key="sectionIndexBackgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
@@ -330,7 +330,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="landing-element-title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fem-nQ-FLA">
-                                            <rect key="frame" x="15" y="15" width="312" height="45"/>
+                                            <rect key="frame" x="15" y="15" width="312" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="2wt-ig-0bo"/>
                                             </constraints>
@@ -344,7 +344,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="landing-element-content" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hv-Ur-dkc">
-                                            <rect key="frame" x="15" y="70" width="345" height="18"/>
+                                            <rect key="frame" x="15" y="75" width="345" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="0IB-x4-dRN"/>
                                             </constraints>
@@ -422,7 +422,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="2Hv-Ur-dkc" firstAttribute="top" secondItem="Fem-nQ-FLA" secondAttribute="bottom" constant="10" id="5nP-kE-JdG"/>
-                                        <constraint firstItem="bLs-xs-8cR" firstAttribute="top" secondItem="2Hv-Ur-dkc" secondAttribute="bottom" constant="10" id="KLf-PB-LdP"/>
+                                        <constraint firstItem="bLs-xs-8cR" firstAttribute="top" secondItem="2Hv-Ur-dkc" secondAttribute="bottom" constant="5" id="KLf-PB-LdP"/>
                                         <constraint firstItem="TfJ-KM-0po" firstAttribute="leading" secondItem="Fem-nQ-FLA" secondAttribute="trailing" constant="2" id="UV9-HE-eOT"/>
                                         <constraint firstAttribute="bottom" secondItem="bLs-xs-8cR" secondAttribute="bottom" constant="15" id="UbS-Na-Evw"/>
                                         <constraint firstItem="Fem-nQ-FLA" firstAttribute="leading" secondItem="bT8-kx-GfS" secondAttribute="leading" constant="15" id="eQr-Aj-Aqm"/>

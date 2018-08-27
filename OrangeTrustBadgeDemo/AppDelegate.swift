@@ -96,14 +96,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func requestHealthKitAuthorization(completionHandler: @escaping ()->Void) {
-        if HKHealthStore.isHealthDataAvailable() {
-            HKHealthStore().requestAuthorization(toShare: hkShareTypes, read: hkReadTypes) { _,_ in
-                completionHandler()
-            }
+        guard HKHealthStore.isHealthDataAvailable() else { completionHandler(); return }
+        HKHealthStore().requestAuthorization(toShare: hkShareTypes, read: hkReadTypes) { _,_ in
+            completionHandler()
         }
     }
 
+//    func requestHealthKitAuthorization(completionHandler: @escaping ()->Void) {
+//        guard HKHealthStore.isHealthDataAvailable() else { completionHandler(); return }
+//        HKHealthStore().requestAuthorization(toShare: hkShareTypes, read: hkReadTypes) { _,_ in
+//            completionHandler()
+//        }
+//    }
+
     func requestAuthorization(completionHandler: @escaping ()->Void) {
+        if #available(iOS 10.0, *) {
+            print ("bluetooth state: \(CBCentralManager().state.rawValue)")
+            CBPeripheralManager().startAdvertising(nil)
+        } else {
+            // Fallback on earlier versions
+        }
         
         // Request photoLibrary authorization
         PHPhotoLibrary.requestAuthorization { _ in

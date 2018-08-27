@@ -69,9 +69,6 @@
 
 /* Permissions Page */
 "permission-title" = "Data that app can access";
-"permission-header-title" = "Personnal data this application is using and why";
-"permission-main-section-name" = "Data that app can access";
-"permission-others-section-name" = "Autres données et permissions";
 "permission-identity-name" = "Account credentials";
 "permission-identity-description" = "When launching the application, you must fill in your account ID and password. This information allows the creation of an authentication cookie. This allows you not to have to enter the username and password for each connection. You can delete it from settings> change account. A new cookie will be created the next time you log in.";
 "permission-location-name" = "Location";

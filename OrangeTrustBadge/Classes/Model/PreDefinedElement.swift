@@ -92,14 +92,14 @@ import Foundation
         }
     }
     
-    private var regularDevicePermissions: [ElementType] {
+    static public var regularDevicePermissions: [ElementType] {
         return [.location, .contacts, .photoLibrary, .media, .calendar,
                 .camera, .reminders, .bluetoothSharing, .microphone,
                 .speechRecognition, .health, .homekit, .motionFitness]
     }
     /// true if self is a device permission
     public var isDevicePermission: Bool {
-        return regularDevicePermissions.contains(self)
+        return ElementType.regularDevicePermissions.contains(self)
     }
 }
 

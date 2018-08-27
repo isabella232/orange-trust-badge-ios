@@ -293,17 +293,20 @@ import HealthKit
     func initialize(){
         
         //initialize main Elements
+        devicePermissions.removeAll()
         if let mainElements = self.config?.devicePermissions{
             self.devicePermissions.append(contentsOf: mainElements)
             self.configurePredefinedElements(self.devicePermissions)
         }
         
         //initialize other Elements
+        applicationData.removeAll()
         if let otherElements = self.config?.applicationData{
             self.applicationData.append(contentsOf: otherElements)
             self.configurePredefinedElements(self.applicationData)
         }
-        
+
+        terms.removeAll()
         if let terms = self.config?.terms{
             self.terms.append(contentsOf: terms)
         }

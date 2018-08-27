@@ -77,7 +77,7 @@ class DevicePermissionsController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return TrustBadge.shared.devicePermissions.count
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let element = TrustBadge.shared.devicePermissions[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: ElementCell.reuseIdentifier, for: indexPath) as! ElementCell
@@ -185,15 +185,6 @@ class DevicePermissionsController: UITableViewController {
         tableView.endUpdates()
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_ELEMENT_TAPPED), object: element)
-    }
-    //TODO: Only on iPad
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch(section){
-        case 0 :
-            return TrustBadge.shared.localizedString("permission-main-section-name")
-        default :
-            return TrustBadge.shared.localizedString("permission-others-section-name")
-        }
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

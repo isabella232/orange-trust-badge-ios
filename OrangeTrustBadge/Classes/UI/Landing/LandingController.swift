@@ -31,6 +31,7 @@ import CoreBluetooth
 import AVFoundation
 import Speech
 import UserNotifications
+import CoreMotion
 
 class LandingController: UITableViewController {
     
@@ -85,7 +86,6 @@ class LandingController: UITableViewController {
 
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         self.manageLogoVisibility()
-        self.tableView.reloadData()
     }
     
     /**
@@ -100,6 +100,7 @@ class LandingController: UITableViewController {
                 header.logo.isHidden = false
                 header.hiddingConstraint.constant = image.size.width
             }
+            header.setNeedsLayout()
         }
     }
     
@@ -202,9 +203,17 @@ class LandingController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 0 where TrustBadge.shared.devicePermissions.count > 0 :
+        case 0 where UI_USER_INTERFACE_IDIOM() == .phone :
+            if TrustBadge.shared.devicePermissions.count > 0 {
+                self.performSegue(withIdentifier: "Permissions", sender: self)
+            }
+        case 0 where UI_USER_INTERFACE_IDIOM() == .pad :
             self.performSegue(withIdentifier: "Permissions", sender: self)
-        case 1 where TrustBadge.shared.applicationData.count > 0 :
+        case 1 where UI_USER_INTERFACE_IDIOM() == .phone :
+            if TrustBadge.shared.applicationData.count > 0 {
+                self.performSegue(withIdentifier: "Datas", sender: self)
+            }
+        case 1 where UI_USER_INTERFACE_IDIOM() == .pad :
             self.performSegue(withIdentifier: "Datas", sender: self)
         case 2 :
             self.performSegue(withIdentifier: "Terms", sender: self)
@@ -232,13 +241,26 @@ class LandingController: UITableViewController {
     
     private func buildSubtitle(from elements: [TrustBadgeElement]) -> String {
         
-        var subtitle = ""
+        // sort by activated
         let elements = elements.sorted { (e1, e2) -> Bool in
             return e1.statusClosure() == true && e2.statusClosure() == false
         }
-        let numberOfActivatedElements = elements.index { $0.statusClosure() == false } ?? 0
+        
+        var numberOfActivatedElements = 0
+        let indexOfDisabled = elements.index { $0.statusClosure() == false }
+        
+        /// All elements are activated
+        if indexOfDisabled == nil {
+            numberOfActivatedElements = elements.count
+        } else if indexOfDisabled == 0 { // None element is activated
+            return TrustBadge.shared.localizedString("landing-permission-denied")
+        } else {
+            numberOfActivatedElements = indexOfDisabled!
+        }
+        
         let maxIndex = min(ElementMenuCell.maxDisplayedElement, numberOfActivatedElements)
         
+        var subtitle = ""
         for index in 0..<maxIndex {
             if let element = elements[index] as? PreDefinedElement {
                 let key = "landing-\(element.type.name)-name"
@@ -248,7 +270,7 @@ class LandingController: UITableViewController {
                     subtitle = value
                 } else if index == maxIndex - 1 {
                     if numberOfActivatedElements > ElementMenuCell.maxDisplayedElement {
-                        subtitle += ", " + value + TrustBadge.shared.localizedString("landing-and") + "\(numberOfActivatedElements-maxIndex)" + TrustBadge.shared.localizedString("landing-more")
+                        subtitle += ", " + value + TrustBadge.shared.localizedString("landing-and") + "\(numberOfActivatedElements - maxIndex)" + TrustBadge.shared.localizedString("landing-more")
                     } else {
                         subtitle += TrustBadge.shared.localizedString("landing-and") + value
                     }
@@ -319,7 +341,24 @@ extension PreDefinedElement {
             } else {
                 return false
             }
-
+        case .motionFitness:
+            if #available(iOS 11, *) {
+                return CMMotionActivityManager.authorizationStatus() != .notDetermined
+            } else {
+                return statusClosure()
+            }
+        case .notifications:
+            var status = false
+            if #available(iOS 10.0, *) {
+                UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { (settings) in
+                    if settings.authorizationStatus != UNAuthorizationStatus.notDetermined {
+                        status = true
+                    }
+                })
+            } else {
+                return statusClosure()
+            }
+            return status
         default:
             return statusClosure()
         }

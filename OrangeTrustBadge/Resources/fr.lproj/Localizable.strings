@@ -69,9 +69,6 @@
 
 /* Permissions Page */
 "permission-title" = "Vos données";
-"permission-header-title" = "Quelles sont les données utilisées par votre application et pour quelles raisons ?";
-"permission-main-section-name" = "Données principales";
-"permission-others-section-name" = "Autres données et permissions";
 "permission-identity-name" = "Identifiants";
 "permission-identity-description" = "Lors du lancement de l'application, vous devez renseigner votre identifiant et votre mot de passe de compte. Ces informations permettent la création d'un cookie d'authentification. Celui-ci vous permet de ne pas avoir à saisir l'identifiant et le mot de passe à chaque connexion. Vous pouvez le supprimer depuis paramètres > changer de compte. Un nouveau cookie sera créé lors de votre prochaine identification.";
 "permission-location-name" = "Localisation";
