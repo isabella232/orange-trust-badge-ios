@@ -43,7 +43,7 @@ class PermissionsController: UITableViewController {
         self.tableView.register(UINib(nibName: "ElementCell", bundle: Bundle(for: TrustBadgeConfig.self)), forCellReuseIdentifier: ElementCell.reuseIdentifier)
         tableView.estimatedRowHeight = 65
 
-        tableView.configure(header: header, with: TrustBadgeManager.sharedInstance.localizedString("permission-header-title"))
+        tableView.configure(header: header, with: TrustBadgeManager.sharedInstance.localizedString("permission-header-title"), and: TrustBadgeManager.sharedInstance.config?.headerTextColor)
         
         NotificationCenter.default.addObserver(self, selector: #selector(PermissionsController.refresh), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
