@@ -22,73 +22,68 @@
 */
 
 
-import UIKit
 import OrangeTrustBadge
-import CoreLocation
 
-class ViewController: UIViewController  {
+import CoreLocation
+import Contacts
+import Photos
+import MediaPlayer
+import EventKit
+import CoreBluetooth
+import AVFoundation
+import Speech
+import UserNotifications
+import HomeKit
+import CoreMotion
+import HealthKit
+
+class ViewController: UIViewController {
     
     @IBOutlet weak var versionLabel : UILabel!
-
-    let locationManager = CLLocationManager()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let shortVersionString = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString"){
             versionLabel.text = "version \(shortVersionString)"
         }
-        // The delegate that will manage an eventual CustomViewController
-        // Set this property if your app should display a custom viewcontroller
-        TrustBadge.shared.delegate = self
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
-    @IBAction func startDemo() {
+    func startDemo() {
+        
+        /// setup the badge
+        self.setupTrustBadge()
+        
+        // register self as a TrustBadgeDelegate for custom view controllers
+        TrustBadge.shared.delegate = self
         
         let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: Bundle(for: TrustBadge.self))
         
-        // Uncomment those lines if you want TrustBage to be presented modally
-        if let viewController = storyboard.instantiateInitialViewController() {
-            self.present(viewController, animated: true, completion: nil)
-        }
-        
-        // Uncomment those lines if you want TrustBage to be pushed
-        //let viewController = storyboard.instantiateViewController(withIdentifier: "LandingController")
-        //self.navigationController?.pushViewController(viewController, animated: true)
-    }
-}
-
-// MARK: TrustBadgeDelegate
-// Implement this delegate if your app should display a custom viewcontroller
-extension ViewController: TrustBadgeDelegate {
-    
-    func shouldDisplayCustomViewController() -> Bool {
-        return true
-    }
-    
-    func viewController(at indexPath: IndexPath) -> UIViewController {
-        let navigationController = storyboard?.instantiateViewController(withIdentifier: "CustomEntry") as! UINavigationController
-        navigationController.viewControllers.first?.title = NSLocalizedString("landing-custom-title", comment: "custom view controller title")
-        return navigationController
-    }
-}
-
-/// A custom view controller added to trusbadge UI
-class CustomViewController: UIViewController, TrustBadgeDelegate {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        if let splitViewController = self.splitViewController {
-            navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
-            navigationItem.leftItemsSupplementBackButton = true
+        if UI_USER_INTERFACE_IDIOM() == .pad {
+            if let viewController = storyboard.instantiateInitialViewController(){
+                self.present(viewController, animated: true, completion: nil)
+            }
         } else {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissModal))
+            // Uncomment this section if you want TrustBage to be presented modally or on an iPad
+            //if let viewController = storyboard.instantiateInitialViewController() {
+            //  self.present(viewController, animated: true, completion: nil)
+            //}
+            // Uncomment this section if you want TrustBage to be pushed
+            let viewController = storyboard.instantiateViewController(withIdentifier: "LandingController")
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
     
-    @objc func dismissModal() {
-        self.dismiss(animated: true, completion: nil)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navigationController = segue.destination as? UINavigationController,
+            let viewController = navigationController.topViewController as? PermissionRequesterViewController {
+            viewController.delegate = self
+        } else if let viewController = segue.destination as? PermissionRequesterViewController {
+            viewController.delegate = self
+        }
     }
 }
+
+
 

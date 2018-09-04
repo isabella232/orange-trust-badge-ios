@@ -38,6 +38,18 @@
 "disable-data-usage-confirmation-cancel" = "Cancel";
 "disable-data-usage-confirmation-confirm" = "Disable";
 
+"terms-title" = "Our commitment";
+"terms-content" = "<!DOCTYPE html> \
+<html> \
+<head> \
+<meta content='text/html; charset=utf-8' http-equiv='content-type'> \
+<style type='text/css'>$$cssStylesheet$$</style> \
+</meta> \
+</head> \
+<body> \
+<p>We respect your privacy and accompany you to protect your digital life and your personal data.\
+With the Trust Badge, our app becomes transparent to you. We inform you about how the application uses your personal data and how you can control their usage.</p>";
+
 "terms-video-title" = "Our commitments in video";
 "terms-video-content" = "x3tzvgs";
 
@@ -95,3 +107,11 @@ Find also all this information in the privacy policy of this application.(insert
 </span> \
 </body> \
 </html>";
+
+///
+"requester-section-title"="Touch a function to request access permission";
+"requester-access-requested"="Access has been requested";
+"requester-access-continue"="Continue";
+"requester-access-enable-action"="Enable";
+"requester-access-disable-action"="Disable";
+"requester-access-disabled"="Disabled";

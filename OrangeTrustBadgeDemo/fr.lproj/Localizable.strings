@@ -38,6 +38,18 @@
 "disable-data-usage-confirmation-cancel" = "Annuler";
 "disable-data-usage-confirmation-confirm" = "Désactiver";
 
+"terms-title" = "Nos engagements";
+"terms-content" = "<!DOCTYPE html> \
+<html> \
+<head> \
+<meta content='text/html; charset=utf-8' http-equiv='content-type'> \
+<style type='text/css'>$$cssStylesheet$$</style> \
+</meta> \
+</head> \
+<body> \
+<p>Nous respectons votre vie privée et  nous vous accompagnons pour protéger votre vie numérique et vos données personnelles\
+Avec le Badge de confiance, les applications deviennent transparentes pour vous. Nous vous informons sur la manière dont cette application utilise vos données personnelles et comment vous pouvez contrôler leurs utilisations.</p>";
+
 "terms-video-title" = "Nos engagements en vidéo";
 "terms-video-content" = "x3tzvgs";
 
@@ -103,3 +115,11 @@ Pour  en savoir plus sur comment nous traitons et protégeons vos données, veui
 </span> \
 </body> \
 </html>";
+
+///
+"requester-section-title"="Touchez une fonction pour demander l'authorisation d'accès";
+"requester-access-requested"="L'accès a été demandé";
+"requester-access-continue"="Continuer";
+"requester-access-enable-action"="Activer";
+"requester-access-disable-action"="Désactiver";
+"requester-access-disabled"="Désactivé";

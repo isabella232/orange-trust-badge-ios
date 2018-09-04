@@ -10,6 +10,11 @@
 		495EBB4B212EE8B50067D548 /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495EBB4A212EE8B50067D548 /* HomeKit.framework */; };
 		495EBB4E212EEF5F0067D548 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 495EBB50212EEF5F0067D548 /* InfoPlist.strings */; };
 		49832A17212EB557005C3998 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49832A16212EB557005C3998 /* HealthKit.framework */; };
+		49C26BFB213F46E3003DF2E9 /* TrustBadgeConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C26BF9213F3F74003DF2E9 /* TrustBadgeConfigurator.swift */; };
+		49C26BFC213F46E8003DF2E9 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C26BFA213F3F74003DF2E9 /* CustomViewController.swift */; };
+		49C26BFD213F46EC003DF2E9 /* PersonalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C26BF8213F3F74003DF2E9 /* PersonalData.swift */; };
+		49C26C01213F4758003DF2E9 /* PermissionRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C26BFF213F474F003DF2E9 /* PermissionRequester.swift */; };
+		49C26C02213F4758003DF2E9 /* PermissionRequesterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C26C00213F474F003DF2E9 /* PermissionRequesterViewController.swift */; };
 		542715611C2663D700289336 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5427155F1C2663D700289336 /* LaunchScreen.storyboard */; };
 		542B75571C1F154C003C489A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542B75561C1F154C003C489A /* AppDelegate.swift */; };
 		542B75591C1F154C003C489A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542B75581C1F154C003C489A /* ViewController.swift */; };
@@ -28,6 +33,11 @@
 		49832A0F212D5C3B005C3998 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49832A15212EB1F9005C3998 /* OrangeTrustBadgeDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OrangeTrustBadgeDemo.entitlements; sourceTree = "<group>"; };
 		49832A16212EB557005C3998 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		49C26BF8213F3F74003DF2E9 /* PersonalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalData.swift; sourceTree = "<group>"; };
+		49C26BF9213F3F74003DF2E9 /* TrustBadgeConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustBadgeConfigurator.swift; sourceTree = "<group>"; };
+		49C26BFA213F3F74003DF2E9 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		49C26BFF213F474F003DF2E9 /* PermissionRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionRequester.swift; sourceTree = "<group>"; };
+		49C26C00213F474F003DF2E9 /* PermissionRequesterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionRequesterViewController.swift; sourceTree = "<group>"; };
 		49FBC29D20E513E100F3F486 /* OrangeTrustBadge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OrangeTrustBadge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FBC2A020E51F3500F3F486 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		542715601C2663D700289336 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = OrangeTrustBadgeDemo/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +67,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49C26BF7213F3F74003DF2E9 /* TrustBadgeIntegration */ = {
+			isa = PBXGroup;
+			children = (
+				49C26BF8213F3F74003DF2E9 /* PersonalData.swift */,
+				49C26BF9213F3F74003DF2E9 /* TrustBadgeConfigurator.swift */,
+				49C26BFA213F3F74003DF2E9 /* CustomViewController.swift */,
+			);
+			path = TrustBadgeIntegration;
+			sourceTree = "<group>";
+		};
+		49C26BFE213F474F003DF2E9 /* PermissionRequester */ = {
+			isa = PBXGroup;
+			children = (
+				49C26BFF213F474F003DF2E9 /* PermissionRequester.swift */,
+				49C26C00213F474F003DF2E9 /* PermissionRequesterViewController.swift */,
+			);
+			path = PermissionRequester;
+			sourceTree = "<group>";
+		};
 		542B754A1C1F154C003C489A = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				49832A15212EB1F9005C3998 /* OrangeTrustBadgeDemo.entitlements */,
+				49C26BF7213F3F74003DF2E9 /* TrustBadgeIntegration */,
+				49C26BFE213F474F003DF2E9 /* PermissionRequester */,
 				542B75561C1F154C003C489A /* AppDelegate.swift */,
 				542B75581C1F154C003C489A /* ViewController.swift */,
 				542B755A1C1F154C003C489A /* Main.storyboard */,
@@ -244,7 +275,12 @@
 			files = (
 				542B75591C1F154C003C489A /* ViewController.swift in Sources */,
 				54BE47231C6CD6E9005CFEB9 /* OrangeButton.swift in Sources */,
+				49C26C02213F4758003DF2E9 /* PermissionRequesterViewController.swift in Sources */,
+				49C26C01213F4758003DF2E9 /* PermissionRequester.swift in Sources */,
+				49C26BFC213F46E8003DF2E9 /* CustomViewController.swift in Sources */,
 				542B75571C1F154C003C489A /* AppDelegate.swift in Sources */,
+				49C26BFB213F46E3003DF2E9 /* TrustBadgeConfigurator.swift in Sources */,
+				49C26BFD213F46EC003DF2E9 /* PersonalData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
