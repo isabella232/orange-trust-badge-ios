@@ -27,6 +27,7 @@ class DevicePermissionsController: UITableViewController {
     
     
     @IBOutlet weak var header : Header!
+    var permissions = [TrustBadgeElement]()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -53,6 +54,10 @@ class DevicePermissionsController: UITableViewController {
         if #available(iOS 11, *) {
             self.tableView.contentInsetAdjustmentBehavior = .never
         }
+        
+        permissions = TrustBadge.shared.devicePermissions.sorted(by: { (e1, e2) -> Bool in
+            return (e1 as! PreDefinedElement).type.rawValue < (e2 as! PreDefinedElement).type.rawValue
+        })
     }
     
     deinit {
@@ -75,11 +80,11 @@ class DevicePermissionsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TrustBadge.shared.devicePermissions.count
+        return permissions.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let element = TrustBadge.shared.devicePermissions[indexPath.row]
+        let element = permissions[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: ElementCell.reuseIdentifier, for: indexPath) as! ElementCell
         
         cell.nameLabel.text = TrustBadge.shared.localizedString(element.nameKey)
@@ -169,7 +174,7 @@ class DevicePermissionsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let element = TrustBadge.shared.devicePermissions[indexPath.row]
+        let element = permissions[indexPath.row]
         if element.isExpanded {
             return UITableViewAutomaticDimension
         } else {
@@ -178,7 +183,7 @@ class DevicePermissionsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let element = TrustBadge.shared.devicePermissions[indexPath.row]
+        let element = permissions[indexPath.row]
         element.isExpanded = !element.isExpanded
         tableView.beginUpdates()
         tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)

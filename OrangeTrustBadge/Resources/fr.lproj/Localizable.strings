@@ -71,7 +71,7 @@
 "permission-title" = "Vos données";
 "permission-identity-name" = "Identifiants";
 "permission-identity-description" = "Lors du lancement de l'application, vous devez renseigner votre identifiant et votre mot de passe de compte. Ces informations permettent la création d'un cookie d'authentification. Celui-ci vous permet de ne pas avoir à saisir l'identifiant et le mot de passe à chaque connexion. Vous pouvez le supprimer depuis paramètres > changer de compte. Un nouveau cookie sera créé lors de votre prochaine identification.";
-"permission-location-name" = "Localisation";
+"permission-location-name" = "Position";
 "permission-location-description" = "Avec votre permission, les services de localisation permettent à cette application d'utiliser des informations provenant de réseaux cellulaires, wifi, système de positionnement global (GPS) et Bluetooth pour déterminer votre position approximative.";
 "permission-photo-library-name" = "Photos et vidéos";
 "permission-photo-library-description" = "Cette application peut exploiter le dossier photos sur votre terminal. Cette autorisation permet à l'application de lire les fichiers stockés, les modifier ou les supprimer.";
@@ -81,7 +81,7 @@
 "permission-data-usage-description" = "Cette application collecte des informations concernant l'utilisation de l'application et nous envoie ces informations pour des analyses statistiques afin d'améliorer le service et la pertinence des messages envoyés par le service.  Toutes le informations collectées sont entièrement anonymes. Ces informations sont collectées et traitées en conformité avec les lois applicables.";
 "permission-camera-name" = "Appareil photo";
 "permission-camera-description" = "Cette application peut utiliser l'appareil photo de votre appareil. L'accès à la caméra peut permettre à l'application d'effectuer les actions suivantes : prendre des photos, enregistrer des vidéos.";
-"permission-calendar-name" = "Agenda";
+"permission-calendar-name" = "Calendriers";
 "permission-calendar-description" = "Cette application peut exploiter les informations de l'agenda présents sur votre terminal, y compris pour consulter les évènements enregistrés.";
 "permission-microphone-name" = "Micro";
 "permission-microphone-description" = "Cette application peut utiliser le micro de votre appareil. L'accès au micro peut permettre à l'application d'enregistrer des contenus audio.";
@@ -97,7 +97,7 @@
 "permission-speech-recognition-description"="Cette application a demandé l'accès à la reconnaissance vocale. La reconnaissance vocale envoie vos enregistremenst vocaux à Apple pour traiter vos demandes.";
 "permission-health-name"="Santé";
 "permission-health-description"="L'application a demandé l'accès à vos Données Santé.";
-"permission-homekit-name"="Homekit";
+"permission-homekit-name"="Données locales";
 "permission-homekit-description"="L'application a demandé l'accès à vos données de la maison.";
 "permission-motion-activity-fitness-name"="Mouvements et forme";
 "permission-motion-activity-fitness-description"="Mouvements et forme permet aux apps d'accéder aux données du capteur, notamment aux mouvements du corps, au nombre de pas, et bien plus.";
