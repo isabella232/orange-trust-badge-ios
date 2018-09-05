@@ -63,7 +63,7 @@
 "landing-identity-name" = "Account credentials";
 "landing-data-usage-name" =" Improvement program";
 "landing-notifications-name" = "Notifications";
-"landing-history-name" = "Usage history";
+"landing-history-name" = "History";
 "landing-and" = " and ";
 "landing-more" = " more";
 
@@ -117,7 +117,7 @@
 "permission-inapp-purchase-description" = "In this application, you can buy other contents or services.";
 "permission-advertising-name" = "Advertising";
 "permission-advertising-description" = "This application can broadcast advertising thanks to stored cookies in order to propose you products and services adapted to your real or supposed interests.";
-"permission-history-name" = "Usage history";
+"permission-history-name" = "History";
 "permission-history-description" = "This application collects information about your preferences and usage history in order to offer you personalized services.";
 /* Terms Page */
 "terms-title" = "Our commitments";

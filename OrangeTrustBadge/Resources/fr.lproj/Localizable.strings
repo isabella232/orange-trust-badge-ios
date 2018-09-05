@@ -63,7 +63,7 @@
 "landing-identity-name" = "Identifiants";
 "landing-data-usage-name" = "Programme d'améliorations";
 "landing-notifications-name" = "Notifications";
-"landing-history-name" = "Historique et préférences";
+"landing-history-name" = "Historique";
 "landing-and" = " et ";
 "landing-more" = " autre(s)";
 
@@ -117,7 +117,7 @@
 "permission-inapp-purchase-description" = "Dans cette application, vous pouvez acheter des contenus ou des services supplémentaires.";
 "permission-advertising-name" = "Publicité";
 "permission-advertising-description" = "Cette application peut contenir de la publicité grâce à des cookies publicitaires afin de vous proposer des produits et services  adaptés à vos centres d'intérêts réels ou supposés.";
-"permission-history-name" = "History";
+"permission-history-name" = "Historique";
 "permission-history-description" = "Cette application collecte des informations concernant vos préférences et l'historique de vos usages afin de vous proposer des services personnalisés.";
 
 /* Terms Page */
