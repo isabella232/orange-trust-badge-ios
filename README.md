@@ -202,7 +202,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 ### Add OrangeTrustBadge UI in your storyboard
 
 #### Using code (available on iOS 9 and later)
-- create an IBAction connected to one of your interface element (e.g a button, a cell etc...).
+- Create an IBAction connected to one of your interface element (e.g a button, a cell etc...).
 - Instanciate OrangeTrustBadge storyboard with the following lines :
 
 **Present the badge modally**
