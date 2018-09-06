@@ -145,16 +145,7 @@ extension ViewController {
         //config.headerLogo = UIImage(named:"my-logo")
         
         // uncomment this section to change header text color
-        //config.headerTextColor = .red
-
-        // uncomment this section to add a new custom entry in "Other Permissions"
-        /**
-         let myCustomElement = CustomElement(nameKey: "custom-permission-name-key", descriptionKey: "custom-permission-description-key", statusEnabledIconName: "permission-credit-card-enabled-icon", statusDisabledIconName: "permission-credit-card-disabled-icon")
-         myCustomElement.isConfigurable = false
-         myCustomElement.statusClosure = {() in return true}
-         config.otherElements.append(myCustomElement)
-         */
-        
+        //config.headerTextColor = .red        
         
         
         // finally, initialize TrustBadgeManager with our configuration
