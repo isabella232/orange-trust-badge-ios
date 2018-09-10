@@ -23,6 +23,9 @@
 
 "landing-terms-title" = "Our commitments";
 "landing-terms-content" = "We support you to protect your digital life and your personnal informations.";
+"landing-custom-title" = "Customizable content";
+"landing-custom-content" = "Add here any other information related to the processing of personal data";
+
 "permission-location-description" = "Geolocation service allows application to use mobile network, Wi-Fi and GPS information to locate you approximatively. In this case, we don't collect any personal data";
 "terms-title" = "Our commitments";
 "terms-header-title" = "We support you to protect your digital life and your personnal informations.";
@@ -34,6 +37,18 @@
 "disable-data-usage-confirmation-content" = "This application gathers anonymous usage information to improve your experience with this product, not marketing purposes. We also use this information to help guide our roadmap, prioritizing the features most valued for you and enabling us to be as reactive as you could expect from us.\n\nAre you sure ?";
 "disable-data-usage-confirmation-cancel" = "Cancel";
 "disable-data-usage-confirmation-confirm" = "Disable";
+
+"terms-title" = "Our commitment";
+"terms-content" = "<!DOCTYPE html> \
+<html> \
+<head> \
+<meta content='text/html; charset=utf-8' http-equiv='content-type'> \
+<style type='text/css'>$$cssStylesheet$$</style> \
+</meta> \
+</head> \
+<body> \
+<p>We respect your privacy and accompany you to protect your digital life and your personal data.\
+With the Trust Badge, our app becomes transparent to you. We inform you about how the application uses your personal data and how you can control their usage.</p>";
 
 "terms-video-title" = "Our commitments in video";
 "terms-video-content" = "x3tzvgs";
@@ -92,3 +107,12 @@ Find also all this information in the privacy policy of this application.(insert
 </span> \
 </body> \
 </html>";
+
+///
+"requester-title"="Authorizations";
+"requester-section-title"="Touch a function to request access permission";
+"requester-access-requested"="Access has been requested";
+"requester-access-continue"="Continue";
+"requester-access-enable-action"="Enable";
+"requester-access-disable-action"="Disable";
+"requester-access-disabled"="Disabled";

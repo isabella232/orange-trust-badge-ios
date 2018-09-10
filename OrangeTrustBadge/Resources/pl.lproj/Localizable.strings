@@ -43,9 +43,12 @@
 /* Landing Page */
 "landing-title" = "Odznaka zaufania";
 "landing-header-title" = "Zweryfikuj stopień dostępu aplikacji do danych prywatnych ";
+"landing-header-subtitle" = "Znajdź i kontroluj wykorzystanie swoich danych osobowych w aplikacji.";
 "landing-permission-title" = "Twoje dane";
 "landing-permission-content" = "Z jakich danych korzysta aplikacja i w jakim celu?";
-"landing-usages-title" = "Korzystanie z aplikacji";
+"landing-permission-unrequested" = "Aplikacja nie żąda dostępu do żadnych danych";
+"landing-permission-denied" = "Aplikacja nie ma dostępu do żadnych danych";
+"landing-application-data-title" = "Korzystanie z aplikacji";
 "landing-usages-content" = "Jakie funkcje oraz zawartość posiada aplikacja?";
 "landing-terms-title" = "Nasze zobowiązania";
 "landing-terms-content" = "Pomożemy chronić Twoje \"cyfrowe\" życie oraz dane osobowe.";
@@ -76,8 +79,8 @@
 "permission-body-sensors-name" = "Podłączone urządzenia";
 "permission-body-sensors-description" = "Aplikacja ma dostęp do informacji zgromadzonych na urządzeniach podłączonych/zsynchronizowanych z telefonem komórkowym. ";
 
-/* Usages Page */
-"usages-title" = "Korzystanie z aplikacji";
+/* Application Data Page */
+"application-data-title" = "Korzystanie z aplikacji";
 "usages-header-title" = "Co potrafi aplikacja Mój FunBox?";
 "permission-social-sharing-name" = "Sieci społecznościowe";
 "permission-social-sharing-description" = "Aplikacja może przekierowywać do serwisów społecznościowych takich jak Facebook czy Twitter.";

@@ -22,7 +22,10 @@
  */
 
 "landing-terms-title" = "Nos engagements";
-"landing-terms-content" = "Nous vous accompagnons pour protéger votre vie numérique et vos données personnelles.";
+"landing-terms-content" = "Nous respectons votre vie privée et  nous vous accompagnons pour protéger votre vie numérique et vos données personnelles";
+"landing-custom-title" = "Contenu personnalisable";
+"landing-custom-content" = "Ajoutez ici toute autre information liée au traitement des données personnelles";
+
 "permission-location-description" = "Le service de localisation permet aux applications d’utiliser des informations des réseaux mobiles, Wi-Fi et GPS  pour localiser votre emplacement approximatif. Aucune donnée personnelle n’est collectée à cette occasion.";
 "terms-title" = "Nos engagements";
 "terms-header-title" = "Nous vous accompagnons pour protéger votre vie numérique et vos données personnelles.";
@@ -35,10 +38,22 @@
 "disable-data-usage-confirmation-cancel" = "Annuler";
 "disable-data-usage-confirmation-confirm" = "Désactiver";
 
+"terms-title" = "Nos engagements";
+"terms-content" = "<!DOCTYPE html> \
+<html> \
+<head> \
+<meta content='text/html; charset=utf-8' http-equiv='content-type'> \
+<style type='text/css'>$$cssStylesheet$$</style> \
+</meta> \
+</head> \
+<body> \
+<p>Nous respectons votre vie privée et  nous vous accompagnons pour protéger votre vie numérique et vos données personnelles\
+Avec le Badge de confiance, les applications deviennent transparentes pour vous. Nous vous informons sur la manière dont cette application utilise vos données personnelles et comment vous pouvez contrôler leurs utilisations.</p>";
+
 "terms-video-title" = "Nos engagements en vidéo";
 "terms-video-content" = "x3tzvgs";
 
-"terms-data-usage-title" = "Comment nous  utilisons vos données";
+"terms-data-usage-title" = "Comment utilisons-nous vos données ?";
 "terms-data-usage-content" = "<!DOCTYPE html> \
 <html> \
 <head> \
@@ -47,16 +62,22 @@
 </meta> \
 </head> \
 <body> \
-<h2>Partage des données</h2> \
+<h2>Utilisation de vos données</h2> \
 <p> \
-Nous nous engageons à assurer la confidentialité des données personnelles que cette application utilise. Nous nous interdisons également de communiquer à des partenaires commerciaux vos données personnelles sans vous avoir informé et sans vous avoir offert la possibilité d’exercer votre droit d’opposition. \
+Nous utilisons vos données personnelles afin de vous authentifier, de vous fournir le service  souscrit et, le cas échéant, vous proposer des offres adaptées à vos besoins. Nous utilisons également vos données à des fins statistiques, dans ce cadre ces données sont préalablement rendues anonymes de manière irréversible. \
 </p> \
-<h2>Utilisation des données</h2> \
+<h2>Partage de vos données</h2> \
 <p> \
-Nous utilisons vos données personnelles afin de vous authentifier, de vous fournir le service souscrit et, le cas échéant, vous proposer des offres adaptées à vos besoins. Nous sommes susceptibles d’utiliser vos données, préalablement rendues anonymes de manière irréversible, à des fins statistiques. \
+Nous nous engageons à assurer la confidentialité des données personnelles que votre application utilise. Nous nous interdisons également de communiquer à des partenaires commerciaux vos données personnelles sans vous avoir informé et sans vous avoir offert la possibilité d’exercer votre droit d’opposition.  \
 </p> \
-<h2>Conservation des données</h2> \
-Nous ne conservons pas vos données personnelles plus longtemps qu’il n’est nécessaire au regard des buts pour lesquels elles ont été collectés ou plus longtemps que le prévoit la loi en vigueur. \
+<h2>Conservation de vos données</h2> \
+<p> \
+Nous ne conservons  pas vos données personnelles plus longtemps qu’il n’est nécessaire au regard des buts pour lesquels elles ont été collectées ou plus longtemps que le prévoit la loi en vigueur. \
+</p> \
+<h2>Sécurité de vos données</h2> \
+<p> \
+Nous nous engageons à tout mettre en œuvre afin de garantir la sécurité et la confidentialité de vos données personnelles et notamment à empêcher que ces données ne soient endommagées, effacées ou que des tiers non autorisés y aient accès. \
+</p> \
 </body> \
 </html>";
 
@@ -69,7 +90,8 @@ Nous ne conservons pas vos données personnelles plus longtemps qu’il n’est 
 </meta> \
 </head> \
 <body> \
-<p>Si besoin, cette application met à disposition cette adresse mail pour répondre à vos questions :</p> \
+<h2>Quels sont vos droits et comment les exercer ?</h2> \
+<p>Si besoin, nous mettons à disposition cette adresse mail pour répondre à vos questions :</p> \
 <span class='p'> \
 <!-- span.p is used for last paragraph, otherwise layount is broken--> \
 <a href='mailto:privacy@example.com'>privacy@example.com</a> \
@@ -77,7 +99,7 @@ Nous ne conservons pas vos données personnelles plus longtemps qu’il n’est 
 </body> \
 </html>";
 
-"terms-more-info-title" = "La charte de confidentialité";
+"terms-more-info-title" = "La politique de protection des données personnelles";
 "terms-more-info-content" = "<!DOCTYPE html> \
 <html> \
 <head> \
@@ -88,7 +110,17 @@ Nous ne conservons pas vos données personnelles plus longtemps qu’il n’est 
 <body> \
 <span class='p'> \
 <!-- span.p is used for last paragraph, otherwise layount is broken--> \
-Retrouvez  aussi toutes ces informations  dans la charte de confidentialité de l’application.(inserer ici le lien vers votre charte de confidentialité en ligne) \
+Pour  en savoir plus sur comment nous traitons et protégeons vos données, veuillez consulter \
+<a href=''>la politique de protection des données personnelles de l’application.</a> de l'application.\
 </span> \
 </body> \
 </html>";
+
+///
+"requester-title"="Authorisations";
+"requester-section-title"="Touchez une fonction pour demander l'authorisation d'accès";
+"requester-access-requested"="L'accès a été demandé";
+"requester-access-continue"="Continuer";
+"requester-access-enable-action"="Activer";
+"requester-access-disable-action"="Désactiver";
+"requester-access-disabled"="Désactivé";

@@ -25,46 +25,60 @@
 "status-enabled" = "Yes";
 "status-disabled" = "No";
 "update-permission" = "Change this permission";
+"update-health-permission" = "Edit in the Health app";
 "accessibility-double-tap" = "Double tap to know more";
 "accessibility-enabled" = "enabled";
 "accessibility-disabled" = "disabled";
 
-/* Rating Items */
-"rating-title" = "Age Rating";
-"rating-level-4-name" = "4+";
-"rating-level-4-description" = "The indicated age corresponds to the minimum age recommended to use your application according to presented content.";
-"rating-level-9-name" = "9+";
-"rating-level-9-description" = "The indicated age corresponds to the minimum age recommended to use your application according to presented content.";
-"rating-level-12-name" = "12+";
-"rating-level-12-description" = "The indicated age corresponds to the minimum age recommended to use your application according to presented content.";
-"rating-level-17-name" = "17+";
-"rating-level-17-description" = "The indicated age corresponds to the minimum age recommended to use your application according to presented content.";
-
 /* Landing Page */
 "landing-title" = "Trust badge";
-"landing-header-title" = "Find and control the use of your personal information in your application.";
-"landing-permission-title" = "My data";
-"landing-permission-content" = "Personal data your application in using and why";
-"landing-usages-title" = "Usages";
-"landing-usages-content" = "Contents and features of your application";
+"landing-header-title" = "With the Trust badge, Orange apps become transparent to you.";
+"landing-header-subtitle" = "Find and control the use of your personal information in your application.";
+"landing-permission-title" = "Data that app can access";
+"landing-permission-content" = "The app is not allowed to access any data";
+"landing-permission-unrequested" = "The app does not request access to any data";
+"landing-permission-denied" = "The app is not allowed to access any data";
+"landing-application-data-title" = "Data from app usage";
+"landing-application-data-content" = "Contents and features of your application";
+"landing-application-data-unrequested" = "The app does not use any data";
+"landing-application-data-denied" = "The app is not allowed to use any data";
 "landing-terms-title" = "Our commitments";
 "landing-terms-content" = "We support you to protect your digital life and your personnal informations";
 
+"landing-location-name" = "Location";
+"landing-contacts-name" = "Contacts";
+"landing-photo-library-name" = "Photos";
+"landing-media-name" = "Media";
+"landing-calendar-name" = "Calendars";
+"landing-camera-name" = "Camera";
+"landing-reminders-name" = "Reminders";
+"landing-bluetooth-sharing-name" = "Bluetooth Sharing";
+"landing-microphone-name" = "Micro";
+"landing-speech-recognition-name" = "Speech Recognition";
+"landing-health-name" = "Healthkit";
+"landing-homekit-name" = "Homekit";
+"landing-motion-activity-fitness-name" = "Fitness and health tracking";
+"landing-account-informations-name" = "Account information";
+"landing-advertising-name" = "Advertising";
+"landing-identity-name" = "Account credentials";
+"landing-data-usage-name" =" Improvement program";
+"landing-notifications-name" = "Notifications";
+"landing-history-name" = "History";
+"landing-and" = " and ";
+"landing-more" = " more";
+
 /* Permissions Page */
-"permission-title" = "My data";
-"permission-header-title" = "Personnal data this application is using and why";
-"permission-main-section-name" = "Main data";
-"permission-others-section-name" = "Autres données et permissions";
-"permission-identity-name" = "My identity";
-"permission-identity-description" = "This application can access information linked to your accounts/profile. This application can use your name, date of birth and email in order to identify you for example.";
+"permission-title" = "Data that app can access";
+"permission-identity-name" = "Account credentials";
+"permission-identity-description" = "When launching the application, you must fill in your account ID and password. This information allows the creation of an authentication cookie. This allows you not to have to enter the username and password for each connection. You can delete it from settings> change account. A new cookie will be created the next time you log in.";
 "permission-location-name" = "Location";
-"permission-location-description" = "Geolocation service allows application to use mobile network, Wi-Fi and GPS information to locate you approximatively.";
-"permission-photo-library-name" = "Media & Photo Library";
-"permission-photo-library-description" = "This application can access files stored on your device. This permission allows this application to read, edit or delete them";
+"permission-location-description" = "With your permission, Location Services allows this application to use information from cellular, Wi-Fi, Global Positioning System (GPS) networks, and Bluetooth to determine your approximate location.";
+"permission-photo-library-name" = "Photos and videos";
+"permission-photo-library-description" = "This application can use photos stored on your device. This permission allows the application to read, edit or delete stored files.";
 "permission-contacts-name" = "Contacts";
 "permission-contacts-description" = "This application can access, add and / or change your phone contacts.";
-"permission-data-usage-name" = "Usage data";
-"permission-data-usage-description" = "This application collects information on the use of the application and sends us such information for statistical analysis to further improve the service provided to you and the relevance of the notification messages sent by the service. Such information is collected and processed in compliance with applicable laws";
+"permission-data-usage-name" = "Improvement program";
+"permission-data-usage-description" = "This application collects information on the use of the application and sens us such information for statistical analysis to further improve the service and the relevance of the notification messages sent by the service. Such information is anonymously collected and processed in compliance with applicable laws.";
 "permission-camera-name" = "Camera";
 "permission-camera-description" = "This application can use the camera of your device. The camera access allows this application to take pictures and record video.";
 "permission-calendar-name" = "Agenda";
@@ -75,9 +89,27 @@
 "permission-phone-description" = "This application can access the ID of your mobile and your phone number.";
 "permission-body-sensors-name" = "Connected objects";
 "permission-body-sensors-description" = "This application can access data collected by your connected object which is synchronized with your device. ";
+"permission-reminders-name"="Reminders";
+"permission-reminders-description"="This application can use the reminders information on your device, including consultation of recorded events.";
+"permission-bluetooth-sharing-name"="Bluetooth Sharing";
+"permission-bluetooth-sharing-description"="This application has the ability to share data via Bluetooth.";
+"permission-speech-recognition-name"="Speech Recognition";
+"permission-speech-recognition-description"="This application has requested access to speech recognition. Speech recognition sends recorded voice to Apple to process your requests.";
+"permission-health-name"="Healthkit";
+"permission-health-description"="This application has requested access to your health data.";
+"permission-homekit-name"="Homekit";
+"permission-homekit-description"="This application has requested access to your home data.";
+"permission-motion-activity-fitness-name"="Fitness and health tracking";
+"permission-motion-activity-fitness-description"="Fitness and health tracking allows apps to access sensor data, including body movement, steps count, and more.";
+"permission-media-name"="Media";
+"permission-media-description"="This application has requested access to your music activity and your media library.";
+"permission-notifications-name"="Notifications";
+"permission-notifications-description"="Receive notifications from the application. Notifications can include sounds and be displayed in different formats (message in the notification center).";
+"permission-account-informations-name"="Account information";
+"permission-account-informations-description"="This application can access information linked to your account/profiles. This application can use your name, date of birth and email in order to identify you for example.";
 
-/* Usages Page */
-"usages-title" = "Usages";
+/* Application Data Page */
+"application-data-title" = "Data from app usage";
 "usages-header-title" = "Contents and features of your application";
 "permission-social-sharing-name" = "Social networks";
 "permission-social-sharing-description" = "This application can integrate social features. This application can redirect you to social networks like Facebook or Twitter.";
@@ -85,7 +117,8 @@
 "permission-inapp-purchase-description" = "In this application, you can buy other contents or services.";
 "permission-advertising-name" = "Advertising";
 "permission-advertising-description" = "This application can broadcast advertising thanks to stored cookies in order to propose you products and services adapted to your real or supposed interests.";
-
+"permission-history-name" = "History";
+"permission-history-description" = "This application collects information about your preferences and usage history in order to offer you personalized services.";
 /* Terms Page */
 "terms-title" = "Our commitments";
 "terms-header-title" = "We support you to protect your digital life and your personnal informations";

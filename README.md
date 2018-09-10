@@ -5,28 +5,31 @@
 With the Orange trust badge, aka "Badge de confiance", give transparent informations and user control on personal data and help users to identify if your application has any sensitive features.
 
 ## Features
-Orange trust badge displays how are handled the following data :
+Orange trust badge displays how are handled the following device permissions :
 
-- Identity of the User
 - Location
-- Photos
 - Contacts
+- Photos Library
+- Media
 - Usage data
 - Calendar
-- SMS
+- Reminders
 - Microphone
-- Phone
-- Body sensors
-- Social Sharing
-- In-app purchase
+- Bluetooth Sharing
+- Microphone
+- Speech Recognition
+- Health
+- Homekit
+- Motion Activity & Fitness
+
+It can also displays the following application data :
+
+- Notifications
+- Identity
+- Account Informations
+- Data usage
 - Advertising
-
-It also displays the following informations :
-
-- Application's rating
-- Data usage general description
-- Help
-- Privacy policy
+- History
 
 It also :
 
@@ -39,8 +42,8 @@ It also :
 ## Requirements
 
 - iOS 9.0+
-- Xcode 9.0+
-- CocoaPods 1.0.1+
+- Xcode 9.4.1+
+- CocoaPods 1.5.3+
 
 ## Bug tracker
 
@@ -92,7 +95,7 @@ $ brew install carthage
 
 To integrate OrangeTrustBadge into your Xcode project using Carthage, specify it in your Cartfile:
 
->github "Orange-OpenSource/orange-trust-badge-ios" ~> 1.0
+>github "Orange-OpenSource/orange-trust-badge-ios" ~> 1.1
 
 Run carthage update to build the framework and drag the built OrangeTrustBadge.framework into your Xcode project.
 
@@ -180,8 +183,8 @@ fi
 import OrangeTrustBadge
 
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-TrustBadgeManager.with(TrustBadgeConfig())
-return true
+	TrustBadge.with(TrustBadgeConfig())
+	return true
 }
 ```
 **or in Objective-C**
@@ -191,27 +194,42 @@ return true
 #import "OrangeTrustBadge-Swift.h"
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-[TrustBadgeManager with:[[TrustBadgeConfig alloc] init]];
-return YES;
+	[TrustBadge with:[[TrustBadgeConfig alloc] init]];
+	return YES;
 }
 ```
 
 ### Add OrangeTrustBadge UI in your storyboard
 
-#### Using code (available on iOS8 and later)
-- create an IBAction connected to one of your interface element (e.g a button, a cell etc...).
+#### Using code (available on iOS 9 and later)
+- Create an IBAction connected to one of your interface element (e.g a button, a cell etc...).
 - Instanciate OrangeTrustBadge storyboard with the following lines :
+
+**Present the badge modally**
 
 ```swift
 import OrangeTrustBadge
 
 @IBAction func onButtonClicked(){
-let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: NSBundle(forClass: TrustBadgeManager.self))
-if let viewController = storyboard.instantiateInitialViewController() {
-self.navigationController?.presentViewController(viewController, animated: true, completion: nil)
-}
+	let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: NSBundle(forClass: TrustBadge.self))
+	if let viewController = storyboard.instantiateInitialViewController() {
+    	self.present(viewController, animated: true, completion: nil)
+    }
 }
 ```
+**Push the badge**
+
+```swift
+import OrangeTrustBadge
+
+@IBAction func onButtonClicked(){
+	let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: NSBundle(forClass: TrustBadge.self))
+	let viewController = storyboard.instantiateViewController(withIdentifier: "LandingController")
+    self.navigationController?.pushViewController(viewController, animated: true)
+}
+```
+
+
 That's it !
 
 #### Using Storyboard References (available on iOS9 and later)
@@ -225,6 +243,36 @@ That's it !
 
 That's it !
 
+### Add custom view to the badge
+You may have to add  some informations related to your app in the badge section.
+Orange Trust Badge allow you to provide a view controller wich will be displayed as a custom view.
+
+To provide this view controller, you must implement two methods of `TrustBadgeDelegate` protocol.
+
+    /// If this method returns true, the landing page will displayed a cell that allows to access
+    //// to this view controller.
+    @objc optional func shouldDisplayCustomViewController() -> Bool
+    
+    
+    /// Implement this method to return a viewController to displayed for the CustomMenuCell
+    @objc optional func viewController(at indexPath: IndexPath) -> UIViewController
+
+
+To allow the user to access you custom view controller, TrustBadge will add a an entry in LandingController.
+The title and the subtitle of this entry (UITableViewCell) must be configured with the following Localizable.string keys.
+
+Title
+
+`
+"landing-custom-title" = "Customizable content";
+`
+
+Subtitle
+
+`
+"landing-custom-content" = "Find out other apps that have adopted the Trust Badge";
+`
+
 ### Add localization support
 
 In order to localize properly the UI, OrangeTrustBadge is using standard iOS mechanisms.
@@ -233,6 +281,7 @@ Concretly the SDK will take the current language setup on user's phone unless yo
 To add a localization support, go to Project Level and add appropriate localization in "Info" Tab.
 
 You can override every visible text using your own Localizable.strings file. To know which key you need to override, please see SDK 's Localization file.
+
 
 ## Customization
 
@@ -248,23 +297,11 @@ Note: If desired, you will be able to also customize the behavior of PreDefinedE
 **In swift**
 
 ```swift
-let advertisingElement = PreDefinedElement(type: .Advertising)
+let advertisingElement = PreDefinedElement(type: .advertising)
 advertisingElement.statusClosure = {() in return true}
-config.mainElements.append(advertisingElement)
+config.applicationData.append(advertisingElement)
 ```
 
-- A CustomElement on which you have full control of displayed informations
-
-
-
-**In swift**
-
-```swift
-let myCustomElement = CustomElement(nameKey: "custom-element-name-key", descriptionKey: "custom-element-description-key", statusEnabledIconName: "custom-element-enabled-icon", statusDisabledIconName: "custom-element-disabled-icon")
-myCustomElement.isConfigurable = false
-myCustomElement.statusClosure = {() in return true}
-config.otherElements.append(myCustomElement)
-```
 ### Terms and Conditions View
 
 In this section you will find Standardized Terms ans conditions that can be replaced / updated according to your needs through Localization.

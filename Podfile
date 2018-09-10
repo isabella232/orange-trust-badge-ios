@@ -8,7 +8,7 @@ project 'OrangeTrustBadge.xcodeproj'
 project 'OrangeTrustBadgeDemo.xcodeproj'
 
 target :OrangeTrustBadge do
-    platform :ios, '8.0'
+    platform :ios, '9.0'
     project 'OrangeTrustBadge.xcodeproj'
 end
 

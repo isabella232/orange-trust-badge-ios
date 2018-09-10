@@ -30,15 +30,20 @@ class TermsController: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.title = TrustBadgeManager.sharedInstance.localizedString("terms-title")
+        self.title = TrustBadge.shared.localizedString("terms-title")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-        navigationItem.leftItemsSupplementBackButton = true
-        tableView.estimatedRowHeight = 100       
-        tableView.configure(header: header, with: TrustBadgeManager.sharedInstance.localizedString("terms-header-title"), and: TrustBadgeManager.sharedInstance.config?.headerTextColor)
+
+        if let splitViewController = self.splitViewController {
+            navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+            navigationItem.leftItemsSupplementBackButton = true
+        } else {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissModal))
+        }
+
+        tableView.estimatedRowHeight = 100
 
         if #available(iOS 11, *) {
             self.tableView.contentInsetAdjustmentBehavior = .never
@@ -47,7 +52,7 @@ class TermsController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_TERMS_ENTER), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_TERMS_ENTER), object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,7 +62,7 @@ class TermsController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        TrustBadgeManager.sharedInstance.pageDidAppear("Terms")
+        TrustBadge.shared.pageDidAppear("Terms")
     }
 
     // MARK: - Table view data source
@@ -67,16 +72,16 @@ class TermsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TrustBadgeManager.sharedInstance.terms.count
+        return TrustBadge.shared.terms.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let term = TrustBadgeManager.sharedInstance.terms[(indexPath as NSIndexPath).row]
+        let term = TrustBadge.shared.terms[(indexPath as NSIndexPath).row]
         if term.type == .video{
             let cell = tableView.dequeueReusableCell(withIdentifier: TermVideoCell.reuseIdentifier, for: indexPath) as! TermVideoCell
-            cell.title.text = TrustBadgeManager.sharedInstance.localizedString(term.titleKey)
+            cell.title.text = TrustBadge.shared.localizedString(term.titleKey)
             
-            let videoId = TrustBadgeManager.sharedInstance.localizedString(term.contentKey)
+            let videoId = TrustBadge.shared.localizedString(term.contentKey)
             var player = players[videoId]
             if player == nil {
                 player = DailymotionPlayer(video: videoId)
@@ -91,8 +96,8 @@ class TermsController: UITableViewController {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: TermCell.reuseIdentifier, for: indexPath) as! TermCell
-            cell.title.text = TrustBadgeManager.sharedInstance.localizedString(term.titleKey)
-            let content = TrustBadgeManager.sharedInstance.localizedString(term.contentKey)
+            cell.title.text = TrustBadge.shared.localizedString(term.titleKey)
+            let content = TrustBadge.shared.localizedString(term.contentKey)
             let font = UIFont.systemFont(ofSize: 15)
             let formattedContent = String(format: content + "<style>body{font-family: '%@'; font-size:%@px;}</style>", arguments: [font.fontName, font.pointSize.description])
             let attributedContent = try! NSAttributedString(data: formattedContent.data(using: String.Encoding.unicode)!, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
@@ -104,5 +109,9 @@ class TermsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    
+    @objc func dismissModal() {
+        self.dismiss(animated: true, completion: nil)
     }
 }

@@ -22,18 +22,31 @@
 */
 
 import UIKit
+import CoreLocation
+import Contacts
+import Photos
+import MediaPlayer
+import EventKit
+import CoreBluetooth
+import AVFoundation
+import Speech
+import UserNotifications
+import CoreMotion
 
 class LandingController: UITableViewController {
     
     static let defaultReuseIdentifier = "DefaultCell"
     
-    var mainGestureRecognizer : UIGestureRecognizer?
-    var usageGestureRecognizer : UIGestureRecognizer?
     @IBOutlet weak var header : Header!
+    
+    private var isSizeClassCompact: Bool {
+        return self.splitViewController?.traitCollection.horizontalSizeClass == .compact ||
+            self.splitViewController == nil
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.title = TrustBadgeManager.sharedInstance.localizedString("landing-title")
+        self.title = TrustBadge.shared.localizedString("landing-title")
     }
 
     // MARK: - View Lifecycle
@@ -48,41 +61,46 @@ class LandingController: UITableViewController {
         }
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: LandingController.defaultReuseIdentifier)
         tableView.estimatedRowHeight = 70
-        NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_ENTER), object: nil)
-        
-        mainGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LandingController.goToMainElements(_:)))
-        usageGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LandingController.goToUsageElements(_:)))
+        NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_ENTER), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if let _ = self.splitViewController {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissModal))
+        }
+
         self.manageLogoVisibility()
-        tableView.configure(header: header, with: TrustBadgeManager.sharedInstance.localizedString("landing-header-title"), and: TrustBadgeManager.sharedInstance.config?.headerTextColor)
+        tableView.configure(header: header, with: TrustBadge.shared.localizedString("landing-header-title"),
+                            subtitle: TrustBadge.shared.localizedString("landing-header-subtitle"),
+                            textColor: TrustBadge.shared.config?.headerTextColor)
+        
         self.tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        TrustBadgeManager.sharedInstance.pageDidAppear("Landing")
+        TrustBadge.shared.pageDidAppear("Landing")
     }
 
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         self.manageLogoVisibility()
-        self.tableView.reloadData()
     }
     
     /**
      Hide the logo on MasterView when sizeClass != .Compact (e.g on iPad and Iphone6 Plus for instance)
      */
     func manageLogoVisibility(){
-        if let header = self.header{
-            if (self.splitViewController?.traitCollection.horizontalSizeClass != .compact) {
+        if let header = self.header, let image = header.logo.image {
+            if !isSizeClassCompact {
                 header.logo.isHidden = true
-                header.hiddingConstraint.priority = UILayoutPriority(rawValue: 999)
+                header.hiddingConstraint.constant = 0
             } else {
                 header.logo.isHidden = false
-                header.hiddingConstraint.priority = UILayoutPriority(rawValue: 250)
+                header.hiddingConstraint.constant = image.size.width
             }
+            header.setNeedsLayout()
         }
     }
     
@@ -93,82 +111,118 @@ class LandingController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        guard let delegate = TrustBadge.shared.delegate,
+            let should = delegate.shouldDisplayCustomViewController?(), should else {
+            return 3
+        }
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch((indexPath as NSIndexPath).row) {
+        switch indexPath.row {
         case 0 :
-            if (self.splitViewController?.traitCollection.horizontalSizeClass == .compact) {
+            if isSizeClassCompact {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ElementMenuCell.reuseIdentifier, for: indexPath) as! ElementMenuCell
-                cell.title.text = TrustBadgeManager.sharedInstance.localizedString("landing-permission-title")
-                cell.content.text = TrustBadgeManager.sharedInstance.localizedString("landing-permission-content")
-                cell.representedObject = TrustBadgeManager.sharedInstance.mainElements
+                cell.title.text = TrustBadge.shared.localizedString("landing-permission-title")
+                cell.representedObject = TrustBadge.shared.devicePermissions
+                cell.content.text = permissionSubtitle
                 cell.overview.reloadData()
-                cell.overview.removeGestureRecognizer(mainGestureRecognizer!)
-                cell.overview.removeGestureRecognizer(usageGestureRecognizer!)
-                cell.overview.addGestureRecognizer(mainGestureRecognizer!)
-                cell.layoutIfNeeded() // needed for iOS 8 to allow multiline in "content" label
+                cell.customDisclosureIndicator.isHidden = TrustBadge.shared.devicePermissions.count == 0
+                cell.selectionStyle = TrustBadge.shared.devicePermissions.count > 0 ? .blue : .none
+                cell.contentHeightConstraint.constant = TrustBadge.shared.devicePermissions.count > 0 ? 70 : 0
+                cell.setNeedsLayout()
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: LandingController.defaultReuseIdentifier, for: indexPath)
-                cell.textLabel?.text = TrustBadgeManager.sharedInstance.localizedString("landing-permission-title")
+                cell.textLabel?.text = TrustBadge.shared.localizedString("landing-permission-title")
                 cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
                 return cell
             }
         case 1 :
-            if (self.splitViewController?.traitCollection.horizontalSizeClass == .compact) {
+            if isSizeClassCompact {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ElementMenuCell.reuseIdentifier, for: indexPath) as! ElementMenuCell
-                cell.title.text = TrustBadgeManager.sharedInstance.localizedString("landing-usages-title")
-                cell.content.text = TrustBadgeManager.sharedInstance.localizedString("landing-usages-content")
-                cell.representedObject = TrustBadgeManager.sharedInstance.usageElements
+                cell.title.text = TrustBadge.shared.localizedString("landing-application-data-title")
+                cell.content.text = applicationDataSubtitle
+                cell.representedObject = TrustBadge.shared.applicationData
                 cell.overview.reloadData()
-                cell.overview.removeGestureRecognizer(mainGestureRecognizer!)
-                cell.overview.removeGestureRecognizer(usageGestureRecognizer!)
-                cell.overview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(LandingController.goToUsageElements(_:))))
-                cell.layoutIfNeeded() // needed for iOS 8 to allow multiline in "content" label
+                cell.customDisclosureIndicator.isHidden = TrustBadge.shared.applicationData.count == 0
+                cell.selectionStyle = TrustBadge.shared.applicationData.count > 0 ? .blue : .none
+                cell.contentHeightConstraint.constant = TrustBadge.shared.applicationData.count > 0 ? 70 : 0
+                cell.setNeedsLayout()
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: LandingController.defaultReuseIdentifier, for: indexPath)
-                cell.textLabel?.text = TrustBadgeManager.sharedInstance.localizedString("landing-usages-title")
+                cell.textLabel?.text = TrustBadge.shared.localizedString("landing-application-data-title")
                 cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
                 return cell
             }
         case 2 :
-            if (self.splitViewController?.traitCollection.horizontalSizeClass == .compact) {
+            if isSizeClassCompact {
                 let cell = tableView.dequeueReusableCell(withIdentifier: TermsMenuCell.reuseIdentifier, for: indexPath) as! TermsMenuCell
-                cell.title.text = TrustBadgeManager.sharedInstance.localizedString("landing-terms-title")
-                cell.content.text = TrustBadgeManager.sharedInstance.localizedString("landing-terms-content")
+                cell.title.text = TrustBadge.shared.localizedString("landing-terms-title")
+                cell.content.text = TrustBadge.shared.localizedString("landing-terms-content")
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: LandingController.defaultReuseIdentifier, for: indexPath)
-                cell.textLabel?.text = TrustBadgeManager.sharedInstance.localizedString("landing-terms-title")
+                cell.textLabel?.text = TrustBadge.shared.localizedString("landing-terms-title")
                 cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
                 return cell
             }
             
         default :
-            return UITableViewCell()
+            if isSizeClassCompact {
+                let cell = tableView.dequeueReusableCell(withIdentifier: CustomMenuCell.reuseIdentifier, for: indexPath) as! CustomMenuCell
+                cell.title.text = TrustBadge.shared.localizedString("landing-custom-title")
+                cell.content.text = TrustBadge.shared.localizedString("landing-custom-content")
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: LandingController.defaultReuseIdentifier, for: indexPath)
+                cell.textLabel?.text = TrustBadge.shared.localizedString("landing-custom-title")
+                cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+                return cell
+            }
         }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (self.splitViewController?.traitCollection.horizontalSizeClass == .compact) {
+        if isSizeClassCompact {
             return UITableViewAutomaticDimension
         } else {
             return 55
         }
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "Permissions" {
+            return TrustBadge.shared.devicePermissions.count > 0
+        } else if identifier == "Datas" {
+            return TrustBadge.shared.applicationData.count > 0
+        }
+        return true
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch ((indexPath as NSIndexPath).row){
-        case 0 :
+        switch indexPath.row {
+        case 0 where UI_USER_INTERFACE_IDIOM() == .phone :
+            if TrustBadge.shared.devicePermissions.count > 0 {
+                self.performSegue(withIdentifier: "Permissions", sender: self)
+            }
+        case 0 where UI_USER_INTERFACE_IDIOM() == .pad :
             self.performSegue(withIdentifier: "Permissions", sender: self)
-        case 1 :
-            self.performSegue(withIdentifier: "Usages", sender: self)
+        case 1 where UI_USER_INTERFACE_IDIOM() == .phone :
+            if TrustBadge.shared.applicationData.count > 0 {
+                self.performSegue(withIdentifier: "Datas", sender: self)
+            }
+        case 1 where UI_USER_INTERFACE_IDIOM() == .pad :
+            self.performSegue(withIdentifier: "Datas", sender: self)
         case 2 :
             self.performSegue(withIdentifier: "Terms", sender: self)
-        default :
+        case 3 :
+            if let delegate = TrustBadge.shared.delegate,
+                let viewController = delegate.viewController?(at: indexPath) {
+                self.showDetailViewController(viewController, sender: self)
+            }
+        default:
             break
         }
     }
@@ -178,20 +232,135 @@ class LandingController: UITableViewController {
     @IBAction func dismissModal(){
         self.splitViewController?.preferredDisplayMode = .primaryHidden
         self.splitViewController?.dismiss(animated: true, completion: { () -> Void in
-            NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadgeManager.TRUSTBADGE_LEAVE), object: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_LEAVE), object: nil)
         })
     }
     
-    @objc func goToMainElements(_ sender: UITapGestureRecognizer) {
-        if sender.state == .ended {
-            self.performSegue(withIdentifier: "Permissions", sender: self)
+    
+    //MARK: Helpers methods
+    
+    private func buildSubtitle(from elements: [TrustBadgeElement]) -> String {
+        
+        // sort by activated
+        let elements = elements.sorted { (e1, e2) -> Bool in
+            return e1.statusClosure() == true && e2.statusClosure() == false
         }
+        
+        var numberOfActivatedElements = 0
+        let indexOfDisabled = elements.index { $0.statusClosure() == false }
+        
+        /// All elements are activated
+        if indexOfDisabled == nil {
+            numberOfActivatedElements = elements.count
+        } else if indexOfDisabled == 0 { // None element is activated
+            return TrustBadge.shared.localizedString("landing-permission-denied")
+        } else {
+            numberOfActivatedElements = indexOfDisabled!
+        }
+        
+        let maxIndex = min(ElementMenuCell.maxDisplayedElement, numberOfActivatedElements)
+        
+        var subtitle = ""
+        for index in 0..<maxIndex {
+            if let element = elements[index] as? PreDefinedElement {
+                let key = "landing-\(element.type.name)-name"
+                let value = TrustBadge.shared.localizedString(key)
+                
+                if subtitle.isEmpty {
+                    subtitle = value
+                } else if index == maxIndex - 1 {
+                    if numberOfActivatedElements > ElementMenuCell.maxDisplayedElement {
+                        subtitle += ", " + value + TrustBadge.shared.localizedString("landing-and") + "\(numberOfActivatedElements - maxIndex)" + TrustBadge.shared.localizedString("landing-more")
+                    } else {
+                        subtitle += TrustBadge.shared.localizedString("landing-and") + value
+                    }
+                } else {
+                    subtitle += ", \(value)"
+                }
+            }
+        }
+        return subtitle
     }
     
-    @objc func goToUsageElements(_ sender: UITapGestureRecognizer) {
-        if sender.state == .ended {
-            self.performSegue(withIdentifier: "Usages", sender: self)
+    private var permissionSubtitle: String {
+        guard !TrustBadge.shared.devicePermissions.isEmpty else { return TrustBadge.shared.localizedString("landing-permission-unrequested") }
+        
+        if let _ = (TrustBadge.shared.devicePermissions.compactMap { return $0 as? PreDefinedElement }.first { $0.isPermissionRequested }) {
+            return buildSubtitle(from: TrustBadge.shared.devicePermissions)
         }
+        return TrustBadge.shared.localizedString("landing-permission-denied")
     }
     
+    private var applicationDataSubtitle: String {
+        guard !TrustBadge.shared.applicationData.isEmpty else { return TrustBadge.shared.localizedString("landing-application-data-unrequested") }
+        
+        if let _ = (TrustBadge.shared.applicationData.compactMap { return $0 as? PreDefinedElement }.first { $0.isPermissionRequested }) {
+            return buildSubtitle(from: TrustBadge.shared.applicationData)
+        }
+        return TrustBadge.shared.localizedString("landing-application-data-denied")
+    }
+}
+
+extension PreDefinedElement {
+    var isPermissionRequested: Bool {
+        switch type {
+        case .location:
+            return CLLocationManager.authorizationStatus() != .notDetermined
+        
+        case .contacts:
+            return CNContactStore.authorizationStatus(for: CNEntityType.contacts) != .notDetermined
+        
+        case .photoLibrary:
+            return PHPhotoLibrary.authorizationStatus() != .notDetermined
+        
+        case .media:
+            if #available(iOS 9.3, *) {
+                return MPMediaLibrary.authorizationStatus() != .notDetermined
+            } else {
+                return false
+            }
+        
+        case .calendar:
+            return EKEventStore.authorizationStatus(for: EKEntityType.event) != .notDetermined
+        
+        case .camera:
+            return AVCaptureDevice.authorizationStatus(for: AVMediaType.video) != .notDetermined
+        
+        case .reminders:
+            return EKEventStore.authorizationStatus(for: EKEntityType.reminder) != .notDetermined
+        
+        case .bluetoothSharing:
+            return CBPeripheralManager.authorizationStatus() != .notDetermined
+        
+        case .microphone:
+            return AVAudioSession.sharedInstance().recordPermission() != .undetermined
+        
+        case .speechRecognition:
+            if #available(iOS 10.0, *) {
+                return SFSpeechRecognizer.authorizationStatus() != .notDetermined
+            } else {
+                return false
+            }
+        case .motionFitness:
+            if #available(iOS 11, *) {
+                return CMMotionActivityManager.authorizationStatus() != .notDetermined
+            } else {
+                return statusClosure()
+            }
+        case .notifications:
+            var status = false
+            if #available(iOS 10.0, *) {
+                UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { (settings) in
+                    if settings.authorizationStatus != UNAuthorizationStatus.notDetermined {
+                        status = true
+                    }
+                })
+            } else {
+                return statusClosure()
+            }
+            return status
+        default:
+            return statusClosure()
+        }
+    }
 }

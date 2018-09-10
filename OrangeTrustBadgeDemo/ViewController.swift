@@ -22,8 +22,20 @@
 */
 
 
-import UIKit
 import OrangeTrustBadge
+
+import CoreLocation
+import Contacts
+import Photos
+import MediaPlayer
+import EventKit
+import CoreBluetooth
+import AVFoundation
+import Speech
+import UserNotifications
+import HomeKit
+import CoreMotion
+import HealthKit
 
 class ViewController: UIViewController {
     
@@ -31,15 +43,47 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if let shortVersionString = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString"){
             versionLabel.text = "version \(shortVersionString)"
         }
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
-    @IBAction func startDemo(){
-        let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: Bundle(for: TrustBadgeManager.self))
-        if let viewController = storyboard.instantiateInitialViewController(){
-            self.present(viewController, animated: true, completion: nil)
+    func startDemo() {
+        
+        /// setup the badge
+        self.setupTrustBadge()
+        
+        // register self as a TrustBadgeDelegate for custom view controllers
+        TrustBadge.shared.delegate = self
+        
+        let storyboard = UIStoryboard(name: "OrangeTrustBadge", bundle: Bundle(for: TrustBadge.self))
+        
+        if UI_USER_INTERFACE_IDIOM() == .pad {
+            if let viewController = storyboard.instantiateInitialViewController(){
+                self.present(viewController, animated: true, completion: nil)
+            }
+        } else {
+            // Uncomment this section if you want TrustBage to be presented modally or on an iPad
+            //if let viewController = storyboard.instantiateInitialViewController() {
+            //  self.present(viewController, animated: true, completion: nil)
+            //}
+            // Uncomment this section if you want TrustBage to be pushed
+            let viewController = storyboard.instantiateViewController(withIdentifier: "LandingController")
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navigationController = segue.destination as? UINavigationController,
+            let viewController = navigationController.topViewController as? PermissionRequesterViewController {
+            viewController.delegate = self
+        } else if let viewController = segue.destination as? PermissionRequesterViewController {
+            viewController.delegate = self
         }
     }
 }
+
+
+
