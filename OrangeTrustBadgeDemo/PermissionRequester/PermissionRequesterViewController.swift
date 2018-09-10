@@ -53,8 +53,11 @@ protocol PermissionRequesterDelegate {
 }
 
 
-class PermissionRequesterViewController: UITableViewController {
+class PermissionRequesterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var subtitle: UILabel!
+
     let bundle = Bundle(for: TrustBadge.self)
     var permissions: [ElementType] = ElementType.regularDevicePermissions
     
@@ -62,13 +65,14 @@ class PermissionRequesterViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let label = tableView.tableHeaderView?.subviews.first as? UILabel {
-           label.text = NSLocalizedString("requester-section-title", comment: "")
-        }
+        
+        self.title =  NSLocalizedString("requester-title", comment: "")
+        subtitle.text = NSLocalizedString("requester-section-title", comment: "")
+
         tableView.tableFooterView = UIView()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem?.title = NSLocalizedString("requester-access-continue", comment: "")
-    
+        
         permissions.forEach {
             PersonalData.shared.updateConfiguredPermissions(with: $0)
         }
@@ -76,15 +80,15 @@ class PermissionRequesterViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return permissions.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let permission = permissions[indexPath.row]
@@ -119,7 +123,7 @@ class PermissionRequesterViewController: UITableViewController {
         
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: false)
         
@@ -179,12 +183,12 @@ class PermissionRequesterViewController: UITableViewController {
     }
 
     // Override to support conditional editing of the table view.
-    override func tableView(_: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         var permission = permissions[indexPath.row]
         return !permission.isAuthorizationRequested
     }
     
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var permission = permissions[indexPath.row]
         let title = NSLocalizedString(permission.isEnabled ? "requester-access-disable-action" : "requester-access-enable-action", comment: "")
         

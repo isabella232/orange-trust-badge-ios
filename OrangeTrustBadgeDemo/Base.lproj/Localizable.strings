@@ -109,6 +109,7 @@ Find also all this information in the privacy policy of this application.(insert
 </html>";
 
 ///
+"requester-title"="Authorizations";
 "requester-section-title"="Touch a function to request access permission";
 "requester-access-requested"="Access has been requested";
 "requester-access-continue"="Continue";
