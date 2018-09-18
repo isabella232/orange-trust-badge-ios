@@ -37,7 +37,7 @@ class ElementMenuCell: UITableViewCell,UICollectionViewDataSource,UICollectionVi
     @IBOutlet var contentHeightConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
-        self.accessibilityTraits = UIAccessibilityTraitButton
+        self.accessibilityTraits = UIAccessibilityTraits.button
         self.shouldGroupAccessibilityChildren = false
     }
     

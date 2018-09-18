@@ -55,6 +55,6 @@ class ElementCell: UITableViewCell {
     override func awakeFromNib() {
         self.statusLabel.isAccessibilityElement = false
         self.nameLabel.isAccessibilityElement = false
-        self.accessibilityTraits = UIAccessibilityTraitButton
+        self.accessibilityTraits = UIAccessibilityTraits.button
     }
 }

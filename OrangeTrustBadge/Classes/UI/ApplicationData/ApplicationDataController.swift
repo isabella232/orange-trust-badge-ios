@@ -105,7 +105,7 @@ class ApplicationDataController: UITableViewController {
         cell.statusLabel.text = TrustBadge.shared.localizedString(statusKey)
         cell.statusLabel.textColor = element.statusClosure() ? TrustBadge.shared.config?.highlightColor : UIColor.black
         cell.icon.image = element.statusClosure() ? TrustBadge.shared.loadImage(element.statusEnabledIconName) : TrustBadge.shared.loadImage(element.statusDisabledIconName)
-        cell.actionButton.setTitle(TrustBadge.shared.localizedString("update-permission"), for: UIControlState())
+        cell.actionButton.setTitle(TrustBadge.shared.localizedString("update-permission"), for: UIControl.State())
         
         cell.toggle.setOn(element.statusClosure(), animated: true)
         if element.isToggable{
@@ -153,7 +153,7 @@ class ApplicationDataController: UITableViewController {
         }
         
         cell.openPreferencesClosure = { () in
-            UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
+            UIApplication.shared.openURL(URL(string: UIApplication.openSettingsURLString)!)
             NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_GO_TO_SETTINGS), object: element)
         }
         
@@ -166,7 +166,7 @@ class ApplicationDataController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let element = applicationData[(indexPath as NSIndexPath).row]
         if element.isExpanded {
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         } else {
             return 65
         }
@@ -176,9 +176,9 @@ class ApplicationDataController: UITableViewController {
         let element = applicationData[(indexPath as NSIndexPath).row]
         element.isExpanded = !element.isExpanded
         tableView.beginUpdates()
-        tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         tableView.endUpdates()
-        self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.middle, animated: true)
+        self.tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.middle, animated: true)
         NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_ELEMENT_TAPPED), object: element)
     }
 

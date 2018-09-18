@@ -32,6 +32,6 @@ class ElementOverViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         self.shouldGroupAccessibilityChildren = true
         self.isAccessibilityElement = true
-        self.accessibilityTraits = UIAccessibilityTraitStaticText
+        self.accessibilityTraits = UIAccessibilityTraits.staticText
     }
 }

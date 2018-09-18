@@ -91,8 +91,8 @@ class TermsController: UITableViewController {
             player!.frame = cell.videoView.frame
             cell.videoView.addSubview(player!)
             player!.translatesAutoresizingMaskIntoConstraints = false
-            cell.videoView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view":player!]))
-            cell.videoView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view":player!]))
+            cell.videoView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view":player!]))
+            cell.videoView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view":player!]))
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: TermCell.reuseIdentifier, for: indexPath) as! TermCell
@@ -108,7 +108,7 @@ class TermsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
     
     @objc func dismissModal() {

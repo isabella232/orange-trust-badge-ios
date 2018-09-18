@@ -52,7 +52,7 @@ extension UITableView {
         // get a frame with the right height and make it the frame of the header
         self.layoutIfNeeded()
         var headerFrame = header.frame
-        headerFrame.size.height = header.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+        headerFrame.size.height = header.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         header.frame = headerFrame
     }
 }

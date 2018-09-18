@@ -414,7 +414,7 @@ import HealthKit
 
                     case .microphone :
                         preDefinedElement.statusClosure = {
-                            return ![AVAudioSessionRecordPermission.denied,AVAudioSessionRecordPermission.undetermined].contains(AVAudioSession.sharedInstance().recordPermission())}
+                            return ![AVAudioSession.RecordPermission.denied,AVAudioSession.RecordPermission.undetermined].contains(AVAudioSession.sharedInstance().recordPermission)}
                         preDefinedElement.isConfigurable = true
                     
                     case .speechRecognition:
