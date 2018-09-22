@@ -233,31 +233,31 @@ import HealthKit
 @objc open class TrustBadge: NSObject {
     
     /// Event triggered when entering in TrustBadge component
-    open static let TRUSTBADGE_ENTER = "TRUSTBADGE_ENTER"
+    public static let TRUSTBADGE_ENTER = "TRUSTBADGE_ENTER"
     
     /// Event triggered when entering in Permissions Page
-    open static let TRUSTBADGE_PERMISSION_ENTER = "TRUSTBADGE_PERMISSION_ENTER"
+    public static let TRUSTBADGE_PERMISSION_ENTER = "TRUSTBADGE_PERMISSION_ENTER"
     
     /// Event triggered when entering in Usage Page
-    open static let TRUSTBADGE_USAGE_ENTER = "TRUSTBADGE_USAGE_ENTER"
+    public static let TRUSTBADGE_USAGE_ENTER = "TRUSTBADGE_USAGE_ENTER"
     
     /// Event triggered when entering in Terms Page
-    open static let TRUSTBADGE_TERMS_ENTER = "TRUSTBADGE_TERMS_ENTER"
+    public static let TRUSTBADGE_TERMS_ENTER = "TRUSTBADGE_TERMS_ENTER"
     
     /// Event triggered when leaving TrustBadge component
-    open static let TRUSTBADGE_LEAVE = "TRUSTBADGE_LEAVE"
+    public static let TRUSTBADGE_LEAVE = "TRUSTBADGE_LEAVE"
     
     /// Event triggered when tapping a TrustBadge element to open/close associated explanations
-    open static let TRUSTBADGE_ELEMENT_TAPPED = "TRUSTBADGE_ELEMENT_TAPPED"
+    public static let TRUSTBADGE_ELEMENT_TAPPED = "TRUSTBADGE_ELEMENT_TAPPED"
     
     /// Event triggered when toggling a TrustBadge element (if toggable)
-    open static let TRUSTBADGE_ELEMENT_TOGGLED = "TRUSTBADGE_ELEMENT_TOGGLED"
+    public static let TRUSTBADGE_ELEMENT_TOGGLED = "TRUSTBADGE_ELEMENT_TOGGLED"
     
     /// Event triggered when going into iOS settings
-    open static let TRUSTBADGE_GO_TO_SETTINGS = "TRUSTBADGE_GO_TO_SETTINGS"
+    public static let TRUSTBADGE_GO_TO_SETTINGS = "TRUSTBADGE_GO_TO_SETTINGS"
     
     /// Access to the manager's singleton
-    open static let shared = TrustBadge()
+    public static let shared = TrustBadge()
     
     /// Access to the terms collection
     var terms = [Term]()
@@ -285,7 +285,7 @@ import HealthKit
      
      - parameter configuration: An TrustBadgeConfig containing TrustBadge configuration
      */
-    @objc open static func with(_ configuration : TrustBadgeConfig) {
+    @objc public static func with(_ configuration : TrustBadgeConfig) {
         shared.config = configuration
         shared.initialize()
     }
