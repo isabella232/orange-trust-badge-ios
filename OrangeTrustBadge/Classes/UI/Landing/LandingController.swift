@@ -186,7 +186,7 @@ class LandingController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if isSizeClassCompact {
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         } else {
             return 55
         }
@@ -333,7 +333,7 @@ extension PreDefinedElement {
             return CBPeripheralManager.authorizationStatus() != .notDetermined
         
         case .microphone:
-            return AVAudioSession.sharedInstance().recordPermission() != .undetermined
+            return AVAudioSession.sharedInstance().recordPermission != .undetermined
         
         case .speechRecognition:
             if #available(iOS 10.0, *) {

@@ -354,6 +354,33 @@ foo.bar@example.com
 
 Some tokens will be available over time, but for the moment you can only use $$applicationName$$, configurable by using the appName field of TrustBadgeConfig (Default : CFBundleDisplayName or CFBundleName of host app)
 
+## Submitting your app for the App Store
+In order to pass the App Store validation you must declare all the following keys in the Info.plist of your app.
+
+Here is an example of what your app InfoPlist.string file would look like.
+
+```
+"NSSpeechRecognitionUsageDescription" = "This application has requested access to speech recognition. Speech recognition sends recorded voice to Apple to process your requests.";
+"NSAppleMusicUsageDescription" = "This application has requested access to your music activity and your media library.";
+"NSBluetoothPeripheralUsageDescription" = "This application has the ability to share data via Bluetooth.";
+"NSCalendarsUsageDescription" = "This application can use the calendar information on your device, including consultation of recorded events.";
+"NSCameraUsageDescription" = "This application can use the camera of your device. The camera access allows this application to take pictures and record video.";
+"NSContactsUsageDescription" = "This application can access, add and / or change your phone contacts.";
+"NSHealthShareUsageDescription" = "This application has requested access to your health data.";
+"NSHealthUpdateUsageDescription" = "This application has requested access to your health data.";
+"NSHomeKitUsageDescription" = "This application has requested access to your home data.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "With your permission, Location Services allows this application to use information from cellular, Wi-Fi, Global Positioning System (GPS) networks, and Bluetooth to determine your approximate location.";
+"NSLocationAlwaysUsageDescription" = "With your permission, Location Services allows this application to use information from cellular, Wi-Fi, Global Positioning System (GPS) networks, and Bluetooth to determine your approximate location.";
+"NSLocationWhenInUseUsageDescription" = "With your permission, Location Services allows this application to use information from cellular, Wi-Fi, Global Positioning System (GPS) networks, and Bluetooth to determine your approximate location.";
+"NSMicrophoneUsageDescription" = "This application can use the microphone of your device. The access to micro allows the application to record audio content.";
+"NSMotionUsageDescription" = "Fitness and health tracking allows apps to access sensor data, including body movement, steps count, and more.";
+"NSPhotoLibraryUsageDescription" = "This application can use photos stored on your device. This permission allows the application to read, edit or delete stored files.";
+"NSRemindersUsageDescription" = "This application can use the reminders information on your device, including consultation of recorded events.";
+```
+
+
+
+
 ## App Transport Security
 
 OrangeTrustBadge is not requesting anything on the network unless you include videos in the Terms section. Videos are hosted on Dailymotion.com and connections made to this service are compliant with ATS policies.  

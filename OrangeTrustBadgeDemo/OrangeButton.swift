@@ -80,9 +80,9 @@ open class OrangeButtonStandard: OrangeButton {
     }
     
     override func applyBrandCustomization() {
-        self.setTitleColor(UIColor.black, for: UIControlState())
-        self.setTitleColor(UIColor.white, for: UIControlState.highlighted)
-        self.setBackgroundImage(UIImage.imageWithColor(UIColor.clear), for: UIControlState())
+        self.setTitleColor(UIColor.black, for: UIControl.State())
+        self.setTitleColor(UIColor.white, for: UIControl.State.highlighted)
+        self.setBackgroundImage(UIImage.imageWithColor(UIColor.clear), for: UIControl.State())
         self.setBackgroundImage(UIImage.imageWithColor(UIColor.orange), for: .highlighted)
         self.setTitleFont()
     }

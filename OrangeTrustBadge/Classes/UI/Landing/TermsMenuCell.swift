@@ -30,6 +30,6 @@ class TermsMenuCell: UITableViewCell {
     @IBOutlet weak var content: UILabel!
     
     override func awakeFromNib() {
-        self.accessibilityTraits = UIAccessibilityTraitButton
+        self.accessibilityTraits = UIAccessibilityTraits.button
     }
 }

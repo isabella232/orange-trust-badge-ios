@@ -96,7 +96,7 @@ extension ViewController {
         // apply a custom behavior when the user toggle the data-usage switch (confirmation popup)
         config.updateTracking = {[weak self] (toggle) in
             if !toggle.isOn{
-                let alert = UIAlertController(title: NSLocalizedString("disable-data-usage-confirmation-title", comment: ""), message: NSLocalizedString("disable-data-usage-confirmation-content", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: NSLocalizedString("disable-data-usage-confirmation-title", comment: ""), message: NSLocalizedString("disable-data-usage-confirmation-content", comment: ""), preferredStyle: UIAlertController.Style.alert)
                 alert.view.tintColor = UIColor.black
                 alert.addAction(UIAlertAction(title: NSLocalizedString("disable-data-usage-confirmation-cancel", comment: ""), style: .default, handler: { (action) -> Void in
                     toggle.setOn(true, animated: true)

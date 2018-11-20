@@ -49,7 +49,7 @@ class DevicePermissionsController: UITableViewController {
         self.tableView.register(UINib(nibName: "ElementCell", bundle: Bundle(for: TrustBadgeConfig.self)), forCellReuseIdentifier: ElementCell.reuseIdentifier)
         tableView.estimatedRowHeight = 65
         
-        NotificationCenter.default.addObserver(self, selector: #selector(DevicePermissionsController.refresh), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DevicePermissionsController.refresh), name: UIApplication.willEnterForegroundNotification, object: nil)
         
         if #available(iOS 11, *) {
             self.tableView.contentInsetAdjustmentBehavior = .never
@@ -117,7 +117,7 @@ class DevicePermissionsController: UITableViewController {
         cell.icon.image = element.statusClosure() ? TrustBadge.shared.loadImage(element.statusEnabledIconName) : TrustBadge.shared.loadImage(element.statusDisabledIconName)
         
         let key = (element as! PreDefinedElement).type == .health ? "update-health-permission" : "update-permission"
-        cell.actionButton.setTitle(TrustBadge.shared.localizedString(key), for: UIControlState())
+        cell.actionButton.setTitle(TrustBadge.shared.localizedString(key), for: UIControl.State())
         
         if element.isExpanded{
             UIView.animate(withDuration: 0.4, animations: { () -> Void in
@@ -163,7 +163,7 @@ class DevicePermissionsController: UITableViewController {
             }
         } else {
             cell.openPreferencesClosure = { () in
-                UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
+                UIApplication.shared.openURL(URL(string: UIApplication.openSettingsURLString)!)
                 NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_GO_TO_SETTINGS), object: element)
             }
         }
@@ -176,7 +176,7 @@ class DevicePermissionsController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let element = permissions[indexPath.row]
         if element.isExpanded {
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         } else {
             return 65
         }
@@ -186,7 +186,7 @@ class DevicePermissionsController: UITableViewController {
         let element = permissions[indexPath.row]
         element.isExpanded = !element.isExpanded
         tableView.beginUpdates()
-        tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         tableView.endUpdates()
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_ELEMENT_TAPPED), object: element)

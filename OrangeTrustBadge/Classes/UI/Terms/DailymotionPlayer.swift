@@ -42,7 +42,7 @@ open class DailymotionPlayer : UIWebView, UIWebViewDelegate {
         self.backgroundColor = UIColor.clear
         
         // Autoresize by default
-        self.autoresizingMask = [UIViewAutoresizing.flexibleWidth , UIViewAutoresizing.flexibleHeight]
+        self.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth , UIView.AutoresizingMask.flexibleHeight]
         
         
         // Hack: prevent vertical bouncing
@@ -70,7 +70,7 @@ open class DailymotionPlayer : UIWebView, UIWebViewDelegate {
         self.stringByEvaluatingJavaScript(from: "player.api(\"pause\", \"null\")")
     }
     
-    open func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    open func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         if let isInitialURL = request.url?.path.hasPrefix("/embed/video/"){
             return isInitialURL
         } else {
