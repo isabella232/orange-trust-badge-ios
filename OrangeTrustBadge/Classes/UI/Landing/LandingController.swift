@@ -350,11 +350,14 @@ extension PreDefinedElement {
         case .notifications:
             var status = false
             if #available(iOS 10.0, *) {
+                let semaphore = DispatchSemaphore(value: 0)
                 UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { (settings) in
                     if settings.authorizationStatus != UNAuthorizationStatus.notDetermined {
                         status = true
                     }
+                    semaphore.signal()
                 })
+                _ = semaphore.wait(timeout: .now() + .seconds(3))
             } else {
                 return statusClosure()
             }

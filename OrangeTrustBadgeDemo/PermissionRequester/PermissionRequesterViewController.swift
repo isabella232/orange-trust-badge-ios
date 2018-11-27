@@ -49,6 +49,9 @@ protocol PermissionRequesterDelegate {
     // Request Bluetooh Sharing authorization
     func requestBluetoothSharingAuthorization(completionHandler: @escaping ()->Void)
 
+    // Request PushNotification authorization
+    func requestPushNotificationAuthorization(completionHandler: @escaping ()->Void)
+    
     func didFinishPerformRequests()
 }
 
@@ -60,7 +63,8 @@ class PermissionRequesterViewController: UIViewController, UITableViewDelegate, 
 
     let bundle = Bundle(for: TrustBadge.self)
     var permissions: [ElementType] = ElementType.regularDevicePermissions
-    
+    var applicationData: [ElementType] = [.notifications]
+
     public var delegate: PermissionRequesterDelegate?
     
     override func viewDidLoad() {
@@ -76,22 +80,31 @@ class PermissionRequesterViewController: UIViewController, UITableViewDelegate, 
         permissions.forEach {
             PersonalData.shared.updateConfiguredPermissions(with: $0)
         }
+
+        applicationData.forEach {
+            PersonalData.shared.updateConfiguredApplicationData(with: $0)
+        }
     }
 
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return permissions.count
+        return section == 0 ?  permissions.count : applicationData.count
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let key = section == 0 ? "requester-section-permission" : "requester-section-application-data"
+        return NSLocalizedString(key, comment: "")
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let permission = permissions[indexPath.row]
+        let permission = indexPath.section == 0 ? permissions[indexPath.row] : applicationData[indexPath.row]
         let key = "landing-\(permission.name)-name"
         cell.textLabel?.text = NSLocalizedString(key, tableName: nil, bundle: bundle, value: "", comment: "")
         cell.textLabel?.textColor = .black
@@ -99,7 +112,11 @@ class PermissionRequesterViewController: UIViewController, UITableViewDelegate, 
         
         var permissionEnable = permission.isEnabled
         if !permission.isAuthorizationRequested {
-            permissionEnable = PersonalData.shared.configuredDevicePermissions.contains(permission) && permissionEnable
+            if indexPath.section == 0 {
+                permissionEnable = PersonalData.shared.configuredDevicePermissions.contains(permission) && permissionEnable
+            } else {
+                permissionEnable = PersonalData.shared.configuredApplicationData.contains(permission) && permissionEnable
+            }
         }
         
         if permissionEnable {
@@ -127,7 +144,7 @@ class PermissionRequesterViewController: UIViewController, UITableViewDelegate, 
         
         tableView.deselectRow(at: indexPath, animated: false)
         
-        var permission = permissions[indexPath.row]
+        var permission = indexPath.section == 0 ? permissions[indexPath.row] : applicationData[indexPath.row]
         guard !permission.isAuthorizationRequested, permission.isEnabled else { return }
 
         let completionHandler: (()->Void) = {
@@ -177,6 +194,9 @@ class PermissionRequesterViewController: UIViewController, UITableViewDelegate, 
         case .motionFitness:
             delegate?.requestMotionActivityAuthorization(completionHandler: completionHandler)
         
+        case .notifications:
+            delegate?.requestPushNotificationAuthorization(completionHandler: completionHandler)
+
         default:
             break
         }
@@ -184,19 +204,24 @@ class PermissionRequesterViewController: UIViewController, UITableViewDelegate, 
 
     // Override to support conditional editing of the table view.
     func tableView(_: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        var permission = permissions[indexPath.row]
+        var permission = indexPath.section == 0 ? permissions[indexPath.row] : applicationData[indexPath.row]
         return !permission.isAuthorizationRequested
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        var permission = permissions[indexPath.row]
+        var permission = indexPath.section == 0 ? permissions[indexPath.row] : applicationData[indexPath.row]
         let title = NSLocalizedString(permission.isEnabled ? "requester-access-disable-action" : "requester-access-enable-action", comment: "")
         
         return [UITableViewRowAction(style: (permission.isEnabled ? .destructive : .normal), title: title, handler: { (rowAction, indexPath) in
             permission.isEnabled = !permission.isEnabled
-            self.permissions[indexPath.row] = permission
-            PersonalData.shared.updateConfiguredPermissions(with: permission)
-            
+            if indexPath.section == 0 {
+                self.permissions[indexPath.row] = permission
+                PersonalData.shared.updateConfiguredPermissions(with: permission)
+            } else {
+                self.applicationData[indexPath.row] = permission
+                PersonalData.shared.updateConfiguredApplicationData(with: permission)
+            }
+
             tableView.reloadRows(at: [indexPath], with: .none)
         })]
     }

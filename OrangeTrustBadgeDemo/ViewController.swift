@@ -44,8 +44,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let shortVersionString = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString"){
-            versionLabel.text = "version \(shortVersionString)"
+        if let shortVersionString = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString"),
+            let bundleVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") {
+            versionLabel.text = "version \(shortVersionString)(\(bundleVersion))"
         }
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }

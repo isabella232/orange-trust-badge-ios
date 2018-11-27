@@ -53,6 +53,10 @@ class PersonalData: NSObject {
                                                 .homekit,
                                                 .motionFitness]
     
+    // Application Data used by the app
+    // Remove the permissions your app do not use from this array below
+    public var configuredApplicationData: Set<ElementType> = [.notifications]
+
     override init() {
         super.init()
     }
@@ -64,6 +68,16 @@ class PersonalData: NSObject {
         } else {
             if let index = (configuredDevicePermissions.index { return $0.rawValue == permission.rawValue }) {
                 configuredDevicePermissions.remove(at: index)
+            }
+        }
+    }
+
+    public func updateConfiguredApplicationData(with permission: ElementType) {
+        if permission.isEnabled {
+            configuredApplicationData.insert(permission)
+        } else {
+            if let index = (configuredApplicationData.index { return $0.rawValue == permission.rawValue }) {
+                configuredApplicationData.remove(at: index)
             }
         }
     }

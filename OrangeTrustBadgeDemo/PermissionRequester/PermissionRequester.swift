@@ -118,7 +118,24 @@ extension ViewController: PermissionRequesterDelegate {
         PersonalData.shared.startAdvertising (completionHandler: completionHandler)
     }
 
-    
+    // Request PushNotification authorization
+    func requestPushNotificationAuthorization(completionHandler: @escaping ()->Void) {
+        
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) { (granted, error) in
+                if let error = error {
+                    print("\(error)")
+                }
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+                completionHandler()
+            }
+        }else {
+            completionHandler()
+        }
+    }
+
     func didFinishPerformRequests() {
         startDemo()
     }

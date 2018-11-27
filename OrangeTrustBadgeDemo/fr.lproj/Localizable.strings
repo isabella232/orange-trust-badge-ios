@@ -119,6 +119,8 @@ Pour  en savoir plus sur comment nous traitons et protégeons vos données, veui
 ///
 "requester-title"="Authorisations";
 "requester-section-title"="Touchez une fonction pour demander l'authorisation d'accès";
+"requester-section-permission"="Données accessibles par l'application";
+"requester-section-application-data"="Données d'usage de l'application";
 "requester-access-requested"="L'accès a été demandé";
 "requester-access-continue"="Continuer";
 "requester-access-enable-action"="Activer";

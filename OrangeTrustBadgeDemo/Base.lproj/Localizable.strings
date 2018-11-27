@@ -111,6 +111,8 @@ Find also all this information in the privacy policy of this application.(insert
 ///
 "requester-title"="Authorizations";
 "requester-section-title"="Touch a function to request access permission";
+"requester-section-permission"="Data that app can access";
+"requester-section-application-data"="Data from app usage";
 "requester-access-requested"="Access has been requested";
 "requester-access-continue"="Continue";
 "requester-access-enable-action"="Enable";

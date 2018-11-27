@@ -471,10 +471,13 @@ import HealthKit
                         if #available(iOS 10.0, *) {
                             preDefinedElement.statusClosure = {
                                 var status = false
+                                let semaphore = DispatchSemaphore(value: 0)
                                 UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { (settings) in
                                     status = ![UNAuthorizationStatus.denied,
                                                UNAuthorizationStatus.notDetermined].contains(settings.authorizationStatus)
+                                    semaphore.signal()
                                 })
+                                _ = semaphore.wait(timeout: .now() + .seconds(3))
                                 return status
                             }
                         }
