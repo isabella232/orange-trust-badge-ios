@@ -49,6 +49,7 @@ class ApplicationDataController: UITableViewController {
         if #available(iOS 11, *) {
             self.tableView.contentInsetAdjustmentBehavior = .never
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(ApplicationDataController.refresh), name: UIApplication.willEnterForegroundNotification, object: nil)
 
         applicationData = TrustBadge.shared.applicationData.sorted(by: { (e1, e2) -> Bool in
             return (e1 as! PreDefinedElement).type.rawValue < (e2 as! PreDefinedElement).type.rawValue
@@ -180,6 +181,12 @@ class ApplicationDataController: UITableViewController {
         tableView.endUpdates()
         self.tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.middle, animated: true)
         NotificationCenter.default.post(name: Notification.Name(rawValue: TrustBadge.TRUSTBADGE_ELEMENT_TAPPED), object: element)
+    }
+
+    // MARK: - Other Methods
+    
+    @objc func refresh() {
+        self.tableView.reloadData()
     }
 
     @objc func dismissModal() {
