@@ -51,9 +51,10 @@ class ApplicationDataController: UITableViewController {
         }
         NotificationCenter.default.addObserver(self, selector: #selector(ApplicationDataController.refresh), name: UIApplication.willEnterForegroundNotification, object: nil)
 
-        applicationData = TrustBadge.shared.applicationData.sorted(by: { (e1, e2) -> Bool in
-            return (e1 as! PreDefinedElement).type.rawValue < (e2 as! PreDefinedElement).type.rawValue
-        })
+        applicationData = [TrustBadge.shared.applicationData.filter({ $0 is PreDefinedElement })
+            .sorted(by: { ($0 as! PreDefinedElement).type.rawValue < ($1 as! PreDefinedElement).type.rawValue }),
+                           TrustBadge.shared.applicationData.filter({ $0 is CustomElement })]
+            .reduce([], { $0 + $1 })
     }
     
     override func viewWillAppear(_ animated: Bool) {

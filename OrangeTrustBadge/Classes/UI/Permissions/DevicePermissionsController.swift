@@ -55,9 +55,10 @@ class DevicePermissionsController: UITableViewController {
             self.tableView.contentInsetAdjustmentBehavior = .never
         }
         
-        permissions = TrustBadge.shared.devicePermissions.sorted(by: { (e1, e2) -> Bool in
-            return (e1 as! PreDefinedElement).type.rawValue < (e2 as! PreDefinedElement).type.rawValue
-        })
+        permissions = [TrustBadge.shared.devicePermissions.filter({ $0 is PreDefinedElement })
+            .sorted(by: { ($0 as! PreDefinedElement).type.rawValue < ($1 as! PreDefinedElement).type.rawValue }),
+                           TrustBadge.shared.devicePermissions.filter({ $0 is CustomElement })]
+            .reduce([], { $0 + $1 })
     }
     
     deinit {
