@@ -396,7 +396,7 @@ If you believe you have identified a security vulnerability with OrangeTrustBadg
 ## License
 
 OrangeTrustBadge
-Copyright (C) 2016 - 2018 Orange
+Copyright (C) 2016 - 2019 Orange
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
