@@ -11,7 +11,7 @@ Orange trust badge displays how are handled the following device permissions :
 - Contacts
 - Photos Library
 - Media
-- Usage data
+- Camera
 - Calendar
 - Reminders
 - Microphone
@@ -56,7 +56,7 @@ An example of integration is provided in OrangeTrustBadgeDemo project.
 
 > **Embedded frameworks require a minimum deployment target of iOS 8**
 
-### CocoaPods
+### <a name="cocoapods"></a>CocoaPods
 
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
 
@@ -77,12 +77,42 @@ source 'https://github.com/CocoaPods/Specs.git'
 pod 'OrangeTrustBadge'
 ```
 
+In a post_install directive of your Podfile configure the **OTHER\_SWIFT\_FLAGS** with **ONLY** what your app need.
+See the table in the section named [Configure OrangeTrustBage build](#configure).
+
+eg: If your app needs the HealthKit permission add the line 
+>config.build_settings['OTHER_SWIFT_FLAGS'] << '-DHEALTHKIT'
+
+if not,  **DO NOT ADD IT**.
+
+```
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['SWIFT_VERSION'] = '4.2'
+      config.build_settings['OTHER_SWIFT_FLAGS'] ||= ['$(inherited)']
+      config.build_settings['OTHER_SWIFT_FLAGS'] << '-DCORELOCATION'
+      config.build_settings['OTHER_SWIFT_FLAGS'] << '-DPHOTOS'
+      config.build_settings['OTHER_SWIFT_FLAGS'] << '-DCONTACTS'
+      config.build_settings['OTHER_SWIFT_FLAGS'] << '-DMEDIAPLAYER'
+      config.build_settings['OTHER_SWIFT_FLAGS'] << '-DCAMERA'
+      config.build_settings['OTHER_SWIFT_FLAGS'] << '-DEVENTKIT'
+      config.build_settings['OTHER_SWIFT_FLAGS'] << '-DBLUETOOTH'
+      config.build_settings['OTHER_SWIFT_FLAGS'] << '-DSPEECH'
+      config.build_settings['OTHER_SWIFT_FLAGS'] << '-DUSERNOTIFICATIONS'
+      config.build_settings['OTHER_SWIFT_FLAGS'] << '-DMOTION'
+      config.build_settings['OTHER_SWIFT_FLAGS'] << '-DHEALTHKIT'
+      config.build_settings['OTHER_SWIFT_FLAGS'] << '-DHOMEKIT'
+    end
+  end
+end
+```
 Then, run the following command:
 
 ```bash
 $ pod install
 ```
-### Carthage
+### <a name="carthage"></a>Carthage
 
 [Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
 
@@ -97,10 +127,14 @@ To integrate OrangeTrustBadge into your Xcode project using Carthage, specify it
 
 >github "Orange-OpenSource/orange-trust-badge-ios" ~> 1.1
 
-Run carthage update to build the framework and drag the built OrangeTrustBadge.framework into your Xcode project.
+Run the following commands to configure then build the framework. Drag the built OrangeTrustBadge.framework into your Xcode project.
 
 ```bash
-$ carthage update --platform iOS 
+$ carthage checkout orange-trust-badge-ios
+$ cd Carthage/Checkouts/orange-trust-badge-ios/
+$ ./Scripts/configure.sh
+$ cd -
+$ carthage build orange-trust-badge-ios
 ```
 
 ### Manually
@@ -133,6 +167,7 @@ In your own Xcode project :
 > The `OrangeTrustBadge.framework` is automagically added as a target dependency, linked framework and embedded framework in a copy files build phase which is all you need to build on the simulator and a device.
 
 - Don't forget to add a build phase to strip simulators architectures in case of a Release to avoid any issues when uploading your app to the AppStore. To do that, simply go into `Build Phases` Tab of your project, add a `New Run Script Phase` and put the script above into the textfield located under "/bin/sh". This new Run Script phase should be placed at the end of the phases list.
+
 ```bash
 OUTPUT_DIR="${DWARF_DSYM_FOLDER_PATH}/strip"
 rm -rf "$OUTPUT_DIR"
@@ -170,7 +205,60 @@ if [ "$CONFIGURATION" == "Release" ]; then
 fi
 ```
 
-- And that's it!
+## <a name="configure"></a>Configure OrangeTrustBage build
+In order to pass the App Store validation, you must declare only the permissions that your app effectively use. Otherwise Apple may reject your app.
+
+So OrangeTrustBadge compiles and uses only the needed frameworks by setting the **OTHER\_SWIFT\_FLAGS** build setting.
+
+| COMPILE FLAG  | FRAMEWORK | PERMISSION     |
+| :---        |    :----:   |          ---: |
+|CORELOCATION | CoreLocation| Location
+|PHOTOS| Photos | Photos | Photos Library
+|CONTACTS| Contacts | Contacts
+|MEDIAPLAYER | MediaPlayer | Media
+|CAMERA | MediaPlayer | Camera
+|EVENTKIT | EventKit | Calendar, Reminders
+|BLUETOOTH | CoreBluetooth | Bluetooth Sharing
+|MICROPHONE | AVFoundation | Microphone
+|SPEECH | Speech | Speech Recognition
+|USERNOTIFICATIONS | UserNotifications | Notifications
+|MOTION | CoreMotion | Motion Activity & Fitness
+|HEALTHKIT | HeakthKit | HealthKit
+|HOMEKIT | HomeKit | HomeKit
+
+##### Configure the badge compilation for Cocoapods
+If you use Cocoapods, use a ***post_install directive*** to configure the badge. See the section [Cocoapods](#cocoapods) above.
+
+##### Configure the badge compilation for Carthage
+If you use Carthage, The script name **configure.sh** provided with OrangeTrustBadge will be automaticaly configured the framework. What you have defined in the ***InfoPlist.strings*** of your project will be used to set the **OTHER\_SWIFT\_FLAGS** build setting with the right values.
+
+eg: If you define **NSContactsUsageDescription** in the InfoPlist.strings of your project then OrangeTrustBadge will add the flag ```-DCONTACTS``` in the **OTHER\_SWIFT\_FLAGS** build setting.
+See the section [Carthage](#carthage) above.
+
+
+Here is an example of what your app InfoPlist.string file would look like.
+
+```
+"NSSpeechRecognitionUsageDescription" = "This application has requested access to speech recognition. Speech recognition sends recorded voice to Apple to process your requests.";
+"NSAppleMusicUsageDescription" = "This application has requested access to your music activity and your media library.";
+"NSBluetoothPeripheralUsageDescription" = "This application has the ability to share data via Bluetooth.";
+"NSCalendarsUsageDescription" = "This application can use the calendar information on your device, including consultation of recorded events.";
+"NSCameraUsageDescription" = "This application can use the camera of your device. The camera access allows this application to take pictures and record video.";
+"NSContactsUsageDescription" = "This application can access, add and / or change your phone contacts.";
+"NSHealthShareUsageDescription" = "This application has requested access to your health data.";
+"NSHealthUpdateUsageDescription" = "This application has requested access to your health data.";
+"NSHomeKitUsageDescription" = "This application has requested access to your home data.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "With your permission, Location Services allows this application to use information from cellular, Wi-Fi, Global Positioning System (GPS) networks, and Bluetooth to determine your approximate location.";
+"NSLocationAlwaysUsageDescription" = "With your permission, Location Services allows this application to use information from cellular, Wi-Fi, Global Positioning System (GPS) networks, and Bluetooth to determine your approximate location.";
+"NSLocationWhenInUseUsageDescription" = "With your permission, Location Services allows this application to use information from cellular, Wi-Fi, Global Positioning System (GPS) networks, and Bluetooth to determine your approximate location.";
+"NSMicrophoneUsageDescription" = "This application can use the microphone of your device. The access to micro allows the application to record audio content.";
+"NSMotionUsageDescription" = "Fitness and health tracking allows apps to access sensor data, including body movement, steps count, and more.";
+"NSPhotoLibraryUsageDescription" = "This application can use photos stored on your device. This permission allows the application to read, edit or delete stored files.";
+"NSRemindersUsageDescription" = "This application can use the reminders information on your device, including consultation of recorded events.";
+```
+
+
+And that's it!
 ---
 
 ## Usage
@@ -353,32 +441,6 @@ foo.bar@example.com
 ```
 
 Some tokens will be available over time, but for the moment you can only use $$applicationName$$, configurable by using the appName field of TrustBadgeConfig (Default : CFBundleDisplayName or CFBundleName of host app)
-
-## Submitting your app for the App Store
-In order to pass the App Store validation you must declare all the following keys in the Info.plist of your app.
-
-Here is an example of what your app InfoPlist.string file would look like.
-
-```
-"NSSpeechRecognitionUsageDescription" = "This application has requested access to speech recognition. Speech recognition sends recorded voice to Apple to process your requests.";
-"NSAppleMusicUsageDescription" = "This application has requested access to your music activity and your media library.";
-"NSBluetoothPeripheralUsageDescription" = "This application has the ability to share data via Bluetooth.";
-"NSCalendarsUsageDescription" = "This application can use the calendar information on your device, including consultation of recorded events.";
-"NSCameraUsageDescription" = "This application can use the camera of your device. The camera access allows this application to take pictures and record video.";
-"NSContactsUsageDescription" = "This application can access, add and / or change your phone contacts.";
-"NSHealthShareUsageDescription" = "This application has requested access to your health data.";
-"NSHealthUpdateUsageDescription" = "This application has requested access to your health data.";
-"NSHomeKitUsageDescription" = "This application has requested access to your home data.";
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "With your permission, Location Services allows this application to use information from cellular, Wi-Fi, Global Positioning System (GPS) networks, and Bluetooth to determine your approximate location.";
-"NSLocationAlwaysUsageDescription" = "With your permission, Location Services allows this application to use information from cellular, Wi-Fi, Global Positioning System (GPS) networks, and Bluetooth to determine your approximate location.";
-"NSLocationWhenInUseUsageDescription" = "With your permission, Location Services allows this application to use information from cellular, Wi-Fi, Global Positioning System (GPS) networks, and Bluetooth to determine your approximate location.";
-"NSMicrophoneUsageDescription" = "This application can use the microphone of your device. The access to micro allows the application to record audio content.";
-"NSMotionUsageDescription" = "Fitness and health tracking allows apps to access sensor data, including body movement, steps count, and more.";
-"NSPhotoLibraryUsageDescription" = "This application can use photos stored on your device. This permission allows the application to read, edit or delete stored files.";
-"NSRemindersUsageDescription" = "This application can use the reminders information on your device, including consultation of recorded events.";
-```
-
-
 
 
 ## App Transport Security
