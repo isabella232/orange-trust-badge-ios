@@ -21,7 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		37D6ACB308BF3DCEAC711F8A /* Pods_OrangeTrustBadge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFA620737C03CA2FEB265CA /* Pods_OrangeTrustBadge.framework */; };
 		49FBC29C20E3B5EA00F3F486 /* CustomMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FBC29B20E3B5EA00F3F486 /* CustomMenuCell.swift */; };
 		540B43171C21974500509A62 /* LandingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540B430F1C21974500509A62 /* LandingController.swift */; };
 		540B43181C21974500509A62 /* ElementOverViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540B43101C21974500509A62 /* ElementOverViewCell.swift */; };
@@ -91,7 +90,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37D6ACB308BF3DCEAC711F8A /* Pods_OrangeTrustBadge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +263,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 542B75441C1F152D003C489A /* Build configuration list for PBXNativeTarget "OrangeTrustBadge" */;
 			buildPhases = (
-				0E11CD3484DC873D5AB80495 /* [CP] Check Pods Manifest.lock */,
 				542B752B1C1F152D003C489A /* Sources */,
 				542B752C1C1F152D003C489A /* Frameworks */,
 				542B752D1C1F152D003C489A /* Headers */,
@@ -337,24 +334,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0E11CD3484DC873D5AB80495 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-OrangeTrustBadge-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		497C9D051CB6901100816CE5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
