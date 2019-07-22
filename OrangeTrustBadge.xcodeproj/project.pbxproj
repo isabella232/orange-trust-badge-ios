@@ -303,11 +303,11 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				fr,
 				ar,
 				pl,
-				Base,
 			);
 			mainGroup = 542B75261C1F152D003C489A;
 			productRefGroup = 542B75311C1F152D003C489A /* Products */;
