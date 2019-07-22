@@ -34,15 +34,15 @@ It also :
 
 - Works on iPhone and iPad using Autolayout (iPad Multitasking supported)
 - Localized in 2 languages (English, French)
-- Written in Swift 4.0 but works in Objective-C or Swift based Projects
+- Written in Swift 5.0 but works in Objective-C or Swift based Projects
 - API hooks
 - UI Customization
 
 ## Requirements
 
 - iOS 9.0+
-- Xcode 9.4.1+
-- CocoaPods 1.5.3+
+- Xcode 10.2.1+
+- CocoaPods 1.6.1+
 
 ## Bug tracker
 
