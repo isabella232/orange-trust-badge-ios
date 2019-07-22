@@ -270,7 +270,7 @@ class LandingController: UITableViewController {
         }
         
         var numberOfActivatedElements = 0
-        let indexOfDisabled = elements.index { $0.statusClosure() == false }
+        let indexOfDisabled = elements.firstIndex { $0.statusClosure() == false }
         
         /// All elements are activated
         if indexOfDisabled == nil {
