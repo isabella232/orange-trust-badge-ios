@@ -34,15 +34,15 @@ It also :
 
 - Works on iPhone and iPad using Autolayout (iPad Multitasking supported)
 - Localized in 2 languages (English, French)
-- Written in Swift 4.0 but works in Objective-C or Swift based Projects
+- Written in Swift 5.0 but works in Objective-C or Swift based Projects
 - API hooks
 - UI Customization
 
 ## Requirements
 
 - iOS 9.0+
-- Xcode 9.4.1+
-- CocoaPods 1.5.3+
+- Xcode 10.2.1+
+- CocoaPods 1.6.1+
 
 ## Bug tracker
 
@@ -135,74 +135,6 @@ $ cd Carthage/Checkouts/orange-trust-badge-ios/
 $ ./Scripts/configure.sh
 $ cd -
 $ carthage build orange-trust-badge-ios
-```
-
-### Manually
-
-If you prefer not to use either of the aforementioned dependency managers, you can integrate OrangeTrustBadge into your project manually.
-
-#### Embedded Framework
-- Clone OrangeTrustBadge Repository by typing in your Terminal
-```bash
-$ git clone https://github.com/Orange-OpenSource/orange-trust-badge-ios.git
-```
-- Go into `orange-trust-badge-ios` directory by typing in Terminal
-```bash
-$ cd orange-trust-badge-ios/
-```
-- Then, run the following command:
-```bash
-$ pod install
-```
-- You should now be able to open `OrangeTrustBadge.xcworkspace` located at the same level of `OrangeTrustBadge.xcodeproj`.
-- Now we will build a FAT dynamic framework containing all architectures to make it run on Simulator as well as Real Devices (ARM,ARM64,i386 and x86_64). To do that, please select the appropriate target named `build-fat-framework` and start archiving it with `Product > Archive` (important to run "Archive" and not just Build/Run the target).
-- Once finished, the Finder should have opened a window containing a fresh build of the framework named `OrangeTrustBadge.framework`
-
-In your own Xcode project :  
-- In the tab bar at the top of that window, open the "General" panel.
-- Drag and drop generated Framework into the "Embedded Binaries" section.
-- If your project is not a Swift Project, go into "Build Settings" tab and find the parameter EMBEDDED_CONTENT_CONTAINS_SWIFT and set it to YES.
-- Finally, find update the parameter value of "ENABLE_BITCODE" to "NO"
-
-> The `OrangeTrustBadge.framework` is automagically added as a target dependency, linked framework and embedded framework in a copy files build phase which is all you need to build on the simulator and a device.
-
-- Don't forget to add a build phase to strip simulators architectures in case of a Release to avoid any issues when uploading your app to the AppStore. To do that, simply go into `Build Phases` Tab of your project, add a `New Run Script Phase` and put the script above into the textfield located under "/bin/sh". This new Run Script phase should be placed at the end of the phases list.
-
-```bash
-OUTPUT_DIR="${DWARF_DSYM_FOLDER_PATH}/strip"
-rm -rf "$OUTPUT_DIR"
-mkdir "$OUTPUT_DIR"
-
-INPUT_FRAMEWORK_BINARY=`find ${DWARF_DSYM_FOLDER_PATH}/${FRAMEWORKS_FOLDER_PATH}/ -type f -name OrangeTrustBadge`
-OUTPUT_FRAMEWORK_BINARY="${OUTPUT_DIR}/OrangeTrustBadge"
-
-# remove simulator arch from the release
-if [ "$CONFIGURATION" == "Release" ]; then
-    if [  "$CURRENT_ARCH" != "x86_64" ]; then
-
-        lipo "${INPUT_FRAMEWORK_BINARY}" -verify_arch x86_64
-        if [ $? == 0 ] ; then
-            REMOVE_ARCHS="-remove x86_64"
-            arch_found=true
-        fi
-
-        lipo "${INPUT_FRAMEWORK_BINARY}" -verify_arch i386
-        if [ $? == 0 ] ; then
-            REMOVE_ARCHS="${REMOVE_ARCHS} -remove i386"
-            arch_found=true
-        fi
-
-        if [ "$arch_found" == "true" ]; then
-            lipo ${REMOVE_ARCHS} "${INPUT_FRAMEWORK_BINARY}" -output "${OUTPUT_FRAMEWORK_BINARY}"
-
-            cp -f "${OUTPUT_FRAMEWORK_BINARY}" "${INPUT_FRAMEWORK_BINARY}"
-            rm -rf "$OUTPUT_DIR"
-
-            codesign --force --sign "${EXPANDED_CODE_SIGN_IDENTITY}" --timestamp=none --verbose `dirname ${INPUT_FRAMEWORK_BINARY}`
-        fi
-
-    fi
-fi
 ```
 
 ## <a name="configure"></a>Configure OrangeTrustBage build
@@ -327,7 +259,7 @@ That's it !
 - In Bundle field, type `org.cocoapods.OrangeTrustBadge`
 - Finally, create a segue from the appropriate button or cell in your app and this Storyboard Reference (Some segue types might be unavailable since this component is using UISplitViewController - Try "Present Modally" to start)
 
-![inspector](https://github.com/Orange-OpenSource/orange-trust-badge-ios/raw/master/inspector.png)
+![inspector](https://github.com/Orange-OpenSource/orange-trust-badge-ios/raw/master/docs/img/inspector.png)
 
 That's it !
 

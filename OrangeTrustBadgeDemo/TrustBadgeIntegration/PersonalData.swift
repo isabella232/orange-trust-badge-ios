@@ -76,7 +76,7 @@ class PersonalData: NSObject {
         if permission.isEnabled {
             configuredDevicePermissions.insert(permission)
         } else {
-            if let index = (configuredDevicePermissions.index { return $0.rawValue == permission.rawValue }) {
+            if let index = (configuredDevicePermissions.firstIndex { return $0.rawValue == permission.rawValue }) {
                 configuredDevicePermissions.remove(at: index)
             }
         }
@@ -86,7 +86,7 @@ class PersonalData: NSObject {
         if permission.isEnabled {
             configuredApplicationData.insert(permission)
         } else {
-            if let index = (configuredApplicationData.index { return $0.rawValue == permission.rawValue }) {
+            if let index = (configuredApplicationData.firstIndex { return $0.rawValue == permission.rawValue }) {
                 configuredApplicationData.remove(at: index)
             }
         }
