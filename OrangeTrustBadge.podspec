@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
-  s.name          = "OrangeTrustBadge"
-  s.version       = "1.1.7"
-  s.summary       = "Orange Trust Badge"
-  s.description   = <<-DESC
+  s.name         = "OrangeTrustBadge"
+  s.version      = "1.1.8"
+  s.summary      = "Orange Trust Badge"
+  s.description  = <<-DESC
 With Orange trust badge, aka Badge de confiance, give transparent information and user control on personal data and help users to identify if your application has any sensitive features.
 DESC
   s.homepage      = "https://developer.orange.com/apis/trust/"
