@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UuF-5s-lpI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UuF-5s-lpI">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="2304" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -73,7 +73,7 @@
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezU-tk-yla">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ezU-tk-yla">
                                             <rect key="frame" x="15" y="47" width="345" height="112"/>
                                             <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                             <color key="tintColor" red="1" green="0.43921568630000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -228,13 +228,13 @@
                                 <view verifyAmbiguity="ignoreSizes" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="66" translatesAutoresizingMaskIntoConstraints="NO" id="9ji-V9-7Wc">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="751" text="landing-header-appname" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDE-nb-NHS">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="751" text="landing-header-appname" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDE-nb-NHS">
                                             <rect key="frame" x="15" y="15" width="257" height="20.5"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" text="landing-header-title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcO-M2-S3Q">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" text="landing-header-title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcO-M2-S3Q">
                                             <rect key="frame" x="15" y="47.5" width="257" height="18"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -266,7 +266,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpp-5f-fuF">
                                     <rect key="frame" x="0.0" y="149.5" width="375" height="50.5"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="landing-header-subtitle" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piY-DF-hrJ">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="landing-header-subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piY-DF-hrJ">
                                             <rect key="frame" x="15" y="15" width="345" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -309,7 +309,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="184"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="landing-element-title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fem-nQ-FLA">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="landing-element-title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fem-nQ-FLA">
                                             <rect key="frame" x="15" y="15" width="312" height="51"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="2wt-ig-0bo"/>
@@ -322,7 +322,7 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="landing-element-content" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hv-Ur-dkc">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="landing-element-content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hv-Ur-dkc">
                                             <rect key="frame" x="15" y="76" width="345" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="0IB-x4-dRN"/>
@@ -440,7 +440,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="landing-terms-content" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNG-lo-i7H">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="landing-terms-content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNG-lo-i7H">
                                             <rect key="frame" x="15" y="45.5" width="345" height="29.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="mNk-VE-462"/>
@@ -461,7 +461,7 @@
                                                 <constraint firstAttribute="width" constant="24" id="ZTE-4U-G0T"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="landing-terms-title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atk-4l-xPN">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="landing-terms-title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atk-4l-xPN">
                                             <rect key="frame" x="15" y="15" width="316" height="20.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="rTk-Mt-xih"/>
@@ -507,7 +507,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="landing-custom-content" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xo-Sn-MFD">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="landing-custom-content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xo-Sn-MFD">
                                             <rect key="frame" x="15" y="45.5" width="345" height="29.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="PlH-JQ-HAn"/>
@@ -528,7 +528,7 @@
                                                 <constraint firstAttribute="width" constant="24" id="dh7-19-Zi5"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="landing-custom-title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XqM-uz-r3Q">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="landing-custom-title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XqM-uz-r3Q">
                                             <rect key="frame" x="15" y="15" width="316" height="20.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="6dz-CM-EQi"/>
